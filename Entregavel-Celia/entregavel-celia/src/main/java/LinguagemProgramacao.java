@@ -1,6 +1,7 @@
-public class Dados extends Conhecimento {
+public class LinguagemProgramacao extends Conhecimento {
 
-    public Dados(String nome, String descricao, String complexidade, String versao, double tempo) {
+
+    public LinguagemProgramacao(String nome, String descricao, String complexidade, String versao, double tempo) {
         super(nome, descricao, complexidade, versao, tempo);
     }
 

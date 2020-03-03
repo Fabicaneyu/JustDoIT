@@ -1,11 +1,7 @@
 public class InfraEstrutura extends Conhecimento {
 
-    private String tipo;
-
-    public InfraEstrutura(String nome, String descricao, String complexidade,
-                          String versao, double tempo, String tipo) {
+    public InfraEstrutura(String nome, String descricao, String complexidade, String versao, double tempo) {
         super(nome, descricao, complexidade, versao, tempo);
-        this.tipo = tipo;
     }
 
     @Override
@@ -23,7 +19,5 @@ public class InfraEstrutura extends Conhecimento {
         return null;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
+
 }
