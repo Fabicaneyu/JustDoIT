@@ -1,4 +1,4 @@
-package com.example.demo;
+package br.com.bandtec.justdoit;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
