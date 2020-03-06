@@ -1,3 +1,6 @@
+import java.sql.Time;
+import java.sql.Timestamp;
+
 public abstract class Conhecimento {
 
     private String nome;
@@ -14,11 +17,12 @@ public abstract class Conhecimento {
         this.tempo = tempo;
     }
 
-    public abstract double getAvaliacao() ;
 
-    public abstract double getTempoMedio() ;
+    public  double getTempoMedio() {
+        return this.tempo;
+    }
 
-    public abstract String getDificuldade() ;
+    public abstract double getPontuacao();
 
     public String getNome() {
         return nome;
@@ -37,7 +41,7 @@ public abstract class Conhecimento {
     }
 
     public String getComplexidade() {
-        return complexidade;
+        return this.complexidade;
     }
 
     public void setComplexidade(String complexidade) {
@@ -59,4 +63,7 @@ public abstract class Conhecimento {
     public void setTempo(double tempo) {
         this.tempo = tempo;
     }
+
+
+
 }
