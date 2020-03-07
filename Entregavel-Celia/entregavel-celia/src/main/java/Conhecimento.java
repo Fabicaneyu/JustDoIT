@@ -6,14 +6,12 @@ public abstract class Conhecimento {
     private String nome;
     private String descricao;
     private String complexidade;
-    private String versao;
     private double tempo;
 
-    public Conhecimento(String nome, String descricao, String complexidade, String versao, double tempo) {
+    public Conhecimento(String nome, String descricao, String complexidade, double tempo) {
         this.nome = nome;
         this.descricao = descricao;
         this.complexidade = complexidade;
-        this.versao = versao;
         this.tempo = tempo;
     }
 
@@ -48,13 +46,7 @@ public abstract class Conhecimento {
         this.complexidade = complexidade;
     }
 
-    public String getVersao() {
-        return versao;
-    }
 
-    public void setVersao(String versao) {
-        this.versao = versao;
-    }
 
     public double getTempo() {
         return tempo;
@@ -64,6 +56,13 @@ public abstract class Conhecimento {
         this.tempo = tempo;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Conhecimento{" +
+                "nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", complexidade='" + complexidade + '\'' +
+                ", tempo=" + tempo +
+                '}';
+    }
 }

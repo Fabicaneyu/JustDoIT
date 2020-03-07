@@ -1,7 +1,7 @@
 public class MySQL extends Dados {
 
-    public MySQL(String nome, String descricao, String complexidade, String versao, double tempo) {
-        super(nome, descricao, complexidade, versao, tempo);
+    public MySQL(String nome, String descricao, String complexidade, double tempo) {
+        super(nome, descricao, complexidade, tempo);
     }
 
     @Override
