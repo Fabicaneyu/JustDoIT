@@ -9,5 +9,4 @@ public class DatabaseConnectionApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DatabaseConnectionApplication.class, args);
 	}
-
 }
