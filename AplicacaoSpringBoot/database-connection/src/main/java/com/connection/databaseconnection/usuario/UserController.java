@@ -1,9 +1,17 @@
 package com.connection.databaseconnection.usuario;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Service
+@Controller
 public class UserController {
+
+    @RequestMapping("/")
+    public String index(){
+        return "login";
+    }
 
     private UsuarioRepository repository;
 
