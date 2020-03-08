@@ -9,25 +9,63 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Service
 @Controller
 public class UserController {
+
     @Autowired
     private UsuarioRepository repository;
-    @RequestMapping(value="login", method = RequestMethod.GET)
-    public String index(){
-        return "login";
-    }
-    @RequestMapping(value="login", method = RequestMethod.POST)
-    public String index(Usuario usuario){
-        repository.save(usuario);
-        return "redirect:login";
-    }
-
-
-
 
     public UserController(UsuarioRepository repository) {
         super();
         this.repository = repository;
     }
+
+
+    @RequestMapping(value="login", method = RequestMethod.GET)
+    public String indexCadastro(){
+        return "login";
+    }
+    @RequestMapping(value="login", method = RequestMethod.POST)
+    public String indexCadastro(Usuario usuario){
+
+
+        String email = usuario.getEmail();
+        String senha = usuario.getSenha();
+
+        boolean e = validarEmail(email);
+        boolean s = validarSenha(senha);
+
+        if (e && s) {
+            return "home";
+        }
+        else {
+            return "falha";
+        }
+
+
+    }
+
+//    @RequestMapping(value="login", method = RequestMethod.GET)
+//    public String indexLogin(){
+//        return "login";
+//    }
+//
+//    @RequestMapping(value="login", method = RequestMethod.POST)
+//    public String indexLogin(Usuario usuario){
+//
+//        String email = usuario.getEmail();
+//        String senha = usuario.getSenha();
+//
+//        boolean e = validarEmail(email);
+//        boolean s = validarSenha(senha);
+//
+//        if (e && s) {
+//            return "redirect:home";
+//        }
+//        else {
+//            return "Falha na autenticação";
+//        }
+//
+//    }
+
 
 
     public boolean validarEmail(String email) {
