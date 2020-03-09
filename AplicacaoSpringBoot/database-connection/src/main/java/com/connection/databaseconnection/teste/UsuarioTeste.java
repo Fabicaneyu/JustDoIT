@@ -1,6 +1,6 @@
 package com.connection.databaseconnection.teste;
 
-import com.connection.databaseconnection.usuario.UserController;
+import com.connection.databaseconnection.usuario.UserService;
 import com.connection.databaseconnection.usuario.Usuario;
 import com.connection.databaseconnection.usuario.UsuarioRepository;
 import org.assertj.core.api.Assertions;
@@ -19,7 +19,7 @@ public class UsuarioTeste {
     UsuarioRepository repository;
 
     @Autowired
-    UserController controller;
+    UserService controller;
 
     @Test
     public void verificaEmailTrue() {
