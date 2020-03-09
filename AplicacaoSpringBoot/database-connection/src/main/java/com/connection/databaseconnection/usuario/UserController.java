@@ -18,6 +18,18 @@ public class UserController {
         this.repository = repository;
     }
 
+    @RequestMapping(value="cadastro", method = RequestMethod.GET)
+    public String indexCadastrar(){
+        return "cadastro";
+    }
+    @RequestMapping(value="cadastro", method = RequestMethod.POST)
+    public String indexCadastrar(Usuario usuario){
+
+        repository.save(usuario);
+        return "login";
+
+    }
+
 
     @RequestMapping(value="login", method = RequestMethod.GET)
     public String indexCadastro(){
