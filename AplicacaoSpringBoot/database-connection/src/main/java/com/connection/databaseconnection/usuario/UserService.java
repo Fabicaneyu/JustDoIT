@@ -70,5 +70,20 @@ public class UserService {
         }
     }
 
+    public boolean validaAll(String email, String senha) {
+
+        boolean e = validarEmail(email);
+        boolean s = validarSenha(senha);
+
+        if (e && s) {
+            return true;
+        }
+        else{
+            return false;
+        }
+
+
+    }
+
 
 }

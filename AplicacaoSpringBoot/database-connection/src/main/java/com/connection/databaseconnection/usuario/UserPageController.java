@@ -24,7 +24,7 @@ public class UserPageController {
     public String indexCadastrar(Usuario usuario){
 
         controller.salvarUsuario(usuario);
-        return "login";
+        return "redirect:login";
 
     }
 
@@ -39,24 +39,39 @@ public class UserPageController {
         String email = usuario.getEmail();
         String senha = usuario.getSenha();
 
-        boolean e = controller.validarEmail(email);
-        boolean s = controller.validarSenha(senha);
+        boolean validado = controller.validaAll(email, senha);
 
-        if (e && s) {
-            usuarioAtual = usuario;
-            return "home";
+        if (validado) {
+            return "redirect:home";
         }
         else {
-            return "falha";
+            return "redirect:fail";
         }
-
 
     }
 
     @RequestMapping(value="logoff", method = RequestMethod.GET)
-    public String indexHome() {
+    public String indexLogoff() {
         usuarioAtual = null;
-        return "redirect:login";
+        return "login";
+    }
+
+    @RequestMapping(value="fail", method = RequestMethod.GET)
+    public String indexFail() {
+
+        return "fail";
+    }
+
+    @RequestMapping(value="sucess", method = RequestMethod.GET)
+    public String indexSucess() {
+
+        return "sucess";
+    }
+
+    @RequestMapping(value="home", method = RequestMethod.GET)
+    public String indexHome() {
+
+        return "home";
     }
 
 
