@@ -42,6 +42,7 @@ public class UserPageController {
         boolean validado = controller.validaAll(email, senha);
 
         if (validado) {
+            usuarioAtual = usuario;
             return "redirect:home";
         }
         else {
