@@ -1,8 +1,12 @@
 package com.connection.databaseconnection.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UsuarioDTO {
 
     private String email, nome, senha;

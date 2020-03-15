@@ -35,7 +35,7 @@ public class UserPageController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/cadastro")
     public ResponseEntity cadastrar(@RequestBody  UsuarioDTO userDTO) {
 
         Usuario usuario = Usuario.builder().nome(userDTO.getNome())
