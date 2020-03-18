@@ -74,4 +74,20 @@ public class UserService {
         return usuario;
 
     }
-}
+    public void validarSenhas(String senha , String senhaConfirma) {
+
+
+        if (!senhaConfirma.equals(senha)) {
+            throw new RegraException("Senhas não estão iguais");
+        }
+    }
+
+
+    }
+
+
+
+
+
+
+

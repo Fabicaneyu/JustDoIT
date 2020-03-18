@@ -41,7 +41,9 @@ public class UserPageController {
         Usuario usuario = Usuario.builder().nome(userDTO.getNome())
                 .email(userDTO.getEmail()).senha(userDTO.getSenha()).build();
 
+
         try{
+            controller.validarSenhas(userDTO.getSenha(), userDTO.getSenhaConfirma());
             Usuario usuarioSalvo = controller.salvarUsuario(usuario);
             return new ResponseEntity(usuarioSalvo, HttpStatus.CREATED);
         }catch (RegraException e) {

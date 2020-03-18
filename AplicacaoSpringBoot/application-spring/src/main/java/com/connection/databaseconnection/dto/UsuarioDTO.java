@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UsuarioDTO {
 
-    private String email, nome, senha;
+    private String email, nome, senha, senhaConfirma;
 
     public String getEmail() {
         return email;
@@ -34,6 +34,19 @@ public class UsuarioDTO {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public UsuarioDTO(String senhaConfirma) {
+        this.senhaConfirma = senhaConfirma;
+    }
+
+    public String getSenhaConfirma() {
+        return senhaConfirma;
+    }
+
+    public void setSenhaConfirma(String senhaConfirma) {
+        this.senhaConfirma = senhaConfirma;
+    }
 }
+
 
 

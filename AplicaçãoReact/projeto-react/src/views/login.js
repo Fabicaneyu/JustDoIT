@@ -29,15 +29,16 @@ class Login extends React.Component {
 
     toCadastro = () => {
 
+        
         this.props.history.push('/cadastro')
 
-    }
+    }   
 
 
-    logar = () => {
-        console.log('Email: ' , this.state.email)
-        console.log('Senha' , this.state.senha)
-    }
+//  logar = () => {
+//        console.log('Email: ' , this.state.email)
+//        console.log('Senha' , this.state.senha)
+//    }
 
     render() {
         return (
@@ -63,7 +64,7 @@ class Login extends React.Component {
 
                                             <Formgroup htmlFor="imputEmail" label="Email : *">
 
-                                                <input type="email" value={this.state.email}
+                                                <input type="text" value={this.state.email}
                                                  onChange={e => this.setState({email: e.target.value})} className="form-control" htmlFor="imputEmail"
                                                  aria-describedby="emailHelp" placeholder="Digite o Email"/>
 
@@ -76,6 +77,7 @@ class Login extends React.Component {
                                                 placeholder="Password"/>
 
                                             </Formgroup> 
+                                            
                                             <button onClick={this.entrar} className="btn btn-success">Entrar</button>
                                             <button onClick={this.toCadastro} className="btn btn-danger">Cadastrar</button>
                                             </fieldset>
