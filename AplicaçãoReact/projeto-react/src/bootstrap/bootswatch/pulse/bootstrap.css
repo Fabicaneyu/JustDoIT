@@ -115,6 +115,39 @@ dl {
   margin-bottom: 1rem;
 }
 
+
+.divBusca{
+  position:relative;
+  margin-left: 30%;
+  background-color:rgb(231, 238, 238);
+  border:none;
+  border-radius:4px;
+  width:320px;
+}
+ 
+.txtBusca{
+  float:left;
+  background-color:transparent;
+  padding-left:8px;
+  font-style:italic;
+  font-size:15px;
+  border:none;
+  height:32px;
+  width:280px;
+}
+
+.imgBusca {
+
+  height: 20 px;
+  width: 25px;
+  position: relative;
+  padding-left: 5px;
+  margin-top: 2%;
+  cursor: pointer;
+
+}
+
+
 ol ol,
 ul ul,
 ol ul,
@@ -4569,10 +4602,14 @@ input[type="button"].btn-block {
 }
 
 .navbar-brand {
+  width: 260px;
+  height: 120px;
+  position: absolute;
   display: inline-block;
-  padding-top: 0.3359375rem;
+  padding-top: 0.3rem;
   padding-bottom: 0.3359375rem;
-  margin-right: 1rem;
+
+  margin-left: 1px;
   font-size: 1.09375rem;
   line-height: inherit;
   white-space: nowrap;
@@ -4583,6 +4620,8 @@ input[type="button"].btn-block {
 }
 
 .navbar-nav {
+  position: relative;
+  margin-left: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

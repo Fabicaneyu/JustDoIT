@@ -1,18 +1,21 @@
 import React from 'react'
 import NavbarItem from './navbarItem'
+import Busca from './busca'
+import Logo from '../imagens/logo.png'
 
 function Navbar() {
 
     return(
 
         <div className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" >
+       {/*  <img src={Logo} className="navbar-brand"/> */ }
         <div className="container">
-          <a href="https://bootswatch.com/" className="navbar-brand">Just do <b>IT</b></a>
           <button className="navbar-toggler" type="button" data-toggle="collapse"
            data-target="#navbarResponsive" aria-controls="navbarResponsive"
             aria-expanded="false"aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
+          <Busca/>
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav">
                 <NavbarItem href="#/" label="Home" />
@@ -20,7 +23,7 @@ function Navbar() {
                 <NavbarItem href="#/lancamentos" label="Conhecimentos" />
                 <NavbarItem href="#/login" label="Login" />
           </ul>
-          </div>
+          </div>         
         </div>
       </div>
 
