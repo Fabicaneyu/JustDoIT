@@ -4622,6 +4622,7 @@ input[type="button"].btn-block {
 .navbar-nav {
   position: relative;
   margin-left: 50%;
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10682,3 +10683,37 @@ a.text-dark:hover, a.text-dark:focus {
 .list-group-item.disabled:hover {
   color: #5c507c;
 }
+
+.img-perf {
+
+position : relative;
+margin-left: 27%;
+margin-top: 10%;
+ height: 90px;
+ width: 100px;
+
+}
+.user-info {
+margin-left: 12%;
+margin-top: 9%;
+font-size: 18px;
+color: rgb(192, 192, 192);
+cursor: pointer;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.user-info:hover {
+  color: #ffffff;
+}
+
+.div-user-info {
+
+  width: 230px;
+  height: 500px;
+  border: none;
+  border-radius:4px;
+  margin-left: 3%;
+  background-color: #051046 ;
+}
+
+
