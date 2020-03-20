@@ -12,13 +12,13 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table( name = "usuario", schema = "teste")
+@Table( name = "usuario", schema = "teste2")
 public class Usuario {
 
     @Id
-    @Column( name = "id" )
+    @Column( name = "idUser" )
     @GeneratedValue( strategy = GenerationType.AUTO)
-    private long id;
+    private long idUser;
     @Column( name = "nome")
     private String nome;
     @Column( name = "email")
@@ -27,11 +27,11 @@ public class Usuario {
     private String senha;
 
     public long getId() {
-        return id;
+        return idUser;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.idUser = id;
     }
 
     public String getNome() {

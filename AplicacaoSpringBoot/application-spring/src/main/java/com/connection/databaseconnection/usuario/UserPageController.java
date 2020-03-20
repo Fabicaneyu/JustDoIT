@@ -2,6 +2,7 @@ package com.connection.databaseconnection.usuario;
 
 import com.connection.databaseconnection.dto.UsuarioDTO;
 import com.connection.databaseconnection.exception.ErroAutenticacao;
+import com.connection.databaseconnection.exception.ErroConexao;
 import com.connection.databaseconnection.exception.RegraException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,8 +30,23 @@ public class UserPageController {
     public ResponseEntity logar(@RequestBody UsuarioDTO userDTO) {
         try {
             Usuario usuarioAutenticado = controller.autenticar(userDTO.getEmail(), userDTO.getSenha());
+            usuarioAtual = usuarioAutenticado;
             return ResponseEntity.ok(usuarioAutenticado);
         }catch (ErroAutenticacao e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+//    @PostMapping("/logoff")
+//    public void deslogar() {
+//        usuarioAtual = null;
+//    }
+
+    @GetMapping("/name")
+    public ResponseEntity exibeDadosUsuario() {
+        try{
+            return ResponseEntity.ok(usuarioAtual.getNome());
+        }catch (ErroConexao e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
