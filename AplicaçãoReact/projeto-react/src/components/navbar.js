@@ -1,17 +1,15 @@
 import React from 'react'
 import NavbarItem from './navbarItem'
 import Busca from './busca'
-import Logo from '../imagens/logo.png'
+import Logo from '../imagens/logo_v.2.png'
 import axios from 'axios'
 
-class Navbar extends React.Component {
+function Navbar (prop) {
 
-
-  render() {
     return(
 
         <div className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" >
-       {/*  <img src={Logo} className="navbar-brand"/> */ }
+      <img src={Logo} className="navbar-brand"/> 
         <div className="container">
           <button className="navbar-toggler" type="button" data-toggle="collapse"
            data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -24,7 +22,7 @@ class Navbar extends React.Component {
                 <NavbarItem href="#/" label="Home" />
                 <NavbarItem href="#/cadastro" label="  " />
                 <NavbarItem href="#/lancamentos" label="Conhecimentos" />
-                <NavbarItem href="#/login" label="Sair" />
+                <NavbarItem action={prop.execute} label="Sair" />
           </ul>
           </div>         
         </div>
@@ -32,7 +30,6 @@ class Navbar extends React.Component {
 
     )
 
-}
 }
 
 export default Navbar

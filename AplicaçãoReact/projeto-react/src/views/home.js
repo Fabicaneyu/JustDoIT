@@ -19,12 +19,21 @@ class Home extends React.Component {
         });
     }
 
+    sair = () => {
+        axios.get('http://localhost:8080/user/logoff')
+        .then( response => {
+          this.props.history.push('/login')
+        }).catch( erro => {
+            console.log(erro.response.data)
+        })
+    }
+
     render() {
 
 
         return(
             <>
-            <Navbar className="container"/>
+            <Navbar execute={this.sair} className="container"/>
             <UserInfo label={this.state.nome} />
             </>
         )

@@ -4602,14 +4602,15 @@ input[type="button"].btn-block {
 }
 
 .navbar-brand {
-  width: 260px;
+  width: 195px;
   height: 120px;
   position: absolute;
   display: inline-block;
   padding-top: 0.3rem;
   padding-bottom: 0.3359375rem;
 
-  margin-left: 1px;
+  
+  margin-left: 2%;
   font-size: 1.09375rem;
   line-height: inherit;
   white-space: nowrap;

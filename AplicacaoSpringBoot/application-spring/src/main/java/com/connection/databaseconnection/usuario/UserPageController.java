@@ -37,10 +37,16 @@ public class UserPageController {
         }
     }
 
-//    @PostMapping("/logoff")
-//    public void deslogar() {
-//        usuarioAtual = null;
-//    }
+    @GetMapping("/logoff")
+    public ResponseEntity deslogar() {
+        try{
+            usuarioAtual = null;
+            return ResponseEntity.ok(HttpStatus.ACCEPTED);
+        }catch (ErroConexao e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
+    }
 
     @GetMapping("/name")
     public ResponseEntity exibeDadosUsuario() {
