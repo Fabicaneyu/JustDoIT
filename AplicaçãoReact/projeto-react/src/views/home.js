@@ -3,6 +3,7 @@ import Navbar from '../components/navbar'
 import UserInfo from '../components/infoUserBar'
 import {withRouter} from 'react-router-dom'
 import UsuarioCalls from '../calls/userCalls'
+import ShareCard from '../components/fieldShare'
 
 class Home extends React.Component {
 
@@ -40,6 +41,7 @@ class Home extends React.Component {
             <>
             <Navbar execute={this.sair} className="container"/>
             <UserInfo label={this.state.nome} />
+            <ShareCard />
             </>
         )
 

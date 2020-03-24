@@ -4494,11 +4494,14 @@ input[type="button"].btn-block {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
 }
 
 .nav-link:hover, .nav-link:focus {
   text-decoration: none;
+}
+
+.svg-item-home ~ .nav-link :hover {
+  background-color: black;
 }
 
 .nav-link.disabled {
@@ -4519,7 +4522,7 @@ input[type="button"].btn-block {
   border: 1px solid transparent;
 }
 
-.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+.nav-tabs .svg-item-home .svg-item-brain .svg-item-out .nav-link:hover,  .nav-tabs .nav-link:focus {
   border-color: #593196;
 }
 
@@ -4527,6 +4530,7 @@ input[type="button"].btn-block {
   color: #868e96;
   background-color: transparent;
   border-color: transparent;
+  
 }
 
 .nav-tabs .nav-link.active,
@@ -4621,8 +4625,9 @@ input[type="button"].btn-block {
 }
 
 .navbar-nav {
-  position: relative;
-  margin-left: 50%;
+  position: absolute;
+  margin-left: 18%;
+  margin-top: 0.1%;
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4632,7 +4637,6 @@ input[type="button"].btn-block {
       -ms-flex-direction: column;
           flex-direction: column;
   padding-left: 0;
-  margin-bottom: 0;
   list-style: none;
 }
 
@@ -10716,5 +10720,43 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   margin-left: 3%;
   background-color: #051046 ;
 }
+
+.svg-item-home {
+
+ position : relative;
+ height: 25px;
+ width: 50px;
+ filter:grayscale(100%);
+
+}
+
+.svg-item-home :hover{
+
+    filter:grayscale(0%);
+    transition: 1s;
+}
+
+
+.svg-item-brain {
+
+  position : relative;
+  margin-left: 26%;
+  height: 26px;
+  width: 50px;
+
+ 
+ }
+
+ 
+ .svg-item-out {
+
+  position : relative;
+  margin-right: 6%;
+  height: 25px;
+  width: 47px;
+ 
+ 
+ }
+ 
 
 
