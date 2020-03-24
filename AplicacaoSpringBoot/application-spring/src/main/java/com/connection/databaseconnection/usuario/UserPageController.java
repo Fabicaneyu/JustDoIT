@@ -48,14 +48,14 @@ public class UserPageController {
 
     }
 
-    @GetMapping("/name")
-    public ResponseEntity exibeDadosUsuario() {
-        try{
-            return ResponseEntity.ok(usuarioAtual.getNome());
-        }catch (ErroConexao e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
+//    @GetMapping("/name")
+//    public ResponseEntity exibeDadosUsuario() {
+//        try{
+//            return ResponseEntity.ok(usuarioAtual.getNome());
+//        }catch (ErroConexao e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
 
     @PostMapping("/cadastro")
     public ResponseEntity cadastrar(@RequestBody  UsuarioDTO userDTO) {

@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../components/card.js'
 import Formgroup from '../components/form-group'
 import {whithRouter} from 'react-router-dom'
-import axios from 'axios'
+import UsuarioCalls from '../calls/userCalls'
 
 class Login extends React.Component {
 
@@ -14,12 +14,18 @@ class Login extends React.Component {
         
     }
 
+    constructor () {
+        super();
+        this.call = new UsuarioCalls();
+    }
+
     entrar = () => {
 
-        axios.post('http://localhost:8080/user/login', {
+        this.call.autenticar({
             email: this.state.email,
             senha: this.state.senha
         }).then( response => {
+            localStorage.setItem('usuario_atual', JSON.stringify (response.data))
             this.props.history.push('/home')
         }).catch( erro => {
             this.setState({mensagemErro : erro.response.data})

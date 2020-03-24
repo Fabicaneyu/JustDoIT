@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../components/navbar'
 import UserInfo from '../components/infoUserBar'
 import {withRouter} from 'react-router-dom'
-import axios from 'axios'
+import UsuarioCalls from '../calls/userCalls'
 
 class Home extends React.Component {
 
@@ -10,17 +10,22 @@ class Home extends React.Component {
         nome: ''
     }
 
+    constructor() {
+        super();
+        this.call = new UsuarioCalls();
+    }
+
     componentDidMount(){
-        axios.get('http://localhost:8080/user/name')
-        .then( response => {
-            this.setState({nome: response.data})
-        }).catch(error => {
-            console.error(error.response)
-        });
+        
+        const usuario = localStorage.getItem('usuario_atual')
+        const usuarioLogado = JSON.parse(usuario)
+
+        this.setState({nome: usuarioLogado.nome})
+       
     }
 
     sair = () => {
-        axios.get('http://localhost:8080/user/logoff')
+        this.call.sair()
         .then( response => {
           this.props.history.push('/login')
         }).catch( erro => {
