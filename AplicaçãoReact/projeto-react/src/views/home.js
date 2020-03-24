@@ -40,8 +40,8 @@ class Home extends React.Component {
         return(
             <>
             <Navbar execute={this.sair} className="container"/>
-            <UserInfo label={this.state.nome} />
             <ShareCard />
+            <UserInfo label={this.state.nome} />
             </>
         )
 

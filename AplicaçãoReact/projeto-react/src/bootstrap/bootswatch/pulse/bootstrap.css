@@ -10757,6 +10757,55 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
  
  
  }
+
+.divShare-one {
+  height: 192px;
+  position: absolute;
+  width: 560px;
+  border: 1.0px solid black;
+  margin-top: 0%;
+  border-right: none;
+  margin-left: 18%;
+}
+
+.divShare-two {
+  height: 192px;
+  position: absolute;
+  width: 560px;
+  border: 1.0px solid black;
+  margin-top: 0%;
+  margin-left: 50%;
+
+}
  
+ 
+.inputShare-one {
+
+  width: 556px;
+  height: 187px;
+  font-size: 20px;
+  position: relative;
+  border: none;
+  margin-top: 0.3%;
+  margin-left: 2px;
+  margin-right: 15%;
+  margin-bottom: 15%;
+
+}
+
+.inputShare-two {
+
+  width: 556px;
+  height: 187px;
+  font-size: 20px;
+  position: relative;
+  border: none;
+  margin-top: 0.3%;
+  margin-left: 2px;
+  margin-right: 15%;
+  margin-bottom: 15%;
+}
+
+
 
 
