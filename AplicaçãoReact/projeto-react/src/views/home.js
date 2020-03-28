@@ -4,11 +4,14 @@ import UserInfo from '../components/infoUserBar'
 import {withRouter} from 'react-router-dom'
 import UsuarioCalls from '../calls/userCalls'
 import ShareCard from '../components/fieldShare'
+import axios from 'axios'
 
 class Home extends React.Component {
 
     state = {
-        nome: ''
+        nome: '',
+        idUser : '',
+        conteudo : ''
     }
 
     constructor() {
@@ -22,6 +25,7 @@ class Home extends React.Component {
         const usuarioLogado = JSON.parse(usuario)
 
         this.setState({nome: usuarioLogado.nome})
+        this.setState({idUser: usuarioLogado.idUser})
        
     }
 
@@ -34,13 +38,37 @@ class Home extends React.Component {
         })
     }
 
+    postar = () => {
+        axios.post('http://localhost:8080/post/new', {
+            conteudo: this.state.conteudo,
+            id_usuario : this.state.idUser
+        }).then( response => {
+         this.setState({conteudo: ''})
+         document.getElementById("One").reset();
+         console.log('enviado com sucesso')
+        }).catch( erro => {
+            console.log('falha na requisição')
+        })
+    }
+
     render() {
 
 
         return(
             <>
             <Navbar execute={this.sair} className="container"/>
-            <ShareCard />
+
+                    <div className="divShare-one">
+                    <form id="One">
+                    <input onChange={e => this.setState({conteudo: e.target.value})} className="inputShare-one" placeholder="  algo que queira Compartilhar ?"  />
+                    </form>
+                    <button onClick={this.postar} className="btn-sender">Enviar</button>
+                </div>
+
+                <div className="divShare-two">
+                    <input className="inputShare-two" placeholder="      algum Conteúdo ?" />
+                </div>
+
             <UserInfo label={this.state.nome} />
             </>
         )

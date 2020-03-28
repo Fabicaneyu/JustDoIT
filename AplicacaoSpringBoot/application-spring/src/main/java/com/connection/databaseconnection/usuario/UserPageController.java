@@ -65,7 +65,6 @@ public class UserPageController {
 
 
         try{
-            controller.validarSenhas(userDTO.getSenha(), userDTO.getSenhaConfirma());
             Usuario usuarioSalvo = controller.salvarUsuario(usuario);
             return new ResponseEntity(usuarioSalvo, HttpStatus.CREATED);
         }catch (RegraException e) {
