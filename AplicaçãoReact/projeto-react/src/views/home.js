@@ -3,7 +3,6 @@ import Navbar from '../components/navbar'
 import UserInfo from '../components/infoUserBar'
 import {withRouter} from 'react-router-dom'
 import UsuarioCalls from '../calls/userCalls'
-import ShareCard from '../components/fieldShare'
 import axios from 'axios'
 
 class Home extends React.Component {
@@ -58,15 +57,12 @@ class Home extends React.Component {
             <>
             <Navbar execute={this.sair} className="container"/>
 
-                    <div className="divShare-one">
-                    <form id="One">
-                    <input onChange={e => this.setState({conteudo: e.target.value})} className="inputShare-one" placeholder="  algo que queira Compartilhar ?"  />
-                    </form>
+                <div className="divShare">
+                        <form id="One">
+                            <input onChange={e => this.setState({conteudo: e.target.value})} className="inputShare-one" placeholder="  algo que queira Compartilhar ?"  />
+                            <input className="inputShare-two" placeholder="      algum Conteúdo ?" />
+                         </form>
                     <button onClick={this.postar} className="btn-sender">Enviar</button>
-                </div>
-
-                <div className="divShare-two">
-                    <input className="inputShare-two" placeholder="      algum Conteúdo ?" />
                 </div>
 
             <UserInfo label={this.state.nome} />
