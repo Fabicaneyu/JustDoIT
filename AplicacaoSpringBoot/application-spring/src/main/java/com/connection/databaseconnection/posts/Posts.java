@@ -28,6 +28,8 @@ public class Posts {
     private Long id_usuario;
     @Column( name = "_data")
     private LocalDateTime _data;
+    @Column( name = "nome_user")
+    private  String nome_user;
 
 
 }

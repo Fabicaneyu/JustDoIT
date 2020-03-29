@@ -20,8 +20,9 @@ public class PostsService {
         return post;
     }
 
+    @Transactional
     List<Posts> loadAll() {
-        List<Posts> result = repository.findAll();
+        List<Posts> result = repository.obterTodos();
 
         return result;
     }

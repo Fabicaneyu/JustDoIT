@@ -14,6 +14,7 @@ public class PostDTO {
 
     private Long id_usuario;
     private String conteudo;
+    private String nome_user;
     private LocalDate _data;
 
 
@@ -39,5 +40,13 @@ public class PostDTO {
 
     public void set_data(LocalDate _data) {
         this._data = _data;
+    }
+
+    public String getNome_user() {
+        return nome_user;
+    }
+
+    public void setNome_user(String nome_user) {
+        this.nome_user = nome_user;
     }
 }

@@ -32,7 +32,7 @@ public class PostsController {
     @PostMapping("/new")
     public ResponseEntity novoPost(@RequestBody PostDTO postDTO) {
         Posts post = Posts.builder().conteudo(postDTO.getConteudo())._data(postDTO.get_data())
-                .id_usuario(postDTO.getId_usuario()).build();
+                .id_usuario(postDTO.getId_usuario()).nome_user(postDTO.getNome_user()).build();
         try{
             Posts postEnviado = controller.novoPost(post);
             return new ResponseEntity(postEnviado, HttpStatus.CREATED);

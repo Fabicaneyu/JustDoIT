@@ -1,5 +1,5 @@
 import React from 'react'
-import NavbarItem from './navbarItem'
+import NavbarItem from './navbar-Item'
 import Busca from './busca'
 import Logo from '../imagens/logo_v.2.png'
 import Home from '../imagens/home.svg'
