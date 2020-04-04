@@ -14,6 +14,7 @@ public class PostDTO {
 
     private Long id_usuario;
     private String conteudo;
+    private String photo;
     private String nome_user;
     private LocalDate _data;
 
@@ -32,6 +33,13 @@ public class PostDTO {
 
     public void setConteudo(String conteudo) {
         this.conteudo = conteudo;
+    }
+
+    public void setPhoto(String photo){
+        this.photo = photo;
+    }
+    public String getPhoto(){
+        return photo;
     }
 
     public LocalDateTime get_data() {

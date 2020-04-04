@@ -11,6 +11,7 @@ class Home extends React.Component {
     state = {
         nome: '',
         idUser : '',
+        photo : '',
         conteudo : '',
         request : []
     }
@@ -31,8 +32,9 @@ class Home extends React.Component {
 
         this.setState({nome: usuarioLogado.nome})
         this.setState({idUser: usuarioLogado.idUser})
-
-        this.buscar()
+        this.setState({photo: usuarioLogado.photo})    
+        this.buscar();
+        this.buscarPhoto();
        
     }
   
@@ -47,6 +49,17 @@ class Home extends React.Component {
         })
     }
 
+    buscarPhoto = () => {
+        axios.get('http://localhost:8080/user/photo')
+        .then( response => {
+            this.setState({photo : response.data})
+            // console.log(this.state.photo)
+            return this.state.photo
+            
+        }).catch( erro => {
+            console.log(erro)
+        })
+    }
 
     sair = () => {
         this.call.sair()
@@ -56,6 +69,9 @@ class Home extends React.Component {
             console.log(erro.response.data)
         })
     }
+
+    
+    
 
     postar = () => {
         axios.post('http://localhost:8080/post/new', {
@@ -93,7 +109,7 @@ class Home extends React.Component {
                 
                 <br></br>
 
-                <PostField body={this.state.request} />
+                <PostField body={this.state.request} photo = {this.state.photo} />
             </>
         )
 

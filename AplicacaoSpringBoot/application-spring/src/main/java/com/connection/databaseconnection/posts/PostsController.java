@@ -24,9 +24,14 @@ public class PostsController {
     @Autowired
     private PostsService controller;
 
+
     public  PostsController(PostsService controller) {
         this.controller = controller;
     }
+
+    @Autowired
+    private UserService userController;
+
 
 
     @PostMapping("/new")
@@ -40,6 +45,7 @@ public class PostsController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
 
 
     @GetMapping("/load")

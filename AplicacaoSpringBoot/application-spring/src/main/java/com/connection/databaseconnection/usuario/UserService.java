@@ -34,7 +34,10 @@ public class UserService {
         }
     }
 
-
+    public String buscarPhoto(String nome){
+        Usuario usuario = repository.findByNome(nome);
+        return usuario.getPhoto();
+    }
 
     public Usuario autenticar(String email, String senha) {
 
@@ -58,6 +61,7 @@ public class UserService {
 //            throw new RegraException("Senhas não estão iguais");
 //        }
 //    }
+
 
 
     }

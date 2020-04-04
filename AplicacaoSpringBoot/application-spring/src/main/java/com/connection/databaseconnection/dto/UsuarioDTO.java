@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UsuarioDTO {
 
-    private String email, nome, senha, senhaConfirma;
+    private String email, nome, photo, senha, senhaConfirma;
 
     public String getEmail() {
         return email;
@@ -26,6 +26,10 @@ public class UsuarioDTO {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public void setPhoto(String photo){ this.photo = photo;}
+
+    public String getPhoto(){ return photo; }
 
     public String getSenha() {
         return senha;
