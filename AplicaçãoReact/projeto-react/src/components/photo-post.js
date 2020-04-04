@@ -1,33 +1,26 @@
 import React from 'react'
-import Home from '../views/home/home'
 import axios from 'axios'
 
-export default function PhotoPost() {
+export default function ImagePost() {
+
+    
+    const data = ''
 
 
+     function busca () {
+     axios.get('http://localhost:8080/user/photo')
+        .then( response => {
+            console.log(response.data)
+            const data = response.data
+        }).catch( erro => {
+            console.log(erro)
+        })
+    }
 
-const buscaPhoto = ()  => {
-
-    axios.get('http://localhost:8080/user/photo')
-    .then( response => {
-        console.log("foi");
-        console.log(response.data)
-      
-        return response.data;
-
-        
-    }).catch( erro => {
-        console.log(erro)
-    })
-
-}
-
-console.log(buscaPhoto());
 
     return(
 
-        <img src={buscaPhoto()}/>
-    
+        <img className="img-post" onLoad={busca()} src={data}/>
 
     )
 
