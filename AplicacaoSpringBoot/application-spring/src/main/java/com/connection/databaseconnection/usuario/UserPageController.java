@@ -54,7 +54,7 @@ public class UserPageController {
         public ResponseEntity getPhoto(){
 
         try{
-           String result = controller.buscarPhoto("messias");
+           String result = controller.buscarPhoto("cassio");
 
            return new ResponseEntity(result,HttpStatus.OK);
         }

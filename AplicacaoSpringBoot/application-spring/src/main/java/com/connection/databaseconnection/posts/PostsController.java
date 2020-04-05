@@ -48,10 +48,6 @@ public class PostsController {
     }
 
 
-
-
-    @GetMapping("/load")
-
     @GetMapping("/load/initial")
     public ResponseEntity loadPostsSet() {
 
