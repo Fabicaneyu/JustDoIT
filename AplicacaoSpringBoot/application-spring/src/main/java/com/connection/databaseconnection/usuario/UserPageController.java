@@ -48,14 +48,14 @@ public class UserPageController {
 
     }
 
-    @GetMapping("/name")
-    public ResponseEntity exibeDadosUsuario() {
-        try{
-            return ResponseEntity.ok(usuarioAtual.getNome());
-        }catch (ErroConexao e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
+//    @GetMapping("/name")
+//    public ResponseEntity exibeDadosUsuario() {
+//        try{
+//            return ResponseEntity.ok(usuarioAtual.getNome());
+//        }catch (ErroConexao e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
 
     @PostMapping("/cadastro")
     public ResponseEntity cadastrar(@RequestBody  UsuarioDTO userDTO) {
@@ -65,7 +65,6 @@ public class UserPageController {
 
 
         try{
-            controller.validarSenhas(userDTO.getSenha(), userDTO.getSenhaConfirma());
             Usuario usuarioSalvo = controller.salvarUsuario(usuario);
             return new ResponseEntity(usuarioSalvo, HttpStatus.CREATED);
         }catch (RegraException e) {

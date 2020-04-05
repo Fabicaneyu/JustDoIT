@@ -2,6 +2,7 @@ import React from 'react'
 import Card from '../components/card'
 import FormGroup from '../components/form-group'
 import { withRouter } from 'react-router-dom'
+import UsuarioCalls from '../calls/userCalls'
 import Axios from 'axios'
 
 class Cadastro extends React.Component {
@@ -14,29 +15,63 @@ class Cadastro extends React.Component {
         mensagemErro : null
     }
 
-    cadastro = () => {
-        Axios.post('http://localhost:8080/user/cadastro', {
-            nome: this.state.nome,
-            email: this.state.email,
-            senha: this.state.senha,
-            senhaConfirma: this.state.senha_repeat
+    constructor() {
+        super();
+        this.call = new UsuarioCalls();
+    }
 
-        }).then(Response => {
+    validar() {
+        const msg = []
+
+        if(!this.state.nome){
+            msg.push('O campo NOME é obrigatório.')
+        }
+
+        if(!this.state.email) {
+            msg.push('O campo EMAIL é obrigatório.')
+        }
+
+        else if(!this.state.email.match(/^[a-z0-9.]+@[a-z0-9]/)){
+            msg.push('Informe um E-mail válido!')
+        }
+
+        if (!this.state.senha || !this.state.senha_repeat) {
+            msg.push('Os campos de Senha são obrigatórios.')
+        }
+        
+        else if(this.state.senha !== this.state.senha_repeat) {
+            msg.push('As senhas não estão batendo.')
+        }
+
+        return msg;
+
+    }
+
+    cadastro = () => {
+
+        const msg = this.validar()
+
+        if(msg && msg.length > 0) {
+            this.setState({mensagemErro: msg[0]})
+            return false
+        }
+
+        const usuario = {
+                nome: this.state.nome,
+                email: this.state.email,
+                senha: this.state.senha,
+         }
+
+        this.call.cadastrar(usuario)
+        .then(Response => {
+            console.log('cadastrado com sucesso')
             this.props.history.push('/login')
         }).catch(erro => {
-            console.log(this.state.senha, this.state.senha_repeat)
-            console.log(erro.response.data)
             this.setState({ mensagemErro: erro.response.data })
         })
     }
-    toLogin = () => {
-        this.props.history.push('/login')
-    }
-
-
 
     toLogin = () => {
-
         this.props.history.push('/login')
     }
 
