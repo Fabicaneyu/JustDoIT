@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default prop => {
 
 
@@ -7,6 +8,7 @@ export default prop => {
         return (
 
             <div className="Superior-post">
+  
                 <h3 className="Nome-post">{post.nome_user}</h3>
 
                 <div className="Inferior-post">

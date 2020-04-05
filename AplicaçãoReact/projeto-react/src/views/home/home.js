@@ -4,6 +4,9 @@ import UserInfo from '../../components/info-user-bar'
 import {withRouter} from 'react-router-dom'
 import UsuarioCalls from '../../calls/userCalls'
 import PostField from './post-field'
+import Waypoint from '../../components/way'
+import Loading from '../../imagens/Spinner.gif'
+import { useEffect } from 'react';
 import axios from 'axios'
 
 class Home extends React.Component {
@@ -12,10 +15,9 @@ class Home extends React.Component {
         nome: '',
         idUser : '',
         conteudo : '',
-        request : []
+        request : [],
+        way : ''
     }
-
-
 
 
     constructor() {
@@ -23,30 +25,57 @@ class Home extends React.Component {
         this.call = new UsuarioCalls();
     }
 
+
+
     componentDidMount(){
         
 
         const usuario = localStorage.getItem('usuario_atual')
         const usuarioLogado = JSON.parse(usuario)
 
+
         this.setState({nome: usuarioLogado.nome})
         this.setState({idUser: usuarioLogado.idUser})
 
-        this.buscar()
+        this.initial();
+
        
+    }
+
+    initial = () => {
+
+        axios.get('http://localhost:8080/post/load/initial')
+        .then( response => {
+            this.loadPage()
+        }).catch( erro => {
+            console.log(erro)
+        })
+
     }
   
 
-    buscar = () => {
-        axios.get('http://localhost:8080/post/load')
+    loadPage = () => {
+
+        axios.get('http://localhost:8080/post/load/feed')
         .then( response => {
-            this.setState({request: response.data})
-            console.log('Tudo certo')
+            const dados = response.data
+            if (!dados[0].id) {
+                console.log('Acabaram os dados')
+                document.getElementById("load").style.display = "none";
+            }
+            else{
+
+                this.setState({way: ''})
+
+                this.setState({request: [ ... this.state.request, ... dados]})
+                
+                this.setState({way: <Waypoint onEnter={this.loadPage} />})
+
+            }
         }).catch( erro => {
             console.log(erro)
         })
     }
-
 
     sair = () => {
         this.call.sair()
@@ -66,7 +95,7 @@ class Home extends React.Component {
          this.setState({conteudo: ''})
          document.getElementById("One").reset();
          window.location.reload();
-         console.log('enviado com sucesso')
+
         }).catch( erro => {
             console.log('falha na requisição')
         })
@@ -93,7 +122,18 @@ class Home extends React.Component {
                 
                 <br></br>
 
-                <PostField body={this.state.request} />
+               <PostField body={this.state.request} />
+               
+               <img id="load" className="gif-load" src={Loading}/>
+
+               <div className="way">
+
+                {this.state.way}
+                   
+               </div>
+                
+
+                
             </>
         )
 

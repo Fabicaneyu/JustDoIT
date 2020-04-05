@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 @Service
@@ -23,6 +24,7 @@ public class PostsController {
 
     @Autowired
     private PostsService controller;
+
 
     public  PostsController(PostsService controller) {
         this.controller = controller;
@@ -42,11 +44,26 @@ public class PostsController {
     }
 
 
-    @GetMapping("/load")
+    @GetMapping("/load/initial")
+    public ResponseEntity loadPostsSet() {
+
+        try{
+            controller.setFirst();
+            return new ResponseEntity(HttpStatus.OK);
+        }catch (ErroConexao e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
+    }
+
+    @GetMapping("/load/feed")
     public ResponseEntity loadPosts() {
 
         try{
-            List<Posts> lista =  controller.loadAll();
+            List<Posts> lista =  controller.loadFeed();
+            if (lista == null) {
+           return new ResponseEntity("A lista está vazia", HttpStatus.ACCEPTED);
+            }
             return new ResponseEntity(lista, HttpStatus.OK);
         }catch (ErroConexao e) {
             return ResponseEntity.badRequest().body(e.getMessage());
