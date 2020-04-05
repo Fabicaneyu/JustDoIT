@@ -4,6 +4,9 @@ import UserInfo from '../../components/info-user-bar'
 import {withRouter} from 'react-router-dom'
 import UsuarioCalls from '../../calls/userCalls'
 import PostField from './post-field'
+import Waypoint from '../../components/way'
+import Loading from '../../imagens/Spinner.gif'
+import { useEffect } from 'react';
 import axios from 'axios'
 import scrpit from './script'
 
@@ -14,10 +17,9 @@ class Home extends React.Component {
         idUser : '',
         photo : '',
         conteudo : '',
-        request : []
+        request : [],
+        way : ''
     }
-
-
 
 
     constructor() {
@@ -25,38 +27,63 @@ class Home extends React.Component {
         this.call = new UsuarioCalls();
     }
 
+
+
     componentDidMount(){
         
 
         const usuario = localStorage.getItem('usuario_atual')
         const usuarioLogado = JSON.parse(usuario)
 
+
         this.setState({nome: usuarioLogado.nome})
         this.setState({idUser: usuarioLogado.idUser})
         this.setState({photo: usuarioLogado.photo})    
         this.buscar();
         this.buscarPhoto();
-       
-    }
-  
+        this.initial();
 
-    buscar = () => {
-        axios.get('http://localhost:8080/post/load')
+    }
+
+    initial = () => {
+
+        axios.get('http://localhost:8080/post/load/initial')
         .then( response => {
-            this.setState({request: response.data})
-            console.log('Tudo certo')
+            this.loadPage()
         }).catch( erro => {
             console.log(erro)
         })
+
     }
+  
+
+    loadPage = () => {
+
+        axios.get('http://localhost:8080/post/load/feed')
+        .then( response => {
+            const dados = response.data
+            if (!dados[0].id) {
+                console.log('Acabaram os dados')
+                document.getElementById("load").style.display = "none";
+            }
+            else{
+
 
     buscarPhoto = () => {
         axios.get('http://localhost:8080/user/photo')
         .then( response => {
             this.setState({photo : response.data})
             // console.log(this.state.photo)
+                    
+                this.setState({way: ''})
+
+                this.setState({request: [ ... this.state.request, ... dados]})
+                
+                this.setState({way: <Waypoint onEnter={this.loadPage} />})
+
             return this.state.photo
-            
+            }
+
         }).catch( erro => {
             console.log(erro)
         })
@@ -83,7 +110,7 @@ class Home extends React.Component {
          this.setState({conteudo: ''})
          document.getElementById("One").reset();
          window.location.reload();
-         console.log('enviado com sucesso')
+
         }).catch( erro => {
             console.log('falha na requisição')
         })
@@ -110,7 +137,21 @@ class Home extends React.Component {
                 
                 <br></br>
 
+
                 <PostField body={this.state.request} photo = {this.state.photo} />
+
+               <PostField body={this.state.request} />
+               
+               <img id="load" className="gif-load" src={Loading}/>
+
+               <div className="way">
+
+                {this.state.way}
+                   
+               </div>
+                
+
+                
             </>
         )
 
