@@ -11,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sql.rowset.serial.SerialBlob;
+import java.sql.Blob;
+
 @Service
 @Controller
 @RestController
@@ -47,6 +50,19 @@ public class UserPageController {
         }
 
     }
+    @GetMapping("/photo")
+        public ResponseEntity getPhoto(){
+
+        try{
+           String result = controller.buscarPhoto("messias");
+
+           return new ResponseEntity(result,HttpStatus.OK);
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+           }
+
+    }
 
 //    @GetMapping("/name")
 //    public ResponseEntity exibeDadosUsuario() {
@@ -60,8 +76,9 @@ public class UserPageController {
     @PostMapping("/cadastro")
     public ResponseEntity cadastrar(@RequestBody  UsuarioDTO userDTO) {
 
-        Usuario usuario = Usuario.builder().nome(userDTO.getNome())
-                .email(userDTO.getEmail()).senha(userDTO.getSenha()).build();
+        Usuario usuario = Usuario.builder()
+                .nome(userDTO.getNome())
+                .email(userDTO.getEmail()).photo(userDTO.getPhoto()).senha(userDTO.getSenha()).build();
 
 
         try{
@@ -72,6 +89,7 @@ public class UserPageController {
         }
 
     }
+
 
 //    @RequestMapping(value="cadastro", method = RequestMethod.GET)
 //    public String indexCadastrar(){

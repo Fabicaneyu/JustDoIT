@@ -6,13 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Blob;
 
 @Entity
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table( name = "usuario", schema = "teste2")
+@Table( name = "usuario", schema = "teste")
 public class Usuario {
 
     @Id
@@ -23,38 +24,8 @@ public class Usuario {
     private String nome;
     @Column( name = "email")
     private String email;
+    @Column( name = "photo")
+    private String photo;
     @Column( name = "senha")
     private String senha;
-
-    public long getId() {
-        return idUser;
-    }
-
-    public void setId(long id) {
-        this.idUser = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 }

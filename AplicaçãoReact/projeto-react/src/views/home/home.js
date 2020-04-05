@@ -8,12 +8,14 @@ import Waypoint from '../../components/way'
 import Loading from '../../imagens/Spinner.gif'
 import { useEffect } from 'react';
 import axios from 'axios'
+import scrpit from './script'
 
 class Home extends React.Component {
 
     state = {
         nome: '',
         idUser : '',
+        photo : '',
         conteudo : '',
         request : [],
         way : ''
@@ -36,10 +38,11 @@ class Home extends React.Component {
 
         this.setState({nome: usuarioLogado.nome})
         this.setState({idUser: usuarioLogado.idUser})
-
+        this.setState({photo: usuarioLogado.photo})    
+        this.buscar();
+        this.buscarPhoto();
         this.initial();
 
-       
     }
 
     initial = () => {
@@ -65,13 +68,22 @@ class Home extends React.Component {
             }
             else{
 
+
+    buscarPhoto = () => {
+        axios.get('http://localhost:8080/user/photo')
+        .then( response => {
+            this.setState({photo : response.data})
+            // console.log(this.state.photo)
+                    
                 this.setState({way: ''})
 
                 this.setState({request: [ ... this.state.request, ... dados]})
                 
                 this.setState({way: <Waypoint onEnter={this.loadPage} />})
 
+            return this.state.photo
             }
+
         }).catch( erro => {
             console.log(erro)
         })
@@ -85,6 +97,9 @@ class Home extends React.Component {
             console.log(erro.response.data)
         })
     }
+
+    
+    
 
     postar = () => {
         axios.post('http://localhost:8080/post/new', {
@@ -121,6 +136,9 @@ class Home extends React.Component {
                 </div>
                 
                 <br></br>
+
+
+                <PostField body={this.state.request} photo = {this.state.photo} />
 
                <PostField body={this.state.request} />
                

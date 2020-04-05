@@ -30,6 +30,10 @@ public class PostsController {
         this.controller = controller;
     }
 
+    @Autowired
+    private UserService userController;
+
+
 
     @PostMapping("/new")
     public ResponseEntity novoPost(@RequestBody PostDTO postDTO) {
@@ -44,6 +48,10 @@ public class PostsController {
     }
 
 
+
+
+    @GetMapping("/load")
+
     @GetMapping("/load/initial")
     public ResponseEntity loadPostsSet() {
 
@@ -57,6 +65,7 @@ public class PostsController {
     }
 
     @GetMapping("/load/feed")
+
     public ResponseEntity loadPosts() {
 
         try{

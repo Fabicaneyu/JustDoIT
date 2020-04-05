@@ -10853,6 +10853,14 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   color: black;
 }
 
+
+.img-post {
+  height: 20px;
+  width: 30px;
+  border: 1 px solid black
+}
+
+
 .way {
   position: relative;
   margin-top: 10%;
@@ -10867,5 +10875,6 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   margin-top: 5%;
 
 }
+
 
 
