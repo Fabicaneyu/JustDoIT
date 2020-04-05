@@ -2,13 +2,13 @@ package com.connection.databaseconnection.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class UsuarioDTO {
+public class UserDTO {
 
     private String email, nome, photo, senha, senhaConfirma;
 
@@ -40,7 +40,7 @@ public class UsuarioDTO {
         this.senha = senha;
     }
 
-    public UsuarioDTO(String senhaConfirma) {
+    public UserDTO(String senhaConfirma) {
         this.senhaConfirma = senhaConfirma;
     }
 

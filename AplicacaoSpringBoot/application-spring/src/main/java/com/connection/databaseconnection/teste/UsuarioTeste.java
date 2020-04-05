@@ -1,9 +1,8 @@
 package com.connection.databaseconnection.teste;
 
-import com.connection.databaseconnection.exception.RegraException;
-import com.connection.databaseconnection.usuario.UserService;
-import com.connection.databaseconnection.usuario.Usuario;
-import com.connection.databaseconnection.usuario.UsuarioRepository;
+import com.connection.databaseconnection.user.UserService;
+import com.connection.databaseconnection.user.User;
+import com.connection.databaseconnection.user.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class UsuarioTeste {
 
     @Autowired
-    UsuarioRepository repository;
+    UserRepository repository;
 
     @Autowired
     UserService controller;
@@ -26,9 +25,9 @@ public class UsuarioTeste {
     public void verificaEmailTrue() {
 
 
-        Usuario usuario = Usuario.builder().nome("usuario").email("usuario@email.com").build();
+        User user = User.builder().nome("usuario").email("usuario@email.com").build();
 
-        repository.save(usuario);
+        repository.save(user);
 
         boolean result = repository.existsByEmail("usuario@email.com");
 

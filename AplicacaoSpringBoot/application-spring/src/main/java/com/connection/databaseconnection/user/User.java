@@ -1,4 +1,4 @@
-package com.connection.databaseconnection.usuario;
+package com.connection.databaseconnection.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Blob;
 
 @Entity
 @Builder
@@ -14,7 +13,7 @@ import java.sql.Blob;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table( name = "usuario", schema = "teste")
-public class Usuario {
+public class User {
 
     @Id
     @Column( name = "idUser" )
