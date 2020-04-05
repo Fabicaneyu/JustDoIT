@@ -3,24 +3,29 @@ import axios from 'axios'
 
 export default function ImagePost() {
 
-    
-    const data = ''
+    let photo;
 
+    function busca() {
+        axios.get("http://localhost:8080/user/photo")
+            .then(response => {
 
-     function busca () {
-     axios.get('http://localhost:8080/user/photo')
-        .then( response => {
-            console.log(response.data)
-            const data = response.data
-        }).catch( erro => {
-            console.log(erro)
-        })
+                photo = response.data
+                console.log("tipo de dado " + typeof photo);
+                console.log(photo);
+                
+
+                let testeImage = document.querySelector("#teste");
+                testeImage.src = photo;
+
+            }).catch(erro => {
+                console.log(erro)
+            })
     }
 
 
-    return(
-
-        <img className="img-post" onLoad={busca()} src={data}/>
+    return (
+        busca(),
+        <img id="teste" className="img-post" src="" />
 
     )
 

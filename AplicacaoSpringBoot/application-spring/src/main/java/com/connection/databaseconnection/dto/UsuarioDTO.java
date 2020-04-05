@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class UsuarioDTO {
 
     private String email, nome, photo, senha, senhaConfirma;

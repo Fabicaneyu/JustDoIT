@@ -5,6 +5,7 @@ import {withRouter} from 'react-router-dom'
 import UsuarioCalls from '../../calls/userCalls'
 import PostField from './post-field'
 import axios from 'axios'
+import scrpit from './script'
 
 class Home extends React.Component {
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Home from './home'
 import ImagePost from '../../components/photo-post'
 export default function funcao(prop) {
 
