@@ -34,8 +34,8 @@ public class UserService {
         }
     }
 
-    public String findPhoto(String email){
-        User userFound = repository.findByEmail(email);
+    public String findPhoto(Integer id){
+        User userFound = repository.findByIdUser(id);
         return userFound.getPhoto();
     }
 

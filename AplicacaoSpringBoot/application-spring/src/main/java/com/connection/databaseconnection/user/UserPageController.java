@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
+
 @Service
 @Controller
 @RestController
@@ -61,11 +63,12 @@ public class UserPageController {
     }
 
     //Em processo de correção
-    @GetMapping("/photo")
-        public ResponseEntity getPhoto(){
+    @GetMapping("/photo/{id}")
+        public ResponseEntity buscaPhoto(@PathParam("id") Integer id ){
+        System.out.println(id);
 
         try{
-           String result = controller.findPhoto(currentUser.getEmail());
+           String result = controller.findPhoto(id);
 
            return new ResponseEntity(result,HttpStatus.OK);
         }
