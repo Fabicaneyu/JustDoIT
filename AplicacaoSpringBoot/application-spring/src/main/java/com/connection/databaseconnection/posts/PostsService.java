@@ -33,6 +33,8 @@ public class PostsService {
                 "select count(*) from Posts ")
                 .getResultList();
 
+        System.out.println(count);
+
         rangeAtual = count.get(0);
 
         List<Posts> result = entityManager.createQuery(
@@ -40,7 +42,7 @@ public class PostsService {
                 .setMaxResults(1)
                 .getResultList();
 
-        last = result.get(result.size()-1).getId();
+        last = result.get(0).getId();
 
     }
 

@@ -53,7 +53,7 @@ class Login extends React.Component {
                  <div className="col-md-6" style={{position : 'relative', left: '25%'}}>
                 
                         <div className="bs-docs-section"> 
-                  <div className="container-b">                            
+                          <div className="container-b">                            
                             <Card title="Login">
 
                                 <div className="row">

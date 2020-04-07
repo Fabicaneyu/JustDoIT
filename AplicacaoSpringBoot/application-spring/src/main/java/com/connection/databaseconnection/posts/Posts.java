@@ -15,17 +15,17 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "posts", schema="teste2")
+@Table(name = "post", schema="teste3")
 public class Posts {
 
     @Id
     @Column( name = "id" )
-    @GeneratedValue( strategy = GenerationType.AUTO)
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private long id;
     @Column( name = "conteudo")
     private String conteudo;
-    @Column( name = "id_usuario")
-    private Long id_usuario;
+    @Column( name = "id_user")
+    private Long id_user;
     @Column( name = "_data")
     private LocalDateTime _data;
     @Column( name = "nome_user")

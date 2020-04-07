@@ -13,6 +13,7 @@ public class SpringBootApplication implements WebMvcConfigurer {
 		registry.addMapping("/**").allowedMethods("GET" , "POST", "PUT", "DELETE", "OPTIONS");
 	}
 
+
 	public static void main(String[] args) {
 		org.springframework.boot.SpringApplication.run(SpringBootApplication.class, args);
 	}
