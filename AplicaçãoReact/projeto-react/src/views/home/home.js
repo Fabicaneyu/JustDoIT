@@ -85,13 +85,7 @@ class Home extends React.Component {
             const dados = response.data
             this.setState({photo : response.data})
             // console.log(this.state.photo)
-                    
-                this.setState({way: ''})
-
-                this.setState({request: [ ... this.state.request, ... dados]})
                 
-                this.setState({way: <Waypoint onEnter={this.loadPage} />})
-
             return this.state.photo
             }
 
