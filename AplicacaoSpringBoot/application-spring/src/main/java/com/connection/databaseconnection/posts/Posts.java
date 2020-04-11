@@ -2,6 +2,7 @@ package com.connection.databaseconnection.posts;
 
 
 
+import com.connection.databaseconnection.user.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,21 +16,30 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "posts", schema="teste2")
+@Table(name = "post", schema="teste3")
 public class Posts {
 
     @Id
     @Column( name = "id" )
-    @GeneratedValue( strategy = GenerationType.AUTO)
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column( name = "conteudo")
     private String conteudo;
-    @Column( name = "id_usuario")
-    private Long id_usuario;
+
+    @ManyToOne
+    @JoinColumn( name = "id_user")
+    private Usuario usuario;
+
     @Column( name = "_data")
     private LocalDateTime _data;
-    @Column( name = "nome_user")
-    private  String nome_user;
 
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

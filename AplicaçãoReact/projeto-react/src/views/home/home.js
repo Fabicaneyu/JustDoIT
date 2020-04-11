@@ -36,10 +36,10 @@ class Home extends React.Component {
 
 
         this.setState({nome: usuarioLogado.nome})
-        this.setState({idUser: usuarioLogado.idUser})
+        this.setState({idUser: usuarioLogado.id})
         this.setState({photo: usuarioLogado.photo})  
 
-        this.buscarPhoto();
+
         this.initial();
 
     }
@@ -79,27 +79,6 @@ class Home extends React.Component {
         })
     }
 
-    buscarPhoto = () => {
-        axios.get('http://localhost:8080/user/photo')
-        .then( response => {
-            const dados = response.data
-            this.setState({photo : response.data})
-            // console.log(this.state.photo)
-                    
-                this.setState({way: ''})
-
-                this.setState({request: [ ... this.state.request, ... dados]})
-                
-                this.setState({way: <Waypoint onEnter={this.loadPage} />})
-
-            return this.state.photo
-            }
-
-        ).catch( erro => {
-            console.log(erro)
-        })
-    }
-
 
     sair = () => {
         this.call.sair()
@@ -111,13 +90,11 @@ class Home extends React.Component {
     }
 
     
-    
 
     postar = () => {
         axios.post('http://localhost:8080/post/new', {
             conteudo: this.state.conteudo,
-            nome_user: this.state.nome,
-            id_usuario : this.state.idUser
+            id_user : this.state.idUser
         }).then( response => {
          this.setState({conteudo: ''})
          document.getElementById("One").reset();
@@ -149,10 +126,8 @@ class Home extends React.Component {
                 
                 <br></br>
 
+               <PostField body={this.state.request} />
 
-               <PostField body={this.state.request} photo = {this.state.photo} />
-
-               
                <img id="load" className="gif-load" src={Loading}/>
 
                <div className="way">
