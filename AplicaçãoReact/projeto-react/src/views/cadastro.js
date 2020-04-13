@@ -11,6 +11,7 @@ class Cadastro extends React.Component {
         nome: '',
         email: '',
         senha: '',
+        photo: '',
         senha_repeat: '',
         mensagemErro : null
     }
@@ -60,6 +61,7 @@ class Cadastro extends React.Component {
                 nome: this.state.nome,
                 email: this.state.email,
                 senha: this.state.senha,
+                photo: this.state.photo
          }
 
         this.call.cadastrar(usuario)
@@ -99,6 +101,21 @@ class Cadastro extends React.Component {
                             <input type="text" id="inputEmail"
                                 name="email" className="form-control"
                                 onChange={e => this.setState({ email: e.target.value })} />
+                        </FormGroup>
+                        <FormGroup label="Foto: *" htmlFor="photo">
+                            <input type="file" id="photo"
+                                name="photo" className="form-control"
+                                onChange={()=>{
+                                    let fileReader = new FileReader();
+                                    var fileToRead = document.querySelector('#photo').files[0];
+                                    fileReader.addEventListener("loadend", ()=> {
+                                        console.log(fileReader.result); 
+                                        this.setState({ photo: fileReader.result  })
+                                        console.log("asdodsko" +this.state.photo)
+                                    })
+                                    fileReader.readAsDataURL(fileToRead);                                     
+                                }}  
+                                    />
                         </FormGroup>
                         <FormGroup label="Senha: *" htmlFor="inputSenha">
                             <input type="password" id="inputSenha"

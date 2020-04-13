@@ -10,13 +10,14 @@ export default prop => {
         return (
             <>
             
-           <div className="Superior-post">
-                <h3 className="Nome-post">{post.nome}</h3>
+           <div className="superior-post">
+                     <h3 className="nome-post">{post.nome}</h3>
+                     <h2 className="data-post">{"• "+ post.data + " •"}</h2>
                 <div class="circle">                    
                     <img class="img-post" src={post.imagem}/>                    
-                </div>
-                    <div className="Inferior-post">
-                        <span className="Conteudo-post">{post.conteudo}</span>
+                </div>                     
+                    <div className="inferior-post">
+                        <span className="conteudo-post">{post.conteudo}</span>
                     </div>
 
             </div>

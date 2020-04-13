@@ -21,11 +21,9 @@ public class UserPageController {
     //Esse atributo vai armazenar o usuario atual
     private Usuario currentUser = null;
 
-
     //Esse Atributo vai nos permitir utilizar os metodos da classe Service
     @Autowired
     private UserService controller;
-
 
     public  UserPageController(UserService controller) {
 
@@ -55,29 +53,6 @@ public class UserPageController {
             currentUser = null;
             return ResponseEntity.ok(HttpStatus.ACCEPTED);
         }catch (ErroConexao e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-
-    }
-
-    //Em processo de correção
-
-    @GetMapping("/photo/{id}")
-    public ResponseEntity buscaPhoto(@PathVariable("id") Long id){
-
-        try{
-
-            String image = "";
-
-            Usuario result = controller.findPhoto(id);
-
-            if ( result != null ) {
-                image = result.getPhoto();
-            }
-
-            return ResponseEntity.ok(image);
-        }
-        catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
 

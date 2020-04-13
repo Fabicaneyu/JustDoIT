@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Builder
 @NoArgsConstructor
@@ -17,7 +18,7 @@ public class PostDTO {
     private String conteudo;
     private String photo;
     private String nome_user;
-    private LocalDate _data;
+    private String _data;
 
 
     public Long getId_user() {
@@ -43,11 +44,19 @@ public class PostDTO {
         return photo;
     }
 
-    public LocalDateTime get_data() {
-        return LocalDateTime.now();
+    public String get_data() {
+
+        LocalDateTime today = LocalDateTime.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+        String todayFormatted = today.format(formatter);
+
+        return todayFormatted;
+
     }
 
-    public void set_data(LocalDate _data) {
+    public void set_data(String _data) {
         this._data = _data;
     }
 

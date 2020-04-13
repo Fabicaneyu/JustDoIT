@@ -32,9 +32,7 @@ public class Posts {
     private Usuario usuario;
 
     @Column( name = "_data")
-    private LocalDateTime _data;
-
-
+    private String _data;
     public Usuario getUsuario() {
         return usuario;
     }

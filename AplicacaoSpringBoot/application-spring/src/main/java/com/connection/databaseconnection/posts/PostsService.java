@@ -59,7 +59,7 @@ public class PostsService {
         if (rangeAtual > 0) {
             if (first) {
                 result = entityManager.createQuery(
-                        "select p.id, p.conteudo, u.nome, u.photo from Posts p inner join" +
+                        "select p.id, p.conteudo, u.nome, p._data, u.photo from Posts p inner join" +
                                 " p.usuario as u where p.id <= :range order by p.id desc ")
                         .setParameter("range", last)
                         .setMaxResults(5)
@@ -75,7 +75,7 @@ public class PostsService {
 
             } else {
                 result = entityManager.createQuery(
-                        "select p.id, p.conteudo, u.nome, u.photo from Posts p inner join" +
+                        "select p.id, p.conteudo, u.nome, p._data, u.photo from Posts p inner join" +
                                 " p.usuario as u where p.id < :range order by p.id desc ")
                         .setParameter("range", last)
                         .setMaxResults(5)

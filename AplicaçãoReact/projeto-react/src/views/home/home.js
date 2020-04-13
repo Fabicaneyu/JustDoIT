@@ -4,6 +4,7 @@ import UserInfo from '../../components/info-user-bar'
 import {withRouter} from 'react-router-dom'
 import UsuarioCalls from '../../calls/userCalls'
 import PostField from './post-field'
+import Recomendation from '../../components/recomendation-field'
 import Waypoint from '../../components/way'
 import Loading from '../../imagens/Spinner.gif'
 import { useEffect } from 'react';
@@ -16,6 +17,7 @@ class Home extends React.Component {
         idUser : '',
         photo : '',
         conteudo : '',
+        recomendados : [],
         request : [],
         way : ''
     }
@@ -41,6 +43,7 @@ class Home extends React.Component {
 
 
         this.initial();
+        this.loadRecomendation();
 
     }
 
@@ -53,6 +56,16 @@ class Home extends React.Component {
             console.log(erro)
         })
 
+    }
+
+    loadRecomendation = () => {
+        axios.get('http://localhost:8080/conhecimento/recomendados/teste')
+        .then( response => {
+            const dados = response.data
+            this.setState({recomendados: dados})
+        }).catch( erro => {
+            console.log(erro)
+        })
     }
   
 
@@ -114,6 +127,7 @@ class Home extends React.Component {
             <>
             <Navbar execute={this.sair} className="container"/>
 
+            <Recomendation body={this.state.recomendados}/>
             <UserInfo label={this.state.nome} />
 
                 <div className="divShare">

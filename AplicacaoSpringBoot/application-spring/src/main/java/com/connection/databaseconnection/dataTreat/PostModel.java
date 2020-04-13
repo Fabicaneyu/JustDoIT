@@ -2,13 +2,14 @@ package com.connection.databaseconnection.dataTreat;
 
 public class PostModel {
 
-    private String nome, conteudo, imagem;
     private Long id;
+    private String nome, conteudo, imagem , data;
 
-    public PostModel(Long id, String nome, String conteudo, String imagem) {
+    public PostModel(Long id, String nome, String conteudo, String data, String imagem) {
         this.id = id;
         this.nome = nome;
         this.conteudo = conteudo;
+        this.data = data;
         this.imagem = imagem;
     }
 
@@ -42,5 +43,13 @@ public class PostModel {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

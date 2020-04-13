@@ -23,9 +23,10 @@ public class ListBuilder {
                 Long id = (Long) data[0];
                 String conteudo = data[1].toString();
                 String nome = data[2].toString();
-                String imagem = data[3].toString();
+                String date = data[3].toString();
+                String imagem = data[4].toString();
 
-                PostModel novoPost = new PostModel(id, nome, conteudo, imagem);
+                PostModel novoPost = new PostModel(id, nome, conteudo, date, imagem);
 
                 listaOK.add(novoPost);
             }
