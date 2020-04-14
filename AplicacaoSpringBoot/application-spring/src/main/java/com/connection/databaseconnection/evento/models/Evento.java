@@ -1,5 +1,5 @@
-package com.eventoapp.eventoapp.models;
 
+package com.connection.databaseconnection.evento.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

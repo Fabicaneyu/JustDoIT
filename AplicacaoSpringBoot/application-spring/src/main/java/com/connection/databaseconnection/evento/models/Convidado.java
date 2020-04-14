@@ -1,4 +1,4 @@
-package com.eventoapp.eventoapp.models;
+package com.connection.databaseconnection.evento.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

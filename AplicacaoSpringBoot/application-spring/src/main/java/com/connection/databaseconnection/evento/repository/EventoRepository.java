@@ -1,6 +1,6 @@
-package com.eventoapp.eventoapp.repository;
+package com.connection.databaseconnection.evento.repository;
 
-import com.eventoapp.eventoapp.models.Evento;
+import com.connection.databaseconnection.evento.models.Evento;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

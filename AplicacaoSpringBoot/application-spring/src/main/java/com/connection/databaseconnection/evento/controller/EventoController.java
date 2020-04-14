@@ -1,9 +1,9 @@
-package com.eventoapp.eventoapp.controller;
+package com.connection.databaseconnection.evento.controller;
 
-import com.eventoapp.eventoapp.models.Convidado;
-import com.eventoapp.eventoapp.models.Evento;
-import com.eventoapp.eventoapp.repository.ConvidadoRepository;
-import com.eventoapp.eventoapp.repository.EventoRepository;
+import com.connection.databaseconnection.evento.models.Convidado;
+import com.connection.databaseconnection.evento.models.Evento;
+import com.connection.databaseconnection.evento.repository.ConvidadoRepository;
+import com.connection.databaseconnection.evento.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -59,13 +59,7 @@ public ResponseEntity eventosEspecificos(@PathVariable("codigo") long codigo) {
     }
 
 
-
-
-
-
-
-
-    @DeleteMapping("/deletar")
+@DeleteMapping("/deletar")
     public String deletarEvento(@RequestHeader long codigo) {
         Evento evento = er.findByCodigo(codigo);
         er.delete(evento);
