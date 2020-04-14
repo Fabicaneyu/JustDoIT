@@ -1,8 +1,6 @@
 import React from 'react'
 
-import axios from 'axios'
-import Home from './home'
-import ImagePost from '../../components/photo-post'
+
 
 export default prop => {
 
@@ -10,18 +8,20 @@ export default prop => {
     const divs = prop.body.map( post => {
     
         return (
+            <>
+            
+           <div className="superior-post">
+                     <h3 className="nome-post">{post.nome}</h3>
+                     <h2 className="data-post">{"• "+ post.data + " •"}</h2>
+                <div class="circle">                    
+                    <img class="img-post" src={post.imagem}/>                    
+                </div>                     
+                    <div className="inferior-post">
+                        <span className="conteudo-post">{post.conteudo}</span>
+                    </div>
 
-            <div className="Superior-post">
-
-                <ImagePost />
-                <h3 className="Nome-post">{post.nome_user}</h3>
-
-                <div className="Inferior-post">
-                        <span className="Conteudo-post">{post.conteudo}</span>
-                </div>
-
-        </div>
-
+            </div>
+          </>
         )
     })
 
