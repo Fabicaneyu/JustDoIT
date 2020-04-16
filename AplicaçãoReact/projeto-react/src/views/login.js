@@ -67,7 +67,7 @@ class Login extends React.Component {
                                         <div className="bs-component">
 
                                             <fieldset>
-
+                                            <form>
                                             <Formgroup htmlFor="imputEmail" label="Email : *">
 
                                                 <input type="text" value={this.state.email}
@@ -84,8 +84,9 @@ class Login extends React.Component {
 
                                             </Formgroup> 
                                             
-                                            <button onClick={this.entrar} className="btn btn-success">Entrar</button>
+                                            <button onClick={this.entrar} onSubmit={this.entrar} className="btn btn-success">Entrar</button>
                                             <button onClick={this.toCadastro} className="btn btn-danger">Cadastrar</button>
+                                            </form>
                                             </fieldset>
 
                                         </div>

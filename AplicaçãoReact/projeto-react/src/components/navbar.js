@@ -25,9 +25,9 @@ function Navbar (prop) {
             <ul className="navbar-nav">
             
   
-                <NavbarItem href="#/" image={Home} classN="svg-item-home" label="Home" />
-                <NavbarItem href="#/" image={Brain} classN="svg-item-brain" label="Conhecimentos" />
-                <NavbarItem action={prop.execute} image={Exit} classN="svg-item-out" label="Sair" />
+                <NavbarItem action={prop.executeHome} image={Home} classN="svg-item-home" label="Home" />
+                <NavbarItem action={prop.executePerfil} image={Brain} classN="svg-item-brain" label="Conhecimentos" />
+                <NavbarItem action={prop.executeSair} image={Exit} classN="svg-item-out" label="Sair" />
           </ul>
           </div>         
         </div>

@@ -10756,17 +10756,14 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
     transition: 1s;
 }
 
-
 .svg-item-brain {
 
   position : relative;
   margin-left: 26%;
   height: 26px;
   width: 50px;
-
  
  }
-
  
  .svg-item-out {
 
@@ -10863,6 +10860,12 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   width: 100%;
 }
 
+.img-perfil {
+  position: absolute;
+  bottom: 0;
+  top: 0.5%;
+  width: 100%;
+}
 
 .way {
   position: relative;
@@ -10879,6 +10882,18 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
 }
 
+.descript-user {
+  font-size: 32px;
+  padding: 20px;
+}
+
+.name-profile {
+  font-size: 32px;
+  padding: 20px;
+}
+
+
+
 .circle {
   margin-top: 5%;
   margin-left: 8%;
@@ -10887,6 +10902,18 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   border: 1px solid black;
   width: 60px;
   height: 60px;
+  overflow: hidden;
+  position: relative;
+}
+
+.circle-perf {
+  top: 19%;
+  left: 9%;
+  background-color: #aaa;
+  border-radius: 50%;
+  border: 1px solid black;
+  width: 180px;
+  height: 180px;
   overflow: hidden;
   position: relative;
 }
@@ -10900,7 +10927,6 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   right: 2.7%;
   background-color: #E8E8E8;
 }
-
 
 
 .box-recomedation{
@@ -10960,10 +10986,38 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
 }
 
-
 .data-post {
   position: absolute;
   font-size: 12px;
   top : 22.5%;
   left: 17%;
 }
+
+.back-img {
+
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 35%;
+  padding: 100px 0;
+  color: white;
+  background: url(../../../imagens/tree.jpg) no-repeat bottom center scroll;
+  background-position: 30% 45%;
+  background-size: cover;
+
+}
+
+.user-space {
+
+  width: 250px;
+  height: 700px;
+  border: none;
+  top : 49%;
+  left: 6.8%;
+  position: absolute;
+  border-radius:4px;
+  background-color: #051046 ;
+
+}
+
+

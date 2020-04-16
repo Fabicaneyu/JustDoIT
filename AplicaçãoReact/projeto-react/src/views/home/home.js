@@ -102,6 +102,14 @@ class Home extends React.Component {
         })
     }
 
+    toPerfil = () => {
+        this.props.history.push('/perfil')
+    }
+
+    toHome = () => {
+        this.props.history.push('/home')
+    }
+
     
 
     postar = () => {
@@ -125,7 +133,7 @@ class Home extends React.Component {
 
         return(
             <>
-            <Navbar execute={this.sair} className="container"/>
+            <Navbar executeSair={this.sair} executePerfil={this.toPerfil} className="container"/>
 
             <Recomendation body={this.state.recomendados}/>
             <UserInfo label={this.state.nome} />
