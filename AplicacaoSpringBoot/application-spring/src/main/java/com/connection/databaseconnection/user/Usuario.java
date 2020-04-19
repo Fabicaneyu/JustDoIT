@@ -29,5 +29,7 @@ public class Usuario {
     private String photo;
     @Column( name = "senha")
     private String senha;
+    @Column( name = "sobre")
+    private String sobre;
 
 }

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserDTO {
 
-    private String email, nome, photo, senha ;
+    private String email, nome, photo, senha, sobre ;
     private Long id;
 
     public String getEmail() {
@@ -47,6 +47,14 @@ public class UserDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getSobre() {
+        return sobre;
+    }
+
+    public void setSobre(String sobre) {
+        this.sobre = sobre;
     }
 }
 

@@ -4,12 +4,15 @@ import com.connection.databaseconnection.dto.UserDTO;
 import com.connection.databaseconnection.exception.ErroAutenticacao;
 import com.connection.databaseconnection.exception.ErroConexao;
 import com.connection.databaseconnection.exception.RegraException;
+import com.connection.databaseconnection.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Service
 @Controller
@@ -71,6 +74,40 @@ public class UserPageController {
             Usuario userSalvo = controller.saveUser(user);
             return new ResponseEntity(userSalvo, HttpStatus.CREATED);
         }catch (RegraException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
+    }
+
+    @GetMapping("/about")
+    public ResponseEntity sobre(@RequestParam( required = true) Long id ) {
+        try{
+
+
+            Usuario user = this.controller.buscaporId(id);
+            if (user != null) {
+                return new ResponseEntity(user.getSobre(), HttpStatus.OK);
+            }
+            else {
+                return new ResponseEntity("Usuário não encontrado", HttpStatus.NO_CONTENT);
+            }
+
+        }catch (ErroConexao e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PatchMapping("/about")
+    public ResponseEntity atualizarSobre(@RequestBody UserDTO userDTO) {
+
+        try{
+            Usuario user = Usuario.builder().id(userDTO.getId()).sobre(userDTO.getSobre()).build();
+
+            controller.updateSobre(user);
+
+            return new ResponseEntity(HttpStatus.OK);
+
+        }catch (UserNotFoundException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
 
