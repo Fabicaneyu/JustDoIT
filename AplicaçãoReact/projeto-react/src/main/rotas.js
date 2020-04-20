@@ -4,6 +4,9 @@ import Home from '../views/home/home'
 import Login from '../views/login'
 import Cadastro from '../views/cadastro'
 import Perfil from '../views/perfil'
+import CadastrarEventos from '../views/Eventos/cadastroEvento';
+import ListarEventos from '../views/Eventos/listaEvento';
+import DetalhesEventos from '../views/Eventos/detalhesEvento';
 
 function Rotas() {
 
@@ -14,6 +17,9 @@ function Rotas() {
                     <Route path="/cadastro" component={Cadastro} />
                     <Route path="/home" component={Home} />
                     <Route path="/perfil" component={Perfil} />
+                    <Route path="/cadastrarEvento" component={CadastrarEventos} />
+                    <Route path="/listarEvento" component={ListarEventos} />
+                    <Route path="/detalhesEvento" component={DetalhesEventos} />
             </Switch>
         </HashRouter>
     )

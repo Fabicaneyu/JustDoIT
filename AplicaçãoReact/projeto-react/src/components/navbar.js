@@ -6,7 +6,6 @@ import Home from '../imagens/home.svg'
 import Evento from '../imagens/evento.svg'
 import Brain from '../imagens/brain.svg'
 import Exit from '../imagens/sair.svg'
-import axios from 'axios'
 
 function Navbar (prop) {
 
@@ -26,10 +25,10 @@ function Navbar (prop) {
             <ul className="navbar-nav">
             
   
-                <NavbarItem action={prop.executeHome} image={Home} classN="svg-item-home" label="Home" />
-                <NavbarItem action={prop.executePerfil} image={Brain} classN="svg-item-brain" label="Conhecimentos" />
-                <NavbarItem action={prop.executeEventos} image={Evento} classN="svg-item-event" label="Eventos" />
-                <NavbarItem action={prop.executeSair} image={Exit} classN="svg-item-out" label="Sair" />
+                <NavbarItem action={prop.executeHome} href="#/home" image={Home} classN="svg-item-home" label="Home" />
+                <NavbarItem action={prop.executePerfil} href="#/perfil" image={Brain} classN="svg-item-brain" label="Conhecimentos" />
+                <NavbarItem action={prop.executeEventos} href="#/cadastrarEvento" image={Evento} classN="svg-item-event" label="Eventos" />
+                <NavbarItem action={prop.executeSair} href="#/login" image={Exit} classN="svg-item-out" label="Sair" />
           </ul>
           </div>         
         </div>
