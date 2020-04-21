@@ -61,6 +61,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 body {
+  padding: 0px!important;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.875rem;
@@ -2267,7 +2268,7 @@ pre code {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #cbc8d0;
-  border-radius: 0;
+  border-radius: .25rem;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -4617,7 +4618,7 @@ input[type="button"].btn-block {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 1.2rem 1rem;
+  padding: .5rem 1rem;
 }
 
 .navbar .container,
@@ -11117,3 +11118,300 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
 
 
+
+
+/*Custom new Css*/
+
+.bg-header{
+  background-color: #101143;
+}
+
+.icon-size svg{
+  fill: white;
+}
+
+.header .container-fluid{
+  padding-right: 35px;
+  padding-left: 35px;
+}
+.header ::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.header ::-moz-placeholder {  /* Firefox 19+ */
+  text-align: center;  
+}     
+
+@media (min-width: 768px) {
+  .logo-size{
+      position: relative;
+      color:gray;
+      
+      height: 40px;
+      width: 50px;
+  }
+  
+  .icon-size{
+      height: 30px;
+      width: 30px;
+  }
+  
+}
+
+@media (max-width: 767px){
+   .icons-header{
+       display: none;
+   }
+   .logo-size{
+      height: 0px;
+      width: 0px;
+  }
+ .menu .icon-size{
+      height: 30px;
+      width: 30px;
+  }
+  
+}
+
+
+/*BODY */
+.content{
+   height: 100%;
+   width: 100%;
+   padding: 80px 35px 0px 35px;
+  background-color: #F0F0F5;
+}
+
+
+
+.user-menu{
+  padding: 20px 20px 0px 20px;
+  height: 400px;
+  width: 170px;
+  background-color: #ffffff;
+  
+}
+
+.text-field{
+  height: 125px;
+  width: 50%;
+  resize: none;
+  text-align: center;
+  padding: 50px;
+  
+  border: none;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2)
+  
+}
+
+.user-recomandation{
+  float: right;
+  height: 400px;
+  width: 170px;
+  background-color: #ffffff;
+}
+.field-left{
+  border-right: 1px solid gray;   
+}
+
+.icon-file{
+  position: absolute;
+  left: 50%;
+  width:30px;
+  height:30px;
+}
+.icon-pencil{
+  position: absolute;
+  width:25px;
+  left: 5px;
+  height:25px;
+}
+
+.user-photo{
+  
+  background-color: green;
+  height: 80px;
+  border-radius: 80px;
+  width: 80px;
+  margin-bottom: 8px;
+  
+}
+
+.name-style{
+  font-weight: bolder;
+  color: #555555;
+  
+}
+
+.user-data{
+  margin-top: 25px;
+}
+.user-data ul{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+}
+
+.data-user{
+  margin-top: 20px;
+  border-bottom: solid 1px #959090;
+  color: #555555;
+  font-size: 13px;
+  font-weight: 500;
+
+}
+.home{
+  
+  background-color: #F0F0F5;
+      background-repeat: no-repeat;
+      -moz-background-size: 100% 100%;
+      -webkit-background-size: 100% 100%;
+      background-size: 100% 100%;
+  }
+
+.first{
+  
+  height: 60px;
+  font-size: 13px;
+  padding: 10px 15px 15px 15px; 
+  
+}
+/*.user-recomandation 340 height*/
+.first .box{
+  border-bottom: solid 1px;
+}
+
+.itens-rec{
+  border-top: solid 1px #959090;
+  
+}
+.standard-recomandation {
+  height: 85px;
+  padding: 8px 0px 8px 4px; 
+}
+
+.img-box{
+  height:52px;
+  width: auto;
+}
+.row-anulled{
+  margin-right: 0px;
+   margin-left: 0px;
+}
+
+.title-recomandation{
+  font-size: 11px;
+  font-weight: bold;    
+}
+
+.anulled{
+  padding-left: 5px;
+  padding-right: 0px;
+}
+.box .standard-recomandation .anulled{
+padding-right: 0px;
+}
+.text-recomandation{
+  font-size: 9px;
+}
+
+.search{
+  margin-bottom: 20px;
+}
+
+.post-field{
+  padding: 20px 40px 20px 40px;
+  width: 100%;
+  height: inherit;
+  background-color: white;
+  margin-bottom: 50px;
+}
+
+.photo-postField{
+  background-color: gray;
+  height: 70px;
+  border-radius: 40px;
+  width: 70px;
+  margin-right: 20px;
+}
+.userPost-name{
+  padding: 5px 20px 0px 0px;
+}
+
+.content-field{
+  margin: 40px 0px;
+  font-size: 18px;
+  
+}
+.user-text{
+  font-size: 10px;
+}
+.username{
+  margin-bottom: 5px;
+}
+.tag-size{
+  font-size: 12px;
+}
+
+.tags-reference{
+  font-size:11px
+}
+.tag.col-md-2 {
+  padding-left: 0px;
+}
+.icon-value{
+  font-size: 11px;
+}
+
+.size-around{
+  margin: 15px;
+}
+.score-style{
+  cursor: pointer;
+}
+
+.icon-value.col-md-10{
+  padding-left: 0px
+}
+
+.share-icon{
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+
+.img-size-logo{
+  width: 100%;
+  height: 100%;
+}
+
+.img-user-menu{
+  width: 100%;
+  border-radius: 40px;
+}
+
+.imgRecomandation{
+  height: 54px;
+  width: 52px;
+}
+.col-md-4.img-box{
+  padding: 0px;
+}
+.text-field-size{
+  width: 100%;
+}
+
+
+.icon-posts{
+  width: 20px;
+  height: 20px;
+}
+
+body{
+ 
+  background-color: #F0F0F5;
+      background-repeat: no-repeat;
+      -moz-background-size: 100% 100%;
+      -webkit-background-size: 100% 100%;
+      background-size: 100% 100%; 
+}

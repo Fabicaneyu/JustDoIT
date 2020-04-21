@@ -4,27 +4,46 @@ import React from 'react'
 export default prop => {
 
 
-const corpo = prop.body.map( req => {
-    
-    return(
+    const corpo = prop.body.map(req => {
 
-         <div className="box-recomedation">
+        return (
+            <div className="box standard-recomandation itens-rec">
 
-                    <div className="text-box">                        
-                        <h2 className="text-content">{req.conhecimento}</h2>
-                        <h2 className="text-recomendation">{req.descricao}</h2>
+                <div className="row row-anulled">
+                    <div className="col-md-4 img-box">
+                        <img className="imgRecomandation" src={req.imagem}/>
                     </div>
-                    <img className="box-img" src={req.imagem}/>
-                                   
-         </div>
 
-    )
-})
+                    <div className="col-md-8 anulled">
+                        <div className="title-recomandation"> 
+                            {req.conhecimento}
+                        </div>
+
+                        <div className="text-recomandation">
+                            {req.descricao}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        )
+    })
 
 
     return (
-        <div className="div-recomendation">
-            <div className="div-rec-title">Conteúdos recomendados para <b>você</b>
-            </div>{ corpo }</div>
+
+        <div className="col-md-2">
+            <div className="user-recomandation">
+                <div className="first box">
+                    Conteúdo remendados para <b>você</b>
+                </div>
+                { corpo }
+
+
+
+            </div>
+        </div>
+
+
     )
 }
