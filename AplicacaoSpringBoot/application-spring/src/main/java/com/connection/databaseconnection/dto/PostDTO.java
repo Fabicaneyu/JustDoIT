@@ -2,29 +2,31 @@ package com.connection.databaseconnection.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostDTO {
 
-    private Long id_usuario;
+    private Long id_user;
     private String conteudo;
     private String photo;
     private String nome_user;
-    private LocalDate _data;
+    private String _data;
 
 
-    public Long getId_usuario() {
-        return id_usuario;
+    public Long getId_user() {
+        return id_user;
     }
 
-    public void setId_usuario(Long id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setId_user(Long id_user) {
+        this.id_user = id_user;
     }
 
     public String getConteudo() {
@@ -42,11 +44,19 @@ public class PostDTO {
         return photo;
     }
 
-    public LocalDateTime get_data() {
-        return LocalDateTime.now();
+    public String get_data() {
+
+        LocalDateTime today = LocalDateTime.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+        String todayFormatted = today.format(formatter);
+
+        return todayFormatted;
+
     }
 
-    public void set_data(LocalDate _data) {
+    public void set_data(String _data) {
         this._data = _data;
     }
 
