@@ -12,8 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Builder
-@Data
-//( @Data )Esta notação permite que eu não precise chamar os gets e sets pois já é chamado internamente por ela
+@Data //( @Data )Esta notação permite que eu não precise chamar os gets e sets pois já é chamado internamente por ela
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -37,8 +36,11 @@ public class Evento implements Serializable {
     @NotEmpty
     private String horario;
 
-//    @OneToMany
-//    private List<Convidado> convidados;
+   @OneToMany
+    private List<Convidado> convidados;
 
 
+    public long getCodigo() {
+        return this.codigo;
+    }
 }

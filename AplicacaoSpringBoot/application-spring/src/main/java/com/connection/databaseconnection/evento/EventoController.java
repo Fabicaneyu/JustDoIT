@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 
 @Controller
 public class EventoController {
@@ -16,62 +15,61 @@ public class EventoController {
     @Autowired
     private ConvidadoRepository cr;
 
-    @RequestMapping(value = "/cadastrarEvento", method = RequestMethod.GET)
-    public String form() {
-        return "evento/formEvento";
-    }
-
-    @RequestMapping(value = "/cadastrarEvento", method = RequestMethod.POST)
-    public ResponseEntity<String> form(@RequestBody Evento evento ){
+    @PostMapping(path = "/cadastrarEvento")
+    public ResponseEntity<String> form(@RequestBody Evento evento) {
         er.save(evento);
         return ResponseEntity.ok("redirect:/cadastrarEvento");
-
     }
 
-    @RequestMapping("/eventos")
+    @GetMapping(path = "/eventos")
     public ResponseEntity listaEventos() {
         Iterable<Evento> eventos = er.findAll();
-        return ResponseEntity.ok(eventos);
-    }
-    @GetMapping("/eventos/{codigo}")
-    public ResponseEntity eventosEspecificos(@PathVariable("codigo") long codigo) {
-        Evento evento = er.findByCodigo(codigo);
-        return ResponseEntity.ok(evento);
-    }
-
-//    @GetMapping("/convidados/{codigo}")
-//    public ResponseEntity detalhesEvento(@PathVariable("codigo") long codigo) {
-//        Evento evento = er.findByCodigo(codigo);
-//        Iterable<Convidado> convidados = cr.findByEvento(evento);
-//        return ResponseEntity.ok(convidados);
-//    }
-
-    @RequestMapping(value = "cad/{codigo}", method = RequestMethod.POST)
-    public ResponseEntity detalhesEventoPost(@PathVariable("codigo") long codigo, Convidado convidado) {
-
-        Evento evento = er.findByCodigo(codigo);
-//        convidado.setEvento(evento);
-        cr.save(convidado);
-        return ResponseEntity.ok("redirect:/{codigo}");
+        if (eventos == null) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(eventos);
+        }
     }
 
+        @GetMapping(path = "/eventos/{codigo}")
+        public ResponseEntity eventosEspecificos ( @PathVariable("codigo") long codigo){
+            Evento evento = er.findByCodigo(codigo);
+            return ResponseEntity.ok(evento);
+        }
 
-    @DeleteMapping("/deletar")
-    public String deletarEvento(@RequestHeader long codigo) {
-        Evento evento = er.findByCodigo(codigo);
-        er.delete(evento);
-        return "localhost:3000/listarEventos";
+        @GetMapping(path = "/convidado/{codigo}")
+        public ResponseEntity detalhesEvento ( @PathVariable("codigo") long codigo) {
+            Evento evento = er.findByCodigo(codigo);
+            Iterable<Convidado> convidados = cr.findByEvento(evento);
+            if (convidados == null) {
+                return ResponseEntity.noContent().build();
+            } else {
+                return ResponseEntity.ok(convidados);
+            }
+        }
+        @PostMapping(path = "/convidado/{codigo}")
+        public ResponseEntity cadastroConvidado( @PathVariable("codigo") long codigo, @RequestBody Convidado convidado)
+        {
+            Evento evento = er.findByCodigo(codigo);
+            convidado.setEvento(evento);
+            cr.save(convidado);
+            return ResponseEntity.ok(convidado);
+        }
+
+
+        @DeleteMapping(path="/evento/{codigo}")
+        public ResponseEntity deletarEvento ( @PathVariable("codigo") long codigo){
+            Evento evento = er.findByCodigo(codigo);
+            er.delete(evento);
+            return ResponseEntity.ok().build();
+        }
+
+        @DeleteMapping(path = "/convidado/{rg}")
+        public ResponseEntity delete (@PathVariable String rg){
+            cr.findByRg(rg);
+            cr.deleteById(rg);
+            return ResponseEntity.ok().build();
+
+        }
+
     }
-
-//    @RequestMapping("/deletarConvidado")
-//    public String deletarConvidado(String rg) {
-//        Convidado convidado = cr.findByRg(rg);
-//        cr.delete(convidado);
-//        Evento evento = convidado.getEvento();
-//        long codigoLong = evento.getCodigo();
-//        String codigo = "" + codigoLong;
-//        return "redirect: /" + codigo;
-//
-//    }
-
-}

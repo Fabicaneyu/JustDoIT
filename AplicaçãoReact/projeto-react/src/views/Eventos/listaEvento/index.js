@@ -19,7 +19,7 @@ export default function Eventos() {
 
     async function deletarEvento(id) {
         try {
-            await api.delete(`deletar/${id}`);
+            await api.delete(`/evento/${id}`);
         } catch{
             alert('Erro ao deletar evento, tente novamente.');
         }
