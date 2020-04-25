@@ -7,8 +7,8 @@ import Navbar from '../../../components/navbar'
 export default function CadastroEvento (){
    
     const [nome, setNome] = useState('');
-    const [local, setLocal] = useState('');
-    const [data,setData] = useState('');
+    const [_local, setLocal] = useState('');
+    const [_data,setData] = useState('');
     const [horario, setHorario] = useState('');
     
   
@@ -17,8 +17,8 @@ async function  handleRegister(e) {
 
         const env = { 
             nome,
-            local,
-            data,
+            _local,
+            _data,
             horario,
         };
 
@@ -47,13 +47,13 @@ async function  handleRegister(e) {
                     <div className="form-row ">
                         <div className="col-sm-3">
                             <label className="col-form-label" for="inputDefault">Local</label>
-                            <input name = "local" type="text" className="form-control inputForm" value = {local} onChange={e => setLocal(e.target.value)}/>
+                            <input name = "local" type="text" className="form-control inputForm" value = {_local} onChange={e => setLocal(e.target.value)}/>
                         </div>
 
 
                         <div className="col-sm-3">
                             <label className="col-form-label" for="inputDefault">Data</label>
-                            <input name = "data" type="date" className="form-control inputForm" value = {data} onChange={e => setData(e.target.value)} />
+                            <input name = "data" type="date" className="form-control inputForm" value = {_data} onChange={e => setData(e.target.value)} />
                         </div>
 
                         <div className="col-sm-3">

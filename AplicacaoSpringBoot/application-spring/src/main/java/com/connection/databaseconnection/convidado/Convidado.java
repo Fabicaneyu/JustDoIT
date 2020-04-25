@@ -23,9 +23,7 @@ public class Convidado {
 
     private String nomeConvidado;
 
-//    @ManyToOne
-//    private Evento evento;
-
-
+    @ManyToOne
+    private Evento evento;
 
 }

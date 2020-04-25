@@ -10865,6 +10865,8 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   border: none;
   background-color: #E8E8E8;
   border-radius: 5px;
+
+  
 }
 
 .conteudo-post {
@@ -10903,8 +10905,9 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 }
 
 .descript-user {
-  margin-top: 10%;
-  margin-left: 5%;
+  margin-top: 4%;
+  margin-right: 4%;
+  margin-left: 4%;
   font-size: 18px;
   color: gray;
   text-align: justify;
@@ -11083,6 +11086,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   position: absolute;
   height: 100%;
   width: 100%;
+  
 }
 
 .label-about {
@@ -11114,6 +11118,171 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   margin-left: 5%;
   top : 1.8%;
 }
+
+
+.label-know {
+  font-size: 30px;
+  color: black;
+  position: absolute;
+  top: 26%;
+  left: 31%;
+}
+
+.label-interest {
+
+  font-size: 30px;
+  color: black;
+  position: relative;
+  left:2.7%;
+
+}
+
+.label-name-know {
+
+  font-size: 25px;
+  position: relative;
+  left: 6%;
+
+}
+
+.label-type-know {
+
+  font-size: 25px;
+  position: relative;
+  left: 56%;
+
+}
+
+.label-type-interest {
+
+  font-size: 25px;
+  position: relative;
+  left: 68%;
+
+}
+
+.label-level-know {
+
+  font-size: 25px;
+  position: relative;
+  left: 75%;
+
+}
+
+.box-img-know {
+
+  height:120px;
+  width: 120px;
+  background-color: chartreuse;
+  position: relative;
+  border: 1px solid black;
+  margin-bottom: 2%;
+  margin-left: 3%;
+  border-radius: 6px;
+
+}
+
+.box-img-interest {
+
+  height:120px;
+  width: 120px;
+  top: 11%;
+  background-color: chartreuse;
+  position: relative;
+  border: 1px solid black;
+  margin-bottom: 2%;
+  margin-left: 3%;
+  border-radius: 6px;
+
+}
+
+.desc-know {
+
+  position: relative;
+  left: 3%;
+  bottom: 20%;
+  font-size: 15px;
+
+}
+
+.desc-interest {
+
+  position: relative;
+  left: 5%;
+  bottom: 20%;
+  font-size: 15px;
+
+}
+
+.type-know {
+
+  position: relative;
+  left: 16% ;
+  font-size: 15px;
+
+}
+
+.type-interest {
+
+  position: relative;
+  left: 26% ;
+  font-size: 15px;
+
+}
+
+.level-know {
+
+  position: relative;
+  top: 8%;
+  left: 25.4%;
+  font-size: 80px;
+
+}
+
+
+.div-know-inferior {
+
+  background-color: gainsboro;
+  height: 160px;
+  width: 840px ;
+  top: 0%;
+  border-radius: 3px;
+  margin-left: 3%;
+  margin-bottom: 2%;
+
+}
+
+.div-know-superior {
+
+border: 1px solid black;
+background-color: white;
+border-radius: 3px;
+min-width: 900px; 
+max-width: 900px;
+position: relative;
+left: auto;
+  
+}
+
+.box-perf1 {
+
+background-color: white;
+ margin-top:16.5%;
+ margin-left: 30%;
+
+}
+
+.box-perf2 {
+
+  background-color: white;
+  margin-top:3%;
+  margin-left: 30%;
+  margin-bottom: 10%;
+ 
+ }
+
+
+
 
 
 

@@ -1,7 +1,8 @@
 package com.connection.databaseconnection.posts;
 
-import com.connection.databaseconnection.dataTreat.ListBuilder;
-import com.connection.databaseconnection.dataTreat.PostModel;
+import com.connection.databaseconnection.iterators.Iterator;
+import com.connection.databaseconnection.iterators.ListBuilder;
+import com.connection.databaseconnection.adapters.PostModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,10 @@ public class PostsService {
 
     @Autowired
     private EntityManager entityManager;
+
+    private Iterator listBuilder;
+
+    private PostModel postModel;
 
     private Long rangeAtual;
 
@@ -99,11 +104,12 @@ public class PostsService {
 
         List<PostModel> result;
 
-        ListBuilder builder = new ListBuilder(lista);
+         listBuilder = new ListBuilder(lista);
 
-        result = builder.formatList();
+         result = listBuilder.nextList();
 
-        return result;
+         return result;
+
     }
 
 

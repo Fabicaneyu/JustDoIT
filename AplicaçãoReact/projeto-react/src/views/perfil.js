@@ -3,6 +3,8 @@ import Navbar from '../components/navbar'
 import UsuarioCalls from '../calls/userCalls'
 import Cancelar from '../imagens/cancelar.svg'
 import Editar from '../imagens/editar.svg'
+import Conhecimentos from '../components/conhecimentos-field'
+import Interesses from '../components/interesses-field'
 import axios from 'axios'
 
 
@@ -16,8 +18,15 @@ class Perfil extends React.Component {
         id_user: '',
         photo: '',
         desc_atualize : '',
+        desc_default: '',
         description: '',
-        format: ''
+        know_request: [{"conhecimento": "Java",  "nivel" : "3",
+         "descricao":"Linguagem orientada a objeto", "tipo": "Linguagem de programaçaõ" },
+         {"conhecimento": "Java",  "nivel" : "3",
+         "descricao":"Linguagem orientada a objeto", "tipo": "Linguagem de programaçaõ" },
+         {"conhecimento": "Java",  "nivel" : "3",
+         "descricao":"Linguagem orientada a objeto", "tipo": "Linguagem de programaçaõ" },
+        ]
 
     }
     
@@ -31,6 +40,7 @@ class Perfil extends React.Component {
         
 
         this.load();
+
 
 
     }
@@ -49,31 +59,38 @@ class Perfil extends React.Component {
         axios.get(`http://localhost:8080/user/about?id=${usuarioLogado.id}`)
         .then(response => {
             const data = response.data    
-            
-
+ 
             this.setState({description: data})
 
-            
+            this.setState({desc_default: data})
+         
+            this.format();
+           
         })
         .catch(erro => {
             console.log(erro.data)
         })
     }
 
-    split = (string) => {
+    format = () => {
 
-        var arrayOfStrings = string.split("\r");
-        console.log(arrayOfStrings[1])
 
-        return arrayOfStrings
+        const data = this.state.description
+
+        let str = data.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+        this.setState({description: str})
+
+
     }
 
     editar = () =>{
-        let descript = this.state.description;
+        let descript = this.state.desc_default;
         document.getElementById('text-about').value = descript;
         document.getElementById('div-about').style.display = 'inline';
         document.getElementById('text-about').style.display = 'inline';
-        document.getElementById('div-blur').style.filter = 'blur(2px)';
+        document.getElementById('div-blur').style.filter = 'blur(4px)';
+        
     }
 
     toHome = () => {
@@ -133,16 +150,27 @@ class Perfil extends React.Component {
             <span className="about">Sobre</span>
                 <img onClick={this.editar} className="btn-edit" src={Editar}/>
                 <br></br><br></br>
-            <span id="span-desc" wrap="hard" className="descript-user">{this.split(this.state.description)}</span>
+            <div id="span-desc" dangerouslySetInnerHTML={{__html:this.state.description }} className="descript-user"></div>
 
             </div> 
+        
+            <div className="box-perf1">
+                <label className="label-know">Conhecimentos</label>                 
+                <Conhecimentos body={this.state.know_request} />
+            </div>
+            <div className="box-perf2">
+                <label className="label-interest">Interesses</label>                 
+                <Interesses body={this.state.know_request} />
+            </div>
             </div> 
+
             <div id="div-about" className="div-sobre">
                 <label className="label-about">Conte-nos um pouco sobre <b className="blue">você</b></label>
                 <img onClick={this.cancelar} className="exit-about" src={Cancelar} />
                 <textarea  onChange={e => this.setState({desc_atualize: e.target.value})} id="text-about" className="text-sobre" cols="30" rows="5"></textarea>
                 <button onClick={this.atualizar} className="btn-sender-about">Enviar</button>
             </div>
+
             </>
         )
 

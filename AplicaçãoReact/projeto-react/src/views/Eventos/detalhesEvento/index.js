@@ -37,8 +37,8 @@ export default function DetalhesEvento() {
 
                     <tr>
                         <td>{eventoDeta.nome}</td>
-                        <td>{eventoDeta.local}</td>
-                        <td>{eventoDeta.data}</td>
+                        <td>{eventoDeta._local}</td>
+                        <td>{eventoDeta._data}</td>
                         <td>{eventoDeta.horario}</td>
  </tr>
                 </tbody>
