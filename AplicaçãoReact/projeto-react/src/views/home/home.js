@@ -4,11 +4,8 @@ import UserInfo from '../../components/info-user-bar'
 import {withRouter} from 'react-router-dom'
 import UsuarioCalls from '../../calls/userCalls'
 import PostField from './post-field'
-import Recomendation from '../../components/recomendation-field'
 import Waypoint from '../../components/way'
 import Loading from '../../imagens/Spinner.gif'
-import Pencil from '../../imagens/edit.svg'
-import File from '../../imagens/file.svg'
 import { useEffect } from 'react';
 import axios from 'axios'
 
@@ -19,7 +16,6 @@ class Home extends React.Component {
         idUser : '',
         photo : '',
         conteudo : '',
-        recomendados : [],
         request : [],
         way : ''
     }
@@ -40,12 +36,11 @@ class Home extends React.Component {
 
 
         this.setState({nome: usuarioLogado.nome})
-        this.setState({idUser: usuarioLogado.id})
+        this.setState({idUser: usuarioLogado.idUser})
         this.setState({photo: usuarioLogado.photo})  
 
-
+        this.buscarPhoto();
         this.initial();
-        this.loadRecomendation();
 
     }
 
@@ -58,16 +53,6 @@ class Home extends React.Component {
             console.log(erro)
         })
 
-    }
-
-    loadRecomendation = () => {
-        axios.get('http://localhost:8080/conhecimento/recomendados/teste')
-        .then( response => {
-            const dados = response.data
-            this.setState({recomendados: dados})
-        }).catch( erro => {
-            console.log(erro)
-        })
     }
   
 
@@ -94,6 +79,27 @@ class Home extends React.Component {
         })
     }
 
+    buscarPhoto = () => {
+        axios.get('http://localhost:8080/user/photo')
+        .then( response => {
+            const dados = response.data
+            this.setState({photo : response.data})
+            // console.log(this.state.photo)
+                    
+                this.setState({way: ''})
+
+                this.setState({request: [ ... this.state.request, ... dados]})
+                
+                this.setState({way: <Waypoint onEnter={this.loadPage} />})
+
+            return this.state.photo
+            }
+
+        ).catch( erro => {
+            console.log(erro)
+        })
+    }
+
 
     sair = () => {
         this.call.sair()
@@ -104,20 +110,14 @@ class Home extends React.Component {
         })
     }
 
-    toPerfil = () => {
-        this.props.history.push('/perfil')
-    }
-
-    toHome = () => {
-        this.props.history.push('/home')
-    }
-
+    
     
 
     postar = () => {
         axios.post('http://localhost:8080/post/new', {
             conteudo: this.state.conteudo,
-            id_user : this.state.idUser
+            nome_user: this.state.nome,
+            id_usuario : this.state.idUser
         }).then( response => {
          this.setState({conteudo: ''})
          document.getElementById("One").reset();
@@ -135,55 +135,32 @@ class Home extends React.Component {
 
         return(
             <>
-            <Navbar executeSair={this.sair} executePerfil={this.toPerfil} className="container"/>
-            <div className="content">
-                <div className="container-fluid">
-                    <div className="row">
+            <Navbar execute={this.sair} className="container"/>
 
-                        <UserInfo photo={this.state.photo} label={this.state.nome} />
-                            <div className="col-md-8">
-                                <div className="row search">
-                                    
-                                    <span className="icon-pencil">
-                                        <img  src={Pencil}/>
-                                    </span>
+            <UserInfo label={this.state.nome} />
 
-                                    <span className="icon-file">
-                                        <img src={File}/>
-                                     </span>
-                                   <div className="text-field-size">
-                                        <form id="One">
-                                            <textarea onChange={e => this.setState({conteudo: e.target.value})} className="text-field field-left" placeholder="Algo que queira compartilhar ?" rows="5"cols="33"></textarea>
-                                            <textarea className="text-field" placeholder="Algum conteudo que queira compartilhar ?" rows="5"cols="33"></textarea>                          
-                                        </form>
-                                    </div>
-                                    <button onClick={this.postar} className="btn-sender">Enviar</button>
-                                </div>
-
-                                <PostField body={this.state.request} />
-                           
-                           
-                            </div>
-            
-                        
-                        <Recomendation body={this.state.recomendados}/>
-                        
-
-    
-
-                        
-
-                        <img id="load" className="gif-load" src={Loading}/>
-
-                        <div className="way">
-
-                            {this.state.way}
-                            
-                        </div>
-                    </div>
+                <div className="divShare">
+                        <form id="One">
+                            <input onChange={e => this.setState({conteudo: e.target.value})} className="inputShare-one" placeholder="  algo que queira Compartilhar ?"  />
+                            <input className="inputShare-two" placeholder="      algum Conteúdo ?" />
+                         </form>
+                    <button onClick={this.postar} className="btn-sender">Enviar</button>
                 </div>
-            </div>
-                        
+                
+                <br></br>
+
+
+               <PostField body={this.state.request} photo = {this.state.photo} />
+
+               
+               <img id="load" className="gif-load" src={Loading}/>
+
+               <div className="way">
+
+                {this.state.way}
+                   
+               </div>
+                
 
                 
             </>

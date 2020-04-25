@@ -11,9 +11,8 @@ class Cadastro extends React.Component {
         nome: '',
         email: '',
         senha: '',
-        photo: '',
         senha_repeat: '',
-        mensagemErro : null
+        mensagemErro: null
     }
 
     constructor() {
@@ -24,23 +23,23 @@ class Cadastro extends React.Component {
     validar() {
         const msg = []
 
-        if(!this.state.nome){
+        if (!this.state.nome) {
             msg.push('O campo NOME é obrigatório.')
         }
 
-        if(!this.state.email) {
+        if (!this.state.email) {
             msg.push('O campo EMAIL é obrigatório.')
         }
 
-        else if(!this.state.email.match(/^[a-z0-9.]+@[a-z0-9]/)){
+        else if (!this.state.email.match(/^[a-z0-9.]+@[a-z0-9]/)) {
             msg.push('Informe um E-mail válido!')
         }
 
         if (!this.state.senha || !this.state.senha_repeat) {
             msg.push('Os campos de Senha são obrigatórios.')
         }
-        
-        else if(this.state.senha !== this.state.senha_repeat) {
+
+        else if (this.state.senha !== this.state.senha_repeat) {
             msg.push('As senhas não estão batendo.')
         }
 
@@ -52,25 +51,24 @@ class Cadastro extends React.Component {
 
         const msg = this.validar()
 
-        if(msg && msg.length > 0) {
-            this.setState({mensagemErro: msg[0]})
+        if (msg && msg.length > 0) {
+            this.setState({ mensagemErro: msg[0] })
             return false
         }
 
         const usuario = {
-                nome: this.state.nome,
-                email: this.state.email,
-                senha: this.state.senha,
-                photo: this.state.photo
-         }
+            nome: this.state.nome,
+            email: this.state.email,
+            senha: this.state.senha,
+        }
 
         this.call.cadastrar(usuario)
-        .then(Response => {
-            console.log('cadastrado com sucesso')
-            this.props.history.push('/login')
-        }).catch(erro => {
-            this.setState({ mensagemErro: erro.response.data })
-        })
+            .then(Response => {
+                console.log('cadastrado com sucesso')
+                this.props.history.push('/login')
+            }).catch(erro => {
+                this.setState({ mensagemErro: erro.response.data })
+            })
     }
 
     toLogin = () => {
@@ -80,61 +78,57 @@ class Cadastro extends React.Component {
 
     render() {
         return (
+
             <div className="container-b">
 
                 <Card title="Cadastro">
-                <div>
-                    <span>
-                        {this.state.mensagemErro}
-                    </span>
-                    
-              </div>
+                    <div>
+                        <span>
+                            {this.state.mensagemErro}
+                        </span>
 
-                    <div className="bs-component">
-
-                        <FormGroup label="Nome: *" htmlFor="inputNome">
-                            <input type="text" id="inputNome"
-                                name="nome" className="form-control"
-                                onChange={e => this.setState({ nome: e.target.value })} />
-                        </FormGroup>
-                        <FormGroup label="E-mail: *" htmlFor="inputEmail">
-                            <input type="text" id="inputEmail"
-                                name="email" className="form-control"
-                                onChange={e => this.setState({ email: e.target.value })} />
-                        </FormGroup>
-                        <FormGroup label="Foto: *" htmlFor="photo">
-                            <input type="file" id="photo"
-                                name="photo" className="form-control"
-                                onChange={()=>{
-                                    let fileReader = new FileReader();
-                                    var fileToRead = document.querySelector('#photo').files[0];
-                                    fileReader.addEventListener("loadend", ()=> {
-                                        console.log(fileReader.result); 
-                                        this.setState({ photo: fileReader.result  })
-                                        console.log("asdodsko" +this.state.photo)
-                                    })
-                                    fileReader.readAsDataURL(fileToRead);                                     
-                                }}  
-                                    />
-                        </FormGroup>
-                        <FormGroup label="Senha: *" htmlFor="inputSenha">
-                            <input type="password" id="inputSenha"
-                                name="senha" className="form-control"
-                                onChange={e => this.setState({ senha: e.target.value })} />
-                        </FormGroup>
-                        <FormGroup label="Repita a senha: *" htmlFor="senhaRepeat">
-                            <input type="password" id="senhaRepeat"
-                                name="senharp" className="form-control"
-                                onChange={e => this.setState({ senha_repeat: e.target.value })} />
-                        </FormGroup>
-                        <button type="button" onClick={this.cadastro} className="btn btn-success">Enviar</button>
-                        <button type="button" onClick={this.toLogin} className="btn btn-danger">Cancelar</button>
                     </div>
 
+                    <div className="col-md-12">
+                        <div className="card-login">
 
+                            <div className="bs-component">
+
+                                <FormGroup label="Nome: *" htmlFor="inputNome">
+                                    <input type="text" id="inputNome"
+                                        name="nome" className="form-control"
+                                        onChange={e => this.setState({ nome: e.target.value })} />
+                                </FormGroup>
+                                <FormGroup label="E-mail: *" htmlFor="inputEmail">
+                                    <input type="text" id="inputEmail"
+                                        name="email" className="form-control"
+                                        onChange={e => this.setState({ email: e.target.value })} />
+                                </FormGroup>
+                                <FormGroup label="Senha: *" htmlFor="inputSenha">
+                                    <input type="password" id="inputSenha"
+                                        name="senha" className="form-control"
+                                        onChange={e => this.setState({ senha: e.target.value })} />
+                                </FormGroup>
+                                <FormGroup label="Repita a senha: *" htmlFor="senhaRepeat">
+                                    <input type="password" id="senhaRepeat"
+                                        name="senharp" className="form-control"
+                                        onChange={e => this.setState({ senha_repeat: e.target.value })} />
+                                </FormGroup>
+                                <div className="row"> 
+                                    <button type="button" onClick={this.cadastro} className="btn btn-enviar">Enviar</button>
+                                    <button type="button" onClick={this.toLogin} className="btn btn-success-cancelar">Cancelar</button>
+                                </div>
+
+                                <div className="divtermos" > 
+                                <h2 className="frasecadastro"> 
+                                Ao clicar em "Enviar", você indica que concorda com os Termos de serviço do JustDoIT. 
+                                Vamos lidar com informações sobre você, conforme descrito na Política de privacidade e na Política de cookies.
+                                </h2></div>
+
+                            </div>
+                        </div>
+                    </div>
                 </Card>
-
-
             </div>
         )
     }

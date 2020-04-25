@@ -4,21 +4,11 @@ import Foto from '../imagens/circulo.png'
 function UserInfo(prop) {
 
     return(
-                <div className="col-md-2">
-                    <div className="user-menu" align="center">
-                        <div className="user-photo">
-                            <img className="img-user-menu" src={prop.photo}/>
-                        </div>
-                        <span className="name-style">{prop.label}</span>
-                        <div className="user-data">
-                            <ul align="left">
-                                <li className="data-user">Posts</li>
-                                <li className="data-user">Eventos</li>
-                                <li className="data-user">Informações</li>
-                            </ul>
-                        </div>
-                    </div>   
-                </div>
+
+            <div className="div-user-info">
+                <img className="img-perf" src={Foto}/>
+                <h2 className="user-info" >{prop.label}</h2>
+            </div>
 
     )
 
