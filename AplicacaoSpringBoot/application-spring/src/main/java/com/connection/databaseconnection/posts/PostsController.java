@@ -1,6 +1,5 @@
 package com.connection.databaseconnection.posts;
 
-import com.connection.databaseconnection.dataTreat.ListBuilder;
 import com.connection.databaseconnection.dataTreat.PostModel;
 import com.connection.databaseconnection.dto.PostDTO;
 import com.connection.databaseconnection.exception.ErroConexao;
