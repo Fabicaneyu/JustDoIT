@@ -11,8 +11,8 @@ const card = prop.body.map( req => {
         <label className="label-type-interest">Tipo</label>
         <div className="div-know-inferior">
             <img className="box-img-interest" src={req.imagem} />
-            <span className="desc-interest">{req.descricao}</span>
-            <span className="type-interest">{req.tipo}</span>
+            <div className="desc-interest">{req.descricao_interesse}</div>
+            <span className="type-interest">{req.tipoConhecimento}</span>
         </div>
         </>
     )

@@ -1,12 +1,11 @@
 package com.connection.databaseconnection.conhecimento;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Builder
@@ -34,5 +33,6 @@ public class Conhecimento {
     @Column( name = "imagem")
     private String imagem;
 
-
+//    @OneToMany(mappedBy = "fkConhecimento" )
+//    private List<Possui> usuario;
 }

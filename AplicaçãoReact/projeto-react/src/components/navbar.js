@@ -26,7 +26,7 @@ function Navbar (prop) {
             
   
                 <NavbarItem action={prop.executeHome} href="#/home" image={Home} classN="svg-item-home" label="Home" />
-                <NavbarItem action={prop.executePerfil} href="#/perfil" image={Brain} classN="svg-item-brain" label="Conhecimentos" />
+                <NavbarItem action={prop.executePerfil} href="#/perfil" image={Brain} classN="svg-item-brain" label="Perfil" />
                 <NavbarItem action={prop.executeEventos} href="#/cadastrarEvento" image={Evento} classN="svg-item-event" label="Eventos" />
                 <NavbarItem action={prop.executeSair} href="#/login" image={Exit} classN="svg-item-out" label="Sair" />
           </ul>

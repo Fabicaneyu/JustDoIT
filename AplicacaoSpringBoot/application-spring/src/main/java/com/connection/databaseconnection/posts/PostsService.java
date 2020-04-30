@@ -1,7 +1,7 @@
 package com.connection.databaseconnection.posts;
 
 import com.connection.databaseconnection.iterators.Iterator;
-import com.connection.databaseconnection.iterators.ListBuilder;
+import com.connection.databaseconnection.iterators.PostBuilder;
 import com.connection.databaseconnection.adapters.PostModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -104,7 +104,7 @@ public class PostsService {
 
         List<PostModel> result;
 
-         listBuilder = new ListBuilder(lista);
+         listBuilder = new PostBuilder(lista);
 
          result = listBuilder.nextList();
 

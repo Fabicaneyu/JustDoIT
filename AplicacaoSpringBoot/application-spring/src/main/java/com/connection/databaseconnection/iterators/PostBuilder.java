@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ListBuilder implements Iterator {
+public class PostBuilder implements Iterator {
 
     private List<Object[]> listaDefault;
     private PostAdapter postAdapter;
 
-    public ListBuilder(List<Object[]> lista) {
+    public PostBuilder(List<Object[]> lista) {
         this.listaDefault = lista;
         this.postAdapter = new PostAdapter();
     }

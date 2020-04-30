@@ -589,12 +589,18 @@ pre code {
   margin-left: auto;
 }
 
-.container-b {
-  width:50%;
+.container-login {
+  width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 32%;
+}
+
+.container-b {
+  width:65%;
+  padding-right: 15px;
+  margin:0 auto;
 }
 
 
@@ -2905,9 +2911,9 @@ fieldset:disabled a.btn {
 .btn-sender {
   font: bold;
   position: absolute;
-  margin-left: 46%;
+  margin-left: 41%;
   border-radius: 3px;
-  margin-top: 19%;
+  margin-top: 17%;
   margin-bottom: 1%;
   color: #ffffff;
   background-color: #051046;
@@ -2929,6 +2935,87 @@ fieldset:disabled a.btn {
 .btn-sender:hover {
   color: #051046;
   background-color: #ffffff;
+  border-color: #051046;
+}
+
+.btn-success-entrar {
+  color: #ffffff;
+  background-color: #0099FF;
+  border-color: #051046;
+  border-radius: 15px;
+  width: 100px;
+  height: 30px;
+  margin-left: 39%;
+  font-size: 15px;
+  font-weight: bold;
+  display: block;
+
+}
+
+.btn-success-cancelar {
+  color: #051046;
+  background-color: #ffffff;
+  border-color: #051046;
+  border-radius: 15px;
+  width: 100px;
+  height: 30px;
+  padding: 3px;
+  font-weight: bold;
+  display: block;
+  margin: auto;
+}
+
+
+.btn-enviar {
+  color: #fff;
+  background-color: #0099FF;
+  border-color: #051046;
+  border-radius: 15px;
+  width: 100px;
+  height: 30px;
+  padding: 3px;
+  font-weight: bold;
+  display: block;
+  margin: auto;
+}
+
+.btn-enviar:focus, .btn-enviar.focus {
+  color: #fff;
+  background-color: #051046;
+  border-color: #051046;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(6, 43, 209, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(6, 43, 209, 0.5);
+}
+
+.btn-enviar.disabled, .btn-enviar:disabled {
+  color: #fff;
+  background-color: #051046;
+  border-color: #051046;
+}
+
+.btn-enviar:not(:disabled):not(.disabled):active, .btn-enviar:not(:disabled):not(.disabled).active,
+.show > .btn-enviar.dropdown-toggle {
+  color: #fff;
+  background-color: #051046;
+  border-color: #051046;
+}
+
+.btn-enviar:not(:disabled):not(.disabled):active:focus, .btn-enviar:not(:disabled):not(.disabled).active:focus,
+.show > .btn-enviar.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(6, 43, 209, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(6, 43, 209, 0.5);
+}
+
+
+.btn-enviar:hover {
+  color: #051046;
+  background-color: #ffffff;
+  border-color: #051046;
+}
+
+.btn-enviar:hover {
+  color: #051046;
+  background-color: #0099ff;
   border-color: #051046;
 }
 
@@ -5117,6 +5204,8 @@ input[type="button"].btn-block {
 .card-header + .list-group .list-group-item:first-child {
   border-top: 0;
 }
+
+
 
 .card-footer {
   padding: 0.75rem 1.25rem;
@@ -10691,6 +10780,25 @@ a.text-dark:hover, a.text-dark:focus {
   padding-bottom: 0.4em;
 }
 
+.divfrasecadastro {
+  height: 20px;
+  margin-top: 15px;
+}
+
+.frasecadastro {
+  font-size: 13px;
+  text-align: center;
+  padding-top: 20px;
+
+}
+
+.bold-cadastro{
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
 .badge-secondary, .badge-warning {
   color: #fff;
 }
@@ -10770,7 +10878,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 .svg-item-brain {
 
   position : relative;
-  margin-left: 26%;
+  right: 4%;
   height: 26px;
   width: 50px;
  
@@ -11141,44 +11249,43 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
   font-size: 25px;
   position: relative;
-  left: 6%;
+  left: 4%;
 
 }
 
 .label-type-know {
 
   font-size: 25px;
-  position: relative;
-  left: 56%;
+  position: absolute;
+  left: 62%;
 
 }
 
 .label-type-interest {
 
   font-size: 25px;
-  position: relative;
-  left: 68%;
+  position: absolute;
+  left: 70%;
 
 }
 
 .label-level-know {
 
   font-size: 25px;
-  position: relative;
-  left: 75%;
+  position: absolute;
+  left: 85%;
 
 }
 
 .box-img-know {
 
-  height:120px;
-  width: 120px;
+  height:110px;
+  width: 110px;
   background-color: chartreuse;
-  position: relative;
-  border: 1px solid black;
-  margin-bottom: 2%;
+  position: absolute;
   margin-left: 3%;
   border-radius: 6px;
+  margin-top: 3%;
 
 }
 
@@ -11189,7 +11296,6 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   top: 11%;
   background-color: chartreuse;
   position: relative;
-  border: 1px solid black;
   margin-bottom: 2%;
   margin-left: 3%;
   border-radius: 6px;
@@ -11198,18 +11304,22 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
 .desc-know {
 
-  position: relative;
-  left: 3%;
-  bottom: 20%;
+  position: absolute;
+  margin-left: 20%;
+  margin-top: 2%;
+  height: 70px;
+  width: 200px;
   font-size: 15px;
 
 }
 
 .desc-interest {
 
-  position: relative;
-  left: 5%;
-  bottom: 20%;
+  position: absolute;
+  margin-left: 20%;
+  top: 24%;
+  height: 70px;
+  width: 200px;
   font-size: 15px;
 
 }
@@ -11217,7 +11327,9 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 .type-know {
 
   position: relative;
-  left: 16% ;
+  left: 16%;
+  text-align: center;
+  top: 40%;
   font-size: 15px;
 
 }
@@ -11225,16 +11337,18 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 .type-interest {
 
   position: relative;
-  left: 26% ;
+  left: 52%;
+  text-align: center;
+  top: 9%;
   font-size: 15px;
 
 }
 
 .level-know {
 
-  position: relative;
-  top: 8%;
-  left: 25.4%;
+  position: absolute;
+  margin-top: 1%;
+  left: 86%;
   font-size: 80px;
 
 }

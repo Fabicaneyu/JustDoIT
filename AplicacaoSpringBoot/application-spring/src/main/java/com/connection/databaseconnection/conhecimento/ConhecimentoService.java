@@ -1,6 +1,9 @@
 package com.connection.databaseconnection.conhecimento;
 
-import com.connection.databaseconnection.posts.Posts;
+import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuario;
+import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuarioRepository;
+import com.connection.databaseconnection.associative.interesse.InteresseUsuario;
+import com.connection.databaseconnection.associative.interesse.InteresseUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,12 @@ public class ConhecimentoService {
 
     @Autowired
     private ConhecimentoRepository repository;
+
+    @Autowired
+    private ConhecimentoUsuarioRepository conhecimentoUsuarioRepository;
+
+    @Autowired
+    private InteresseUsuarioRepository interesseUsuarioRepository;
 
     @Autowired
     private EntityManager entityManager;
@@ -48,6 +57,20 @@ public class ConhecimentoService {
         else {
             return null;
         }
+    }
+
+    public List<ConhecimentoUsuario> buscaConhecimentosPerfil(Long id) {
+
+        List<ConhecimentoUsuario>  result = conhecimentoUsuarioRepository.findConhecimentoById(id);
+
+        return result;
+    }
+
+    public List<InteresseUsuario> buscarInteresses(Long id) {
+
+        List<InteresseUsuario>  result = interesseUsuarioRepository.findConhecimentoById(id);
+
+        return result;
     }
 
 

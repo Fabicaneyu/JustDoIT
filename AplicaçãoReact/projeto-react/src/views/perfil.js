@@ -20,13 +20,8 @@ class Perfil extends React.Component {
         desc_atualize : '',
         desc_default: '',
         description: '',
-        know_request: [{"conhecimento": "Java",  "nivel" : "3",
-         "descricao":"Linguagem orientada a objeto", "tipo": "Linguagem de programaçaõ" },
-         {"conhecimento": "Java",  "nivel" : "3",
-         "descricao":"Linguagem orientada a objeto", "tipo": "Linguagem de programaçaõ" },
-         {"conhecimento": "Java",  "nivel" : "3",
-         "descricao":"Linguagem orientada a objeto", "tipo": "Linguagem de programaçaõ" },
-        ]
+        know_request:[],
+        interest_request: []
 
     }
     
@@ -40,8 +35,9 @@ class Perfil extends React.Component {
         
 
         this.load();
-
-
+        this.reset();
+        this.loadConhecimentos();
+        this.loadInteresses();
 
     }
 
@@ -55,7 +51,6 @@ class Perfil extends React.Component {
         this.setState({id_user: usuarioLogado.id})
         this.setState({photo: usuarioLogado.photo})  
 
-        console.log(usuarioLogado.id);
         axios.get(`http://localhost:8080/user/about?id=${usuarioLogado.id}`)
         .then(response => {
             const data = response.data    
@@ -70,6 +65,46 @@ class Perfil extends React.Component {
         .catch(erro => {
             console.log(erro.data)
         })
+
+    }
+
+    reset = () => {
+        this.setState({know_request: []})
+        this.setState({interest_request: []})
+    }
+
+    loadConhecimentos = () => {
+
+        const usuario = localStorage.getItem('usuario_atual') 
+        const usuarioLogado = JSON.parse(usuario)
+
+        axios.get(`http://localhost:8080/conhecimentos/buscar/conhecimentos?id=${usuarioLogado.id}`)
+        .then(response => {
+            const data = response.data
+
+            this.setState({know_request: data})
+
+        }).catch(erro => {
+            console.log(erro.data)
+        })
+
+    }
+
+    loadInteresses = () => {
+
+        const usuario = localStorage.getItem('usuario_atual') 
+        const usuarioLogado = JSON.parse(usuario)
+
+        axios.get(`http://localhost:8080/conhecimentos/buscar/interesses?id=${usuarioLogado.id}`)
+        .then(response => {
+            const data = response.data
+
+            this.setState({interest_request: data})
+
+        }).catch(erro => {
+            console.log(erro.data)
+        })
+
     }
 
     format = () => {
@@ -109,6 +144,10 @@ class Perfil extends React.Component {
             console.log(erro.response.data)
         })
     }
+
+
+
+
 
     atualizar = () => {
 
@@ -160,7 +199,7 @@ class Perfil extends React.Component {
             </div>
             <div className="box-perf2">
                 <label className="label-interest">Interesses</label>                 
-                <Interesses body={this.state.know_request} />
+                <Interesses body={this.state.interest_request} />
             </div>
             </div> 
 

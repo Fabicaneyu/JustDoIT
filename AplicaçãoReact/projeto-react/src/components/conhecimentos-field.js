@@ -9,12 +9,13 @@ const card = prop.body.map( req => {
         <>
         <label className="label-name-know">{req.conhecimento}</label>
         <label className="label-type-know">Tipo</label>
-        <label className="label-level-know">Nivel</label>
+        <label className="label-level-know">Nível</label>
         <div className="div-know-inferior">
-            <img className="box-img-know" src={req.imagem} />
-            <span className="desc-know">{req.descricao}</span>
-            <span className="type-know">{req.tipo}</span>
-            <span className="level-know">{req.nivel}</span>
+        <img className="box-img-know" src={req.imagem} />
+            <div className="desc-know">{req.descricao_user}</div>   
+            <span className="level-know">{req.nivel}</span>         
+            <div className="type-know">{req.tipoConhecimento}</div>
+            
         </div>
         </>
     )
