@@ -17,8 +17,18 @@ public class EventoController {
 
     @PostMapping(path = "/cadastrarEvento")
     public ResponseEntity<String> form(@RequestBody Evento evento) {
+      try {
+          if(evento == null){
+              System.out.println("Cadastro vazio");
+
+          }
+      }catch (Exception e){
+          e.printStackTrace();
+      }
+
         er.save(evento);
         return ResponseEntity.ok("redirect:/cadastrarEvento");
+
     }
 
     @GetMapping(path = "/eventos")
@@ -66,8 +76,8 @@ public class EventoController {
 
         @DeleteMapping(path = "/convidado/{rg}")
         public ResponseEntity delete (@PathVariable String rg){
-            cr.findByRg(rg);
-            cr.deleteById(rg);
+                cr.findByRg(rg);
+                cr.deleteById(rg);
             return ResponseEntity.ok().build();
 
         }

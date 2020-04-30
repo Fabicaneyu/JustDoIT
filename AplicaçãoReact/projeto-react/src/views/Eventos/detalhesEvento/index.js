@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiCornerDownLeft} from 'react-icons/fi';
+import { FiCornerDownLeft } from 'react-icons/fi';
 import Navbar from '../../../components/navbar'
 import api from '../../../services/api';
-import './style.css';
+import '../css-evento.css';
 import Convidado from './Convidados/convidado';
 import CadastroConvidado from './Convidados/cadastroConvidado';
 
@@ -20,35 +20,43 @@ export default function DetalhesEvento() {
     });
     return (
         <>
-       <Navbar  className="container"/>
-        <div className="container">
-            <div> <h1>Detalhe do Evento</h1> <Link className="botaoVoltar" to="/listarEvento"><FiCornerDownLeft/></Link></div>
-            <table className="container">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Local</th>
-                        <th>Data</th>
-                        <th>Horario</th>
+            <Navbar className="container" />
+            <div className="body">
+                <div className="menu-lateral">lalalal</div>
+                <div className=" form-detalhe-event ">
+                <Link className="botaoVoltar" to="/listarEvento"><FiCornerDownLeft /></Link>
+                <h3 className="text-h1">Detalhes do evento</h3>
+              
+                    <table className=" table ">
 
-                    </tr>
-                </thead>
+                        <tbody key={eventoDeta.codigo}>
+                            <tr ><th scope="row " >Nome</th>
+                                <td className="col-sm-7">{eventoDeta.nome}</td></tr>
 
-                <tbody key={eventoDeta.codigo}>
+                            <tr> <th scope="row">Local</th>
+                                <td>{eventoDeta.local}</td></tr>
+                            <tr> <th scope="row">Data</th>
+                                <td>{eventoDeta.data}</td></tr>
+                            <tr><th scope="row">Horario</th>
+                                <td>{eventoDeta.horario}</td></tr>
+                            <tr><th scope="row">Descrição</th>
+                                <td>
+                                {eventoDeta.descricao}</td></tr>
+                        </tbody>
+                    </table>
+                 
+                        
 
-                    <tr>
-                        <td>{eventoDeta.nome}</td>
-                        <td>{eventoDeta.local}</td>
-                        <td>{eventoDeta.data}</td>
-                        <td>{eventoDeta.horario}</td>
- </tr>
-                </tbody>
-            </table>
-            <CadastroConvidado className="container-form-convidado"/>
-                <Convidado/> 
-        </div>
-         
+
+                       </div>
+                        <div className="modal-position">
+                        <CadastroConvidado/>
+                        <Convidado />
+                        </div >
+                        </div>
+            
+
         </>
     );
-  
+
 }
