@@ -17,8 +17,18 @@ public class EventoController {
 
     @PostMapping(path = "/cadastrarEvento")
     public ResponseEntity<String> form(@RequestBody Evento evento) {
+      try {
+          if(evento == null){
+              System.out.println("Cadastro vazio");
+
+          }
+      }catch (Exception e){
+          e.printStackTrace();
+      }
+
         er.save(evento);
         return ResponseEntity.ok("redirect:/cadastrarEvento");
+
     }
 
     @GetMapping(path = "/eventos")
@@ -64,12 +74,7 @@ public class EventoController {
             return ResponseEntity.ok().build();
         }
 
-    @DeleteMapping(path="/evento/{codigo}")
-    public ResponseEntity deletarEvento ( @PathVariable("codigo") long codigo){
-        Evento evento = er.findByCodigo(codigo);
-        er.delete(evento);
-        return ResponseEntity.ok().build();
-    }
+
 
     @DeleteMapping(path = "/convidado/{rg}")
     public ResponseEntity delete (@PathVariable String rg){
@@ -78,6 +83,7 @@ public class EventoController {
         return ResponseEntity.ok().build();
 
     }
+
 
 
     }

@@ -19,7 +19,6 @@ public class Convidado {
     @Id
     private String rg;
 
-
     private String nomeConvidado;
 
     @ManyToOne

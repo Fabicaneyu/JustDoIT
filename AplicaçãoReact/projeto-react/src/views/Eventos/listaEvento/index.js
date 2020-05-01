@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiTrash2 ,FiList} from 'react-icons/fi';
+import { FiTrash2 ,FiList,FiPlusSquare} from 'react-icons/fi';
 import Navbar from '../../../components/navbar'
 import api from '../../../services/api';
-import './style.css';
+import '../css-evento.css';
+
 
 
 export default function Eventos() {
@@ -39,14 +40,19 @@ export default function Eventos() {
     return (
         <>
         <Navbar  className="container"/>
-        <div className="container">
+        <div className="body">
+        <div className="menu-lateral">lalalal</div>
+
+        <div className="box-body-list">
             <div>
-                <h1>Lista de Eventos</h1>  
-                    <Link className="botaoCadEvento" to="/cadastrarEvento">Novo evento</Link>
+                <h1 className="text-h1">Lista de Eventos</h1>  
+
+                    <Link  to="/cadastrarEvento"> <button className="botaoCadEvento">Novo evento</button></Link>
             </div>
-            <table className="container">
-                <thead>
-                    <tr>
+            <div className="box-body-list-itens">
+            <table className=" table">
+                <thead >
+                    <tr  class="table-light" >
                         <th>Nome</th>
                         <th>Local</th>
                         <th>Data</th>
@@ -59,7 +65,7 @@ export default function Eventos() {
                 {eventos.map(evento => (
                     <tbody key={evento.codigo}>
 
-                        <tr>
+                        <tr  class="table-light">
                             <td>{evento.nome}</td>
                             <td>{evento._local}</td>
                             <td>{evento._data}</td>
@@ -73,7 +79,8 @@ export default function Eventos() {
                     </tbody>
                 ))}
             </table>
-        </div>
+            
+            </div>  </div></div> 
         </>
     );
 }
