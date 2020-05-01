@@ -7,6 +7,8 @@ import PostField from './post-field'
 import Recomendation from '../../components/recomendation-field'
 import Waypoint from '../../components/way'
 import Loading from '../../imagens/Spinner.gif'
+import Pencil from '../../imagens/edit.svg'
+import File from '../../imagens/file.svg'
 import { useEffect } from 'react';
 import axios from 'axios'
 
@@ -134,30 +136,54 @@ class Home extends React.Component {
         return(
             <>
             <Navbar executeSair={this.sair} executePerfil={this.toPerfil} className="container"/>
+            <div className="content">
+                <div className="container-fluid">
+                    <div className="row">
 
-            <Recomendation body={this.state.recomendados}/>
-            <UserInfo label={this.state.nome} />
+                        <UserInfo photo={this.state.photo} label={this.state.nome} />
+                            <div className="col-md-8">
+                                <div className="row search">
+                                    
+                                    <span className="icon-pencil">
+                                        <img  src={Pencil}/>
+                                    </span>
 
-                <div className="divShare">
-                        <form id="One">
-                            <input onChange={e => this.setState({conteudo: e.target.value})} className="inputShare-one" placeholder="  algo que queira Compartilhar ?"  />
-                            <input className="inputShare-two" placeholder="      algum Conteúdo ?" />
-                         </form>
-                    <button onClick={this.postar} className="btn-sender">Enviar</button>
+                                    <span className="icon-file">
+                                        <img src={File}/>
+                                     </span>
+                                   <div className="text-field-size">
+                                        <form id="One">
+                                            <textarea onChange={e => this.setState({conteudo: e.target.value})} className="text-field field-left" placeholder="Algo que queira compartilhar ?" rows="5"cols="33"></textarea>
+                                            <textarea className="text-field" placeholder="Algum conteudo que queira compartilhar ?" rows="5"cols="33"></textarea>                          
+                                        </form>
+                                    </div>
+                                    <button onClick={this.postar} className="btn-sender">Enviar</button>
+                                </div>
+
+                                <PostField body={this.state.request} />
+                           
+                           
+                            </div>
+            
+                        
+                        <Recomendation body={this.state.recomendados}/>
+                        
+
+    
+
+                        
+
+                        <img id="load" className="gif-load" src={Loading}/>
+
+                        <div className="way">
+
+                            {this.state.way}
+                            
+                        </div>
+                    </div>
                 </div>
-                
-                <br></br>
-
-               <PostField body={this.state.request} />
-
-               <img id="load" className="gif-load" src={Loading}/>
-
-               <div className="way">
-
-                {this.state.way}
-                   
-               </div>
-                
+            </div>
+                        
 
                 
             </>
