@@ -35,7 +35,7 @@ export default prop => {
         <div className="col-md-2">
             <div className="user-recomandation">
                 <div className="first box">
-                    Conteúdo remendados para <b>você</b>
+                    Conteúdo recomendados para <b>você</b>
                 </div>
                 { corpo }
 

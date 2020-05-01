@@ -27,25 +27,25 @@ function Navbar(prop) {
             <div className="row">
                 <div className="col-md-3 icons-header" align="right">
                   <div className="icon-size">
-                      <img src={Home} action={prop.executeHome}/>
+                      <NavbarItem action={prop.executeHome} href="#/home" image={Home} classN="svg-item-home" />
                   </div>
                 </div>
 
                 <div className="col-md-3 icons-header" align="right">
                     <div className="icon-size">
-                        <img src={Brain} action={prop.executePerfil}/>
+                    <NavbarItem action={prop.executePerfil} href="#/perfil" image={Brain} classN="svg-item-brain"/>
                     </div>
                 </div>
 
                 <div className="col-md-3 icons-header" align="right">
                   <div className="icon-size">
-                      <img src={Evento} action={prop.executeEventos}/>
+                  <NavbarItem action={prop.executeEventos} href="#/cadastrarEvento" image={Evento} classN="svg-item-event"/>
                   </div>
                 </div>
 
                 <div className="col-md-3 menu icon-size" align="right">
                   <div className="icon-size">
-                      <img src={Exit} action={prop.executeSair}/>
+                  <NavbarItem action={prop.executeSair} href="#/login" image={Exit} classN="svg-item-out"/>
                   </div>
                 </div>
 
