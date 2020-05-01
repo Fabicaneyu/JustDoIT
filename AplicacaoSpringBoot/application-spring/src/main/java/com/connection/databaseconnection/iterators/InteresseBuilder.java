@@ -23,12 +23,13 @@ public class InteresseBuilder {
 
             String descricao_interesse = interesseUsuarios.get(i).getDescricao_interesse();
             String imagem = interesseUsuarios.get(i).getConhecimento().getImagem();
+            Long id = interesseUsuarios.get(i).getId();
             TipoConhecimento tipo = interesseUsuarios.get(i).getConhecimento().getTipo();
             String descricao = interesseUsuarios.get(i).getConhecimento().getDescricao();
             String conhecimento = interesseUsuarios.get(i).getConhecimento().getConhecimento();
 
             InteresseUsuarioDTO novoConhecimento = new InteresseUsuarioDTO(descricao_interesse,conhecimento,
-                    descricao,imagem,tipo);
+                    descricao,imagem, id, tipo);
 
             lista.add(novoConhecimento);
 

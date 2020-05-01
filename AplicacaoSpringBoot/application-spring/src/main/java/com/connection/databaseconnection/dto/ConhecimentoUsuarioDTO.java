@@ -6,15 +6,16 @@ public class ConhecimentoUsuarioDTO {
 
     private String descricao_user, conhecimento, descricao, imagem;
     private Integer nivel;
+    private Long id;
     private TipoConhecimento tipoConhecimento;
 
-    public ConhecimentoUsuarioDTO(String descricao_user, String conhecimento, String descricao, String imagem,
-                                  Integer nivel, TipoConhecimento tipoConhecimento) {
+    public ConhecimentoUsuarioDTO(String descricao_user, String conhecimento, String descricao, String imagem, Integer nivel, Long id, TipoConhecimento tipoConhecimento) {
         this.descricao_user = descricao_user;
         this.conhecimento = conhecimento;
         this.descricao = descricao;
         this.imagem = imagem;
         this.nivel = nivel;
+        this.id = id;
         this.tipoConhecimento = tipoConhecimento;
     }
 
@@ -64,5 +65,13 @@ public class ConhecimentoUsuarioDTO {
 
     public void setNivel(Integer nivel) {
         this.nivel = nivel;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

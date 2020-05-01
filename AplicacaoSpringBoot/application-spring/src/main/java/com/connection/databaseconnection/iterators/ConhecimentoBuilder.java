@@ -20,14 +20,15 @@ public class ConhecimentoBuilder {
         for(int i = 0 ; i < conhecimentoUsuarios.size(); i ++) {
 
             Integer nivel = conhecimentoUsuarios.get(i).getNivel();
+            Long id = conhecimentoUsuarios.get(i).getId();
             String descricao_user = conhecimentoUsuarios.get(i).getDescricao_user();
             String imagem = conhecimentoUsuarios.get(i).getConhecimento().getImagem();
             TipoConhecimento tipo = conhecimentoUsuarios.get(i).getConhecimento().getTipo();
             String descricao = conhecimentoUsuarios.get(i).getConhecimento().getDescricao();
             String conhecimento = conhecimentoUsuarios.get(i).getConhecimento().getConhecimento();
 
-            ConhecimentoUsuarioDTO novoConhecimento = new ConhecimentoUsuarioDTO(descricao_user,conhecimento,
-                    descricao,imagem,nivel,tipo);
+            ConhecimentoUsuarioDTO novoConhecimento = new ConhecimentoUsuarioDTO(descricao_user,conhecimento, descricao
+            , imagem, nivel,id, tipo);
 
             lista.add(novoConhecimento);
 

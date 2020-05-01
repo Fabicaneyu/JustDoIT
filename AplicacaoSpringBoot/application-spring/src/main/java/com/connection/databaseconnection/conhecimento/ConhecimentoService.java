@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ConhecimentoService {
@@ -59,6 +60,17 @@ public class ConhecimentoService {
         }
     }
 
+    public Optional<Conhecimento> buscaConhecimentoPorId (Long id) {
+
+        Optional<Conhecimento> busca = repository.findById(id);
+
+        if (busca.isPresent()) {
+            return busca;
+        }
+        else return null;
+
+    }
+
     public List<ConhecimentoUsuario> buscaConhecimentosPerfil(Long id) {
 
         List<ConhecimentoUsuario>  result = conhecimentoUsuarioRepository.findConhecimentoById(id);
@@ -71,6 +83,42 @@ public class ConhecimentoService {
         List<InteresseUsuario>  result = interesseUsuarioRepository.findConhecimentoById(id);
 
         return result;
+    }
+
+    public boolean deleteKnowById(Long id) {
+
+        Optional<ConhecimentoUsuario> conhecimentoUsuario = conhecimentoUsuarioRepository.findById(id);
+
+        if (conhecimentoUsuario.isPresent()) {
+            conhecimentoUsuarioRepository.deleteById(id);
+            return true;
+        }
+        else return false;
+    }
+
+    public boolean deleteInterestById(Long id) {
+
+        Optional<InteresseUsuario> interesseUsuario = interesseUsuarioRepository.findById(id);
+
+        if (interesseUsuario.isPresent()) {
+            interesseUsuarioRepository.deleteById(id);
+            return true;
+        }
+        else return false;
+    }
+
+    public boolean saveConhecimentoUsuario(ConhecimentoUsuario novo) {
+
+        conhecimentoUsuarioRepository.save(novo);
+        return true;
+
+    }
+
+    public boolean saveInteresseUsuario(InteresseUsuario novo) {
+
+        interesseUsuarioRepository.save(novo);
+        return true;
+
     }
 
 

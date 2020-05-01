@@ -3,6 +3,7 @@ import Navbar from '../components/navbar'
 import UsuarioCalls from '../calls/userCalls'
 import Cancelar from '../imagens/cancelar.svg'
 import Editar from '../imagens/editar.svg'
+import Add from '../imagens/add.svg'
 import Conhecimentos from '../components/conhecimentos-field'
 import Interesses from '../components/interesses-field'
 import axios from 'axios'
@@ -146,6 +147,11 @@ class Perfil extends React.Component {
     }
 
 
+    deletar = (id) => {
+
+        console.log("Funcionou" + id)
+
+    }
 
 
 
@@ -194,12 +200,14 @@ class Perfil extends React.Component {
             </div> 
         
             <div className="box-perf1">
-                <label className="label-know">Conhecimentos</label>                 
-                <Conhecimentos body={this.state.know_request} />
+                <label className="label-know">Conhecimentos</label>   
+                <img className="add-know" src={Add} />                
+                <Conhecimentos delete={this.deletar} body={this.state.know_request} />
             </div>
             <div className="box-perf2">
-                <label className="label-interest">Interesses</label>                 
-                <Interesses body={this.state.interest_request} />
+                <label className="label-interest">Interesses</label>   
+                <img className="add-interest" src={Add} />               
+                <Interesses delete={this.deletar} body={this.state.interest_request} />
             </div>
             </div> 
 

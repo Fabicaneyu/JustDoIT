@@ -11321,7 +11321,6 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   height: 70px;
   width: 200px;
   font-size: 15px;
-
 }
 
 .type-know {
@@ -11331,6 +11330,46 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   text-align: center;
   top: 40%;
   font-size: 15px;
+}
+
+.delete-know{
+
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 93%;
+  margin-top: 1%;
+  cursor: pointer;
+}
+
+.delete-interest{
+
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 93%;
+  cursor: pointer;
+  margin-top: 1%;
+}
+
+.add-know{
+
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 47%;
+  top: 28.3%;
+  cursor: pointer;
+}
+
+.add-interest{
+
+  position: relative;
+  height: 20px;
+  cursor: pointer;
+  width: 20px;
+  left: 4%;
+  margin-bottom: 0.7%;
 
 }
 
@@ -11341,7 +11380,6 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   text-align: center;
   top: 9%;
   font-size: 15px;
-
 }
 
 .level-know {

@@ -6,13 +6,15 @@ public class InteresseUsuarioDTO {
 
 
     private String descricao_interesse, conhecimento, descricao, imagem;
+    private Long id;
     private TipoConhecimento tipoConhecimento;
 
-    public InteresseUsuarioDTO(String descricao_interesse, String conhecimento, String descricao, String imagem, TipoConhecimento tipoConhecimento) {
+    public InteresseUsuarioDTO(String descricao_interesse, String conhecimento, String descricao, String imagem, Long id, TipoConhecimento tipoConhecimento) {
         this.descricao_interesse = descricao_interesse;
         this.conhecimento = conhecimento;
         this.descricao = descricao;
         this.imagem = imagem;
+        this.id = id;
         this.tipoConhecimento = tipoConhecimento;
     }
 
@@ -54,5 +56,13 @@ public class InteresseUsuarioDTO {
 
     public void setTipoConhecimento(TipoConhecimento tipoConhecimento) {
         this.tipoConhecimento = tipoConhecimento;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

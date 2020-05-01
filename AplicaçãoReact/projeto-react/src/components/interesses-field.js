@@ -1,9 +1,22 @@
 import React from 'react'
+import Delete from '../imagens/delete.svg'
+import axios from 'axios'
 
 export default prop => {
 
-const card = prop.body.map( req => {
 
+
+const card = prop.body.map( req => {
+    
+ function deletar() {
+        axios.delete(`http://localhost:8080/conhecimentos/remover/interesse/${req.id}`)
+        .then(response => {
+            console.log("Deletado com sucesso")
+        }).catch(erro => {
+            console.log(erro.data)
+        })
+    
+}
 
     return(
         <>
@@ -12,6 +25,7 @@ const card = prop.body.map( req => {
         <div className="div-know-inferior">
             <img className="box-img-interest" src={req.imagem} />
             <div className="desc-interest">{req.descricao_interesse}</div>
+            <img onClick={deletar} className="delete-interest" src={Delete} />  
             <span className="type-interest">{req.tipoConhecimento}</span>
         </div>
         </>

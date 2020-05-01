@@ -18,7 +18,7 @@ import java.util.Optional;
 @Controller
 @RestController
 @RequestMapping("/user")
-public class UserPageController {
+public class UserController {
 
 
     //Esse atributo vai armazenar o usuario atual
@@ -28,7 +28,7 @@ public class UserPageController {
     @Autowired
     private UserService controller;
 
-    public  UserPageController(UserService controller) {
+    public UserController(UserService controller) {
 
         this.controller = controller;
     }
