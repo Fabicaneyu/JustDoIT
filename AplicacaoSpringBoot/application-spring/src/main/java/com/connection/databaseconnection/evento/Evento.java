@@ -28,15 +28,16 @@ public class Evento implements Serializable {
     private String nome;
 
     @NotEmpty
-    private String local;
+    private String _local;
 
     @NotEmpty
-    private String data;
+    private String _data;
 
     @NotEmpty
     private String horario;
 
-   @OneToMany
+    @OneToMany
+
     private List<Convidado> convidados;
 
 

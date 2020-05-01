@@ -29,6 +29,7 @@ public class EventoController {
         } else {
             return ResponseEntity.ok(eventos);
         }
+
     }
 
         @GetMapping(path = "/eventos/{codigo}")
@@ -56,7 +57,6 @@ public class EventoController {
             return ResponseEntity.ok(convidado);
         }
 
-
         @DeleteMapping(path="/evento/{codigo}")
         public ResponseEntity deletarEvento ( @PathVariable("codigo") long codigo){
             Evento evento = er.findByCodigo(codigo);
@@ -64,12 +64,20 @@ public class EventoController {
             return ResponseEntity.ok().build();
         }
 
-        @DeleteMapping(path = "/convidado/{rg}")
-        public ResponseEntity delete (@PathVariable String rg){
-            cr.findByRg(rg);
-            cr.deleteById(rg);
-            return ResponseEntity.ok().build();
+    @DeleteMapping(path="/evento/{codigo}")
+    public ResponseEntity deletarEvento ( @PathVariable("codigo") long codigo){
+        Evento evento = er.findByCodigo(codigo);
+        er.delete(evento);
+        return ResponseEntity.ok().build();
+    }
 
-        }
+    @DeleteMapping(path = "/convidado/{rg}")
+    public ResponseEntity delete (@PathVariable String rg){
+        cr.findByRg(rg);
+        cr.deleteById(rg);
+        return ResponseEntity.ok().build();
+
+    }
+
 
     }

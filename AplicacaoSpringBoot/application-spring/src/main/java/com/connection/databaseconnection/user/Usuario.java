@@ -1,5 +1,6 @@
 package com.connection.databaseconnection.user;
 
+import com.connection.databaseconnection.conhecimento.Conhecimento;
 import com.connection.databaseconnection.posts.Posts;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,5 +32,7 @@ public class Usuario {
     private String senha;
     @Column( name = "sobre")
     private String sobre;
+//    @OneToMany( mappedBy = "usuario")
+//    private List<Conhecimento> conhecimentos;
 
 }

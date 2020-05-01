@@ -1,18 +1,28 @@
 package com.connection.databaseconnection.conhecimento;
 
-import com.connection.databaseconnection.posts.Posts;
+import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuario;
+import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuarioRepository;
+import com.connection.databaseconnection.associative.interesse.InteresseUsuario;
+import com.connection.databaseconnection.associative.interesse.InteresseUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ConhecimentoService {
 
     @Autowired
     private ConhecimentoRepository repository;
+
+    @Autowired
+    private ConhecimentoUsuarioRepository conhecimentoUsuarioRepository;
+
+    @Autowired
+    private InteresseUsuarioRepository interesseUsuarioRepository;
 
     @Autowired
     private EntityManager entityManager;
@@ -48,6 +58,67 @@ public class ConhecimentoService {
         else {
             return null;
         }
+    }
+
+    public Optional<Conhecimento> buscaConhecimentoPorId (Long id) {
+
+        Optional<Conhecimento> busca = repository.findById(id);
+
+        if (busca.isPresent()) {
+            return busca;
+        }
+        else return null;
+
+    }
+
+    public List<ConhecimentoUsuario> buscaConhecimentosPerfil(Long id) {
+
+        List<ConhecimentoUsuario>  result = conhecimentoUsuarioRepository.findConhecimentoById(id);
+
+        return result;
+    }
+
+    public List<InteresseUsuario> buscarInteresses(Long id) {
+
+        List<InteresseUsuario>  result = interesseUsuarioRepository.findConhecimentoById(id);
+
+        return result;
+    }
+
+    public boolean deleteKnowById(Long id) {
+
+        Optional<ConhecimentoUsuario> conhecimentoUsuario = conhecimentoUsuarioRepository.findById(id);
+
+        if (conhecimentoUsuario.isPresent()) {
+            conhecimentoUsuarioRepository.deleteById(id);
+            return true;
+        }
+        else return false;
+    }
+
+    public boolean deleteInterestById(Long id) {
+
+        Optional<InteresseUsuario> interesseUsuario = interesseUsuarioRepository.findById(id);
+
+        if (interesseUsuario.isPresent()) {
+            interesseUsuarioRepository.deleteById(id);
+            return true;
+        }
+        else return false;
+    }
+
+    public boolean saveConhecimentoUsuario(ConhecimentoUsuario novo) {
+
+        conhecimentoUsuarioRepository.save(novo);
+        return true;
+
+    }
+
+    public boolean saveInteresseUsuario(InteresseUsuario novo) {
+
+        interesseUsuarioRepository.save(novo);
+        return true;
+
     }
 
 

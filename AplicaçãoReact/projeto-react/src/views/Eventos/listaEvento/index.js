@@ -61,8 +61,8 @@ export default function Eventos() {
 
                         <tr>
                             <td>{evento.nome}</td>
-                            <td>{evento.local}</td>
-                            <td>{evento.data}</td>
+                            <td>{evento._local}</td>
+                            <td>{evento._data}</td>
                             <td>{evento.horario}</td>
                             <td>
                                 <button className="btDelete" onClick={() => deletarEvento(evento.codigo)} type="onsubmit" > <FiTrash2/></button>

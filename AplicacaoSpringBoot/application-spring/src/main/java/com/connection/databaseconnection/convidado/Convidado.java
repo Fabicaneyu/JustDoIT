@@ -19,14 +19,11 @@ public class Convidado {
     @Id
     private String rg;
 
-        private String nomeConvidado;
+
+    private String nomeConvidado;
 
     @ManyToOne
     private Evento evento;
-
-    public Evento getEvento() {
-        return evento;
-    }
 
     public void setEvento(Evento evento) {
         this.evento = evento;
