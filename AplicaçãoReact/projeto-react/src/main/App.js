@@ -1,11 +1,10 @@
 import React from 'react';
 import Rotas from './rotas'
-import Navbar from '../components/navbar'
-
 import '../bootstrap/bootswatch/pulse/bootstrap.css'
 import '../views/custom.css'
 
 class App extends React.Component {
+
 
 
   render(){

@@ -1,20 +1,20 @@
 import React from 'react'
 import Card from '../components/card.js'
 import Formgroup from '../components/form-group'
-import {whithRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import UsuarioCalls from '../calls/userCalls'
 
 class Login extends React.Component {
 
     state = {
 
-        email : '',
-        senha : '',
-        mensagemErro : null
-        
+        email: '',
+        senha: '',
+        mensagemErro: null
+
     }
 
-    constructor () {
+    constructor() {
         super();
         this.call = new UsuarioCalls();
     }
@@ -24,36 +24,37 @@ class Login extends React.Component {
         this.call.autenticar({
             email: this.state.email,
             senha: this.state.senha
-        }).then( response => {
-            localStorage.setItem('usuario_atual', JSON.stringify (response.data))
+        }).then(response => {
+            localStorage.setItem('usuario_atual', JSON.stringify(response.data))
             this.props.history.push('/home')
-        }).catch( erro => {
-            this.setState({mensagemErro : erro.response.data})
+        }).catch(erro => {
+            this.setState({ mensagemErro: erro.response.data })
         })
     }
 
 
     toCadastro = () => {
 
-        
+
         this.props.history.push('/cadastro')
 
-    }   
+    }
 
 
-//  logar = () => {
-//        console.log('Email: ' , this.state.email)
-//        console.log('Senha' , this.state.senha)
-//    }
+    //  logar = () => {
+    //        console.log('Email: ' , this.state.email)
+    //        console.log('Senha' , this.state.senha)
+    //    }
 
     render() {
         return (
-            
-                <div className="row">
-                 <div className="col-md-6" style={{position : 'relative', left: '25%'}}>
-                
-                        <div className="bs-docs-section"> 
-                          <div className="container-b">                            
+
+            <div className="container-login">
+
+                <div className="col-md-4" >
+
+                    <div className="card-login">
+
                             <Card title="Login">
 
                                 <div className="row">
@@ -63,30 +64,30 @@ class Login extends React.Component {
                                 <div className="row">
 
                                     <div className="col-lg-12">
-                                        
+
                                         <div className="bs-component">
 
                                             <fieldset>
-                                            <form>
-                                            <Formgroup htmlFor="imputEmail" label="Email : *">
 
-                                                <input type="text" value={this.state.email}
-                                                 onChange={e => this.setState({email: e.target.value})} className="form-control" htmlFor="imputEmail"
-                                                 aria-describedby="emailHelp" placeholder="Digite o Email"/>
+                                                <Formgroup htmlFor="imputEmail" >
 
-                                             </Formgroup>
+                                                    <input type="text" value={this.state.email}
+                                                        onChange={e => this.setState({ email: e.target.value })} className="form-control" htmlFor="imputEmail"
+                                                        aria-describedby="emailHelp" placeholder="Digite seu Email" />
 
-                                             <Formgroup label="Senha : *" htmlFor="imputPassword">
+                                                </Formgroup>
 
-                                               <input type="password" value={this.state.senha}
-                                               onChange={e => this.setState({senha: e.target.value})} className="form-control" htmlFor="imputPassword"
-                                                placeholder="Password"/>
+                                                <Formgroup htmlFor="imputPassword">
 
-                                            </Formgroup> 
-                                            
-                                            <button onClick={this.entrar} onSubmit={this.entrar} className="btn btn-success">Entrar</button>
-                                            <button onClick={this.toCadastro} className="btn btn-danger">Cadastrar</button>
-                                            </form>
+                                                    <input type="password" value={this.state.senha}
+                                                        onChange={e => this.setState({ senha: e.target.value })} className="form-control" htmlFor="imputPassword"
+                                                        placeholder="Digite sua Senha" />
+
+                                                </Formgroup>
+
+                                                <button onClick={this.entrar} className="btn-success-entrar">Entrar</button>
+                                                <div className="divfrasecadastro" > <h2 className="frasecadastro"> Ou crie uma conta gratuitamente <b onClick={this.toCadastro} className="bold-cadastro">aqui</b> </h2></div>
+
                                             </fieldset>
 
                                         </div>
@@ -97,16 +98,16 @@ class Login extends React.Component {
 
                             </Card>
 
-                        </div>
-                </div>
+                        
+                    </div>
                 </div>
 
             </div>
-           
- 
+
+
         )
     };
-        
+
 
 
 

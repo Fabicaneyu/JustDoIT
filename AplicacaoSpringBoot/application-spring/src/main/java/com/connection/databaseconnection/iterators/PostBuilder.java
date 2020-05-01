@@ -1,22 +1,32 @@
-package com.connection.databaseconnection.dataTreat;
+package com.connection.databaseconnection.iterators;
 
+import com.connection.databaseconnection.adapters.PostAdapter;
+import com.connection.databaseconnection.adapters.PostModel;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ListBuilder {
+public class PostBuilder implements Iterator {
 
     private List<Object[]> listaDefault;
-    private List<PostModel> listaOK;
+    private PostAdapter postAdapter;
 
-    public ListBuilder(List<Object[]> lista) {
+    public PostBuilder(List<Object[]> lista) {
         this.listaDefault = lista;
-        this.listaOK = new ArrayList<PostModel>();
+        this.postAdapter = new PostAdapter();
     }
 
-    public List<PostModel> formatList() {
+    public boolean hasNext() {
+
+        if(listaDefault.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+    public List<PostModel> nextList() {
         if (listaDefault != null) {
             for (int i = 0; i < listaDefault.size(); i++) {
                 Object[] data = listaDefault.get(i);
@@ -26,11 +36,10 @@ public class ListBuilder {
                 String date = data[3].toString();
                 String imagem = data[4].toString();
 
-                PostModel novoPost = new PostModel(id, nome, conteudo, date, imagem);
+                postAdapter.setModel(id, nome, conteudo, date, imagem);
 
-                listaOK.add(novoPost);
             }
-            return listaOK;
+            return postAdapter.getModel();
         }
         return null;
     }

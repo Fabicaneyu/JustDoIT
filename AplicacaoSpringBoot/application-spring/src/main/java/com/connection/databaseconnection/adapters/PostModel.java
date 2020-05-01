@@ -1,4 +1,4 @@
-package com.connection.databaseconnection.dataTreat;
+package com.connection.databaseconnection.adapters;
 
 public class PostModel {
 

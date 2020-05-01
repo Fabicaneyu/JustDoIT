@@ -1,0 +1,40 @@
+.container{
+    
+    margin-right: auto;
+    align-items: center;
+    align-content: center;
+    background-position: center;
+   
+   
+}
+.formContainer{
+    margin-left: 200px;
+    align-items: center;
+    align-content: center;
+   
+
+}
+.botaoCadastro{
+    width: 100px;
+    height:40px;
+    margin-top: 8px;
+    border-radius: 5px;
+    color : white;
+    background-color: green;
+    border:none;
+}
+.botaoLista{
+    margin-left: 8px;
+    width: 150px;
+    height:40px;
+    margin-top: 8px;
+    border-radius: 5px;
+    color : white;
+    background-color:red;
+    text-decoration:none;
+    border:none;
+}
+.a{
+color: #fff;
+text-decoration:none;
+}

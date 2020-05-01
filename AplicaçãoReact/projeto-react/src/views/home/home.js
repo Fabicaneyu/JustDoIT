@@ -61,7 +61,7 @@ class Home extends React.Component {
     }
 
     loadRecomendation = () => {
-        axios.get('http://localhost:8080/conhecimento/recomendados/teste')
+        axios.get('http://localhost:8080/conhecimentos/recomendados/teste')
         .then( response => {
             const dados = response.data
             this.setState({recomendados: dados})

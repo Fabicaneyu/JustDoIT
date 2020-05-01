@@ -1,4 +1,4 @@
-package com.connection.databaseconnection.associative;
+package com.connection.databaseconnection.associative.interesse;
 
 import com.connection.databaseconnection.conhecimento.Conhecimento;
 import com.connection.databaseconnection.user.Usuario;
@@ -14,22 +14,23 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Possui {
+@Table( name = "interesse_usuario", schema = "teste3")
+public class InteresseUsuario {
 
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO)
     @Column( name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn( name = "fkUser")
-    private Usuario usuario;
+    @Column( name = "descricao_interesse")
+    private String descricao_interesse;
 
     @ManyToOne
-    @JoinColumn( name = "fkConhecimento")
+    @JoinColumn( name = "fk_conhecimento")
     private Conhecimento conhecimento;
 
-    @Column( name = "nivel" )
-    private int nivel;
+    @ManyToOne
+    @JoinColumn( name = "fk_user")
+    private Usuario usuario;
 
 }

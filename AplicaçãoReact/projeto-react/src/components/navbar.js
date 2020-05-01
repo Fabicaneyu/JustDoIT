@@ -6,7 +6,6 @@ import Home from '../imagens/home.svg'
 import Evento from '../imagens/evento.svg'
 import Brain from '../imagens/brain.svg'
 import Exit from '../imagens/sair.svg'
-import axios from 'axios'
 
 function Navbar(prop) {
 
@@ -52,6 +51,7 @@ function Navbar(prop) {
 
 
             </div>       
+
         </div>
       </div>
     </div>

@@ -1,10 +1,8 @@
 package com.connection.databaseconnection.posts;
 
-import com.connection.databaseconnection.dataTreat.ListBuilder;
-import com.connection.databaseconnection.dataTreat.PostModel;
+import com.connection.databaseconnection.adapters.PostModel;
 import com.connection.databaseconnection.dto.PostDTO;
 import com.connection.databaseconnection.exception.ErroConexao;
-import com.connection.databaseconnection.user.UserService;
 import com.connection.databaseconnection.user.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
