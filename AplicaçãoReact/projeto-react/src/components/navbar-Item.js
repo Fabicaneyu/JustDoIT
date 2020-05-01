@@ -4,10 +4,11 @@ function NavbarItem(prop) {
 
     return(
 
-        <li  className="nav-item">
+        <a onClick={prop.action}  href={prop.href}>
                 <img src={prop.image} className={prop.classN}/>
-              <a onClick={prop.action} className="nav-link" href={prop.href}>{prop.label}</a>
-        </li>
+                {prop.label}
+              </a>
+        
 
     )
 

@@ -61,6 +61,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 body {
+  padding: 0px!important;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.875rem;
@@ -589,12 +590,18 @@ pre code {
   margin-left: auto;
 }
 
-.container-b {
-  width:50%;
+.container-login {
+  width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 32%;
+}
+
+.container-b {
+  width:65%;
+  
+  margin:0 auto;
 }
 
 
@@ -2268,6 +2275,7 @@ pre code {
   background-clip: padding-box;
   border: 1px solid #cbc8d0;
   border-radius: 0;
+  /* border-radius: .25rem; */
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2903,11 +2911,12 @@ fieldset:disabled a.btn {
 }
 
 .btn-sender {
+  top:-49px;
   font: bold;
   position: absolute;
-  margin-left: 46%;
+  margin-left: 41%;
   border-radius: 3px;
-  margin-top: 19%;
+  margin-top: 17%;
   margin-bottom: 1%;
   color: #ffffff;
   background-color: #051046;
@@ -2929,6 +2938,87 @@ fieldset:disabled a.btn {
 .btn-sender:hover {
   color: #051046;
   background-color: #ffffff;
+  border-color: #051046;
+}
+
+.btn-success-entrar {
+  color: #ffffff;
+  background-color: #0099FF;
+  border-color: #051046;
+  border-radius: 15px;
+  width: 100px;
+  height: 30px;
+  margin-left: 39%;
+  font-size: 15px;
+  font-weight: bold;
+  display: block;
+
+}
+
+.btn-success-cancelar {
+  color: #051046;
+  background-color: #ffffff;
+  border-color: #051046;
+  border-radius: 15px;
+  width: 100px;
+  height: 30px;
+  padding: 3px;
+  font-weight: bold;
+  display: block;
+  margin: auto;
+}
+
+
+.btn-enviar {
+  color: #fff;
+  background-color: #0099FF;
+  border-color: #051046;
+  border-radius: 15px;
+  width: 100px;
+  height: 30px;
+  padding: 3px;
+  font-weight: bold;
+  display: block;
+  margin: auto;
+}
+
+.btn-enviar:focus, .btn-enviar.focus {
+  color: #fff;
+  background-color: #051046;
+  border-color: #051046;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(6, 43, 209, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(6, 43, 209, 0.5);
+}
+
+.btn-enviar.disabled, .btn-enviar:disabled {
+  color: #fff;
+  background-color: #051046;
+  border-color: #051046;
+}
+
+.btn-enviar:not(:disabled):not(.disabled):active, .btn-enviar:not(:disabled):not(.disabled).active,
+.show > .btn-enviar.dropdown-toggle {
+  color: #fff;
+  background-color: #051046;
+  border-color: #051046;
+}
+
+.btn-enviar:not(:disabled):not(.disabled):active:focus, .btn-enviar:not(:disabled):not(.disabled).active:focus,
+.show > .btn-enviar.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(6, 43, 209, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(6, 43, 209, 0.5);
+}
+
+
+.btn-enviar:hover {
+  color: #051046;
+  background-color: #ffffff;
+  border-color: #051046;
+}
+
+.btn-enviar:hover {
+  color: #051046;
+  background-color: #0099ff;
   border-color: #051046;
 }
 
@@ -4605,6 +4695,7 @@ input[type="button"].btn-block {
 }
 
 .navbar {
+  z-index: 100000;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4617,7 +4708,7 @@ input[type="button"].btn-block {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 1.2rem 1rem;
+  padding: .5rem 1rem;
 }
 
 .navbar .container,
@@ -5117,6 +5208,8 @@ input[type="button"].btn-block {
 .card-header + .list-group .list-group-item:first-child {
   border-top: 0;
 }
+
+
 
 .card-footer {
   padding: 0.75rem 1.25rem;
@@ -10691,6 +10784,25 @@ a.text-dark:hover, a.text-dark:focus {
   padding-bottom: 0.4em;
 }
 
+.divfrasecadastro {
+  height: 20px;
+  margin-top: 15px;
+}
+
+.frasecadastro {
+  font-size: 13px;
+  text-align: center;
+  padding-top: 20px;
+
+}
+
+.bold-cadastro{
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
 .badge-secondary, .badge-warning {
   color: #fff;
 }
@@ -10754,10 +10866,10 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
 .svg-item-home {
 
- position : relative;
+ /* position : relative;
  height: 25px;
  width: 50px;
- filter:grayscale(100%);
+ filter:grayscale(100%); */
 
 }
 
@@ -10770,7 +10882,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 .svg-item-brain {
 
   position : relative;
-  margin-left: 26%;
+  right: 4%;
   height: 26px;
   width: 50px;
  
@@ -10865,6 +10977,8 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   border: none;
   background-color: #E8E8E8;
   border-radius: 5px;
+
+  
 }
 
 .conteudo-post {
@@ -10903,8 +11017,9 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 }
 
 .descript-user {
-  margin-top: 10%;
-  margin-left: 5%;
+  margin-top: 4%;
+  margin-right: 4%;
+  margin-left: 4%;
   font-size: 18px;
   color: gray;
   text-align: justify;
@@ -11083,6 +11198,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   position: absolute;
   height: 100%;
   width: 100%;
+  
 }
 
 .label-about {
@@ -11116,4 +11232,526 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 }
 
 
+.label-know {
+  font-size: 30px;
+  color: black;
+  position: absolute;
+  top: 26%;
+  left: 31%;
+}
 
+.label-interest {
+
+  font-size: 30px;
+  color: black;
+  position: relative;
+  left:2.7%;
+
+}
+
+.label-name-know {
+
+  font-size: 25px;
+  position: relative;
+  left: 4%;
+
+}
+
+.label-type-know {
+
+  font-size: 25px;
+  position: absolute;
+  left: 62%;
+
+}
+
+.label-type-interest {
+
+  font-size: 25px;
+  position: absolute;
+  left: 70%;
+
+}
+
+.label-level-know {
+
+  font-size: 25px;
+  position: absolute;
+  left: 85%;
+
+}
+
+.box-img-know {
+
+  height:110px;
+  width: 110px;
+  background-color: chartreuse;
+  position: absolute;
+  margin-left: 3%;
+  border-radius: 6px;
+  margin-top: 3%;
+
+}
+
+.box-img-interest {
+
+  height:120px;
+  width: 120px;
+  top: 11%;
+  background-color: chartreuse;
+  position: relative;
+  margin-bottom: 2%;
+  margin-left: 3%;
+  border-radius: 6px;
+
+}
+
+.desc-know {
+
+  position: absolute;
+  margin-left: 20%;
+  margin-top: 2%;
+  height: 70px;
+  width: 200px;
+  font-size: 15px;
+
+}
+
+.desc-interest {
+
+  position: absolute;
+  margin-left: 20%;
+  top: 24%;
+  height: 70px;
+  width: 200px;
+  font-size: 15px;
+}
+
+.type-know {
+
+  position: relative;
+  left: 16%;
+  text-align: center;
+  top: 40%;
+  font-size: 15px;
+}
+
+.delete-know{
+
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 93%;
+  margin-top: 1%;
+  cursor: pointer;
+}
+
+.delete-interest{
+
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 93%;
+  cursor: pointer;
+  margin-top: 1%;
+}
+
+.add-know{
+
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 47%;
+  top: 28.3%;
+  cursor: pointer;
+}
+
+.add-interest{
+
+  position: relative;
+  height: 20px;
+  cursor: pointer;
+  width: 20px;
+  left: 4%;
+  margin-bottom: 0.7%;
+
+}
+
+.type-interest {
+
+  position: relative;
+  left: 52%;
+  text-align: center;
+  top: 9%;
+  font-size: 15px;
+}
+
+.level-know {
+
+  position: absolute;
+  margin-top: 1%;
+  left: 86%;
+  font-size: 80px;
+
+}
+
+
+.div-know-inferior {
+
+  background-color: gainsboro;
+  height: 160px;
+  width: 840px ;
+  top: 0%;
+  border-radius: 3px;
+  margin-left: 3%;
+  margin-bottom: 2%;
+
+}
+
+.div-know-superior {
+
+border: 1px solid black;
+background-color: white;
+border-radius: 3px;
+min-width: 900px; 
+max-width: 900px;
+position: relative;
+left: auto;
+  
+}
+
+.box-perf1 {
+
+background-color: white;
+ margin-top:16.5%;
+ margin-left: 30%;
+
+}
+
+.box-perf2 {
+
+  background-color: white;
+  margin-top:3%;
+  margin-left: 30%;
+  margin-bottom: 10%;
+ 
+ }
+
+
+
+
+
+
+
+
+/*Custom new Css*/
+
+.bg-header{
+  background-color: #101143;
+}
+
+.icon-size svg{
+  fill: white;
+}
+
+.header .container-fluid{
+  padding-right: 35px;
+  padding-left: 35px;
+}
+.header ::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.header ::-moz-placeholder {  /* Firefox 19+ */
+  text-align: center;  
+}     
+
+@media (min-width: 768px) {
+  .logo-size{
+      position: relative;
+      color:gray;
+      
+      height: 40px;
+      width: 50px;
+  }
+  
+  .icon-size{
+      height: 30px;
+      width: 30px;
+  }
+  
+}
+
+@media (max-width: 767px){
+   .icons-header{
+       display: none;
+   }
+   .logo-size{
+      height: 0px;
+      width: 0px;
+  }
+ .menu .icon-size{
+      height: 30px;
+      width: 30px;
+  }
+  
+}
+
+
+/*BODY */
+.content{
+   height: 100%;
+   width: 100%;
+   padding: 80px 35px 0px 35px;
+  background-color: #F0F0F5;
+}
+
+
+
+.user-menu{
+  padding: 20px 20px 0px 20px;
+  height: 400px;
+  width: 170px;
+  background-color: #ffffff;
+  
+}
+
+.text-field{
+  height: 125px;
+  width: 50%;
+  resize: none;
+  text-align: center;
+  padding: 50px;
+  
+  border: none;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2)
+  
+}
+
+.user-recomandation{
+  float: right;
+  height: 400px;
+  width: 170px;
+  background-color: #ffffff;
+}
+.field-left{
+  border-right: 1px solid gray;   
+}
+
+.icon-file{
+  position: absolute;
+  left: 50%;
+  width:30px;
+  height:30px;
+}
+.icon-pencil{
+  position: absolute;
+  width:25px;
+  left: 5px;
+  height:25px;
+}
+
+.user-photo{
+  
+  background-color: green;
+  height: 80px;
+  border-radius: 80px;
+  width: 80px;
+  margin-bottom: 8px;
+  
+}
+
+.name-style{
+  font-weight: bolder;
+  color: #555555;
+  
+}
+
+.user-data{
+  margin-top: 25px;
+}
+.user-data ul{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+}
+
+.data-user{
+  margin-top: 20px;
+  border-bottom: solid 1px #959090;
+  color: #555555;
+  font-size: 13px;
+  font-weight: 500;
+
+}
+.home{
+  
+  background-color: #F0F0F5;
+      background-repeat: no-repeat;
+      -moz-background-size: 100% 100%;
+      -webkit-background-size: 100% 100%;
+      background-size: 100% 100%;
+  }
+
+.first{
+  
+  height: 60px;
+  font-size: 11px;
+  padding: 10px 15px 15px 15px; 
+  
+}
+/*.user-recomandation 340 height*/
+.first .box{
+  border-bottom: solid 1px;
+}
+
+.itens-rec{
+  border-top: solid 1px #959090;
+  
+}
+.standard-recomandation {
+  height: 85px;
+  padding: 8px 0px 8px 4px; 
+}
+
+.img-box{
+  height:52px;
+  width: auto;
+}
+.row-anulled{
+  margin-right: 0px;
+   margin-left: 0px;
+}
+
+.title-recomandation{
+  font-size: 11px;
+  font-weight: bold;    
+}
+
+.anulled{
+  padding-left: 5px;
+  padding-right: 0px;
+}
+.box .standard-recomandation .anulled{
+padding-right: 0px;
+}
+.text-recomandation{
+  font-size: 9px;
+}
+
+.search{
+  margin-bottom: 20px;
+}
+
+.post-field{
+  padding: 20px 40px 20px 40px;
+  width: 100%;
+  height: inherit;
+  background-color: white;
+  margin-bottom: 50px;
+}
+
+.photo-postField{
+  background-color: gray;
+  height: 70px;
+  border-radius: 40px;
+  width: 70px;
+  margin-right: 20px;
+}
+.userPost-name{
+  padding: 5px 20px 0px 0px;
+}
+
+.content-field{
+  margin: 40px 0px;
+  font-size: 18px;
+  
+}
+.user-text{
+  font-size: 10px;
+}
+.username{
+  margin-bottom: 5px;
+}
+.tag-size{
+  font-size: 12px;
+}
+
+.tags-reference{
+  font-size:11px
+}
+.tag.col-md-2 {
+  padding-left: 0px;
+}
+.icon-value{
+  font-size: 11px;
+}
+
+.size-around{
+  margin: 15px;
+}
+.score-style{
+  cursor: pointer;
+}
+
+.icon-value.col-md-10{
+  padding-left: 0px
+}
+
+.share-icon{
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+
+.img-size-logo{
+  width: 100%;
+  height: 100%;
+}
+
+.img-user-menu{
+  width: 100%;
+  border-radius: 40px;
+}
+
+.imgRecomandation{
+  height: 54px;
+  width: 52px;
+}
+.col-md-4.img-box{
+  padding: 0px;
+}
+.text-field-size{
+  width: 100%;
+}
+
+
+.icon-posts{
+  width: 20px;
+  height: 20px;
+}
+
+body{
+      background-color: #F0F0F5;
+      background-repeat: no-repeat;
+      -moz-background-size: 100% 100%;
+      -webkit-background-size: 100% 100%;
+      background-size: 100% 100%; 
+}
+
+.frasecadastro {
+  font-size: 13px;
+  text-align: center;
+  padding-top: 20px
+}
+
+.divfrasecadastro {
+  height: 20px;
+  margin-top: 15px;
+}
+
+.bold-cadastro{
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+}

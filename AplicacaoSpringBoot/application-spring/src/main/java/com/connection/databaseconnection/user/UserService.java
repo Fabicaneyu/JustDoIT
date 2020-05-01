@@ -37,6 +37,19 @@ public class UserService {
 
     }
 
+    public Optional<Usuario> buscaporIdOptional(Long id) {
+
+        Optional<Usuario> result = this.repository.findById(id);
+
+        if(result.isPresent()) {
+            return result;
+        }
+        else {
+            return null;
+        }
+
+    }
+
     @Transactional
     public Usuario saveUser(Usuario user) {
         verifyNewEmail(user.getEmail());

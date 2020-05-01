@@ -24,10 +24,6 @@ public class Convidado {
     @ManyToOne
     private Evento evento;
 
-    public Evento getEvento() {
-        return evento;
-    }
-
     public void setEvento(Evento evento) {
         this.evento = evento;
     }

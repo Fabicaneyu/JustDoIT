@@ -27,15 +27,15 @@ public class Evento implements Serializable {
 
     private String nome;
 
+    @NotEmpty
+    private String _local;
 
-    private String local;
+    @NotEmpty
+    private String _data;
 
-
-    private String data;
 
 
     private String horario;
-
 
     private String descricao;
 

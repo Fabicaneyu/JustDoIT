@@ -5,6 +5,7 @@ public class ConhecimentoDTO {
     private String conhecimento, descricao, imagem, tipo;
     private Long id;
 
+
     public String getConhecimento() {
         return conhecimento;
     }
