@@ -4,7 +4,8 @@ import { FiCornerDownLeft} from 'react-icons/fi';
 import Navbar from '../../../components/navbar'
 import api from '../../../services/api';
 import './style.css';
-
+import Convidado from './Convidados/convidado';
+import CadastroConvidado from './Convidados/cadastroConvidado';
 
 export default function DetalhesEvento() {
 
@@ -12,7 +13,7 @@ export default function DetalhesEvento() {
     const id = localStorage.getItem("codigo");
 
     useEffect(() => {
-        api.get(`eventos/${id}`).then(response => {
+        api.get(`/eventos/${id}`).then(response => {
             setEventoDet(response.data);
 
         })
@@ -43,8 +44,10 @@ export default function DetalhesEvento() {
  </tr>
                 </tbody>
             </table>
-           
+            <CadastroConvidado className="container-form-convidado"/>
+                <Convidado/> 
         </div>
+         
         </>
     );
   

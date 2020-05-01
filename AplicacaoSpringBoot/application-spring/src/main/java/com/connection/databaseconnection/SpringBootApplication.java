@@ -13,7 +13,6 @@ public class SpringBootApplication implements WebMvcConfigurer {
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**").allowedMethods("GET" , "POST", "PUT", "PATCH", "DELETE", "OPTIONS");
 	}
-
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/**").addResourceLocations("/*");
 	}

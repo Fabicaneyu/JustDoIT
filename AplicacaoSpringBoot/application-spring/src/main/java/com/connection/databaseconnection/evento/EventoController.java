@@ -29,33 +29,40 @@ public class EventoController {
         } else {
             return ResponseEntity.ok(eventos);
         }
+
     }
 
-    @GetMapping(path = "/eventos/{codigo}")
-    public ResponseEntity eventosEspecificos ( @PathVariable("codigo") long codigo){
-        Evento evento = er.findByCodigo(codigo);
-        return ResponseEntity.ok(evento);
-    }
-
-    @GetMapping(path = "/convidado/{codigo}")
-    public ResponseEntity detalhesEvento ( @PathVariable("codigo") long codigo) {
-        Evento evento = er.findByCodigo(codigo);
-        Iterable<Convidado> convidados = cr.findByEvento(evento);
-        if (convidados == null) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(convidados);
+        @GetMapping(path = "/eventos/{codigo}")
+        public ResponseEntity eventosEspecificos ( @PathVariable("codigo") long codigo){
+            Evento evento = er.findByCodigo(codigo);
+            return ResponseEntity.ok(evento);
         }
-    }
-    @PostMapping(path = "/convidado/{codigo}")
-    public ResponseEntity cadastroConvidado( @PathVariable("codigo") long codigo, @RequestBody Convidado convidado)
-    {
-        Evento evento = er.findByCodigo(codigo);
-        convidado.setEvento(evento);
-        cr.save(convidado);
-        return ResponseEntity.ok(convidado);
-    }
 
+        @GetMapping(path = "/convidado/{codigo}")
+        public ResponseEntity detalhesEvento ( @PathVariable("codigo") long codigo) {
+            Evento evento = er.findByCodigo(codigo);
+            Iterable<Convidado> convidados = cr.findByEvento(evento);
+            if (convidados == null) {
+                return ResponseEntity.noContent().build();
+            } else {
+                return ResponseEntity.ok(convidados);
+            }
+        }
+        @PostMapping(path = "/convidado/{codigo}")
+        public ResponseEntity cadastroConvidado( @PathVariable("codigo") long codigo, @RequestBody Convidado convidado)
+        {
+            Evento evento = er.findByCodigo(codigo);
+            convidado.setEvento(evento);
+            cr.save(convidado);
+            return ResponseEntity.ok(convidado);
+        }
+
+        @DeleteMapping(path="/evento/{codigo}")
+        public ResponseEntity deletarEvento ( @PathVariable("codigo") long codigo){
+            Evento evento = er.findByCodigo(codigo);
+            er.delete(evento);
+            return ResponseEntity.ok().build();
+        }
 
     @DeleteMapping(path="/evento/{codigo}")
     public ResponseEntity deletarEvento ( @PathVariable("codigo") long codigo){
@@ -72,4 +79,5 @@ public class EventoController {
 
     }
 
-}
+
+    }

@@ -1,0 +1,12 @@
+.container-cad-conv{
+  margin-top: 30px; 
+}
+.botaoCadastro{
+    width: 100px;
+    height:40px;
+    margin-top: 8px;
+    border-radius: 5px;
+    color : white;
+    background-color: green;
+    border:none;
+}

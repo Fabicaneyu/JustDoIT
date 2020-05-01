@@ -19,7 +19,6 @@ export default function Eventos() {
 
     async function deletarEvento(id) {
         try {
-            console.log(id);
             await api.delete(`/evento/${id}`);
         } catch{
             alert('Erro ao deletar evento, tente novamente.');
