@@ -49,9 +49,9 @@ class Login extends React.Component {
     render() {
         return (
 
-            <div className="container-login">
+            <div className="container lala">
 
-                <div className="col-md-4" >
+                <div className="col-md-12" >
 
                     <div className="card-login">
 
@@ -85,7 +85,7 @@ class Login extends React.Component {
 
                                                 </Formgroup>
 
-                                                <button onClick={this.entrar} className="btn-success-entrar">Entrar</button>
+                                                <button onClick={this.entrar} className="btn btn-success-entrar">Entrar</button>
                                                 <div className="divfrasecadastro" > <h2 className="frasecadastro"> Ou crie uma conta gratuitamente <b onClick={this.toCadastro} className="bold-cadastro">aqui</b> </h2></div>
 
                                             </fieldset>
