@@ -25,27 +25,27 @@ function Navbar(prop) {
         <Busca />
         <div className="col-md-3 col-sm-2 col-2">
             <div className="row">
-                <div className="col-md-3 icons-header" align="right">
+                <div className="col-md-3" align="right">
                   <div className="icon-size">
-                      <NavbarItem action={prop.executeHome} href="#/home" image={Home} classN="svg-item-home" />
+                      <NavbarItem spam="home-navbar-label" action={prop.executeHome} href="#/home" image={Home} label="Home" classN="svg-item-home" />
                   </div>
                 </div>
 
-                <div className="col-md-3 icons-header" align="right">
+                <div className="col-md-3" align="right">
                     <div className="icon-size">
-                    <NavbarItem action={prop.executePerfil} href="#/perfil" image={Brain} classN="svg-item-brain"/>
+                    <NavbarItem spam="perfil-navbar-label" action={prop.executePerfil} href="#/perfil" label="Perfil" image={Brain} classN="svg-item-brain"/>
                     </div>
                 </div>
 
-                <div className="col-md-3 icons-header" align="right">
+                <div className="col-md-3" align="right">
                   <div className="icon-size">
-                  <NavbarItem action={prop.executeEventos} href="#/cadastrarEvento" image={Evento} classN="svg-item-event"/>
+                  <NavbarItem spam="eventos-navbar-label" action={prop.executeEventos} href="#/cadastrarEvento" label="Eventos" image={Evento} classN="svg-item-event"/>
                   </div>
                 </div>
 
-                <div className="col-md-3 menu icon-size" align="right">
+                <div className="col-md-3 menu" align="right">
                   <div className="icon-size">
-                  <NavbarItem action={prop.executeSair} href="#/login" image={Exit} classN="svg-item-out"/>
+                  <NavbarItem spam="sair-navbar-label" action={prop.executeSair} href="#/login" image={Exit} label="Sair" classN="svg-item-out"/>
                   </div>
                 </div>
 

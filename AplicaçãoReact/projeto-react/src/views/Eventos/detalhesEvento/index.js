@@ -34,9 +34,9 @@ export default function DetalhesEvento() {
                                 <td className="col-sm-7">{eventoDeta.nome}</td></tr>
 
                             <tr> <th scope="row">Local</th>
-                                <td>{eventoDeta.local}</td></tr>
+                                <td>{eventoDeta._local}</td></tr>
                             <tr> <th scope="row">Data</th>
-                                <td>{eventoDeta.data}</td></tr>
+                                <td>{eventoDeta._data}</td></tr>
                             <tr><th scope="row">Horario</th>
                                 <td>{eventoDeta.horario}</td></tr>
                             <tr><th scope="row">Descrição</th>

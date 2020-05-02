@@ -200,8 +200,8 @@ class Perfil extends React.Component {
             </div> 
         
             <div className="box-perf1">
-                <label className="label-know">Conhecimentos</label>   
-                <img className="add-know" src={Add} />                
+                <img className="add-know" src={Add} />
+                <label className="label-know">Conhecimentos</label>                                   
                 <Conhecimentos delete={this.deletar} body={this.state.know_request} />
             </div>
             <div className="box-perf2">

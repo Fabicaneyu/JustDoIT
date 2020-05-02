@@ -24,7 +24,6 @@ public class Evento implements Serializable {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long codigo;
 
-
     private String nome;
 
     @NotEmpty
@@ -32,8 +31,6 @@ public class Evento implements Serializable {
 
     @NotEmpty
     private String _data;
-
-
 
     private String horario;
 
@@ -43,7 +40,4 @@ public class Evento implements Serializable {
     private List<Convidado> convidados;
 
 
-    public long getCodigo() {
-        return this.codigo;
-    }
 }

@@ -12,6 +12,7 @@ const card = prop.body.map( req => {
         axios.delete(`http://localhost:8080/conhecimentos/remover/interesse/${req.id}`)
         .then(response => {
             console.log("Deletado com sucesso")
+            window.location.reload();
         }).catch(erro => {
             console.log(erro.data)
         })

@@ -8,10 +8,8 @@ import UserInfo from '../../../components/info-user-bar';
 export default function CadastroEvento() {
 
     const [nome, setNome] = useState('');
-
     const [_local, setLocal] = useState('');
-    const [_data,setData] = useState('');
-
+    const [_data, setData] = useState('');
     const [horario, setHorario] = useState('');
     const [descricao, setDescricao] = useState('');
 
@@ -35,9 +33,7 @@ export default function CadastroEvento() {
 
 
 
-
     return (
-
 
         <> <Navbar className="container" />
         <div className="body">
@@ -52,6 +48,7 @@ export default function CadastroEvento() {
                                 <label className="label" for="inputDefault">Nome</label>
                                 <input name="nome" type="text" className="form-control1" value={nome} onChange={e => setNome(e.target.value)} />
                             </div>
+                        </div>
                         <div className="form-row ">
                             <div className="col-sm-4">
                                 <label className="label" for="inputDefault">Local</label>
