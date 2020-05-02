@@ -38,7 +38,7 @@ export default function CadastroEvento() {
         <> <Navbar className="container" />
         <div className="body">
            
-            <div className="menu-lateral">lalalal</div>
+            <div className="menu-lateral"></div>
             <div className=" container">
                 <div className="box-body">
                     <form onSubmit={handleRegister} className="formContainer">
@@ -74,8 +74,7 @@ export default function CadastroEvento() {
                         </div>
                         <div className="buttonCad">
                             <button className="botaoCadastro" type="submit" >Cadastrar</button>
-                            <button className="botaoLista" >
-                                <Link className="a" to="/listarEvento">Lista de eventos</Link></button>
+                            <button className="botaoLista" to type="button" ><Link className="a" to="/listarEvento">Lista de eventos</Link></button>
                         </div></form>
 
                 </div>   </div >
