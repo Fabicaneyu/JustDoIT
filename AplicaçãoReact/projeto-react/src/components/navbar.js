@@ -1,7 +1,7 @@
 import React from 'react'
 import NavbarItem from './navbar-Item'
 import Busca from './busca'
-import Logo from '../imagens/logo_v.2.png'
+import Logo from '../imagens/logo.png'
 import Home from '../imagens/home.svg'
 import Evento from '../imagens/evento.svg'
 import Brain from '../imagens/brain.svg'
@@ -12,13 +12,13 @@ function Navbar(prop) {
   return (
 
     <div className="navbar navbar-expand-lg navbar-light bg-header" >
-
-
-      <div className="header container-fluid">
-        <div className="col-md-3">
           <div className="logo-size">
             <img className="img-size-logo" src={Logo}/>
                 </div>
+
+      <div className="header container-fluid">
+        <div className="col-md-3">
+
         </div>
 
         

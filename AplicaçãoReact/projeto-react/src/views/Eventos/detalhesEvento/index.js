@@ -22,7 +22,7 @@ export default function DetalhesEvento() {
         <>
             <Navbar className="container" />
             <div className="body">
-                <div className="menu-lateral">lalalal</div>
+                <div className="menu-lateral"></div>
                 <div className=" form-detalhe-event ">
                 <Link className="botaoVoltar" to="/listarEvento"><FiCornerDownLeft /></Link>
                 <h3 className="text-h1">Detalhes do evento</h3>

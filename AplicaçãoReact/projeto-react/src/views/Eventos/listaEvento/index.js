@@ -41,7 +41,7 @@ export default function Eventos() {
         <>
         <Navbar  className="container"/>
         <div className="body">
-        <div className="menu-lateral">lalalal</div>
+        <div className="menu-lateral"></div>
 
         <div className="box-body-list">
             <div>
