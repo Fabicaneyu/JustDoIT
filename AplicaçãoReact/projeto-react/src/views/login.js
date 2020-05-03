@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../components/card.js'
+import Card from '../components/card-login.js'
 import Formgroup from '../components/form-group'
 import { withRouter } from 'react-router-dom'
 import UsuarioCalls from '../calls/userCalls'
@@ -49,7 +49,7 @@ class Login extends React.Component {
     render() {
         return (
 
-            <div className="container lala">
+            <div className="container-login">
 
                 <div className="col-md-12" >
 
@@ -69,15 +69,15 @@ class Login extends React.Component {
 
                                             <fieldset>
 
-                                                <Formgroup htmlFor="imputEmail" >
+                                                <Formgroup label="E-mail: *" htmlFor="imputEmail" >
 
                                                     <input type="text" value={this.state.email}
-                                                        onChange={e => this.setState({ email: e.target.value })} className="form-control" htmlFor="imputEmail"
+                                                        onChange={e => this.setState({ email: e.target.value })}  className="form-control" htmlFor="imputEmail"
                                                         aria-describedby="emailHelp" placeholder="Digite seu Email" />
 
                                                 </Formgroup>
 
-                                                <Formgroup htmlFor="imputPassword">
+                                                <Formgroup label="Senha: *" htmlFor="imputPassword">
 
                                                     <input type="password" value={this.state.senha}
                                                         onChange={e => this.setState({ senha: e.target.value })} className="form-control" htmlFor="imputPassword"
@@ -85,7 +85,7 @@ class Login extends React.Component {
 
                                                 </Formgroup>
 
-                                                <button onClick={this.entrar} className="btn btn-success-entrar">Entrar</button>
+                                                <button onClick={this.entrar} className="btn-success-entrar">Entrar</button>
                                                 <div className="divfrasecadastro" > <h2 className="frasecadastro"> Ou crie uma conta gratuitamente <b onClick={this.toCadastro} className="bold-cadastro">aqui</b> </h2></div>
 
                                             </fieldset>

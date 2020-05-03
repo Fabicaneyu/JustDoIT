@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../components/card'
+import Card from '../components/card-cadastro'
 import FormGroup from '../components/form-group'
 import { withRouter } from 'react-router-dom'
 import UsuarioCalls from '../calls/userCalls'
@@ -127,8 +127,8 @@ class Cadastro extends React.Component {
                                 name="senharp" className="form-control"
                                 onChange={e => this.setState({ senha_repeat: e.target.value })} />
                         </FormGroup>
-                        <button type="button" onClick={this.cadastro} className="btn btn-success">Enviar</button>
-                        <button type="button" onClick={this.toLogin} className="btn btn-danger">Cancelar</button>
+                        <button type="button" onClick={this.cadastro} className="btn-success">Enviar</button>
+                        <button type="button" onClick={this.toLogin} className="btn-danger">Cancelar</button>
                     </div>
 
 

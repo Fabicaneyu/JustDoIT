@@ -6,7 +6,7 @@ function NavbarItem(prop) {
 
         <a onClick={prop.action}  href={prop.href}>
                 <img src={prop.image} className={prop.classN}/>
-                <span className={prop.spam}>{prop.label}</span> 
+                <spam className={prop.spam}>{prop.label}</spam> 
        </a>
         
 
