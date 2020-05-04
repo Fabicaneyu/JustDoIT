@@ -254,11 +254,13 @@ class Perfil extends React.Component {
                 <option value="">Selecione</option> 
                 <option value="1">Java</option> 
                 <option value="3">Python</option> 
-                <option value="3">React</option> 
-                <option value="4">C++</option> 
-                <option value="5">Ruby</option> 
-                <option value="6">COBOL</option> 
-                <option value="7">C#</option>                 
+                <option value="21">JavaScript</option> 
+                <option value="25">PHP</option> 
+                <option value="26">C++</option> 
+                <option value="28">TypeScript</option> 
+                <option value="29">Ruby</option> 
+                <option value="24">C#</option>  
+                <option value="30">Swift</option>                   
                 </>
             )
         }
@@ -266,10 +268,15 @@ class Perfil extends React.Component {
             return(
                 <>
                 <option value="">Selecione</option>
-                <option value="2">MySQL</option> 
-                <option value="9">Azure</option> 
-                <option value="10">PostgreSQL</option> 
-                <option value="11">MongoDB</option>                 
+                <option value="12">MySQL</option> 
+                <option value="13">SQL Server</option> 
+                <option value="14">PostgreSQL</option> 
+                <option value="15">MongoDB</option> 
+                <option value="16">IBM DB 2</option>  
+                <option value="17">Elastic</option>  
+                <option value="18">H2 DB</option>        
+                <option value="19">AWS</option>  
+                <option value="20">Redis</option>                 
                 </>
             )
         }
@@ -278,9 +285,9 @@ class Perfil extends React.Component {
                 <>
                 <option value="">Selecione</option>
                 <option value="5">Postman</option> 
-                <option value="13">Junity</option> 
-                <option value="14">SpringTest</option> 
-                <option value="15">Debug</option>                 
+                <option value="41">Watir</option> 
+                <option value="42">Cucumber</option> 
+                <option value="43">Micro Focus</option>                 
                 </>
             )
         }
@@ -288,9 +295,10 @@ class Perfil extends React.Component {
             return(
                 <>
                 <option value="">Selecione</option>
-                <option value="16">Figma</option> 
-                <option value="17">Photoshop</option> 
-                <option value="18">CSS</option>                 
+                <option value="31">Figma</option> 
+                <option value="32">Adobe Photoshop</option> 
+                <option value="33">Sketch</option>    
+                <option value="33">Inkscape</option>               
                 </>
             )
         }
@@ -298,9 +306,11 @@ class Perfil extends React.Component {
             return(
                 <>
                 <option value="">Selecione</option>
-                <option value="19">Redes</option> 
-                <option value="20">Linux</option> 
-                <option value="21">Windows</option>                 
+                <option value="38">Cisco/Redes</option> 
+                <option value="39">Aruba/Redes</option> 
+                <option value="36">Linux</option> 
+                <option value="35">Windows</option>
+                <option value="36">MacOS</option>                                     
                 </>
             )
         }
@@ -318,13 +328,13 @@ class Perfil extends React.Component {
             return(
                 <>
                 <option value="">Selecione</option>
-                <option value="22">Requisitos</option> 
-                <option value="23">Excell</option> 
-                <option value="24">Processos</option>                                 
+                <option value="44">Trello</option> 
+                <option value="45">Evernote</option> 
+                <option value="46">Wrike</option>                                 
+                <option value="47">Gotomeeting</option> 
                 </>
             )
-        }
-       
+        }       
     }
 
 
