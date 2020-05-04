@@ -592,10 +592,10 @@ pre code {
 
 .container-login {
   width: 100%;
-  margin-top: 10%;
+  margin-top: 11%;
   padding-right: 15px;
   padding-left: 15px;
-  margin-right: auto;
+  margin-right: auto; 
  
 }
 
@@ -2933,12 +2933,24 @@ fieldset:disabled a.btn {
   color: #ffffff;
   background-color: #2aa7c9;
   border: solid 1px;
-  margin-top: 0.2%;
   width: 60px;
   height: 30px;
-  margin-left: 80%;
+  margin-left: 88%;
   border-color: #ffffff;
 }
+
+.btn-sender-about-user {
+  font: bold;
+  border-radius: 3px;
+  color: #ffffff;
+  background-color: #2aa7c9;
+  border: solid 1px;
+  width: 60px;
+  height: 30px;
+  margin-left: 81%;
+  border-color: #ffffff;
+}
+
 
 .btn-sender:hover {
   color: #2aa7c9;
@@ -2949,6 +2961,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-sender-about:hover {
+  color: #2aa7c9;
+  background-color: #ffffff;
+  border-color: #2aa7c9;
+  font: bold;
+  font-size: 14px;
+}
+
+.btn-sender-about-user:hover {
   color: #2aa7c9;
   background-color: #ffffff;
   border-color: #2aa7c9;
@@ -5190,6 +5210,7 @@ input[type="button"].btn-block {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
+  border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -5212,7 +5233,7 @@ input[type="button"].btn-block {
           flex: 1 1 auto;
   min-height: 290px;
   max-height: 290px;
-  padding: 1.25rem;
+  padding: 1.25rem;  
 }
 
 .card-body-cadastro {
@@ -11166,6 +11187,12 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
  
 }
 
+.conhecimento{
+  height: 55px;
+border-bottom: solid 1px #afafaf;
+}
+
+
 .text-content{
   font-weight: bold;
   font-size: 15px;
@@ -11203,13 +11230,14 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   max-width: 260px;
   min-width: 250px;;
   border: none;
-  top : 45%;
+  top : 53%;
   margin-bottom: 10%;
   left: 6.9%;
   position: absolute;
   border-radius:4px;
   color: white;
   background-color: white ;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2)
 
 }
 
@@ -11224,11 +11252,22 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
 .div-sobre {
   display: none;
-  left: 32%;
-  top: 50%;
+  left: 30%;
+  top: 19%;
   background-color: white;
   border: solid rgb(175, 175, 175) 2px;
-  position: absolute;
+  position: fixed;
+  width:600px;
+  height:300px;
+}
+
+.div-sobre-user {
+  display: none;
+  left: 30%;
+  top: 28%;
+  background-color: white;
+  border: solid rgb(175, 175, 175) 2px;
+  position: fixed;
   width:600px;
   height:300px;
 }
@@ -11283,8 +11322,13 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 .label-about {
   position: absolute;
   font-size: 16px;
-  top:5%;
-  left: 8%;
+  top:3%;
+  left: 5%;
+}
+
+.one-level {
+  color: #2aa7c9;
+  font-size: 17px;
 }
 
 .exit-about {
@@ -11293,7 +11337,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   cursor: pointer;
   position: absolute;
   left: 93.4%;
-  top: 5%;
+  top: 4%;
 }
 
 .blue {
@@ -11312,20 +11356,27 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 }
 
 
-.label-know {
+/* .label-know {
   font-size: 30px;
   color: black;
   position: absolute;
   top: 36%;
   left: 31%;
+} */
+
+.label-know {
+  margin-right: 14px;
+  font-size: 30px;
+  color: black;
 }
+
 
 .label-interest {
 
   font-size: 30px;
   color: black;
   position: relative;
-  left:2.7%;
+
 
 }
 
@@ -11401,8 +11452,8 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
   position: absolute;
   margin-left: 20%;
-  top: 24%;
   height: 70px;
+  margin-top:2%;
   width: 200px;
   font-size: 15px;
 }
@@ -11441,29 +11492,28 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   position: absolute;
   height: 20px;
   width: 20px;
-  left: 47%;
-  top: 38%;
+  margin-top:1%;
   cursor: pointer;
 
 }
 
 .add-interest{
 
-  position: relative;
+  position: absolute;
   height: 20px;
-  cursor: pointer;
   width: 20px;
-  left: 4%;
-  margin-bottom: 1%;
+  margin-left: 1%;;
+  margin-top:1%;
+  cursor: pointer;
 
 }
 
 .type-interest {
 
   position: relative;
-  left: 52%;
   text-align: center;
-  top: 9%;
+  top: 40%;
+  left: 24%;
   font-size: 15px;
 }
 
@@ -11475,6 +11525,8 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   font-size: 80px;
 
 }
+
+
 
 
 .div-know-inferior {
@@ -11498,19 +11550,33 @@ min-width: 900px;
 max-width: 900px;
 position: relative;
 left: auto;
+
   
+}
+
+.div-know{
+ 
+  height: 50px;
+  width: 300px;
+}
+
+.div-interest{
+
+  height: 50px;
+  width: 300px;
 }
 
 .box-perf1 {
 
- margin-top:20.5%;
+ margin-top:18.5%;
  margin-left: 30%;
+ 
 
 }
 
 .box-perf2 {
 
-  margin-top:3%;
+  margin-top:4%;
   width: 900px; 
   margin-left: 30%;
   margin-bottom: 10%;
@@ -11846,4 +11912,51 @@ body{
   cursor: pointer;
   text-decoration: underline;
   font-weight: bold;
+}
+.content-conhecimento{
+  padding: 10px 40px 40px 40px;
+  height: 100%;
+}
+
+.div-sobre.con{
+  height: 445px!important;
+}
+.btn-sender-about.con{
+  margin: 0px!important;
+  position: absolute!important;
+  left: 527px!important;
+  top: 396px;
+}
+
+.input-style{
+  margin-bottom: 15px;
+  width: 100%;
+}
+.text-contentC{
+  margin-top: 2px;
+  margin-bottom: 11px;
+}
+.text-sobreC{
+  resize: none;
+  width: 100%;
+}
+
+.h3-know {
+  bottom:4%;
+}
+
+.box-logo-login {
+
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  left:41.5%;
+  top: 0;
+}
+
+.logo-login {
+
+  height: 150%;
+  width: 220%;;
+  
 }

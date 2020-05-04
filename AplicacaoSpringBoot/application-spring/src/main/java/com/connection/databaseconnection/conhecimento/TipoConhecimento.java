@@ -7,5 +7,6 @@ public enum TipoConhecimento {
             DADOS,
             DESIGN,
             TESTES,
+	    SEGURANCA,
             GESTAO,
 }
