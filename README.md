@@ -1,7 +1,7 @@
 <h1 align="center"> {JustDoIT} </h1>
 
 <p align="center">
-  <img align="center" src="logotipo/oficial_logo.png" alt="imagem do logotipo da Just Do IT - Apenas faça tecnologia da informação" width=250 > <br> <sub> JDIT - JustDoIT - Apenas faça tecnologia da informação </sub>
+  <img align="center" src="Logotipo/oficial_logo.png" alt="imagem do logotipo da Just Do IT - Apenas faça tecnologia da informação" width=250 > <br> <sub> JDIT - JustDoIT - Apenas faça tecnologia da informação </sub>
 </p>
 
 ## Desenvolvedores :octocat:
