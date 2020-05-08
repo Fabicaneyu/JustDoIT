@@ -1,5 +1,4 @@
 import React from 'react'
-import ImgBusca from '../imagens/lupa.png'
 
 class Busca extends React.Component {
 

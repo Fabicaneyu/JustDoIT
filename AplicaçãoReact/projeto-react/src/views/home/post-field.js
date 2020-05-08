@@ -21,7 +21,7 @@ export default prop => {
                                 <div className="col-md-10">
                                     <div className="row">
                                         <div className="photo-postField">
-                                            <img className="img-user-menu" src={post.imagem} />
+                                            <img className="img-user-menu" src={post.imagem} alt="img-user" />
                                         </div>
                                         <div className="userPost-name">
                                             <div className="username"> {post.nome} </div>
@@ -31,7 +31,7 @@ export default prop => {
                                     </div>
                                 </div>
                                 <div className="tag col-md-2">
-                                    <span className="tag-size">Tags:</span><a className="tags-reference" href="">#Java
+                                    <span className="tag-size">Tags:</span><a className="tags-reference">#Java
                                         #Database</a>
                                 </div>
                             </div>
@@ -42,7 +42,7 @@ export default prop => {
                                 <div className="icon-value col-md-10">
                                     <span className="size-around">
                                         <span className="score-style">
-                                            <img src={Interessante}/>
+                                            <img src={Interessante} alt="interessante" />
                                         </span>
                                     
                                         Interessante</span>
@@ -51,20 +51,20 @@ export default prop => {
                                     
                                     <span className="size-around">
                                         <span className="score-style">
-                                            <img src={Graticao} />
+                                            <img src={Graticao} alt="graticao" />
                                         </span>Gratidão</span>
                                   
                                   
                                   
                                         <span className="size-around">
                                             <span className="score-style">
-                                            <img src={Inovador}/>
+                                            <img src={Inovador} alt="inovador"/>
                                             </span>Inovador</span>
                                     
                                 </div>
                                 <div className="icon-value  col-md-2">
                                     <span className="share-icon">
-                                        <img src={Compartilhar} />
+                                        <img src={Compartilhar} alt="share" />
                                     </span>
                                     compartilhar
                                 </div>

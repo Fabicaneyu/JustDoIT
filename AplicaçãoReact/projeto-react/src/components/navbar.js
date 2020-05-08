@@ -13,7 +13,7 @@ function Navbar(prop) {
 
     <div className="navbar navbar-expand-lg navbar-light bg-header" >
           <div className="logo-size">
-            <img className="img-size-logo" src={Logo}/>
+            <img className="img-size-logo" src={Logo} alt="logo"/>
                 </div>
 
       <div className="header container-fluid">

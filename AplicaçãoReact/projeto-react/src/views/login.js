@@ -2,7 +2,6 @@ import React from 'react'
 import Card from '../components/card-login.js'
 import Logo from '../imagens/logo.png'
 import Formgroup from '../components/form-group'
-import { withRouter } from 'react-router-dom'
 import UsuarioCalls from '../calls/userCalls'
 
 class Login extends React.Component {
@@ -53,7 +52,7 @@ class Login extends React.Component {
             <>
 
             <div className="box-logo-login">
-                <img src={Logo} className="logo-login" />
+                <img src={Logo} className="logo-login" alt="login" />
             </div>
 
             <div className="container-login">

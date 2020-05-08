@@ -1,5 +1,4 @@
 import React from 'react'
-import Foto from '../imagens/circulo.png'
 
 function UserInfo(prop) {
 
@@ -7,7 +6,7 @@ function UserInfo(prop) {
                 <div className="col-md-2">
                     <div className="user-menu" align="center">
                         <div className="user-photo">
-                            <img className="img-user-menu" src={prop.photo}/>
+                            <img className="img-user-menu" src={prop.photo} alt="menu"/>
                         </div>
                         <span className="name-style">{prop.label}</span>
                         <div className="user-data">

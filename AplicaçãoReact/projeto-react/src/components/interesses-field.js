@@ -8,16 +8,7 @@ export default prop => {
 
 const card = prop.body.map( req => {
     
- function deletar() {
-        axios.delete(`http://localhost:8080/conhecimentos/remover/interesse/${req.id}`)
-        .then(response => {
-            console.log("Deletado com sucesso")
-            window.location.reload();
-        }).catch(erro => {
-            console.log(erro.data)
-        })
-    
-}
+
 
     return(
         <>
@@ -25,7 +16,7 @@ const card = prop.body.map( req => {
         <label className="label-type-interest">Tipo</label>
         <div className="div-know-inferior">
         <div className="desc-interest">{req.descricao_interesse}</div>
-        <img onClick={deletar} className="delete-interest" src={Delete} />  
+        <img onClick={e => prop.action(req.id)} className="delete-interest" src={Delete} />  
         <div className="type-interest">{req.tipoConhecimento}</div>        
             <img className="box-img-interest" src={req.imagem} />                                    
         </div>

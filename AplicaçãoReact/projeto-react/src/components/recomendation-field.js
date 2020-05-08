@@ -11,7 +11,7 @@ export default prop => {
 
                 <div className="row row-anulled">
                     <div className="col-md-4 img-box">
-                        <img className="imgRecomandation" src={req.imagem}/>
+                        <img className="imgRecomandation" src={req.imagem} alt="img-rec" />
                     </div>
 
                     <div className="col-md-8 anulled">

@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from '../../components/navbar'
 import UserInfo from '../../components/info-user-bar'
-import {withRouter} from 'react-router-dom'
 import UsuarioCalls from '../../calls/userCalls'
 import PostField from './post-field'
 import Recomendation from '../../components/recomendation-field'
@@ -9,7 +8,6 @@ import Waypoint from '../../components/way'
 import Loading from '../../imagens/Spinner.gif'
 import Pencil from '../../imagens/pencil.svg'
 import File from '../../imagens/file.svg'
-import { useEffect } from 'react';
 import axios from 'axios'
 
 class Home extends React.Component {
@@ -84,7 +82,7 @@ class Home extends React.Component {
 
                 this.setState({way: ''})
 
-                this.setState({request: [ ... this.state.request, ... dados]})
+                this.setState({request: [ ...this.state.request, ...dados]})
                 
                 this.setState({way: <Waypoint onEnter={this.loadPage} />})
 
@@ -145,11 +143,11 @@ class Home extends React.Component {
                                 <div className="row search">
                                     
                                     <span className="icon-pencil">
-                                        <img className="icon-pencil"  src={Pencil}/>
+                                        <img className="icon-pencil"  src={Pencil} alt="pencil"/>
                                     </span>
 
                                     <span className="icon-file">
-                                        <img className="icon-pencil" src={File}/>
+                                        <img className="icon-pencil" src={File} alt="pencil"/>
                                      </span>
                                    <div className="text-field-size">
                                         <form id="One">
@@ -173,7 +171,7 @@ class Home extends React.Component {
 
                         
 
-                        <img id="load" className="gif-load" src={Loading}/>
+                        <img id="load" className="gif-load" src={Loading} alt="load"/>
 
                         <div className="way">
 

@@ -1,9 +1,7 @@
 import React from 'react'
 import Card from '../components/card-cadastro'
 import FormGroup from '../components/form-group'
-import { withRouter } from 'react-router-dom'
 import UsuarioCalls from '../calls/userCalls'
-import Axios from 'axios'
 
 class Cadastro extends React.Component {
 
