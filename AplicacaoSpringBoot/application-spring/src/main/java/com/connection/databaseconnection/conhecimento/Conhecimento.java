@@ -1,11 +1,11 @@
 package com.connection.databaseconnection.conhecimento;
+import com.connection.databaseconnection.conhecimento.types.TipoConhecimento;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Builder

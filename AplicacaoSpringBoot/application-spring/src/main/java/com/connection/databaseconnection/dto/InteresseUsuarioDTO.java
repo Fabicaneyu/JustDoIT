@@ -1,6 +1,6 @@
 package com.connection.databaseconnection.dto;
 
-import com.connection.databaseconnection.conhecimento.TipoConhecimento;
+import com.connection.databaseconnection.conhecimento.types.TipoConhecimento;
 
 public class InteresseUsuarioDTO {
 

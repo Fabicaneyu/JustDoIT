@@ -1,7 +1,7 @@
 package com.connection.databaseconnection.iterators;
 
 import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuario;
-import com.connection.databaseconnection.conhecimento.TipoConhecimento;
+import com.connection.databaseconnection.conhecimento.types.TipoConhecimento;
 import com.connection.databaseconnection.dto.ConhecimentoUsuarioDTO;
 import org.springframework.stereotype.Service;
 

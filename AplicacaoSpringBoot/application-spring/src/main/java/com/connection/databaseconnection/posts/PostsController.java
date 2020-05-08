@@ -3,7 +3,7 @@ package com.connection.databaseconnection.posts;
 import com.connection.databaseconnection.adapters.PostModel;
 import com.connection.databaseconnection.dto.PostDTO;
 import com.connection.databaseconnection.exception.ErroConexao;
-import com.connection.databaseconnection.user.Usuario;
+import com.connection.databaseconnection.usuario.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

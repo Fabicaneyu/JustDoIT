@@ -2,14 +2,15 @@ package com.connection.databaseconnection.conhecimento;
 
 import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuario;
 import com.connection.databaseconnection.associative.interesse.InteresseUsuario;
-import com.connection.databaseconnection.dto.ConhecimentoDTO;
+import com.connection.databaseconnection.conhecimento.knowledge.KnowSelectList;
+import com.connection.databaseconnection.conhecimento.types.TipoConhecimento;
 import com.connection.databaseconnection.exception.ErroConexao;
 import com.connection.databaseconnection.exception.KnowNotFoundException;
 import com.connection.databaseconnection.exception.UserNotFoundException;
 import com.connection.databaseconnection.iterators.ConhecimentoBuilder;
 import com.connection.databaseconnection.iterators.InteresseBuilder;
-import com.connection.databaseconnection.user.UserService;
-import com.connection.databaseconnection.user.Usuario;
+import com.connection.databaseconnection.usuario.UserService;
+import com.connection.databaseconnection.usuario.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -171,6 +172,30 @@ public class ConhecimentoController {
         }
         catch (ErroConexao e) {
             return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/types")
+    public ResponseEntity buscaTipos() {
+
+        try {
+            List busca = controller.getListTypes();
+
+            return ResponseEntity.ok(busca);
+        }catch (ErroConexao erro) {
+            return ResponseEntity.badRequest().body(erro.getMessage());
+        }
+    }
+
+    @GetMapping("/knowledges/{tipo}")
+    public ResponseEntity buscaTipos(@PathVariable("tipo") TipoConhecimento tipo ) {
+
+        try {
+            List busca = controller.getListKnows(tipo);
+
+            return ResponseEntity.ok(busca);
+        }catch (ErroConexao erro) {
+            return ResponseEntity.badRequest().body(erro.getMessage());
         }
     }
 

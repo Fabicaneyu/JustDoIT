@@ -1,13 +1,24 @@
-package com.connection.databaseconnection.user;
+package com.connection.databaseconnection.usuario;
 
+import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuario;
+import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuarioRepository;
+import com.connection.databaseconnection.conhecimento.Conhecimento;
+import com.connection.databaseconnection.conhecimento.ConhecimentoRepository;
+import com.connection.databaseconnection.dto.BuscaDTO;
 import com.connection.databaseconnection.exception.ErroAutenticacao;
 import com.connection.databaseconnection.exception.RegraException;
 import com.connection.databaseconnection.exception.UserNotFoundException;
+
+import com.connection.databaseconnection.iterators.BuscaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,6 +26,15 @@ public class UserService {
 
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private BuscaBuilder buscaBuilder;
+
+    @Autowired
+    private ConhecimentoRepository conhecimentoRepository;
+
+    @Autowired
+    ConhecimentoUsuarioRepository conhecimentoUsuarioRepository;
 
     @Autowired
     private EntityManager entityManager;
@@ -94,6 +114,25 @@ public class UserService {
                 }).orElseThrow(() -> new UserNotFoundException());
 
     }
+
+    public List<BuscaDTO> buscarConhecimentos(String conhecimento) {
+
+        List<Conhecimento> busca = conhecimentoRepository.findByKnow(conhecimento);
+
+        List<ConhecimentoUsuario> novaBusca;
+
+        if(busca.isEmpty()) {
+            return null;
+        }
+        else {
+            novaBusca = conhecimentoUsuarioRepository
+                    .findByIdKnowId(busca.get(0).getId_conhecimento());
+        }
+
+        return buscaBuilder.nextList(novaBusca);
+    }
+
+
 
 
 }

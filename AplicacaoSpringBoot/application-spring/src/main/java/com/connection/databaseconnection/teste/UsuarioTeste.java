@@ -1,8 +1,8 @@
 package com.connection.databaseconnection.teste;
 
-import com.connection.databaseconnection.user.UserService;
-import com.connection.databaseconnection.user.Usuario;
-import com.connection.databaseconnection.user.UserRepository;
+import com.connection.databaseconnection.usuario.UserService;
+import com.connection.databaseconnection.usuario.Usuario;
+import com.connection.databaseconnection.usuario.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;

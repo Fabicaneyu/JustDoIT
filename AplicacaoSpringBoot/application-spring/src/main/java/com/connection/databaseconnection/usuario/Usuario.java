@@ -1,14 +1,11 @@
-package com.connection.databaseconnection.user;
+package com.connection.databaseconnection.usuario;
 
-import com.connection.databaseconnection.conhecimento.Conhecimento;
-import com.connection.databaseconnection.posts.Posts;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Builder
@@ -32,6 +29,10 @@ public class Usuario {
     private String senha;
     @Column( name = "sobre")
     private String sobre;
+    @Column( name = "local")
+    private String local;
+    @Column( name = "title")
+    private String title;
 //    @OneToMany( mappedBy = "usuario")
 //    private List<Conhecimento> conhecimentos;
 

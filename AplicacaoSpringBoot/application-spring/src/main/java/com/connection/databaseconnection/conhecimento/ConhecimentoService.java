@@ -4,6 +4,10 @@ import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUs
 import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuarioRepository;
 import com.connection.databaseconnection.associative.interesse.InteresseUsuario;
 import com.connection.databaseconnection.associative.interesse.InteresseUsuarioRepository;
+import com.connection.databaseconnection.conhecimento.knowledge.KnowSelectList;
+import com.connection.databaseconnection.conhecimento.knowledge.KnowledgeModel;
+import com.connection.databaseconnection.conhecimento.types.TipoConhecimento;
+import com.connection.databaseconnection.conhecimento.types.TypeSelectList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -119,6 +123,23 @@ public class ConhecimentoService {
         interesseUsuarioRepository.save(novo);
         return true;
 
+    }
+
+    public  List getListTypes() {
+
+        TypeSelectList lista = new TypeSelectList();
+
+        return lista.getTipos();
+
+    }
+
+    public List<KnowledgeModel> getListKnows(TipoConhecimento tipo) {
+
+        KnowSelectList lista = new KnowSelectList();
+
+        List<Conhecimento> base = repository.findByTipo(tipo);
+
+        return lista.getConhecimentos(base);
     }
 
 

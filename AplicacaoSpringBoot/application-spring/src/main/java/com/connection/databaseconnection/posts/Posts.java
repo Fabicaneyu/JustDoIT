@@ -2,14 +2,13 @@ package com.connection.databaseconnection.posts;
 
 
 
-import com.connection.databaseconnection.user.Usuario;
+import com.connection.databaseconnection.usuario.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Builder

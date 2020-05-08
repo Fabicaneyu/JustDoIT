@@ -1,7 +1,7 @@
 package com.connection.databaseconnection.associative.interesse;
 
 import com.connection.databaseconnection.conhecimento.Conhecimento;
-import com.connection.databaseconnection.user.Usuario;
+import com.connection.databaseconnection.usuario.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

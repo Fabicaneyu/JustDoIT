@@ -1,4 +1,4 @@
-package com.connection.databaseconnection.conhecimento;
+package com.connection.databaseconnection.conhecimento.types;
 
 public enum TipoConhecimento {
 
