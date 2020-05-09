@@ -1,9 +1,9 @@
 import React from 'react'
 import Navbar from '../components/navbar'
-import UsuarioCalls from '../calls/userCalls'
 import Cancelar from '../imagens/cancelar.svg'
 import Editar from '../imagens/editar.svg'
 import Add from '../imagens/add.svg'
+import Busca from './home/busca'
 import {Dialog} from 'primereact/dialog';
 import {Button} from 'primereact/button';
 import SelectType from '../components/select'
@@ -26,7 +26,9 @@ class Perfil extends React.Component {
         desc_default: '',
         visible: false,
         tod_delete: '',
+        busca_content: '',
         footer: '',
+        boolean: '',
         description: '',
         know_request: [],
         know_select: [],
@@ -40,7 +42,8 @@ class Perfil extends React.Component {
 
     constructor() {
         super();
-        this.call = new UsuarioCalls();
+        this.busca = new Busca();
+
     }
 
 
@@ -177,7 +180,7 @@ class Perfil extends React.Component {
     }
 
     sair = () => {
-        this.call.sair()
+        axios.get('http://localhost:8080/logoff')
             .then(response => {
                 this.props.history.push('/login')
             }).catch(erro => {
@@ -209,6 +212,12 @@ class Perfil extends React.Component {
         document.getElementById('div-about').style.display = 'none';
         document.getElementById('div-blur').style.filter = 'blur(0px)';
         this.setState({ desc_atualize: '' });
+    }
+
+    cancelarDelecao = () => {
+        this.setState({visible: false})
+        this.setState({to_delete: ''})
+        
     }
 
     cancelarConhecimento = () => {
@@ -297,10 +306,12 @@ class Perfil extends React.Component {
 
     showDeleteDialogConhecimento = (id) => {
 
+        this.setState({boolean: 'Conhecimento'})
+
         const conhecimento = (
             <div>
                 <Button label="Sim" icon="pi pi-check" onClick={this.deletarConhecimento} />
-                <Button label="Não" icon="pi pi-times" onClick={this.cancelar} />
+                <Button label="Não" icon="pi pi-times" onClick={this.cancelarDelecao} />
             </div>
         );
 
@@ -312,10 +323,12 @@ class Perfil extends React.Component {
 
     showDeleteDialogInteresse = (id) => {
 
+        this.setState({boolean: 'Interesse'})
+
         const interesse = (
             <div>
                 <Button label="Sim" icon="pi pi-check" onClick={this.deletarInteresse} />
-                <Button label="Não" icon="pi pi-times" onClick={this.cencelar} />
+                <Button label="Não" icon="pi pi-times" onClick={this.cancelarDelecao} />
             </div>
         );
 
@@ -352,6 +365,18 @@ class Perfil extends React.Component {
 
 }
 
+buscar = () => {
+
+    axios.get(`http://localhost:8080/conhecimentos/busca/set?textBusca=${this.state.busca_content}`)
+    .then(response => {
+        this.props.history.push('/busca')
+    })
+    .catch(erro => {
+        console.log(erro.data)
+    })
+        
+}
+
 
     render() {
 
@@ -361,7 +386,14 @@ class Perfil extends React.Component {
             <>
       
                 <div id="div-blur" className="blur">
-                    <Navbar executeSair={this.sair} executePerfil={this.toPerfil} executeHome={this.toHome} className="container" />
+                    <Navbar 
+                    executeSair={this.sair}
+                    executePerfil={this.toPerfil} 
+                    sendTo={this.toHome}
+                    className="container"
+                    action={this.buscar}
+                    value={this.state.busca_content}
+                    change={e =>this.setState({busca_content: e})}/>
                     <div className="back-img"></div>
                     <div className="circle-perf">
                         <img className="img-perfil" src={this.state.photo} />
@@ -405,8 +437,8 @@ class Perfil extends React.Component {
                 </div>
 
                                 
-                <Dialog p-dialog-visible="false" footer={this.state.footer} header="Removendo conhecimento" visible={this.state.visible} style={{width: '50vw'}} modal={true} onHide={() => this.setState({visible: false})}>
-                        Você está prestes a remover um conhecimento, tem certeza disso ?
+                <Dialog p-dialog-visible="false" footer={this.state.footer} header="Deletando" visible={this.state.visible} style={{width: '50vw'}} modal={true} onHide={() => this.setState({visible: false})}>
+                        Você está prestes a remover um {this.state.boolean}, tem certeza disso ?
                 </Dialog>
 
                     

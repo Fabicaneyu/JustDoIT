@@ -35,6 +35,10 @@ public class ConhecimentoController {
     @Autowired
     InteresseBuilder interesseBuilder;
 
+    private String busca;
+
+    private boolean pesquisado = false;
+
 
     @PostMapping("/adicionar/conhecimento")
     public ResponseEntity novoConhecimento(@RequestBody ConhecimentoUsuario conhecimentoUsuario) {
@@ -194,6 +198,35 @@ public class ConhecimentoController {
             List busca = controller.getListKnows(tipo);
 
             return ResponseEntity.ok(busca);
+        }catch (ErroConexao erro) {
+            return ResponseEntity.badRequest().body(erro.getMessage());
+        }
+    }
+
+    @GetMapping("/busca/set")
+    public ResponseEntity setBusca(@RequestParam("textBusca") String textBusca) {
+        try {
+            this.busca = textBusca;
+            this.pesquisado = true;
+
+            return ResponseEntity.ok(this.busca);
+        }catch (ErroConexao erro) {
+            return ResponseEntity.badRequest().body(erro.getMessage());
+        }
+    }
+
+    @GetMapping("/busca/get")
+    public ResponseEntity getBusca() {
+        try {
+            if(pesquisado) {
+                pesquisado = false;
+                return ResponseEntity.ok(this.busca);
+            }
+            else {
+                this.busca = "";
+                return ResponseEntity.ok("Nada a pesquisar");
+            }
+
         }catch (ErroConexao erro) {
             return ResponseEntity.badRequest().body(erro.getMessage());
         }

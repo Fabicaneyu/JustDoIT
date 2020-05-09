@@ -1,8 +1,9 @@
 import React from 'react'
 import Delete from '../imagens/delete.svg'
-import axios from 'axios'
+
 
 export default prop => {
+
 
 const card = prop.body.map( req => {
 
@@ -30,7 +31,9 @@ const card = prop.body.map( req => {
 
 
 return (
+<>
 <div className="div-know-superior">{ card }</div>
+</>
 )
 
 

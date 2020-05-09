@@ -1,6 +1,6 @@
 import React from 'react'
 import NavbarItem from './navbar-Item'
-import Busca from './busca'
+import Busca from './field-busca'
 import Logo from '../imagens/logo.png'
 import Home from '../imagens/home.svg'
 import Evento from '../imagens/evento.svg'
@@ -13,7 +13,7 @@ function Navbar(prop) {
 
     <div className="navbar navbar-expand-lg navbar-light bg-header" >
           <div className="logo-size">
-            <img className="img-size-logo" src={Logo} alt="logo"/>
+            <img onClick={prop.sendTo} className="img-size-logo" src={Logo} alt="logo"/>
                 </div>
 
       <div className="header container-fluid">
@@ -22,7 +22,7 @@ function Navbar(prop) {
         </div>
 
         
-        <Busca />
+        <Busca action={prop.action} value={prop.value} change={e => prop.change(e)} />
         <div className="col-md-3 col-sm-2 col-2">
             <div className="row">
                 <div className="col-md-3" align="right">

@@ -2,8 +2,10 @@ import React from 'react'
 import {Route, Switch, HashRouter} from 'react-router-dom'
 import Home from '../views/home/home'
 import Login from '../views/login'
+import Busca from '../views/home/busca'
 import Cadastro from '../views/cadastro'
 import Perfil from '../views/perfil'
+import FieldBusca from '../components/field-busca'
 import CadastrarEventos from '../views/Eventos/cadastroEvento';
 import ListarEventos from '../views/Eventos/listaEvento';
 import DetalhesEventos from '../views/Eventos/detalhesEvento';
@@ -16,10 +18,12 @@ function Rotas() {
                     <Route path="/login" component={Login} />
                     <Route path="/cadastro" component={Cadastro} />
                     <Route path="/home" component={Home} />
+                    <Route path="/busca" component={Busca} />
                     <Route path="/perfil" component={Perfil} />
                     <Route path="/cadastrarEvento" component={CadastrarEventos} />
                     <Route path="/listarEvento" component={ListarEventos} />
                     <Route path="/detalhesEvento" component={DetalhesEventos} />
+                    <Route path="/field-busca" component={FieldBusca} />
             </Switch>
         </HashRouter>
     )

@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../../components/navbar'
 import UserInfo from '../../components/info-user-bar'
-import UsuarioCalls from '../../calls/userCalls'
+import Busca from './busca'
 import PostField from './post-field'
 import Recomendation from '../../components/recomendation-field'
 import Waypoint from '../../components/way'
@@ -18,6 +18,7 @@ class Home extends React.Component {
         photo : '',
         conteudo : '',
         recomendados : [],
+        busca_content: '',
         request : [],
         way : ''
     }
@@ -25,9 +26,8 @@ class Home extends React.Component {
 
     constructor() {
         super();
-        this.call = new UsuarioCalls();
+        this.busca = new Busca();
     }
-
 
 
     componentDidMount(){
@@ -94,7 +94,7 @@ class Home extends React.Component {
 
 
     sair = () => {
-        this.call.sair()
+        axios.get('http://localhost:8080/user/logoff')
         .then( response => {
           this.props.history.push('/login')
         }).catch( erro => {
@@ -126,6 +126,19 @@ class Home extends React.Component {
         })
     }
 
+    
+    buscar = () => {
+
+        axios.get(`http://localhost:8080/conhecimentos/busca/set?textBusca=${this.state.busca_content}`)
+        .then(response => {
+            this.props.history.push('/busca')
+        })
+        .catch(erro => {
+            console.log(erro.data)
+        })
+            
+    
+    }
 
 
     render() {
@@ -133,7 +146,14 @@ class Home extends React.Component {
 
         return(
             <>
-            <Navbar executeSair={this.sair} executePerfil={this.toPerfil} className="container"/>
+            <Navbar 
+            executeSair={this.sair}
+            executePerfil={this.toPerfil} 
+            sendTo={this.toHome}
+            className="container"
+            action={this.buscar}
+            value={this.state.busca_content}
+            change={e =>this.setState({busca_content: e})}/>
             <div className="content">
                 <div className="container-fluid">
                     <div className="row">
@@ -165,11 +185,9 @@ class Home extends React.Component {
             
                         
                         <Recomendation body={this.state.recomendados}/>
-                        
 
-    
 
-                        
+                          
 
                         <img id="load" className="gif-load" src={Loading} alt="load"/>
 
