@@ -18,12 +18,11 @@ function Rotas() {
                     <Route path="/login" component={Login} />
                     <Route path="/cadastro" component={Cadastro} />
                     <Route path="/home" component={Home} />
-                    <Route path="/busca" component={Busca} />
+                    <Route path="/busca/:conhecimento" component={Busca} />
                     <Route path="/perfil" component={Perfil} />
                     <Route path="/cadastrarEvento" component={CadastrarEventos} />
                     <Route path="/listarEvento" component={ListarEventos} />
-                    <Route path="/detalhesEvento" component={DetalhesEventos} />
-                    <Route path="/field-busca" component={FieldBusca} />
+                    <Route path="/detalhesEvento" component={DetalhesEventos} />                    
             </Switch>
         </HashRouter>
     )

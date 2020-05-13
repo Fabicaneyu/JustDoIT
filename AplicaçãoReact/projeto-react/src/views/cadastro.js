@@ -2,6 +2,8 @@ import React from 'react'
 import Card from '../components/card-cadastro'
 import FormGroup from '../components/form-group'
 import UsuarioCalls from '../calls/userCalls'
+import {Password} from 'primereact/password';
+import {InputText} from 'primereact/inputtext';
 
 class Cadastro extends React.Component {
 
@@ -91,14 +93,20 @@ class Cadastro extends React.Component {
                     <div className="bs-component">
 
                         <FormGroup label="Nome: *" htmlFor="inputNome">
-                            <input type="text" id="inputNome"
-                                name="nome" className="form-control"
-                                onChange={e => this.setState({ nome: e.target.value })} />
+                        <span className="p-float-label">
+                                <InputText id="in" value={this.state.nome}
+                                className="form-control"
+                                 onChange={(e) => this.setState({nome: e.target.value})} />
+                                <label htmlFor="in">Username</label>
+                        </span>                            
                         </FormGroup>
                         <FormGroup label="E-mail: *" htmlFor="inputEmail">
-                            <input type="text" id="inputEmail"
-                                name="email" className="form-control"
-                                onChange={e => this.setState({ email: e.target.value })} />
+                        <span className="p-float-label">
+                                <InputText id="in" value={this.state.email}
+                                className="form-control"
+                                 onChange={(e) => this.setState({email: e.target.value})} />  
+                                 <label htmlFor="in">E-mail adress</label>
+                        </span>                                                      
                         </FormGroup>
                         <FormGroup label="Foto: *" htmlFor="photo">
                             <input type="file" id="photo"
@@ -116,14 +124,20 @@ class Cadastro extends React.Component {
                                     />
                         </FormGroup>
                         <FormGroup label="Senha: *" htmlFor="inputSenha">
-                            <input type="password" id="inputSenha"
-                                name="senha" className="form-control"
-                                onChange={e => this.setState({ senha: e.target.value })} />
+                        <Password
+                        className="form-control"
+                        id="inputSenha"
+                        value={this.state.senha}
+                        onChange={(e) => this.setState({senha: e.target.value})} />                     
                         </FormGroup>
                         <FormGroup label="Repita a senha: *" htmlFor="senhaRepeat">
-                            <input type="password" id="senhaRepeat"
-                                name="senharp" className="form-control"
-                                onChange={e => this.setState({ senha_repeat: e.target.value })} />
+                        <span className="p-float-label">
+                                <InputText id="in" value={this.state.senha_repeat}
+                                className="form-control"
+                                type="password"
+                                 onChange={(e) => this.setState({senha_repeat: e.target.value})} />
+                                <label htmlFor="in">Password Confirm</label>
+                        </span>
                         </FormGroup>
                         <button type="button" onClick={this.cadastro} className="btn-success">Enviar</button>
                         <button type="button" onClick={this.toLogin} className="btn-danger">Cancelar</button>

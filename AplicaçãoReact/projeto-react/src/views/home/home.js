@@ -129,13 +129,9 @@ class Home extends React.Component {
     
     buscar = () => {
 
-        axios.get(`http://localhost:8080/conhecimentos/busca/set?textBusca=${this.state.busca_content}`)
-        .then(response => {
-            this.props.history.push('/busca')
-        })
-        .catch(erro => {
-            console.log(erro.data)
-        })
+
+     this.props.history.push(`/busca/${this.state.busca_content}`)
+
             
     
     }

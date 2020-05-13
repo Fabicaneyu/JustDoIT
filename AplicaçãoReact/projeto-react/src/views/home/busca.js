@@ -2,12 +2,9 @@ import React from 'react'
 import Navbar from '../../components/navbar'
 import UserInfo from '../../components/info-user-bar'
 import CardBusca from './busca-field'
-// import PostField from './post-field'
-// import Recomendation from '../../components/recomendation-field'
-// import Waypoint from '../../components/way'
+
 import Loading from '../../imagens/Spinner.gif'
-// import Pencil from '../../imagens/pencil.svg'
-// import File from '../../imagens/file.svg'
+
 import axios from 'axios'
 
 class Busca extends React.Component {
@@ -21,86 +18,64 @@ class Busca extends React.Component {
         busca_content: '',
         resultados : 0,
         request : [],
-        busca: ''
+        busca_content: ''
 
     }
 
 
     componentDidMount(){
         
-
-        
-
+               
         const usuario = localStorage.getItem('usuario_atual')
         const usuarioLogado = JSON.parse(usuario)
 
 
         this.setState({nome: usuarioLogado.nome})
         this.setState({idUser: usuarioLogado.id})
-        this.setState({photo: usuarioLogado.photo}) 
-        this.setState({busca: this.loadBusca}) 
-        
-        this.loadBusca();
-
-        // this.buscar(param);
-
-
-        // this.initial();
-        // this.loadRecomendation();
-
-    }
-
-    // setBusca = (parametro) =>  {
-
-    //    this.componentDidMount(parametro);
-        
-        
-
-    // }
-
-    buscarUsuarios = () => {
+        this.setState({photo: usuarioLogado.photo})        
+       
          
-        axios.get(`http://localhost:8080/user/find?conhecimento=${this.state.busca}`)
-        .then(response => {
-            const data = response.data
-            console.log(data)
-            this.setState({request: data})
-            this.setState({resultados: data.length})
-            document.getElementById('load').style.display = 'none';
-        }).catch(error => {
-            console.log(error.data)
-        })
+        this.buscar();
+
     }
 
-    buscar = () => {
+    buscar = (dado) => {
 
-        axios.get(`http://localhost:8080/conhecimentos/busca/set?textBusca=${this.state.busca_content}`)
-        .then(response => {            
-            this.loadBusca();
-            document.getElementById('load').style.display = 'inline';
-        })
-        .catch(erro => {
-            console.log(erro.data)
-        })
+        const parametro = this.props.match.params.conhecimento
+
+        this.setState({request: ''})
+        document.getElementById('load').style.display = 'inline';
+
+        if(dado){
+            axios.get(`http://localhost:8080/user/find?conhecimento=${dado}`)
+            .then(response => {
+                const data = response.data
+               
+                this.setState({request: data})
+                this.setState({resultados: data.length})
+                
+            }).catch(error => {
+                console.log(error.data)
+            })
+        }
+        else {
+            axios.get(`http://localhost:8080/user/find?conhecimento=${parametro}`)
+            .then(response => {
+                const data = response.data
+               
+                this.setState({request: data})
+                this.setState({resultados: data.length})
+              
+            }).catch(error => {
+                console.log(error.data)
+            })
+        }
+       
+        document.getElementById('load').style.display = 'none';
             
     }
 
-    loadBusca = () => {
-
-        axios.get('http://localhost:8080/conhecimentos/busca/get')
-        .then(response =>{
-            const data = response.data
-            this.setState({busca: data})
-            this.buscarUsuarios();
-            document.getElementById('load').style.display = 'inline';
-        }).catch(erro => {
-            console.log(erro.data)
-        })
-
-    }
-
   
-
     sair = () => {
         axios.get('http://localhost:8080/logoff')
         .then( response => {
@@ -147,7 +122,7 @@ class Busca extends React.Component {
             executePerfil={this.toPerfil} 
             sendTo={this.toHome}
             className="container"
-            action={this.buscar}
+            action={e =>this.buscar(this.state.busca_content)}
             value={this.state.busca_content}
             change={e =>this.setState({busca_content: e})}/>
             <div className="content">

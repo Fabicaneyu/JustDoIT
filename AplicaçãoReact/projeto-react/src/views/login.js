@@ -3,6 +3,7 @@ import Card from '../components/card-login.js'
 import Logo from '../imagens/logo.png'
 import Formgroup from '../components/form-group'
 import UsuarioCalls from '../calls/userCalls'
+import {InputText} from 'primereact/inputtext';
 
 class Login extends React.Component {
 
@@ -76,18 +77,26 @@ class Login extends React.Component {
                                             <fieldset>
 
                                                 <Formgroup label="E-mail: *" htmlFor="imputEmail" >
+                                                   
 
-                                                    <input type="text" value={this.state.email}
-                                                        onChange={e => this.setState({ email: e.target.value })}  className="form-control" htmlFor="imputEmail"
-                                                        aria-describedby="emailHelp" placeholder="Digite seu Email" />
+                                                                  <span className="p-float-label">
+                                                                            <InputText id="in" value={this.state.email}
+                                                                            className="form-control"
+                                                                            onChange={(e) => this.setState({email: e.target.value})} />
+                                                                            <label htmlFor="in">Digite seu Email</label>
+                                                                    </span> 
 
                                                 </Formgroup>
 
                                                 <Formgroup label="Senha: *" htmlFor="imputPassword">
 
-                                                    <input type="password" value={this.state.senha}
-                                                        onChange={e => this.setState({ senha: e.target.value })} className="form-control" htmlFor="imputPassword"
-                                                        placeholder="Digite sua Senha" />
+                                                                    <span className="p-float-label">
+                                                                            <InputText id="in" value={this.state.senha}
+                                                                            className="form-control"
+                                                                            type="password"
+                                                                            onChange={(e) => this.setState({senha: e.target.value})} />
+                                                                            <label htmlFor="in">Digite sua senha</label>
+                                                                    </span> 
 
                                                 </Formgroup>
 

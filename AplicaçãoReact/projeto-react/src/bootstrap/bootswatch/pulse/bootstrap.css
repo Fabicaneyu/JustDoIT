@@ -2274,6 +2274,7 @@ pre code {
   font-weight: 400;
   line-height: 1.5;
   color: #444;
+  border-radius: 10px;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #cbc8d0;
