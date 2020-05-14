@@ -10,6 +10,7 @@ import axios from 'axios'
 class Busca extends React.Component {
 
     state = {
+
         nome: '',
         idUser : '',
         photo : '',
@@ -44,7 +45,9 @@ class Busca extends React.Component {
 
         const parametro = this.props.match.params.conhecimento
 
-        this.setState({request: ''})        
+        this.setState({request: ''})  
+        document.getElementById('load').style.display = 'inline';   
+        document.getElementById('content-busca').style.display = 'none';
 
         if(dado){
             axios.get(`http://localhost:8080/user/find?conhecimento=${dado}`)
@@ -54,6 +57,7 @@ class Busca extends React.Component {
                 this.setState({request: data})
                 this.setState({resultados: data.length})
                 document.getElementById('load').style.display = 'none';
+                document.getElementById('content-busca').style.display = 'inline';
                 
             }).catch(error => {
                 console.log(error.data)
@@ -67,13 +71,13 @@ class Busca extends React.Component {
                 this.setState({request: data})
                 this.setState({resultados: data.length})
                 document.getElementById('load').style.display = 'none';
+                document.getElementById('content-busca').style.display = 'inline';
               
             }).catch(error => {
                 console.log(error.data)
             })
         }
-       
-        
+               
             
     }
 
@@ -150,7 +154,7 @@ class Busca extends React.Component {
                            
                           </div>
                                                     
-                          <div className="div-superior-busca">                    
+                          <div id="content-busca" className="div-superior-busca">                    
 
                              {this.verifyBusca()}
 

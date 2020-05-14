@@ -28,7 +28,7 @@ class Perfil extends React.Component {
         tod_delete: '',
         busca_content: '',
         footer: '',
-        boolean: '',
+        boolean: true,
         description: '',
         know_request: [],
         know_select: [],
@@ -306,7 +306,7 @@ class Perfil extends React.Component {
 
     showDeleteDialogConhecimento = (id) => {
 
-        this.setState({boolean: 'Conhecimento'})
+        this.setState({boolean: true})
 
         const conhecimento = (
             <div>
@@ -323,7 +323,7 @@ class Perfil extends React.Component {
 
     showDeleteDialogInteresse = (id) => {
 
-        this.setState({boolean: 'Interesse'})
+        this.setState({boolean: false})
 
         const interesse = (
             <div>
@@ -435,8 +435,11 @@ buscar = () => {
                 </div>
 
                                 
-                <Dialog p-dialog-visible="false" footer={this.state.footer} header="Deletando" visible={this.state.visible} style={{width: '50vw'}} modal={true} onHide={() => this.setState({visible: false})}>
-                        Você está prestes a remover um {this.state.boolean}, tem certeza disso ?
+                <Dialog p-dialog-visible="false" footer={this.state.footer} header={this.state.boolean ? 'Deletando Conhecimento'
+                                                        : 'Deletando Interesse'} visible={this.state.visible} 
+                                                        style={{width: '50vw'}} modal={true} onHide={() => this.setState({visible: false})}>
+                                                           Você está prestes a remover um {this.state.boolean ? 'Conhecimento'
+                                                        : 'Interesse'}, tem certeza disso ?
                 </Dialog>
 
                     
