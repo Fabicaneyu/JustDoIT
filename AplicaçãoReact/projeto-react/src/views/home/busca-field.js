@@ -15,7 +15,7 @@ const card = prop.body.map( req => {
                 <label className="email-busca">{req.email}</label>
                 <label className="local-busca">{req.local}</label>        
 
-                <button className="btn-view">Visualizar</button>
+                <button onClick={e => prop.view(req.id)} className="btn-view">Visualizar</button>
 
         </div>
         </>

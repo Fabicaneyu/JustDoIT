@@ -11,9 +11,9 @@ public class PostAdapter {
         this.listAdapt = new ArrayList<PostModel>();
     }
 
-    public void setModel(Long id, String nome, String conteudo, String date, String imagem) {
+    public void setModel(Long id, String nome, String conteudo, String date, String imagem, Long id_user) {
 
-        PostModel newPost = new PostModel(id, nome, conteudo, date, imagem);
+        PostModel newPost = new PostModel(id, nome, conteudo, date, imagem, id_user);
 
         listAdapt.add(newPost);
 

@@ -32,7 +32,8 @@ class Busca extends React.Component {
 
         this.setState({nome: usuarioLogado.nome})
         this.setState({idUser: usuarioLogado.id})
-        this.setState({photo: usuarioLogado.photo})        
+        this.setState({photo: usuarioLogado.photo})      
+        document.getElementById('load').style.display = 'inline';  
        
          
         this.buscar();
@@ -43,8 +44,7 @@ class Busca extends React.Component {
 
         const parametro = this.props.match.params.conhecimento
 
-        this.setState({request: ''})
-        document.getElementById('load').style.display = 'inline';
+        this.setState({request: ''})        
 
         if(dado){
             axios.get(`http://localhost:8080/user/find?conhecimento=${dado}`)
@@ -53,6 +53,7 @@ class Busca extends React.Component {
                
                 this.setState({request: data})
                 this.setState({resultados: data.length})
+                document.getElementById('load').style.display = 'none';
                 
             }).catch(error => {
                 console.log(error.data)
@@ -65,13 +66,14 @@ class Busca extends React.Component {
                
                 this.setState({request: data})
                 this.setState({resultados: data.length})
+                document.getElementById('load').style.display = 'none';
               
             }).catch(error => {
                 console.log(error.data)
             })
         }
        
-        document.getElementById('load').style.display = 'none';
+        
             
     }
 
@@ -93,13 +95,26 @@ class Busca extends React.Component {
         this.props.history.push('/home')
     }
 
+    toView = (id) => {
+
+        if(this.state.idUser == id) {
+            this.props.history.push(`/perfil`)
+        }
+        else{
+            this.props.history.push(`/view/${id}`)
+        }
+
+    }
+
+
+
     verifyBusca = () => {
 
         if(this.state.request.length >=1) {
             return(
                 <>
                 <label className="label-resultados">Exibindo <b>{this.state.resultados}</b> resultado(s)</label>
-                <CardBusca body={this.state.request}/>
+                <CardBusca view={this.toView} body={this.state.request}/>
                 </>
             )
         }else{

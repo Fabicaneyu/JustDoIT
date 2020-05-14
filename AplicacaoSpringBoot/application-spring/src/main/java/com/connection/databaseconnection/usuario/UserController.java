@@ -4,6 +4,7 @@ import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUs
 import com.connection.databaseconnection.conhecimento.Conhecimento;
 import com.connection.databaseconnection.conhecimento.ConhecimentoRepository;
 import com.connection.databaseconnection.dto.UserDTO;
+import com.connection.databaseconnection.dto.UsuarioViewDTO;
 import com.connection.databaseconnection.exception.ErroAutenticacao;
 import com.connection.databaseconnection.exception.ErroConexao;
 import com.connection.databaseconnection.exception.RegraException;
@@ -117,6 +118,23 @@ public class UserController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
 
+    }
+
+    @GetMapping("/view/{id}")
+    public ResponseEntity sobre(@PathVariable("id") long id) {
+
+        try {
+
+            UsuarioViewDTO user = this.controller.buscaViewporId(id);
+            if (user != null) {
+                return new ResponseEntity(user, HttpStatus.OK);
+            } else {
+                return new ResponseEntity("Usuário não encontrado", HttpStatus.NO_CONTENT);
+            }
+
+        } catch (ErroConexao e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 

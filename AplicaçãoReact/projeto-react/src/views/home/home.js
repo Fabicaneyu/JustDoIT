@@ -110,7 +110,16 @@ class Home extends React.Component {
         this.props.history.push('/home')
     }
 
-    
+    toView = (id) => {
+
+        if(this.state.idUser == id) {
+            this.props.history.push(`/perfil`)
+        }
+        else{
+            this.props.history.push(`/view/${id}`)
+        }        
+
+    }
 
     postar = () => {
         axios.post('http://localhost:8080/post/new', {
@@ -131,8 +140,7 @@ class Home extends React.Component {
 
 
      this.props.history.push(`/busca/${this.state.busca_content}`)
-
-            
+   
     
     }
 
@@ -174,7 +182,7 @@ class Home extends React.Component {
                                     <button onClick={this.postar} className="btn-sender">Enviar</button>
                                 </div>
 
-                                <PostField body={this.state.request} />
+                                <PostField view={this.toView} body={this.state.request} />
                            
                            
                             </div>

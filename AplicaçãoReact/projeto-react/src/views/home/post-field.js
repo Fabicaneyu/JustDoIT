@@ -24,7 +24,7 @@ export default prop => {
                                             <img className="img-user-menu" src={post.imagem} alt="img-user" />
                                         </div>
                                         <div className="userPost-name">
-                                            <div className="username"> {post.nome} </div>
+                                            <div onClick={e => prop.view(post.id_user)} className="username"> {post.nome} </div>
                                             <div className="carrerJob-user user-text">Ocupação-: Back-end Developer</div>
                                             <div className="carrerCollege-user user-text">Estudou(a)-: Bandtec</div>
                                         </div>

@@ -5,6 +5,7 @@ import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUs
 import com.connection.databaseconnection.conhecimento.Conhecimento;
 import com.connection.databaseconnection.conhecimento.ConhecimentoRepository;
 import com.connection.databaseconnection.dto.BuscaDTO;
+import com.connection.databaseconnection.dto.UsuarioViewDTO;
 import com.connection.databaseconnection.exception.ErroAutenticacao;
 import com.connection.databaseconnection.exception.RegraException;
 import com.connection.databaseconnection.exception.UserNotFoundException;
@@ -133,8 +134,23 @@ public class UserService {
     }
 
 
+    public UsuarioViewDTO buscaViewporId(long id) {
 
+        Optional<Usuario> result = this.repository.findById(id);
+        UsuarioViewDTO view ;
 
+        if(result.isPresent()) {
+
+            view = new UsuarioViewDTO
+                    (result.get().getSobre(), result.get().getPhoto(), result.get().getId());
+
+            return view;
+        }
+        else {
+            return null;
+        }
+
+    }
 }
 
 

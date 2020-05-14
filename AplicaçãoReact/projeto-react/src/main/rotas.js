@@ -5,7 +5,7 @@ import Login from '../views/login'
 import Busca from '../views/home/busca'
 import Cadastro from '../views/cadastro'
 import Perfil from '../views/perfil'
-import FieldBusca from '../components/field-busca'
+import PerfilViewOnly from '../views/perfil-view-only'
 import CadastrarEventos from '../views/Eventos/cadastroEvento';
 import ListarEventos from '../views/Eventos/listaEvento';
 import DetalhesEventos from '../views/Eventos/detalhesEvento';
@@ -20,6 +20,7 @@ function Rotas() {
                     <Route path="/home" component={Home} />
                     <Route path="/busca/:conhecimento" component={Busca} />
                     <Route path="/perfil" component={Perfil} />
+                    <Route path="/view/:id" component={PerfilViewOnly} />
                     <Route path="/cadastrarEvento" component={CadastrarEventos} />
                     <Route path="/listarEvento" component={ListarEventos} />
                     <Route path="/detalhesEvento" component={DetalhesEventos} />                    

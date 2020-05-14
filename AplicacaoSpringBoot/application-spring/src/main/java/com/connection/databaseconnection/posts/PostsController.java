@@ -71,20 +71,4 @@ public class PostsController {
         }
 
     }
-
-//    @GetMapping("/teste")
-//    public ResponseEntity loadTeste() {
-//
-//        try{
-//            List<Object[]>  resultDefault = controller.testeJoin();
-//
-//            List<PostModel> resultNice = controller.testeBuilder(resultDefault);
-//
-//            return new ResponseEntity(resultNice, HttpStatus.OK);
-//        }catch (ErroConexao e) {
-//            return ResponseEntity.badRequest().body(e.getMessage());
-//        }
-//
-//    }
-
 }

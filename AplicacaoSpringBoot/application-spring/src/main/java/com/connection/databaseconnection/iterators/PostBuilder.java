@@ -35,8 +35,9 @@ public class PostBuilder implements Iterator {
                 String nome = data[2].toString();
                 String date = data[3].toString();
                 String imagem = data[4].toString();
+                Long id_user = (Long) data[5];
 
-                postAdapter.setModel(id, nome, conteudo, date, imagem);
+                postAdapter.setModel(id, nome, conteudo, date, imagem, id_user);
 
             }
             return postAdapter.getModel();
