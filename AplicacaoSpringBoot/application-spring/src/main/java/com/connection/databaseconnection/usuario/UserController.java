@@ -3,6 +3,7 @@ package com.connection.databaseconnection.usuario;
 import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuario;
 import com.connection.databaseconnection.conhecimento.Conhecimento;
 import com.connection.databaseconnection.conhecimento.ConhecimentoRepository;
+import com.connection.databaseconnection.conhecimento.types.TipoConhecimento;
 import com.connection.databaseconnection.dto.UserDTO;
 import com.connection.databaseconnection.dto.UsuarioViewDTO;
 import com.connection.databaseconnection.exception.ErroAutenticacao;
@@ -139,9 +140,72 @@ public class UserController {
 
 
     @GetMapping("/find")
-    public ResponseEntity buscarTeste(@RequestParam(required = false) String conhecimento,
-                                      @RequestParam(required = false) String tipo) {
+    public ResponseEntity findUsers(@RequestParam(required = false) String conhecimento,
+                                    @RequestParam(required = false) Integer level,
+                                    @RequestParam(required = false) TipoConhecimento tipo ) {
         try {
+
+            if(tipo != null) {
+                if (level > 0) {
+
+                    Conhecimento consulta = Conhecimento.builder().tipo(tipo).build();
+
+                    List conhecimentos = controller.buscarPorTipoAndNivel(consulta.getTipo(), level);
+
+                    if (conhecimentos == null) {
+                        return new ResponseEntity("Infelizmente ainda não temos usuários que " +
+                                "possuem este nível de conhecimento .",HttpStatus.NOT_FOUND);
+                    } else {
+                        return ResponseEntity.ok(conhecimentos);
+                    }
+
+                } else {
+                    Conhecimento consulta = Conhecimento.builder().tipo(tipo).build();
+
+                    List conhecimentos = controller.buscarPorTipo(consulta.getTipo());
+
+                    if (conhecimentos == null) {
+                        return new ResponseEntity("Infelizmente ainda não temos usuários que" +
+                                " possuem este tipo de conhecimento ."
+                                , HttpStatus.NOT_FOUND);
+                    } else {
+                        return ResponseEntity.ok(conhecimentos);
+                    }
+                }
+            }
+            if (level > 0) {
+                if (conhecimento != null) {
+
+                    Conhecimento con = Conhecimento.builder().conhecimento(conhecimento).build();
+                    ConhecimentoUsuario consulta = ConhecimentoUsuario.builder()
+                            .conhecimento(con)
+                            .nivel(level).build();
+
+                    List conhecimentos = controller.buscarPorLevelandConhecimento(consulta);
+
+                    if (conhecimentos == null) {
+                        return new ResponseEntity("Infelizmente ainda não temos usuários que" +
+                                "possuem este nível de conhecimento .",HttpStatus.NOT_FOUND);
+                    } else {
+                        return ResponseEntity.ok(conhecimentos);
+                    }
+
+                }else {
+
+                    ConhecimentoUsuario consulta = ConhecimentoUsuario.builder().nivel(level).build();
+
+                    List conhecimentos = controller.buscarPorLevel(consulta.getNivel());
+
+                    if (conhecimentos == null) {
+                        return new ResponseEntity("Infelizmente ainda não temos usuários que possuem este nível" +
+                                "de conhecimento ."
+                                , HttpStatus.NOT_FOUND);
+                    } else {
+                        return ResponseEntity.ok(conhecimentos);
+                    }
+                }
+
+            }
 
             Conhecimento consulta = Conhecimento.builder().conhecimento(conhecimento).build();
 
@@ -149,8 +213,8 @@ public class UserController {
 
 
             if (conhecimentos == null) {
-                return new ResponseEntity("Infelizmente ainda não temos usuários que possuem este conhecimento"
-                        , HttpStatus.NO_CONTENT);
+                return new ResponseEntity("Infelizmente ainda não temos usuários que possuem este conhecimento ."
+                        , HttpStatus.NOT_FOUND);
             }
             else{
                 return ResponseEntity.ok(conhecimentos);

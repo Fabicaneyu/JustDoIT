@@ -3,7 +3,7 @@ import Navbar from '../components/navbar'
 import Cancelar from '../imagens/cancelar.svg'
 import Editar from '../imagens/editar.svg'
 import Add from '../imagens/add.svg'
-import Busca from './home/busca'
+import Busca from './Busca/busca'
 import {Dialog} from 'primereact/dialog';
 import {Button} from 'primereact/button';
 import SelectType from '../components/select'

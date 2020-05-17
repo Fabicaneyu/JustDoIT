@@ -1,8 +1,8 @@
 import React from 'react'
 import Navbar from '../../components/navbar'
 import UserInfo from '../../components/info-user-bar'
-import CardBusca from './busca-field'
-
+import CardBusca from './busca-card'
+import {Dropdown} from 'primereact/dropdown';
 import Loading from '../../imagens/Spinner.gif'
 
 import axios from 'axios'
@@ -19,7 +19,10 @@ class Busca extends React.Component {
         busca_content: '',
         resultados : 0,
         request : [],
-        busca_content: ''
+        busca_content: '',
+        no_content: '',
+        level: 0,
+        tipo: null
 
     }
 
@@ -44,13 +47,15 @@ class Busca extends React.Component {
     buscar = (dado) => {
 
         const parametro = this.props.match.params.conhecimento
+        const nivel = this.state.level
+        const tipo = this.state.tipo
 
         this.setState({request: ''})  
         document.getElementById('load').style.display = 'inline';   
         document.getElementById('content-busca').style.display = 'none';
 
         if(dado){
-            axios.get(`http://localhost:8080/user/find?conhecimento=${dado}`)
+            axios.get(`http://localhost:8080/user/find?conhecimento=${dado}&level=${nivel}`)
             .then(response => {
                 const data = response.data
                
@@ -60,11 +65,30 @@ class Busca extends React.Component {
                 document.getElementById('content-busca').style.display = 'inline';
                 
             }).catch(error => {
-                console.log(error.data)
+                this.setState({no_content: error.response.data })   
+                document.getElementById('load').style.display = 'none';
+                document.getElementById('content-busca').style.display = 'inline';             
+            })
+
+        }
+        else if(tipo) {
+            axios.get(`http://localhost:8080/user/find?tipo=${tipo}&level=${nivel}`)
+            .then(response => {
+                const data = response.data
+               
+                this.setState({request: data})
+                this.setState({resultados: data.length})
+                document.getElementById('load').style.display = 'none';
+                document.getElementById('content-busca').style.display = 'inline';
+                
+            }).catch(error => {
+                this.setState({no_content: error.response.data })   
+                document.getElementById('load').style.display = 'none';
+                document.getElementById('content-busca').style.display = 'inline';   
             })
         }
         else {
-            axios.get(`http://localhost:8080/user/find?conhecimento=${parametro}`)
+            axios.get(`http://localhost:8080/user/find?conhecimento=${parametro}&level=${nivel}`)
             .then(response => {
                 const data = response.data
                
@@ -74,7 +98,9 @@ class Busca extends React.Component {
                 document.getElementById('content-busca').style.display = 'inline';
               
             }).catch(error => {
-                console.log(error.data)
+                this.setState({no_content: error.response.data })   
+                document.getElementById('load').style.display = 'none';
+                document.getElementById('content-busca').style.display = 'inline';   
             })
         }
                
@@ -123,15 +149,38 @@ class Busca extends React.Component {
             )
         }else{
             return(
-                <div className="frase-no-content">Infelizmente ainda não temos usuários que possuem este conhecimento :,(</div>
+                <div className="frase-no-content">{this.state.no_content}</div>
             )
         }
 
     }
 
 
-
     render() {
+
+        const levelSelectItems = [
+            {label: '1', value: 1},
+            {label: '2', value: 2},
+            {label: '3', value: 3},
+            {label: '4', value: 4},
+            {label: '5', value: 5},
+            {label: '6', value: 6},
+            {label: '7', value: 7},
+            {label: '8', value: 8},
+            {label: '9', value: 9},
+            {label: '10', value: 10}
+        ];
+
+        const typeSelectItems = [
+            {label: 'Programação', value: 'PROGRAMACAO'},
+            {label: 'Infgraestrutura', value: 'INFRAESTRUTURA'},
+            {label: 'Dados', value: 'DADOS'},
+            {label: 'Design e UX', value: 'DESIGN'},
+            {label: 'Testes', value: 'TESTES'},
+            {label: 'Segurança', value: 'SEGURANCA'},
+            {label: 'Gestão e Planejamento', value: 'GESTAO'}
+
+        ];
 
 
         return(
@@ -144,15 +193,24 @@ class Busca extends React.Component {
             action={e =>this.buscar(this.state.busca_content)}
             value={this.state.busca_content}
             change={e =>this.setState({busca_content: e})}/>
+
+                <div className="filtro-busca">
+                    <label className="label-select-nivel"><b>Nível</b></label>
+                    <Dropdown className="filtro-busca-level" value={this.state.level} options={levelSelectItems}
+                    onChange={(e) => {this.setState({level: e.value})}} placeholder="Selecione um nível"/>
+                    <label className="label-select-nivel"><b>Categoria</b></label>
+                    <Dropdown className="filtro-busca-type" value={this.state.tipo} options={typeSelectItems}
+                    onChange={(e) => {this.setState({tipo: e.value})}} placeholder="Selecione uma categoria"/>
+                </div>
+
             <div className="content">
                 <div className="container-fluid">
                     <div className="row">
-                                                
-
-                        <UserInfo photo={this.state.photo} label={this.state.nome} />
-                        
+                                                                        
+                        <UserInfo photo={this.state.photo} label={this.state.nome} />                        
                            
                           </div>
+
                                                     
                           <div id="content-busca" className="div-superior-busca">                    
 

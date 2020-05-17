@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../components/navbar'
-import Busca from './home/busca'
+import Busca from './Busca/busca'
 import Conhecimentos from '../components/conhecimentos-field-view'
 import Interesses from '../components/interesses-field-view'
 import axios from 'axios'

@@ -12075,6 +12075,33 @@ body{
 }
 
 .frase-no-content {
+  margin-top: 5%;
   font-size: 20px;
   margin-left: 12%;
+}
+
+.filtro-busca{
+
+  height: 80px;
+  width: 380px;
+  position: absolute;
+  top: 9%;
+  left: 39%;
+
+}
+.filtro-busca-level{ 
+ margin-right:3%;
+ top:50%;
+}
+.filtro-busca-type{ 
+  margin-right:3%;
+  top:50%;
+ }
+
+.label-select-nivel{
+  position: absolute;
+  top: 20%;
+  margin-left: 2%;
+  font-style: inherit;
+  font-size: 14px;
 }

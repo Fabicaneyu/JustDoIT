@@ -4,6 +4,7 @@ import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUs
 import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuarioRepository;
 import com.connection.databaseconnection.conhecimento.Conhecimento;
 import com.connection.databaseconnection.conhecimento.ConhecimentoRepository;
+import com.connection.databaseconnection.conhecimento.types.TipoConhecimento;
 import com.connection.databaseconnection.dto.BuscaDTO;
 import com.connection.databaseconnection.dto.UsuarioViewDTO;
 import com.connection.databaseconnection.exception.ErroAutenticacao;
@@ -130,7 +131,36 @@ public class UserService {
                     .findByIdKnowId(busca.get(0).getId_conhecimento());
         }
 
-        return buscaBuilder.nextList(novaBusca);
+        if(novaBusca.isEmpty()) {
+            return null;
+        }
+        else{
+            return buscaBuilder.nextList(novaBusca);
+        }
+
+    }
+
+    public List<BuscaDTO> buscarPorTipo(TipoConhecimento tipo) {
+
+        List<Conhecimento> busca = conhecimentoRepository.findByTipo(tipo);
+
+        List<ConhecimentoUsuario> novaBusca;
+
+        if(busca.isEmpty()) {
+            return null;
+        }
+        else {
+            novaBusca = conhecimentoUsuarioRepository
+                    .findByIdKnowId(busca.get(0).getId_conhecimento());
+        }
+
+        if(novaBusca.isEmpty()) {
+            return null;
+        }
+        else{
+            return buscaBuilder.nextList(novaBusca);
+        }
+
     }
 
 
@@ -148,6 +178,50 @@ public class UserService {
         }
         else {
             return null;
+        }
+
+    }
+
+    public List buscarPorLevel(int nivel) {
+
+        List<ConhecimentoUsuario> busca = conhecimentoUsuarioRepository.findByLevel(nivel);
+
+        if(busca.isEmpty()) {
+            return null;
+        }
+        else {
+            return buscaBuilder.nextList(busca);
+        }
+
+    }
+
+    public List buscarPorLevelandConhecimento(ConhecimentoUsuario consulta) {
+
+        List<ConhecimentoUsuario> busca = conhecimentoUsuarioRepository.findByConhecimentoandLevel
+                (consulta.getNivel(), consulta.getConhecimento().getConhecimento());
+
+        if(busca.isEmpty()) {
+            return null;
+        }
+        else {
+            return buscaBuilder.nextList(busca);
+        }
+
+    }
+
+    public List buscarPorTipoAndNivel(TipoConhecimento type, int level) {
+
+
+        List<ConhecimentoUsuario> busca;
+
+        busca = conhecimentoUsuarioRepository
+                    .findByLevelandType(level, type);
+
+        if(busca.isEmpty()) {
+            return null;
+        }
+        else{
+            return buscaBuilder.nextList(busca);
         }
 
     }
