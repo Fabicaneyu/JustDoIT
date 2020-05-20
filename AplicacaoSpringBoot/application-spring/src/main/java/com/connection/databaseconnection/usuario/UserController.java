@@ -89,7 +89,7 @@ public class UserController {
     }
 
     @GetMapping("/about")
-    public ResponseEntity sobre(@RequestParam(required = true) Long id) {
+    public ResponseEntity sobre(@RequestParam(required = true) Integer id) {
         try {
 
 
@@ -122,7 +122,7 @@ public class UserController {
     }
 
     @GetMapping("/view/{id}")
-    public ResponseEntity sobre(@PathVariable("id") long id) {
+    public ResponseEntity view(@PathVariable("id") Integer id) {
 
         try {
 
@@ -225,6 +225,10 @@ public class UserController {
             return ResponseEntity.badRequest().body(e.getMessage());
 
         }
+    }
+
+    public Usuario getCurrentUser() {
+        return this.currentUser;
     }
 
 

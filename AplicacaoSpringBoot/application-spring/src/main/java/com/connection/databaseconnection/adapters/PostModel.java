@@ -2,31 +2,37 @@ package com.connection.databaseconnection.adapters;
 
 public class PostModel {
 
-    private long id, id_user;
+    private Integer id, id_user, reacao, interessante, gratidao,inovador;
     private String nome, conteudo, imagem , data;
 
-    public PostModel(Long id, String nome, String conteudo, String data, String imagem, long id_user) {
+
+    public PostModel(Integer id, Integer id_user, Integer reacao, Integer interessante, Integer gratidao,
+                     Integer inovador, String nome, String conteudo, String imagem, String data) {
         this.id = id;
+        this.id_user = id_user;
+        this.reacao = reacao;
+        this.interessante = interessante;
+        this.gratidao = gratidao;
+        this.inovador = inovador;
         this.nome = nome;
         this.conteudo = conteudo;
-        this.data = data;
         this.imagem = imagem;
-        this.id_user = id_user;
+        this.data = data;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public long getId_user() {
+    public Integer getId_user() {
         return id_user;
     }
 
-    public void setId_user(long id_user) {
+    public void setId_user(Integer id_user) {
         this.id_user = id_user;
     }
 
@@ -60,5 +66,37 @@ public class PostModel {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public Integer getReacao() {
+        return reacao;
+    }
+
+    public void setReacao(Integer reacao) {
+        this.reacao = reacao;
+    }
+
+    public Integer getInteressante() {
+        return interessante;
+    }
+
+    public void setInteressante(Integer interessante) {
+        this.interessante = interessante;
+    }
+
+    public Integer getGratidao() {
+        return gratidao;
+    }
+
+    public void setGratidao(Integer gratidao) {
+        this.gratidao = gratidao;
+    }
+
+    public Integer getInovador() {
+        return inovador;
+    }
+
+    public void setInovador(Integer inovador) {
+        this.inovador = inovador;
     }
 }

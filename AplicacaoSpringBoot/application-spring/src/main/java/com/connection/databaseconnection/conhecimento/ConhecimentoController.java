@@ -43,12 +43,12 @@ public class ConhecimentoController {
             Optional<Conhecimento> resultKnow = controller.buscaConhecimentoPorId
                     (conhecimentoUsuario.getConhecimento().getId_conhecimento());
 
-            Optional<Usuario> resultUser = userController.buscaporIdOptional
+            Usuario resultUser = userController.buscaporId
                     (conhecimentoUsuario.getUsuario().getId());
 
             ConhecimentoUsuario novoConhecimento = ConhecimentoUsuario.builder()
                     .descricao_user(conhecimentoUsuario.getDescricao_user())
-                    .nivel(conhecimentoUsuario.getNivel()).usuario(resultUser.get())
+                    .nivel(conhecimentoUsuario.getNivel()).usuario(resultUser)
                     .conhecimento(resultKnow.get()).build();
 
            boolean salvo = controller.saveConhecimentoUsuario(novoConhecimento);
@@ -72,12 +72,12 @@ public class ConhecimentoController {
             Optional<Conhecimento> resultKnow = controller.buscaConhecimentoPorId
                     (interesseUsuario.getConhecimento().getId_conhecimento());
 
-            Optional<Usuario> resultUser = userController.buscaporIdOptional
+            Usuario resultUser = userController.buscaporId
                     (interesseUsuario.getUsuario().getId());
 
             InteresseUsuario novoInteresse = InteresseUsuario.builder()
                     .descricao_interesse(interesseUsuario.getDescricao_interesse())
-                    .conhecimento(resultKnow.get()).usuario(resultUser.get()).build();
+                    .conhecimento(resultKnow.get()).usuario(resultUser).build();
 
             boolean salvo = controller.saveInteresseUsuario(novoInteresse);
 
@@ -94,7 +94,7 @@ public class ConhecimentoController {
     }
 
     @GetMapping("/buscar/conhecimentos")
-    public ResponseEntity buscarConhecimentos(@RequestParam(required = true) Long id ) {
+    public ResponseEntity buscarConhecimentos(@RequestParam(required = true) Integer id ) {
 
         try {
             List<ConhecimentoUsuario> result = controller.buscaConhecimentosPerfil(id);
@@ -109,7 +109,7 @@ public class ConhecimentoController {
     }
 
     @GetMapping("/buscar/interesses")
-    public ResponseEntity buscarInteresses(@RequestParam(required = true) Long id ) {
+    public ResponseEntity buscarInteresses(@RequestParam(required = true) Integer id ) {
 
         try {
             List<InteresseUsuario> result = controller.buscarInteresses(id);
@@ -143,7 +143,7 @@ public class ConhecimentoController {
     }
 
     @DeleteMapping("/remover/interesse/{id}")
-    public ResponseEntity removerInteresseorId(@PathVariable("id") Long id) {
+    public ResponseEntity removerInteresseorId(@PathVariable("id") Integer id) {
 
         try{
             boolean delete = controller.deleteInterestById(id);

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class UserDTO {
 
     private String email, nome, photo, senha, sobre ;
-    private Long id;
+    private Integer id;
 
     public String getEmail() {
         return email;
@@ -41,11 +41,11 @@ public class UserDTO {
         this.senha = senha;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

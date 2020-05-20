@@ -14,18 +14,18 @@ import java.time.format.DateTimeFormatter;
 @AllArgsConstructor
 public class PostDTO {
 
-    private Long id_user;
+    private Integer id_user;
     private String conteudo;
     private String photo;
     private String nome_user;
     private String _data;
 
 
-    public Long getId_user() {
+    public Integer getId_user() {
         return id_user;
     }
 
-    public void setId_user(Long id_user) {
+    public void setId_user(Integer id_user) {
         this.id_user = id_user;
     }
 

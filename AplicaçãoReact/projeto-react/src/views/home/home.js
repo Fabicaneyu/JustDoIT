@@ -20,7 +20,8 @@ class Home extends React.Component {
         recomendados : [],
         busca_content: '',
         request : [],
-        way : ''
+        way : '',
+        liked: []
     }
 
 
@@ -91,6 +92,52 @@ class Home extends React.Component {
             console.log(erro)
         })
     }
+
+      change = (id, type) => {
+
+
+            const id_post = id     
+            const tipo = type                   
+            var achou = 0
+            var base = this.state.liked
+            
+               if(document.getElementById(id_post+"interesting").className === 'size-liked'
+                || document.getElementById(id_post+"gratefull").className === 'size-liked'
+                || document.getElementById(id_post+"inovated").className === 'size-liked'){
+
+               console.log('já curtido');
+
+            }else {
+                for (let index = 0; index < base.length; index++) {
+                    if(id_post === this.state.liked[index]) {
+                        achou ++                    
+                    }                
+                }               
+                if(achou > 0) {
+                    this.setState({liked: base})
+                    return console.log('já curtido')
+                }else{
+                    document.getElementById(id_post+tipo).className = 'size-liked';
+                    base.push(id_post)
+                }
+            }
+
+
+            this.setState({liked: base})
+            
+
+            // axios.get(`http://localhost:8080/reacoes/validar/${user}/${post}`)
+            // .then(response =>{
+            //     const data = response.data;
+            //     console.log(data)
+            //     return 'size-liked'             
+            // }).catch(error =>{
+            //     console.log(error.response)
+            // })
+
+            
+        
+        }
 
 
     sair = () => {
@@ -182,7 +229,7 @@ class Home extends React.Component {
                                     <button onClick={this.postar} className="btn-sender">Enviar</button>
                                 </div>
 
-                                <PostField view={this.toView} body={this.state.request} />
+                                <PostField user={this.state.idUser} action={this.change} view={this.toView} body={this.state.request} />
                            
                            
                             </div>

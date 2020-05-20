@@ -16,12 +16,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "post", schema="teste3")
-public class Posts {
+public class Post {
 
     @Id
     @Column( name = "id" )
     @GeneratedValue( strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @Column( name = "conteudo")
     private String conteudo;

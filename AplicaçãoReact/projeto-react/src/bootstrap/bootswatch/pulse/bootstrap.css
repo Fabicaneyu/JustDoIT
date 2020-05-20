@@ -11863,8 +11863,15 @@ padding-right: 0px;
 .icon-value{
   font-size: 11px;
 }
+.size-liked{
+  margin: 15px;
+  font-size: 15px;
+  color:#2aa7c9;
+  font-style: oblique;
+}
 
 .size-around{
+  cursor: pointer;
   margin: 15px;
 }
 .score-style{
@@ -11989,6 +11996,8 @@ body{
   
 }
 
+
+
 .div-superior-busca {
 
   position: absolute;
@@ -12104,4 +12113,10 @@ body{
   margin-left: 2%;
   font-style: inherit;
   font-size: 14px;
+}
+
+.testzila{
+  
+  color:blue;
+
 }

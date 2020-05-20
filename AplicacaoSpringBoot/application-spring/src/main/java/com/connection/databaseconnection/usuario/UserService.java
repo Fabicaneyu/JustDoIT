@@ -46,7 +46,7 @@ public class UserService {
         this.repository = repository;
     }
 
-    public Usuario buscaporId(Long id) {
+    public Usuario buscaporId(Integer id) {
 
         Optional<Usuario> result = this.repository.findById(id);
 
@@ -59,18 +59,6 @@ public class UserService {
 
     }
 
-    public Optional<Usuario> buscaporIdOptional(Long id) {
-
-        Optional<Usuario> result = this.repository.findById(id);
-
-        if(result.isPresent()) {
-            return result;
-        }
-        else {
-            return null;
-        }
-
-    }
 
     @Transactional
     public Usuario saveUser(Usuario user) {
@@ -164,7 +152,7 @@ public class UserService {
     }
 
 
-    public UsuarioViewDTO buscaViewporId(long id) {
+    public UsuarioViewDTO buscaViewporId(Integer id) {
 
         Optional<Usuario> result = this.repository.findById(id);
         UsuarioViewDTO view ;

@@ -15,7 +15,7 @@ public interface ConhecimentoUsuarioRepository extends JpaRepository<Conheciment
 
     @Query(" select c from ConhecimentoUsuario c left join fetch c.conhecimento uk" +
             "left join fetch c.usuario u where u.id = :param ")
-    List<ConhecimentoUsuario>  findConhecimentoById( @Param("param") Long id);
+    List<ConhecimentoUsuario>  findConhecimentoById( @Param("param") Integer id);
 
     @Query(" select c from ConhecimentoUsuario c left join fetch c.usuario u" +
             "left join fetch c.conhecimento uk where uk.id_conhecimento = :param ")

@@ -2,14 +2,27 @@ import React from 'react'
 import Inovador from '../../imagens/comece.svg'
 import Interessante from '../../imagens/conhecimento.svg'
 import Compartilhar from '../../imagens/compartilhar.svg'
-import Graticao from '../../imagens/graticao.svg'
+import Gratidao from '../../imagens/graticao.svg'
+import axios from 'axios'
 
 
 
 export default prop => {
-
+    
 
     const divs = prop.body.map( post => {
+
+
+        // function like(val) {
+           
+        //     if(liked) {
+        //         console.log('já curtido')
+        //         setLiked(false)
+        //     }else{
+        //         prop.action(val)
+        //         setLiked(true)
+        //     }
+        // }
     
         return (
             <>
@@ -40,23 +53,24 @@ export default prop => {
                             </div>
                             <div className="row anulled">
                                 <div className="icon-value col-md-10">
-                                    <span className="size-around">
+                                    <span className={post.reacao == 1 ? 'size-liked':'size-around'} id={post.id+"interesting"}
+                                     onClick={e =>prop.action(post.id,"interesting")}>
                                         <span className="score-style">
                                             <img src={Interessante} alt="interessante" />
-                                        </span>
+                                        </span >
                                     
                                         Interessante</span>
-                                      
-                            
-                                    
-                                    <span className="size-around">
+                                                                                                  
+                                    <span className={post.reacao == 2 ? 'size-liked':'size-around'} id={post.id+"gratefull"}
+                                    onClick={e =>prop.action(post.id,"gratefull")}>
                                         <span className="score-style">
-                                            <img src={Graticao} alt="graticao" />
+                                            <img src={Gratidao} alt="gratidao" />
                                         </span>Gratidão</span>
                                   
                                   
                                   
-                                        <span className="size-around">
+                                        <span className={post.reacao == 3 ? 'size-liked':'size-around'} id={post.id+"inovated"}
+                                        onClick={e =>prop.action(post.id,"inovated")}>
                                             <span className="score-style">
                                             <img src={Inovador} alt="inovador"/>
                                             </span>Inovador</span>

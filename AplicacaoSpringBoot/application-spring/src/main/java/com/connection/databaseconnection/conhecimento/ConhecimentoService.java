@@ -75,14 +75,14 @@ public class ConhecimentoService {
 
     }
 
-    public List<ConhecimentoUsuario> buscaConhecimentosPerfil(Long id) {
+    public List<ConhecimentoUsuario> buscaConhecimentosPerfil(Integer id) {
 
         List<ConhecimentoUsuario>  result = conhecimentoUsuarioRepository.findConhecimentoById(id);
 
         return result;
     }
 
-    public List<InteresseUsuario> buscarInteresses(Long id) {
+    public List<InteresseUsuario> buscarInteresses(Integer id) {
 
         List<InteresseUsuario>  result = interesseUsuarioRepository.findConhecimentoById(id);
 
@@ -100,12 +100,12 @@ public class ConhecimentoService {
         else return false;
     }
 
-    public boolean deleteInterestById(Long id) {
+    public boolean deleteInterestById(Integer id) {
 
-        Optional<InteresseUsuario> interesseUsuario = interesseUsuarioRepository.findById(id);
+        Optional<InteresseUsuario> interesseUsuario = interesseUsuarioRepository.findById(Long.valueOf(id));
 
         if (interesseUsuario.isPresent()) {
-            interesseUsuarioRepository.deleteById(id);
+            interesseUsuarioRepository.deleteById(Long.valueOf(id));
             return true;
         }
         else return false;
