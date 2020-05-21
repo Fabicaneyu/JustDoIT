@@ -11862,29 +11862,53 @@ padding-right: 0px;
 }
 .icon-value{
   font-size: 11px;
+  height: 35px;
+  border: 1px black solid;
 }
 .size-liked{
-  margin: 15px;
-  font-size: 15px;
+  font-size: 12.5px;
   color:#2aa7c9;
   font-style: oblique;
+
+  cursor: pointer;
+  position: absolute;
+  left:29%;
+  top:20%;
 }
 
 .size-around{
   cursor: pointer;
-  margin: 15px;
-}
-.score-style{
-  cursor: pointer;
+  position: absolute;
+  left:29%;
+  top:20%;
 }
 
+.score-style{
+  cursor: pointer;
+  position: absolute;
+  left:2%;
+  top:14%;
+}
+.score-style-light{
+  cursor: pointer;
+  position: absolute;
+  left:7%;
+  top:14%;
+}
 .icon-value.col-md-10{
   padding-left: 0px
 }
 
 .share-icon{
+  position: absolute;
   cursor: pointer;
-  margin-right: 8px;
+  top:16%;
+}
+
+.icon-share{
+  position: absolute;
+  cursor: pointer;
+  left:0px;
 }
 
 
@@ -12120,3 +12144,59 @@ body{
   color:blue;
 
 }
+
+.react-box-one{
+  position: absolute;
+  bottom: 1%;
+  width:95px;
+  height: 33px;
+}
+
+.react-box-one:hover {
+
+  background-color: #eeeded;
+  border-radius: 3px;
+  font: bold;
+}
+
+
+.react-box-two{
+
+  position: absolute;
+  margin-left: 16%;;
+  width:70px;
+  bottom: 1%;
+  height: 33px;
+}
+
+.react-box-two:hover {
+
+  background-color: #eeeded;
+  border-radius: 3px;
+  font: bold;
+}
+.react-box-three{
+
+  position: absolute;
+  margin-left: 29%;
+  width:70px;
+  bottom: 1%;
+  height: 33px;
+}
+
+.react-box-three:hover {
+
+  background-color: #eeeded;
+  border-radius: 3px;
+  font: bold;
+}
+
+.interessante-counter {
+  color: #868e96;
+  position: absolute;
+  top:18%;
+  left:40.6%;
+}
+
+
+

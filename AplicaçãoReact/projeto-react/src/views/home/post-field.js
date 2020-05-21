@@ -52,37 +52,46 @@ export default prop => {
                                 {post.conteudo}
                             </div>
                             <div className="row anulled">
-                                <div className="icon-value col-md-10">
-                                    <span className={post.reacao == 1 ? 'size-liked':'size-around'} id={post.id+"interesting"}
-                                     onClick={e =>prop.action(post.id,"interesting")}>
-                                        <span className="score-style">
-                                            <img src={Interessante} alt="interessante" />
-                                        </span >
-                                    
-                                        Interessante</span>
-                                                                                                  
-                                    <span className={post.reacao == 2 ? 'size-liked':'size-around'} id={post.id+"gratefull"}
-                                    onClick={e =>prop.action(post.id,"gratefull")}>
-                                        <span className="score-style">
-                                            <img src={Gratidao} alt="gratidao" />
-                                        </span>Gratidão</span>
+                           
+                                <div className="icon-value col-md-10">    
+                                <span className="interessante-counter">• {post.total}</span>                                
+                                    <div className="react-box-one">
+                                        <span className={post.reacao == 1 ? 'size-liked':'size-around'} id={post.id+"interesting"}
+                                        onClick={e =>prop.action(post.id,"interesting")}>                                        
+                                            
+                                            Interessante</span>
+                                            <span className="score-style-light">
+                                                <img src={Interessante} alt="interessante" />
+                                            </span >
+                                            
+                                     </div>                                    
+                                     <div className="react-box-two">                                                          
+                                            <span className={post.reacao == 2 ? 'size-liked':'size-around'} id={post.id+"gratefull"}
+                                            onClick={e =>prop.action(post.id,"gratefull")}>
+                                               Gratidão</span>
+
+                                               <span className="score-style">
+                                                    <img src={Gratidao} alt="gratidao" />
+                                                </span>
+                                      </div>   
                                   
-                                  
-                                  
+                                     <div className="react-box-three">  
                                         <span className={post.reacao == 3 ? 'size-liked':'size-around'} id={post.id+"inovated"}
                                         onClick={e =>prop.action(post.id,"inovated")}>
+                                            Inovador</span>
+
                                             <span className="score-style">
                                             <img src={Inovador} alt="inovador"/>
-                                            </span>Inovador</span>
-                                    
+                                            </span>
+                                     </div> 
                                 </div>
+                           
                                 <div className="icon-value  col-md-2">
-                                    <span className="share-icon">
-                                        <img src={Compartilhar} alt="share" />
-                                    </span>
-                                    compartilhar
-                                </div>
-
+                                    <div className="share-icon">                                        
+                                        compartilhar
+                                    </div>  
+                                    <img className="icon-share" src={Compartilhar} alt="share" />                                 
+                                </div>                                
                             </div>
                             
                         </div>
