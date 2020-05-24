@@ -31,9 +31,14 @@ class PerfilViewOnly extends React.Component {
 
 
         this.load();       
-        this.reset();          
+        this.reset();
+        this.scrollTop();
 
     }
+
+    scrollTop = () => {
+        window.scrollTo(0, 0);
+    };
 
 
     load = () => {

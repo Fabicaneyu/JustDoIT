@@ -43,7 +43,6 @@ class Perfil extends React.Component {
     constructor() {
         super();
         this.busca = new Busca();
-
     }
 
 
@@ -51,13 +50,18 @@ class Perfil extends React.Component {
 
 
         this.load();
-        this.loadType();
-        this.reset();
+        this.reset();       
+        this.loadType();   
+        this.scrollTop();     
         this.loadConhecimentos();
         this.loadInteresses();
 
 
     }
+
+    scrollTop = () => {
+        window.scrollTo(0, 0);
+    };
 
 
     load = () => {

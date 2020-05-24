@@ -10,6 +10,8 @@ import com.connection.databaseconnection.exception.ErroAutenticacao;
 import com.connection.databaseconnection.exception.ErroConexao;
 import com.connection.databaseconnection.exception.RegraException;
 import com.connection.databaseconnection.exception.UserNotFoundException;
+import com.connection.databaseconnection.security.captcha.CaptchaDTO;
+import com.connection.databaseconnection.security.captcha.CaptchaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.awt.peer.CanvasPeer;
 import java.util.List;
@@ -38,6 +41,9 @@ public class UserController {
     @Autowired
     private ConhecimentoRepository conhecimentoRepository;
 
+    @Autowired
+    private CaptchaValidator captchaValidator;
+
     public UserController(UserService controller) {
 
         this.controller = controller;
@@ -56,6 +62,17 @@ public class UserController {
         } catch (ErroAutenticacao e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @PostMapping("/recaptcha")
+    public ResponseEntity recaptchaValidate(@RequestBody CaptchaDTO captchaDTO) throws Exception {
+
+        Boolean isValidCaptcha = captchaValidator.validateCaptcha(captchaDTO.getCaptcha());
+
+        if(!isValidCaptcha){
+            return ResponseEntity.badRequest().body("Captcha não valido");
+        }
+        return ResponseEntity.ok("Captcha validado com sucesso");
     }
 
 

@@ -2,22 +2,20 @@ package com.connection.databaseconnection.adapters;
 
 public class PostModel {
 
-    private Integer id, id_user, reacao, interessante, gratidao,inovador;
+    private Integer id, id_user, reacao, total;
     private String nome, conteudo, imagem , data;
 
 
-    public PostModel(Integer id, Integer id_user, Integer reacao, Integer interessante, Integer gratidao,
-                     Integer inovador, String nome, String conteudo, String imagem, String data) {
+    public PostModel(Integer id, Integer id_user, Integer reacao, Integer total, String nome,
+                     String conteudo, String imagem, String data) {
         this.id = id;
         this.id_user = id_user;
         this.reacao = reacao;
-        this.interessante = interessante;
-        this.gratidao = gratidao;
-        this.inovador = inovador;
         this.nome = nome;
         this.conteudo = conteudo;
         this.imagem = imagem;
         this.data = data;
+        this.total = total;
     }
 
     public Integer getId() {
@@ -76,27 +74,11 @@ public class PostModel {
         this.reacao = reacao;
     }
 
-    public Integer getInteressante() {
-        return interessante;
+    public Integer getTotal() {
+        return total;
     }
 
-    public void setInteressante(Integer interessante) {
-        this.interessante = interessante;
-    }
-
-    public Integer getGratidao() {
-        return gratidao;
-    }
-
-    public void setGratidao(Integer gratidao) {
-        this.gratidao = gratidao;
-    }
-
-    public Integer getInovador() {
-        return inovador;
-    }
-
-    public void setInovador(Integer inovador) {
-        this.inovador = inovador;
+    public void setTotal(Integer total) {
+        this.total = total;
     }
 }

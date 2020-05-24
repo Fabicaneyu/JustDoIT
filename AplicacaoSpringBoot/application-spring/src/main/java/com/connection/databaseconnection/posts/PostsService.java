@@ -68,7 +68,7 @@ public class PostsService {
         List<Object[]> result;
         List<PostModel> resultFinal = new ArrayList<>();
         List<Integer> only_id;
-        Integer interessante, gratidao, inovador;
+        Integer interessante, gratidao, inovador, all;
 
         while (resultFinal.size() < 5) {
 
@@ -90,29 +90,36 @@ public class PostsService {
                     Integer reacao = reacoesService.validarReacao(
                             (long) userController.getCurrentUser().getId(), (long)only_id.get(0));
 
-                    List<Long> one = entityManager.createQuery(
-                            "select count(*) from Reacoes r where r.id_post = :post and r.tipo = 1 ")
+//                    List<Long> one = entityManager.createQuery(
+//                            "select count(*) from Reacoes r where r.id_post = :post and r.tipo = 1 ")
+//                            .setParameter("post", (long)only_id.get(0))
+//                            .getResultList();
+//
+//                    List<Long> two = entityManager.createQuery(
+//                            "select count(*) from Reacoes r where r.id_post = :post and r.tipo = 2 ")
+//                            .setParameter("post", (long)only_id.get(0))
+//                            .getResultList();
+//
+//                    List<Long> three = entityManager.createQuery(
+//                            "select count(*) from Reacoes r where r.id_post = :post and r.tipo = 3 ")
+//                            .setParameter("post", (long)only_id.get(0))
+//                            .getResultList();
+
+                            List<Long> allReact = entityManager.createQuery(
+                            "select count(*) from Reacoes r where r.id_post = :post")
                             .setParameter("post", (long)only_id.get(0))
                             .getResultList();
 
-                    List<Long> two = entityManager.createQuery(
-                            "select count(*) from Reacoes r where r.id_post = :post and r.tipo = 2 ")
-                            .setParameter("post", (long)only_id.get(0))
-                            .getResultList();
 
-                    List<Long> three = entityManager.createQuery(
-                            "select count(*) from Reacoes r where r.id_post = :post and r.tipo = 3 ")
-                            .setParameter("post", (long)only_id.get(0))
-                            .getResultList();
+//                    interessante = Math.toIntExact(one.get(0));
+//
+//                    gratidao = Math.toIntExact(two.get(0));
+//
+//                    inovador = Math.toIntExact(three.get(0));
 
+                    all = Math.toIntExact(allReact.get(0));
 
-                    interessante = Math.toIntExact(one.get(0));
-
-                    gratidao = Math.toIntExact(two.get(0));
-
-                    inovador = Math.toIntExact(three.get(0));
-
-                    resultFinal.add(dataBuilder(result, reacao, interessante, gratidao, inovador));
+                    resultFinal.add(dataBuilder(result, reacao, all));
 
                     rangeAtual--;
 
@@ -137,28 +144,36 @@ public class PostsService {
                     Integer reacao = reacoesService.validarReacao((long)
                             userController.getCurrentUser().getId(), (long)only_id.get(0));
 
-                    List<Long> one = entityManager.createQuery(
-                            "select count(*) from Reacoes r where r.id_post =: post and r.tipo = 1 ")
+//                    List<Long> one = entityManager.createQuery(
+//                            "select count(*) from Reacoes r where r.id_post = :post and r.tipo = 1 ")
+//                            .setParameter("post", (long)only_id.get(0))
+//                            .getResultList();
+//
+//                    List<Long> two = entityManager.createQuery(
+//                            "select count(*) from Reacoes r where r.id_post = :post and r.tipo = 2 ")
+//                            .setParameter("post", (long)only_id.get(0))
+//                            .getResultList();
+//
+//                    List<Long> three = entityManager.createQuery(
+//                            "select count(*) from Reacoes r where r.id_post = :post and r.tipo = 3 ")
+//                            .setParameter("post", (long)only_id.get(0))
+//                            .getResultList();
+
+                    List<Long> allReact = entityManager.createQuery(
+                            "select count(*) from Reacoes r where r.id_post = :post")
                             .setParameter("post", (long)only_id.get(0))
                             .getResultList();
 
-                    List<Long> two = entityManager.createQuery(
-                            "select count(*) from Reacoes r where r.id_post = :post and r.tipo = 2 ")
-                            .setParameter("post", (long)only_id.get(0))
-                            .getResultList();
 
-                    List<Long> three = entityManager.createQuery(
-                            "select count(*) from Reacoes r where r.id_post = :post and r.tipo = 3 ")
-                            .setParameter("post", (long)only_id.get(0))
-                            .getResultList();
+//                    interessante = Math.toIntExact(one.get(0));
+//
+//                    gratidao = Math.toIntExact(two.get(0));
+//
+//                    inovador = Math.toIntExact(three.get(0));
 
-                    interessante = Math.toIntExact(one.get(0));
+                    all = Math.toIntExact(allReact.get(0));
 
-                    gratidao = Math.toIntExact(two.get(0));
-
-                    inovador = Math.toIntExact(three.get(0));
-
-                    resultFinal.add(dataBuilder(result, reacao, interessante, gratidao, inovador));
+                    resultFinal.add(dataBuilder(result, reacao, all));
 
                     rangeAtual--;
 
@@ -172,12 +187,11 @@ public class PostsService {
         return resultFinal;
 
     }
-        public PostModel dataBuilder (List < Object[]>lista, Integer reacao, Integer interessante,
-                                      Integer gratidao, Integer inovador){
+        public PostModel dataBuilder (List < Object[]>lista, Integer reacao, Integer all){
 
             PostModel result;
 
-            listBuilder = new PostBuilder(lista, reacao, interessante, gratidao, inovador);
+            listBuilder = new PostBuilder(lista, reacao, all);
 
             result = listBuilder.nextList();
 

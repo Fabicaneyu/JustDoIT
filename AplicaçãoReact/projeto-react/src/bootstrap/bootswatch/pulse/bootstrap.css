@@ -2428,6 +2428,10 @@ textarea.form-control {
   margin-bottom: 1rem;
 }
 
+.label-form{
+  margin-bottom: 18px;
+}
+
 .form-text {
   display: block;
   margin-top: 0.25rem;
@@ -11863,7 +11867,6 @@ padding-right: 0px;
 .icon-value{
   font-size: 11px;
   height: 35px;
-  border: 1px black solid;
 }
 .size-liked{
   font-size: 12.5px;
@@ -11903,12 +11906,14 @@ padding-right: 0px;
   position: absolute;
   cursor: pointer;
   top:16%;
+  left: 20%;
 }
 
 .icon-share{
   position: absolute;
   cursor: pointer;
-  left:0px;
+  left:3%;
+  top:18%;
 }
 
 
@@ -12194,8 +12199,15 @@ body{
 .interessante-counter {
   color: #868e96;
   position: absolute;
-  top:18%;
+  top:23%;
   left:40.6%;
+}
+
+.recaptcha-set{
+
+  margin-top: 3%;
+  margin-left: 14%;
+
 }
 
 

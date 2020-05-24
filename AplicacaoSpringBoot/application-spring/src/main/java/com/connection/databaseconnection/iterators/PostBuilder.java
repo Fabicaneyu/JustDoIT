@@ -13,7 +13,7 @@ public class PostBuilder implements Iterator {
 
     private List<Object[]> listaDefault;
 
-    private Integer reacao, interessante, gratidao,inovador;
+    private Integer reacao, all;
 
     @Autowired
     private UserController userController;
@@ -22,13 +22,10 @@ public class PostBuilder implements Iterator {
     private ReacoesService reacoesController;
 
 
-    public PostBuilder(List<Object[]> lista, Integer reacao, Integer interessante,
-                       Integer gratidao, Integer inovador) {
+    public PostBuilder(List<Object[]> lista, Integer reacao, Integer all) {
         this.listaDefault = lista;
         this.reacao = reacao;
-        this.interessante = interessante;
-        this.gratidao = gratidao;
-        this.inovador = inovador;
+        this.all = all;
     }
 
     public boolean hasNext() {
@@ -51,8 +48,7 @@ public class PostBuilder implements Iterator {
                 String imagem = data[4].toString();
                 Integer id_user = (Integer) data[5];
 
-                PostModel novo = new PostModel(id,id_user,reacao, interessante,gratidao,
-                        inovador,nome, conteudo, imagem, date);
+                PostModel novo = new PostModel(id,id_user,this.reacao, this.all,nome, conteudo, imagem, date);
                 return novo ;
 
             }

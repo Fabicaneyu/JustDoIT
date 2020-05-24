@@ -93,11 +93,13 @@ class Home extends React.Component {
         })
     }
 
-      change = (id, type) => {
+    interact = (id, type, count) => {
 
 
             const id_post = id     
-            const tipo = type                   
+            const type_format = type;
+            const aumento = count+1;
+            var tipo = type == 'interesting' ? type =1 : type == 'gratefull' ? type=2 : type=3                                     
             var achou = 0
             var base = this.state.liked
             
@@ -117,25 +119,28 @@ class Home extends React.Component {
                     this.setState({liked: base})
                     return console.log('já curtido')
                 }else{
-                    document.getElementById(id_post+tipo).className = 'size-liked';
-                    base.push(id_post)
+
+                    axios.post(`http://localhost:8080/reacoes/reagir`,
+                    {
+                        id_user: this.state.idUser,
+                        id_post: id_post,
+                        tipo: tipo
+                    })
+                    .then(response =>{
+                        const data = response.data;
+                        console.log(data) 
+                        
+                        document.getElementById(id_post+type_format).className = 'size-liked';
+                        document.getElementById(id_post).innerHTML = `• ${aumento}`;
+                        this.setState({liked: base})
+                        base.push(id_post)
+
+                    }).catch(error =>{
+                        console.log(error.response)
+                    })                    
                 }
             }
-
-
-            this.setState({liked: base})
-            
-
-            // axios.get(`http://localhost:8080/reacoes/validar/${user}/${post}`)
-            // .then(response =>{
-            //     const data = response.data;
-            //     console.log(data)
-            //     return 'size-liked'             
-            // }).catch(error =>{
-            //     console.log(error.response)
-            // })
-
-            
+                                
         
         }
 
@@ -229,7 +234,7 @@ class Home extends React.Component {
                                     <button onClick={this.postar} className="btn-sender">Enviar</button>
                                 </div>
 
-                                <PostField user={this.state.idUser} action={this.change} view={this.toView} body={this.state.request} />
+                                <PostField user={this.state.idUser} action={this.interact} view={this.toView} body={this.state.request} />
                            
                            
                             </div>

@@ -54,10 +54,10 @@ export default prop => {
                             <div className="row anulled">
                            
                                 <div className="icon-value col-md-10">    
-                                <span className="interessante-counter">• {post.total}</span>                                
+                                <span id={post.id} className="interessante-counter">• {post.total}</span>                                
                                     <div className="react-box-one">
                                         <span className={post.reacao == 1 ? 'size-liked':'size-around'} id={post.id+"interesting"}
-                                        onClick={e =>prop.action(post.id,"interesting")}>                                        
+                                        onClick={e =>prop.action(post.id,"interesting",post.total)}>                                        
                                             
                                             Interessante</span>
                                             <span className="score-style-light">
@@ -67,7 +67,7 @@ export default prop => {
                                      </div>                                    
                                      <div className="react-box-two">                                                          
                                             <span className={post.reacao == 2 ? 'size-liked':'size-around'} id={post.id+"gratefull"}
-                                            onClick={e =>prop.action(post.id,"gratefull")}>
+                                            onClick={e =>prop.action(post.id,"gratefull",post.total)}>
                                                Gratidão</span>
 
                                                <span className="score-style">
@@ -77,7 +77,7 @@ export default prop => {
                                   
                                      <div className="react-box-three">  
                                         <span className={post.reacao == 3 ? 'size-liked':'size-around'} id={post.id+"inovated"}
-                                        onClick={e =>prop.action(post.id,"inovated")}>
+                                        onClick={e =>prop.action(post.id,"inovated",post.total)}>
                                             Inovador</span>
 
                                             <span className="score-style">
