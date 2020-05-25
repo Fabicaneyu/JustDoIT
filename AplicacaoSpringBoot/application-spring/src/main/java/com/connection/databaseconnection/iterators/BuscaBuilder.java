@@ -2,8 +2,6 @@ package com.connection.databaseconnection.iterators;
 
 import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuario;
 import com.connection.databaseconnection.dto.BuscaDTO;
-import com.connection.databaseconnection.dto.ValidatorDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 

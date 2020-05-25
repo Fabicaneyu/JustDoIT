@@ -13,9 +13,7 @@ import com.connection.databaseconnection.exception.UserNotFoundException;
 
 import com.connection.databaseconnection.iterators.BuscaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -41,6 +39,7 @@ public class UserService {
     @Autowired
     private EntityManager entityManager;
 
+
     public UserService(UserRepository repository) {
         super();
         this.repository = repository;
@@ -62,7 +61,9 @@ public class UserService {
 
     @Transactional
     public Usuario saveUser(Usuario user) {
+
         verifyNewEmail(user.getEmail());
+
         repository.save(user);
         return user;
     }

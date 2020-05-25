@@ -1,7 +1,5 @@
 package com.connection.databaseconnection;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -22,6 +20,5 @@ public class SpringBootApplication implements WebMvcConfigurer {
 	public static void main(String[] args) {
 		org.springframework.boot.SpringApplication.run(SpringBootApplication.class, args);
 	}
-
 
 }

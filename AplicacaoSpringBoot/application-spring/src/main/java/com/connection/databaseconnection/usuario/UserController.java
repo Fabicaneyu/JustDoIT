@@ -10,16 +10,21 @@ import com.connection.databaseconnection.exception.ErroAutenticacao;
 import com.connection.databaseconnection.exception.ErroConexao;
 import com.connection.databaseconnection.exception.RegraException;
 import com.connection.databaseconnection.exception.UserNotFoundException;
+import com.connection.databaseconnection.security.access.UserBaseAcess;
 import com.connection.databaseconnection.security.captcha.CaptchaDTO;
 import com.connection.databaseconnection.security.captcha.CaptchaValidator;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
+
 
 import java.awt.peer.CanvasPeer;
 import java.util.List;
@@ -28,6 +33,7 @@ import java.util.List;
 @Controller
 @RestController
 @RequestMapping("/user")
+@RequiredArgsConstructor
 public class UserController {
 
 
@@ -44,10 +50,9 @@ public class UserController {
     @Autowired
     private CaptchaValidator captchaValidator;
 
-    public UserController(UserService controller) {
 
-        this.controller = controller;
-    }
+    private final UserBaseAcess userBaseAcess;
+    private final PasswordEncoder passwordEncoder;
 
 
         /*Esse end-point é resposavel pelo login, ele executa o
@@ -94,9 +99,18 @@ public class UserController {
 
         Usuario user = Usuario.builder()
                 .nome(userDTO.getNome())
-                .email(userDTO.getEmail()).photo(userDTO.getPhoto()).senha(userDTO.getSenha()).build();
+                .email(userDTO.getEmail())
+                .photo(userDTO.getPhoto())
+                .senha(userDTO.getSenha())
+                .sobre(userDTO.getSobre())
+                .local(userDTO.getLocal())
+                .title(userDTO.getTitle()).build();
 
         try {
+
+            String senhaCriptografada = passwordEncoder.encode(user.getSenha());
+            user.setSenha(senhaCriptografada);
+
             Usuario userSalvo = controller.saveUser(user);
             return new ResponseEntity(userSalvo, HttpStatus.CREATED);
         } catch (RegraException e) {
@@ -247,6 +261,5 @@ public class UserController {
     public Usuario getCurrentUser() {
         return this.currentUser;
     }
-
 
 }
