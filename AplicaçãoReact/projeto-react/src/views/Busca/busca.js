@@ -55,7 +55,7 @@ class Busca extends React.Component {
         document.getElementById('content-busca').style.display = 'none';
 
         if(dado){
-            axios.get(`http://localhost:8080/user/find?conhecimento=${dado}&level=${nivel}`)
+            axios.get(`http://localhost:8080/conhecimentos/find?conhecimento=${dado}&level=${nivel}`)
             .then(response => {
                 const data = response.data
                

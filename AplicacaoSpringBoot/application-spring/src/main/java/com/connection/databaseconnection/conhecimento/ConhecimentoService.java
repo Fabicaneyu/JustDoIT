@@ -48,13 +48,30 @@ public class ConhecimentoService {
         return;
     }
 
-    public List<Conhecimento> recomendados(){
+    public List<Conhecimento> recomendadosDefault(){
 
         List<Conhecimento> result =
                 entityManager.createQuery(
                         "select c from Conhecimento c order by c.id_conhecimento desc")
                 .setMaxResults(4)
                 .getResultList();
+
+        if (result != null) {
+            return result;
+        }
+        else {
+            return null;
+        }
+    }
+
+    public List<Conhecimento> recomendadosByType(String tipo){
+
+        List<Conhecimento> result =
+                entityManager.createQuery(
+                        "select c from Conhecimento c where c.tipo = :param order by c.id_conhecimento desc")
+                        .setParameter("param", tipo)
+                        .setMaxResults(4)
+                        .getResultList();
 
         if (result != null) {
             return result;
