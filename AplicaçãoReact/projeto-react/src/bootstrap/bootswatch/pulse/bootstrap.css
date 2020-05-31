@@ -11708,7 +11708,7 @@ left: auto;
 .user-recomandation{
   float: right;
   position: absolute;
-  height: 400px;
+  height: 430px;
   width: 200px;
   left: 83.5%;
   background-color: #ffffff;
@@ -11790,7 +11790,7 @@ left: auto;
   
 }
 .standard-recomandation {
-  height: 83px;
+  height: 92px;
   padding: 8px 0px 8px 4px; 
 }
 

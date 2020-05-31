@@ -93,6 +93,7 @@ public class UserService {
         }
 
         boolean senhasBatem = encoder.matches( senha, user.getSenha() );
+
         if (senhasBatem) {
             return user;
         }
