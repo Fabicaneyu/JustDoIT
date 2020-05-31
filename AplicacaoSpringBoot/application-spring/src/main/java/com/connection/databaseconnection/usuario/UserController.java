@@ -1,15 +1,14 @@
 package com.connection.databaseconnection.usuario;
 
+import com.connection.databaseconnection.JwtService;
 import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuario;
 import com.connection.databaseconnection.conhecimento.Conhecimento;
 import com.connection.databaseconnection.conhecimento.ConhecimentoRepository;
 import com.connection.databaseconnection.conhecimento.types.TipoConhecimento;
+import com.connection.databaseconnection.dto.TokenDTO;
 import com.connection.databaseconnection.dto.UserDTO;
 import com.connection.databaseconnection.dto.UsuarioViewDTO;
-import com.connection.databaseconnection.exception.ErroAutenticacao;
-import com.connection.databaseconnection.exception.ErroConexao;
-import com.connection.databaseconnection.exception.RegraException;
-import com.connection.databaseconnection.exception.UserNotFoundException;
+import com.connection.databaseconnection.exception.*;
 import com.connection.databaseconnection.security.access.UserBaseAcess;
 import com.connection.databaseconnection.security.captcha.CaptchaDTO;
 import com.connection.databaseconnection.security.captcha.CaptchaValidator;
@@ -24,6 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 
 import java.awt.peer.CanvasPeer;
@@ -50,24 +50,28 @@ public class UserController {
     @Autowired
     private CaptchaValidator captchaValidator;
 
+    @Autowired
+    private PasswordEncoder encoder;
 
     private final UserBaseAcess userBaseAcess;
-    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
+
 
 
         /*Esse end-point é resposavel pelo login, ele executa o
         metodo "authentication" que verifica o email e a senha no banco*/
 
-    @PostMapping("/login")
-    public ResponseEntity login(@RequestBody UserDTO userDTO) {
-        try {
-            Usuario userAutenticado = controller.authentication(userDTO.getEmail(), userDTO.getSenha());
-            currentUser = userAutenticado;
-            return ResponseEntity.ok(userAutenticado);
-        } catch (ErroAutenticacao e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
+//    @PostMapping("/login")
+//    public ResponseEntity login(@RequestBody UserDTO userDTO) {
+//        try {
+//            Usuario userAutenticado = controller.authentication(userDTO.getEmail(), userDTO.getSenha());
+//            currentUser = userAutenticado;
+//            return ResponseEntity.ok(userAutenticado);
+//        } catch (ErroAutenticacao e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
 
     @PostMapping("/recaptcha")
     public ResponseEntity recaptchaValidate(@RequestBody CaptchaDTO captchaDTO) throws Exception {
@@ -108,7 +112,7 @@ public class UserController {
 
         try {
 
-            String senhaCriptografada = passwordEncoder.encode(user.getSenha());
+            String senhaCriptografada = encoder.encode(user.getSenha());
             user.setSenha(senhaCriptografada);
 
             Usuario userSalvo = controller.saveUser(user);
@@ -170,93 +174,37 @@ public class UserController {
     }
 
 
-    @GetMapping("/find")
-    public ResponseEntity findUsers(@RequestParam(required = false) String conhecimento,
-                                    @RequestParam(required = false) Integer level,
-                                    @RequestParam(required = false) TipoConhecimento tipo ) {
+    @PostMapping("/login")
+    public ResponseEntity autenticar(@RequestBody UserDTO credenciais) {
         try {
+            Usuario usuario = Usuario.builder()
+                    .email(credenciais.getEmail())
+                    .senha(credenciais.getSenha()).build();
+            Usuario usuarioAutenticado = controller.authentication(credenciais.getEmail(),credenciais.getSenha());
+            String token = jwtService.gerarToken(usuarioAutenticado);
 
-            if(tipo != null) {
-                if (level > 0) {
+            currentUser = usuarioAutenticado;
 
-                    Conhecimento consulta = Conhecimento.builder().tipo(tipo).build();
+            return ResponseEntity.ok(usuarioAutenticado);
 
-                    List conhecimentos = controller.buscarPorTipoAndNivel(consulta.getTipo(), level);
-
-                    if (conhecimentos == null) {
-                        return new ResponseEntity("Infelizmente ainda não temos usuários que " +
-                                "possuem este nível de conhecimento .",HttpStatus.NOT_FOUND);
-                    } else {
-                        return ResponseEntity.ok(conhecimentos);
-                    }
-
-                } else {
-                    Conhecimento consulta = Conhecimento.builder().tipo(tipo).build();
-
-                    List conhecimentos = controller.buscarPorTipo(consulta.getTipo());
-
-                    if (conhecimentos == null) {
-                        return new ResponseEntity("Infelizmente ainda não temos usuários que" +
-                                " possuem este tipo de conhecimento ."
-                                , HttpStatus.NOT_FOUND);
-                    } else {
-                        return ResponseEntity.ok(conhecimentos);
-                    }
-                }
-            }
-            if (level > 0) {
-                if (conhecimento != null) {
-
-                    Conhecimento con = Conhecimento.builder().conhecimento(conhecimento).build();
-                    ConhecimentoUsuario consulta = ConhecimentoUsuario.builder()
-                            .conhecimento(con)
-                            .nivel(level).build();
-
-                    List conhecimentos = controller.buscarPorLevelandConhecimento(consulta);
-
-                    if (conhecimentos == null) {
-                        return new ResponseEntity("Infelizmente ainda não temos usuários que" +
-                                "possuem este nível de conhecimento .",HttpStatus.NOT_FOUND);
-                    } else {
-                        return ResponseEntity.ok(conhecimentos);
-                    }
-
-                }else {
-
-                    ConhecimentoUsuario consulta = ConhecimentoUsuario.builder().nivel(level).build();
-
-                    List conhecimentos = controller.buscarPorLevel(consulta.getNivel());
-
-                    if (conhecimentos == null) {
-                        return new ResponseEntity("Infelizmente ainda não temos usuários que possuem este nível" +
-                                "de conhecimento ."
-                                , HttpStatus.NOT_FOUND);
-                    } else {
-                        return ResponseEntity.ok(conhecimentos);
-                    }
-                }
-
-            }
-
-            Conhecimento consulta = Conhecimento.builder().conhecimento(conhecimento).build();
-
-            List conhecimentos = controller.buscarConhecimentos(consulta.getConhecimento());
-
-
-            if (conhecimentos == null) {
-                return new ResponseEntity("Infelizmente ainda não temos usuários que possuem este conhecimento ."
-                        , HttpStatus.NOT_FOUND);
-            }
-            else{
-                return ResponseEntity.ok(conhecimentos);
-            }
-
-
-        } catch (ErroConexao e) {
+        } catch (ErroAutenticacao e) {
             return ResponseEntity.badRequest().body(e.getMessage());
-
         }
+
     }
+
+    //    @PostMapping("/login")
+//    public ResponseEntity login(@RequestBody UserDTO userDTO) {
+//        try {
+//            Usuario userAutenticado = controller.authentication(userDTO.getEmail(), userDTO.getSenha());
+//            currentUser = userAutenticado;
+//            return ResponseEntity.ok(userAutenticado);
+//        } catch (ErroAutenticacao e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
+
+
 
     public Usuario getCurrentUser() {
         return this.currentUser;

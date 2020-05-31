@@ -1,5 +1,6 @@
 package com.connection.databaseconnection.security.access;
 
+import com.connection.databaseconnection.exception.SenhaInvalidaException;
 import com.connection.databaseconnection.usuario.UserRepository;
 import com.connection.databaseconnection.usuario.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class UserBaseAcess implements UserDetailsService {
 
@@ -19,11 +22,24 @@ public class UserBaseAcess implements UserDetailsService {
     @Autowired
     private UserRepository repository;
 
+    @Transactional
+    public Usuario salvar(Usuario usuario) {
+        return repository.save(usuario);
+    }
+    public UserDetails autenticar(Usuario usuario){
+        UserDetails user = loadUserByUsername(usuario.getEmail());
+        boolean senhaBatem = encoder.matches(usuario.getSenha(),user.getPassword());
+        if (senhaBatem){
+            return user;
+        }
+        throw  new SenhaInvalidaException();
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         Usuario usuario = repository.findByEmail(email);
-        if(usuario == null) {
+        if (usuario == null) {
             throw new UsernameNotFoundException("Usuário não encontrado");
         } else {
             return User

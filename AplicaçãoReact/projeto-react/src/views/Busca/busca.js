@@ -72,7 +72,7 @@ class Busca extends React.Component {
 
         }
         else if(tipo) {
-            axios.get(`http://localhost:8080/user/find?tipo=${tipo}&level=${nivel}`)
+            axios.get(`http://localhost:8080/conhecimentos/find?tipo=${tipo}&level=${nivel}`)
             .then(response => {
                 const data = response.data
                
@@ -88,7 +88,7 @@ class Busca extends React.Component {
             })
         }
         else {
-            axios.get(`http://localhost:8080/user/find?conhecimento=${parametro}&level=${nivel}`)
+            axios.get(`http://localhost:8080/conhecimentos/find?conhecimento=${parametro}&level=${nivel}`)
             .then(response => {
                 const data = response.data
                

@@ -60,7 +60,7 @@ class Home extends React.Component {
     }
 
     loadRecomendation = () => {
-        axios.get('http://localhost:8080/conhecimentos/recomendados/teste')
+        axios.get('http://localhost:8080/conhecimentos/recomendados')
         .then( response => {
             const dados = response.data
             this.setState({recomendados: dados})
@@ -192,6 +192,7 @@ class Home extends React.Component {
 
 
      this.props.history.push(`/busca/${this.state.busca_content}`)
+     this.loadRecomendation()
    
     
     }

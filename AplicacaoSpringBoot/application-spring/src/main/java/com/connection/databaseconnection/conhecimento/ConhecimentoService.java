@@ -52,7 +52,7 @@ public class ConhecimentoService {
 
         List<Conhecimento> result =
                 entityManager.createQuery(
-                        "select c from Conhecimento c order by c.id_conhecimento desc")
+                        "select c from Conhecimento c order by rand()")
                 .setMaxResults(4)
                 .getResultList();
 
@@ -64,11 +64,11 @@ public class ConhecimentoService {
         }
     }
 
-    public List<Conhecimento> recomendadosByType(String tipo){
+    public List<Conhecimento> recomendadosByType(TipoConhecimento tipo){
 
         List<Conhecimento> result =
                 entityManager.createQuery(
-                        "select c from Conhecimento c where c.tipo = :param order by c.id_conhecimento desc")
+                        "select c from Conhecimento c where c.tipo = :param order by rand()")
                         .setParameter("param", tipo)
                         .setMaxResults(4)
                         .getResultList();

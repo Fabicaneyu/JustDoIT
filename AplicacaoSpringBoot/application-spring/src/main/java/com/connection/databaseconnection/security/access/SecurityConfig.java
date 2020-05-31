@@ -1,13 +1,18 @@
 package com.connection.databaseconnection.security.access;
 
+import com.connection.databaseconnection.JwtAuthFilter;
+import com.connection.databaseconnection.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 
 @EnableWebSecurity
@@ -16,9 +21,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserBaseAcess userBaseAcess;
 
+    @Autowired
+    private JwtService jwtService;
+
     @Bean
-   public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public OncePerRequestFilter jwtFilter() {
+        return new JwtAuthFilter(jwtService, userBaseAcess);
     }
 
     @Override
@@ -33,12 +46,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/post/**").hasAnyRole("USER")
-                .antMatchers("/eventos/**").hasAnyRole("USER")
-                .antMatchers("/conhecimentos/**").hasAnyRole("USER")
+                .antMatchers("/post/**").permitAll()
+                .antMatchers("/eventos/**").permitAll()
+                .antMatchers("/conhecimentos/**").permitAll()
                 .antMatchers("/user/**").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and()
-                .httpBasic();
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class)
+        ;
+
     }
 }

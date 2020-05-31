@@ -7,10 +7,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
-
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -52,7 +49,7 @@ public class JwtService {
             Claims claims = obterClaims(token);
             Date dataExpiracao = claims.getExpiration();
             LocalDateTime data =
-            dataExpiracao.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+                    dataExpiracao.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
             return !LocalDateTime.now().isAfter(data);
         }catch (Exception e) {
             return false;
@@ -63,18 +60,5 @@ public class JwtService {
         return (String) obterClaims(token).getSubject();
     }
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(SpringBootApplication.class);
-        JwtService service = context.getBean(JwtService.class);
-        Usuario usuario = Usuario.builder().email("email@com").build();
-        String token = service.gerarToken(usuario);
-        System.out.println(token);
-
-        boolean isTokenValido = service.tokenValido(token);
-        System.out.println(isTokenValido);
-
-        System.out.println(service.obterLoginUsuario(token));
-
-    }
 
 }

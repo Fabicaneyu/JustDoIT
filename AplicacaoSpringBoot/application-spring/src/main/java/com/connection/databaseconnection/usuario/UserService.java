@@ -14,6 +14,7 @@ import com.connection.databaseconnection.exception.UserNotFoundException;
 import com.connection.databaseconnection.iterators.BuscaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -38,6 +39,9 @@ public class UserService {
 
     @Autowired
     private EntityManager entityManager;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
 
     public UserService(UserRepository repository) {
@@ -81,17 +85,19 @@ public class UserService {
 
     public Usuario authentication(String email, String senha) {
 
+
         Usuario user = repository.findByEmail(email);
 
         if (user == null) {
             throw new ErroAutenticacao("Usuário não encontrado");
         }
 
-        if (!user.getSenha().equals(senha)) {
-            throw new ErroAutenticacao("Senha inválida");
+        boolean senhasBatem = encoder.matches( senha, user.getSenha() );
+        if (senhasBatem) {
+            return user;
         }
 
-        return user;
+        throw new ErroAutenticacao("Senha inválida");
 
     }
 
@@ -106,7 +112,7 @@ public class UserService {
 
     }
 
-    public List<BuscaDTO> buscarConhecimentos(String conhecimento) {
+    public List buscarConhecimentos(String conhecimento) {
 
         List<Conhecimento> busca = conhecimentoRepository.findByKnow(conhecimento);
 
@@ -124,7 +130,7 @@ public class UserService {
             return null;
         }
         else{
-            return buscaBuilder.nextList(novaBusca);
+            return novaBusca;
         }
 
     }
@@ -179,7 +185,7 @@ public class UserService {
             return null;
         }
         else {
-            return buscaBuilder.nextList(busca);
+            return busca;
         }
 
     }
@@ -193,7 +199,7 @@ public class UserService {
             return null;
         }
         else {
-            return buscaBuilder.nextList(busca);
+            return busca;
         }
 
     }
