@@ -26,14 +26,6 @@ public class UserBaseAcess implements UserDetailsService {
     public Usuario salvar(Usuario usuario) {
         return repository.save(usuario);
     }
-    public UserDetails autenticar(Usuario usuario){
-        UserDetails user = loadUserByUsername(usuario.getEmail());
-        boolean senhaBatem = encoder.matches(usuario.getSenha(),user.getPassword());
-        if (senhaBatem){
-            return user;
-        }
-        throw  new SenhaInvalidaException();
-    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

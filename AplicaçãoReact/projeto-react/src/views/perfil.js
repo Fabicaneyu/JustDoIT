@@ -4,6 +4,7 @@ import Cancelar from '../imagens/cancelar.svg'
 import Editar from '../imagens/editar.svg'
 import Add from '../imagens/add.svg'
 import Busca from './Busca/busca'
+import DOMPurify from 'dompurify';
 import {Dialog} from 'primereact/dialog';
 import {Button} from 'primereact/button';
 import SelectType from '../components/select'
@@ -379,10 +380,10 @@ buscar = () => {
    }
 
 
-
     render() {
 
-        
+        const sanitizer = DOMPurify.sanitize;
+       
         return (
             
             <>
@@ -406,7 +407,8 @@ buscar = () => {
                             <span className="about">Sobre</span>
                             <img onClick={this.editar} className="btn-edit" src={Editar} />
                             <br></br><br></br>
-                            <div id="span-desc" dangerouslySetInnerHTML={{ __html: this.state.description }} className="descript-user"></div>
+                            <div id="span-desc" dangerouslySetInnerHTML={{ __html:sanitizer(this.state.description)}} className="descript-user"></div>
+
 
                         </div>
 
@@ -437,6 +439,8 @@ buscar = () => {
                         </div>
                     </div>
                 </div>
+
+                
 
                                 
                 <Dialog p-dialog-visible="false" footer={this.state.footer} header={this.state.boolean ? 'Deletando Conhecimento'

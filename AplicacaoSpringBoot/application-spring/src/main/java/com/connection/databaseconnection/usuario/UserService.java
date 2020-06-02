@@ -12,8 +12,10 @@ import com.connection.databaseconnection.exception.RegraException;
 import com.connection.databaseconnection.exception.UserNotFoundException;
 
 import com.connection.databaseconnection.iterators.BuscaBuilder;
+import com.connection.databaseconnection.security.access.UserBaseAcess;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +44,9 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder encoder;
+
+    @Autowired
+    private UserBaseAcess userBaseAcess;
 
 
     public UserService(UserRepository repository) {
@@ -85,17 +90,16 @@ public class UserService {
 
     public Usuario authentication(String email, String senha) {
 
-
-        Usuario user = repository.findByEmail(email);
-
-        if (user == null) {
+        UserDetails userDetails = userBaseAcess.loadUserByUsername(email);
+        
+        if (userDetails == null) {
             throw new ErroAutenticacao("Usuário não encontrado");
         }
 
-        boolean senhasBatem = encoder.matches( senha, user.getSenha() );
+        boolean senhasBatem = encoder.matches( senha, userDetails.getPassword() );
 
         if (senhasBatem) {
-            return user;
+            return repository.findByEmail(email);
         }
 
         throw new ErroAutenticacao("Senha inválida");

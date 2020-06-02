@@ -1,10 +1,7 @@
 package com.connection.databaseconnection.usuario;
 
-import com.connection.databaseconnection.JwtService;
-import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuario;
-import com.connection.databaseconnection.conhecimento.Conhecimento;
+import com.connection.databaseconnection.security.jwt.JwtService;
 import com.connection.databaseconnection.conhecimento.ConhecimentoRepository;
-import com.connection.databaseconnection.conhecimento.types.TipoConhecimento;
 import com.connection.databaseconnection.dto.TokenDTO;
 import com.connection.databaseconnection.dto.UserDTO;
 import com.connection.databaseconnection.dto.UsuarioViewDTO;
@@ -14,20 +11,15 @@ import com.connection.databaseconnection.security.captcha.CaptchaDTO;
 import com.connection.databaseconnection.security.captcha.CaptchaValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-
-
-import java.awt.peer.CanvasPeer;
-import java.util.List;
 
 @Service
 @Controller
@@ -177,33 +169,24 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity autenticar(@RequestBody UserDTO credenciais) {
         try {
-            Usuario usuario = Usuario.builder()
-                    .email(credenciais.getEmail())
-                    .senha(credenciais.getSenha()).build();
+
+
             Usuario usuarioAutenticado = controller.authentication(credenciais.getEmail(),credenciais.getSenha());
+
             String token = jwtService.gerarToken(usuarioAutenticado);
 
             currentUser = usuarioAutenticado;
 
-            return ResponseEntity.ok(usuarioAutenticado);
+            TokenDTO user = new TokenDTO(usuarioAutenticado.getEmail(),usuarioAutenticado.getNome(),
+                    usuarioAutenticado.getPhoto(), token, usuarioAutenticado.getId());
+
+            return ResponseEntity.ok(user);
 
         } catch (ErroAutenticacao e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
 
     }
-
-    //    @PostMapping("/login")
-//    public ResponseEntity login(@RequestBody UserDTO userDTO) {
-//        try {
-//            Usuario userAutenticado = controller.authentication(userDTO.getEmail(), userDTO.getSenha());
-//            currentUser = userAutenticado;
-//            return ResponseEntity.ok(userAutenticado);
-//        } catch (ErroAutenticacao e) {
-//            return ResponseEntity.badRequest().body(e.getMessage());
-//        }
-//    }
-
 
 
     public Usuario getCurrentUser() {

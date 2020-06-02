@@ -1,4 +1,4 @@
-package com.connection.databaseconnection;
+package com.connection.databaseconnection.security.jwt;
 
 
 import com.connection.databaseconnection.usuario.Usuario;

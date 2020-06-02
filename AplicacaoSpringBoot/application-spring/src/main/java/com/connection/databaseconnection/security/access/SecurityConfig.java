@@ -1,7 +1,7 @@
 package com.connection.databaseconnection.security.access;
 
-import com.connection.databaseconnection.JwtAuthFilter;
-import com.connection.databaseconnection.JwtService;
+import com.connection.databaseconnection.security.jwt.JwtAuthFilter;
+import com.connection.databaseconnection.security.jwt.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -46,10 +46,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/post/**").permitAll()
-                .antMatchers("/eventos/**").permitAll()
-                .antMatchers("/conhecimentos/**").permitAll()
-                .antMatchers("/user/**").permitAll()
+//                .antMatchers("/post/**").hasAnyRole("USER")
+//                .antMatchers("/eventos/**").authenticated()
+//                .antMatchers("/conhecimentos/**").authenticated()
+//                .antMatchers("/user/**").permitAll()
                 .anyRequest().permitAll()
                 .and()
                 .sessionManagement()
