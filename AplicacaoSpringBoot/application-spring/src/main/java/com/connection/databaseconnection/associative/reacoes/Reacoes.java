@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table( name = "reacoes", schema = "teste3")
+@Table( name = "reacoes", schema = "environment")
 public class Reacoes {
 
     @Id

@@ -44,12 +44,16 @@ public class PostsService {
     }
 
     @Transactional
-    public void setFirst() {
+    public boolean setFirst() {
         List<Long> count = entityManager.createQuery(
                 "select count(*) from Post ")
                 .getResultList();
 
         rangeAtual = count.get(0);
+
+        if (rangeAtual <1) {
+            return false;
+        }
 
         List<Post> result = entityManager.createQuery(
                 "select p from Post p order by p.id desc ")
@@ -59,6 +63,8 @@ public class PostsService {
         last = result.get(0).getId();
 
         first = true;
+
+        return true;
 
     }
 
@@ -70,7 +76,7 @@ public class PostsService {
         List<Integer> only_id;
         Integer interessante, gratidao, inovador, all;
 
-        while (resultFinal.size() < 5) {
+        while (resultFinal.size() < 4) {
 
             if (rangeAtual > 0) {
                 if (first) {

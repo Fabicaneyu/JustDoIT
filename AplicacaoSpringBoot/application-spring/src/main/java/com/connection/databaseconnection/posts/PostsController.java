@@ -48,8 +48,11 @@ public class PostsController {
     public ResponseEntity loadPostsSet() {
 
         try{
-            controller.setFirst();
-            return new ResponseEntity(HttpStatus.OK);
+            if (controller.setFirst()) {
+                return new ResponseEntity(HttpStatus.OK);
+            } else {
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            }
         }catch (ErroConexao e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

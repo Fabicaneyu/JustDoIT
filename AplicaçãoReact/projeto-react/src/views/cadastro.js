@@ -10,6 +10,8 @@ class Cadastro extends React.Component {
     state = {
         nome: '',
         email: '',
+        local:'',
+        title:'',
         senha: '',
         photo: '',
         senha_repeat: '',
@@ -26,6 +28,13 @@ class Cadastro extends React.Component {
 
         if(!this.state.nome){
             msg.push('O campo NOME é obrigatório.')
+        }
+
+        if(!this.state.local){
+            msg.push('O campo LOCAL é obrigatório.')
+        }
+        if(!this.state.title){
+            msg.push('O campo TITLE é obrigatório.')
         }
 
         if(!this.state.email) {
@@ -60,6 +69,8 @@ class Cadastro extends React.Component {
         const usuario = {
                 nome: this.state.nome,
                 email: this.state.email,
+                local: this.state.local,
+                title: this.state.title,
                 senha: this.state.senha,
                 photo: this.state.photo
          }
@@ -106,7 +117,24 @@ class Cadastro extends React.Component {
                                 className="form-control"
                                  onChange={(e) => this.setState({email: e.target.value})} />  
                                  <label htmlFor="in">E-mail adress</label>
-                        </span>                                                      
+                        </span>  
+                        </FormGroup>
+                        <FormGroup label="Local: *" htmlFor="inputLocal">
+                        <span className="p-float-label">
+                                <InputText id="in" value={this.state.local}
+                                className="form-control"
+                                 onChange={(e) => this.setState({local: e.target.value})} />  
+                                 <label htmlFor="in">Localidade</label>
+                        </span>   
+                         </FormGroup>
+                        <FormGroup label="Title: *" htmlFor="inputTitle">
+                        <span className="p-float-label">
+                                <InputText id="in" value={this.state.title}
+                                className="form-control"
+                                 onChange={(e) => this.setState({title: e.target.value})} />  
+                                 <label htmlFor="in">Título ou ocupação</label>
+                        </span> 
+                                                                            
                         </FormGroup>
                         <FormGroup label="Foto: *" htmlFor="photo">
                             <input type="file" id="photo"
@@ -123,6 +151,8 @@ class Cadastro extends React.Component {
                                 }}  
                                     />
                         </FormGroup>
+
+                        
                         <FormGroup label="Senha: *" htmlFor="inputSenha">
                         <Password
                         className="form-control"

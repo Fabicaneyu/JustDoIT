@@ -15,13 +15,13 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "post", schema="environment")
-public class Post {
+@Table(name = "post", schema="teste3")
+public class Posts {
 
     @Id
     @Column( name = "id" )
     @GeneratedValue( strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
 
     @Column( name = "conteudo")
     private String conteudo;

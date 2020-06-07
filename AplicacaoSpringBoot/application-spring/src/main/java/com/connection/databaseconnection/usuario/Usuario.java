@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table( name = "usuario", schema = "teste3")
+@Table( name = "usuario", schema = "environment")
 public class Usuario {
 
     @Id
@@ -23,13 +23,15 @@ public class Usuario {
     private String nome;
     @Column( name = "email")
     private String email;
+
+    @Lob
     @Column( name = "photo")
     private String photo;
     @Column( name = "senha")
     private String senha;
     @Column( name = "sobre")
     private String sobre;
-    @Column( name = "local")
+    @Column( name = "_local")
     private String local;
     @Column( name = "title")
     private String title;
