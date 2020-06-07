@@ -15,7 +15,7 @@ export default prop => {
                     </div>
 
                     <div className="col-md-8 anulled">
-                        <div className="title-recomandation"> 
+                        <div className="title-recomandation">
                             {req.conhecimento}
                         </div>
 
@@ -31,19 +31,22 @@ export default prop => {
 
 
     return (
-
         <div className="col-md-2-b">
             <div className="user-recomandation">
-                <div className="first box">
-                     Conteúdos mais recomendados para <b>você</b>
+                <div className="row row-anulled">
+                    <button id="learn"  className="btn-choose">Aprenda Também</button>
+                   <button id="event" className="btn-choose">Eventos</button>
                 </div>
-                { corpo }
-
+                <div className="first box">
+                    Conteúdos mais recomendados para <b>você</b>
+                </div>
+                <div id="aprenda">
+                    {corpo}
+                </div>
 
 
             </div>
         </div>
-
 
     )
 }
