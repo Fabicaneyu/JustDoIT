@@ -1,12 +1,8 @@
 package com.connection.databaseconnection.posts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
-import java.util.List;
-
-public interface PostsRepository extends JpaRepository<Posts, Long> {
+public interface PostsRepository extends JpaRepository<Post, Long> {
 //
 //    @Query(value = " select p.id from Posts p limit 1 order by p.id desc ")
 //    Integer findFirst();

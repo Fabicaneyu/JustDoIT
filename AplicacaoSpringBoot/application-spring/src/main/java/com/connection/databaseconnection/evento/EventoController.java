@@ -72,7 +72,7 @@ public class EventoController {
             Evento evento = er.findByCodigo(codigo);
             er.delete(evento);
             return ResponseEntity.ok().build();
-        }
+    }
 
 
 

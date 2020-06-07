@@ -8,7 +8,7 @@ public interface Iterator {
 
 
     boolean hasNext();
-    List<PostModel> nextList();
+    PostModel nextList();
 
 
 }

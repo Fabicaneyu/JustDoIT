@@ -13,6 +13,9 @@ public interface ConhecimentoRepository extends JpaRepository <Conhecimento, Lon
     @Query(" select c from Conhecimento c where c.conhecimento like " + "%" + ":param" + "%")
     List findByKnow(@Param("param") String conhecimento);
 
+//    @Query(" select c from Conhecimento c where c.tipo = :param")
+//    List findByType(@Param("param") String tipo);
+
     List<Conhecimento> findByTipo(TipoConhecimento tipo);
 }
 

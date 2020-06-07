@@ -13,5 +13,5 @@ public interface InteresseUsuarioRepository extends JpaRepository<InteresseUsuar
 
     @Query(" select i from InteresseUsuario i left join fetch i.conhecimento uk" +
             "left join fetch i.usuario u where u.id = :param ")
-    List<InteresseUsuario>  findConhecimentoById( @Param("param") Long id);
+    List<InteresseUsuario>  findConhecimentoById( @Param("param") Integer id);
 }

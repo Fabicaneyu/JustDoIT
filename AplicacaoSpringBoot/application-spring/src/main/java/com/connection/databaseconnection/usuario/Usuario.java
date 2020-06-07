@@ -18,7 +18,7 @@ public class Usuario {
     @Id
     @Column( name = "id" )
     @GeneratedValue( strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
     @Column( name = "nome")
     private String nome;
     @Column( name = "email")
@@ -29,7 +29,7 @@ public class Usuario {
     private String senha;
     @Column( name = "sobre")
     private String sobre;
-    @Column( name = "local")
+    @Column( name = "_local")
     private String local;
     @Column( name = "title")
     private String title;

@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class BuscaBuilder {
 
-
     List<BuscaDTO> lista;
 
     public List<BuscaDTO> nextList(List<ConhecimentoUsuario> conhecimentoUsuarios) {
@@ -34,6 +33,8 @@ public class BuscaBuilder {
             lista.add(novaBusca);
 
         }
+
+
 
         return lista;
 
