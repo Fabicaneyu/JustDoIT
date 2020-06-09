@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../../components/navbar'
 import UserInfo from '../../components/info-user-bar'
-import Busca from './busca'
+import Busca from '../Busca/busca'
 import PostField from './post-field'
 import Recomendation from '../../components/recomendation-field'
 import Waypoint from '../../components/way'
@@ -20,7 +20,8 @@ class Home extends React.Component {
         recomendados : [],
         busca_content: '',
         request : [],
-        way : ''
+        way : '',
+        liked: []
     }
 
 
@@ -59,7 +60,7 @@ class Home extends React.Component {
     }
 
     loadRecomendation = () => {
-        axios.get('http://localhost:8080/conhecimentos/recomendados/teste')
+        axios.get('http://localhost:8080/conhecimentos/recomendados')
         .then( response => {
             const dados = response.data
             this.setState({recomendados: dados})
@@ -91,6 +92,57 @@ class Home extends React.Component {
             console.log(erro)
         })
     }
+
+    interact = (id, type, count) => {
+
+
+            const id_post = id     
+            const type_format = type;
+            const aumento = count+1;
+            var tipo = type == 'interesting' ? type =1 : type == 'gratefull' ? type=2 : type=3                                     
+            var achou = 0
+            var base = this.state.liked
+            
+               if(document.getElementById(id_post+"interesting").className === 'size-liked'
+                || document.getElementById(id_post+"gratefull").className === 'size-liked'
+                || document.getElementById(id_post+"inovated").className === 'size-liked'){
+
+               console.log('já curtido');
+
+            }else {
+                for (let index = 0; index < base.length; index++) {
+                    if(id_post === this.state.liked[index]) {
+                        achou ++                    
+                    }                
+                }               
+                if(achou > 0) {
+                    this.setState({liked: base})
+                    return console.log('já curtido')
+                }else{
+
+                    axios.post(`http://localhost:8080/reacoes/reagir`,
+                    {
+                        id_user: this.state.idUser,
+                        id_post: id_post,
+                        tipo: tipo
+                    })
+                    .then(response =>{
+                        const data = response.data;
+                        console.log(data) 
+                        
+                        document.getElementById(id_post+type_format).className = 'size-liked';
+                        document.getElementById(id_post).innerHTML = `• ${aumento}`;
+                        this.setState({liked: base})
+                        base.push(id_post)
+
+                    }).catch(error =>{
+                        console.log(error.response)
+                    })                    
+                }
+            }
+                                
+        
+        }
 
 
     sair = () => {
@@ -140,6 +192,7 @@ class Home extends React.Component {
 
 
      this.props.history.push(`/busca/${this.state.busca_content}`)
+     this.loadRecomendation()
    
     
     }
@@ -182,7 +235,7 @@ class Home extends React.Component {
                                     <button onClick={this.postar} className="btn-sender">Enviar</button>
                                 </div>
 
-                                <PostField view={this.toView} body={this.state.request} />
+                                <PostField user={this.state.idUser} action={this.interact} view={this.toView} body={this.state.request} />
                            
                            
                             </div>

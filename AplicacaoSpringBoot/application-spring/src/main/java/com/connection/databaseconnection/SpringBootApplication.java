@@ -20,4 +20,5 @@ public class SpringBootApplication implements WebMvcConfigurer {
 	public static void main(String[] args) {
 		org.springframework.boot.SpringApplication.run(SpringBootApplication.class, args);
 	}
+
 }

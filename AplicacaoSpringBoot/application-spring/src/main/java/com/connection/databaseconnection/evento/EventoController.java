@@ -1,7 +1,8 @@
 package com.connection.databaseconnection.evento;
 
-import com.connection.databaseconnection.convidado.Convidado;
-import com.connection.databaseconnection.convidado.ConvidadoRepository;
+
+import com.connection.databaseconnection.evento.convidado.Convidado;
+import com.connection.databaseconnection.evento.convidado.ConvidadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -72,7 +73,7 @@ public class EventoController {
             Evento evento = er.findByCodigo(codigo);
             er.delete(evento);
             return ResponseEntity.ok().build();
-        }
+    }
 
 
 

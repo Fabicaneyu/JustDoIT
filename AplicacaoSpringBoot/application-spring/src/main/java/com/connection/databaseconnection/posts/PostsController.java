@@ -33,10 +33,10 @@ public class PostsController {
 
         Usuario newPostUser = Usuario.builder().id(postDTO.getId_user()).build();
 
-        Posts post = Posts.builder().conteudo(postDTO.getConteudo())._data(postDTO.get_data())
+        Post post = Post.builder().conteudo(postDTO.getConteudo())._data(postDTO.get_data())
                 .usuario(newPostUser).build();
         try{
-            Posts postEnviado = controller.novoPost(post);
+            Post postEnviado = controller.novoPost(post);
             return new ResponseEntity(postEnviado, HttpStatus.CREATED);
         }catch (ErroConexao e) {
            return ResponseEntity.badRequest().body(e.getMessage());
@@ -48,8 +48,11 @@ public class PostsController {
     public ResponseEntity loadPostsSet() {
 
         try{
-            controller.setFirst();
-            return new ResponseEntity(HttpStatus.OK);
+            if (controller.setFirst()) {
+                return new ResponseEntity(HttpStatus.OK);
+            } else {
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            }
         }catch (ErroConexao e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

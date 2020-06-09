@@ -38,7 +38,7 @@ export default prop => {
                    <button id="event" className="btn-choose">Eventos</button>
                 </div>
                 <div className="first box">
-                    Conteúdos mais recomendados para <b>você</b>
+                     Aqui estão os conteúdos mais recomendados para <b>você</b>
                 </div>
                 <div id="aprenda">
                     {corpo}
