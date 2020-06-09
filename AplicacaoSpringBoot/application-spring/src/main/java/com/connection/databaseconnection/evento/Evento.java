@@ -1,6 +1,6 @@
 package com.connection.databaseconnection.evento;
 
-import com.connection.databaseconnection.convidado.Convidado;
+import com.connection.databaseconnection.evento.convidado.Convidado;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -37,7 +37,7 @@ public class Evento implements Serializable {
     private String descricao;
 
    @OneToMany
-    private List<Convidado> convidados;
+    private List<Convidado> convidado;
 
 
 }

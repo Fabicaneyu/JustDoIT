@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import '../css-evento.css';
+import './script.js'
 import api from '../../../services/api';
 import Navbar from '../../../components/navbar';
 import UserInfo from '../../../components/info-user-bar';
+import axios from 'axios';
 
 export default function CadastroEvento() {
-
     const [nome, setNome] = useState('');
-    const [_local, setLocal] = useState('');
+    const [cep, setCep] = useState('');
+    const [logradouro, setLogradouro] = useState('');
+    const [complemento, setComplemento] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [localidade, setLocalidade] = useState('');
+    const [uf, setUf] = useState('');
     const [_data, setData] = useState('');
     const [horario, setHorario] = useState('');
     const [descricao, setDescricao] = useState('');
@@ -18,7 +24,12 @@ export default function CadastroEvento() {
 
         const env = {
             nome,
-            _local,
+            cep,
+            logradouro,
+            complemento,
+            bairro,
+            localidade,
+            uf,
             _data,
             horario,
             descricao,
@@ -26,61 +37,115 @@ export default function CadastroEvento() {
 
         const response = await api.post('cadastrarEvento', env);
         console.log(response);
+        console.log(`Dados para cadastro ${env}`);
+        limparCampos();
+
         alert("Cadastrado com sucesso");
 
     }
 
-    
+    async function buscaCep(e) {
+        if (cep.length == 8) {
+             await api.get(`cep/${cep}`, {})
+                .then(response => {
 
+                    setLogradouro(response.data.logradouro);
+                    setBairro(response.data.bairro);
+                    setLocalidade(response.data.localidade);
+                    setUf(response.data.uf);
 
-
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.log(error)
+                });
+        }
+    }
+    function limparCampos(){
+        setNome("");
+        setCep("");
+        setLogradouro("");
+        setComplemento("");
+        setBairro("");
+        setLocalidade("");
+        setUf("");
+        setData("");
+        setHorario("");
+        setDescricao("");
+    }
 
     return (
 
         <> <Navbar className="container" />
-        <div className="body">
-           
-            <div className="menu-lateral"></div>
-            <div className=" container">
-                <div className="box-body">
-                    <form onSubmit={handleRegister} className="formContainer">
-                        <h1 className="titulo-cad">Novo Evento</h1>
-                        <div className="form-row">
-                            <div className="col-sm-10">
-                                <label className="label" for="inputDefault">Nome</label>
-                                <input name="nome" type="text" className="form-control1" value={nome} onChange={e => setNome(e.target.value)} />
+            <div className="body">
+
+                <div className="menu-lateral"></div>
+                <div className=" container">
+                    <div className="box-body">
+                        <form onSubmit={handleRegister} className="formContainer">
+                            <h1 className="titulo-cad">Novo Evento</h1>
+                            <div className="form-row">
+                                <div className="col-sm-10">
+                                    <label className="label" >Nome</label>
+                                    <input name="nome" type="text" className="form-control1" value={nome} onChange={e => setNome(e.target.value)} />
+                                </div>
                             </div>
-                        </div>
-                        <div className="form-row ">
-                            <div className="col-sm-4">
-                                <label className="label" for="inputDefault">Local</label>
-                                <input name="local" type="text" className="form-control1 " value={_local} onChange={e => setLocal(e.target.value)} />
+                            <div className="form-row ">
+                                <div className="col-sm-5">
+                                    <label className="label" >Cep</label>
+                                    <input name="cep" className="form-control1 " type="text" id="cep" value={cep} onChange={e => setCep(e.target.value)} onBlur={buscaCep} />
+
+                                </div>
+                            </div>
+                            <div className="form-row ">
+                                <div className="col-sm-7">
+                                    <label className="label" >Logradouro</label>
+                                    <input name="local" type="text" className="form-control1 " value={logradouro} onChange={e => setLogradouro(e.target.value)} />
+                                </div>
+                                <div className="col-sm-3">
+                                    <label className="label" >Complemento</label>
+                                    <input name="complemento" type="text" className="form-control1 " value={complemento} onChange={e => setComplemento(e.target.value)} />
+                                </div>
+                            </div>
+                            <div className="form-row ">
+                                <div className="col-sm-4">
+                                    <label className="label" >Bairro</label>
+                                    <input name="local" type="text" className="form-control1 " value={bairro} onChange={e => setBairro(e.target.value)} />
+                                </div>
+                                <div className="col-sm-4">
+                                    <label className="label" >Cidade</label>
+                                    <input name="local" type="text" className="form-control1 " value={localidade} onChange={e => setLocalidade(e.target.value)} />
+                                </div>
+                                <div className="col-sm-2">
+                                    <label className="label" >Estado</label>
+                                    <input name="local" type="text" className="form-control1 " value={uf} onChange={e => setUf(e.target.value)} />
+                                </div>
                             </div>
 
+                            <div className="form-row ">
+                                <div className="col-sm-5">
+                                    <label className="label">Data</label>
+                                    <input name="data" type="date" className="form-control1 " value={_data} onChange={e => setData(e.target.value)} />
+                                </div>
 
-                            <div className="col-sm-3">
-                                <label className="label" for="inputDefault">Data</label>
-                                <input name="data" type="date" className="form-control1 " value={_data} onChange={e => setData(e.target.value)} />
+                                <div className="col-sm-5">
+                                    <label className="label" >Horário</label>
+                                    <input name="horario" type="time" className="form-control1  " value={horario} onChange={e => setHorario(e.target.value)} />
+
+                                </div>
+                                <div className="col-sm-10">
+                                    <label className="label" >Descrição</label>
+                                    <textarea name="descricao" type="text" className="form-control-textarear" value={descricao} onChange={e => setDescricao(e.target.value)} />
+
+                                </div>
                             </div>
+                            <div className="buttonCad">
+                                <button className="botaoCadastro" type="submit" >Cadastrar</button>
+                                <button className="botaoLista" type="button" ><Link className="a" to="/listarEvento">Lista de eventos</Link></button>
+                            </div></form>
 
-                            <div className="col-sm-3">
-                                <label className="label" for="inputDefault">Horário</label>
-                                <input name="horario" type="time" className="form-control1  " value={horario} onChange={e => setHorario(e.target.value)} />
-
-                            </div>
-                            <div className="col-sm-10">
-                                <label className="label" for="inputDefault">Descrição</label>
-                                <textarea name="descricao" type="text" className="form-control-textarear" value={descricao} onChange={e => setDescricao(e.target.value)} />
-
-                            </div>
-                        </div>
-                        <div className="buttonCad">
-                            <button className="botaoCadastro" type="submit" >Cadastrar</button>
-                            <button className="botaoLista" to type="button" ><Link className="a" to="/listarEvento">Lista de eventos</Link></button>
-                        </div></form>
-
-                </div>   </div >
-                </div>
+                    </div>   </div >
+            </div>
         </>
     );
 }

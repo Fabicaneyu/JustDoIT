@@ -18,18 +18,20 @@ public class Usuario {
     @Id
     @Column( name = "id" )
     @GeneratedValue( strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
     @Column( name = "nome")
     private String nome;
     @Column( name = "email")
     private String email;
+    @Lob
     @Column( name = "photo")
     private String photo;
+    @Lob
     @Column( name = "senha")
     private String senha;
     @Column( name = "sobre")
     private String sobre;
-    @Column( name = "local")
+    @Column( name = "_local")
     private String local;
     @Column( name = "title")
     private String title;

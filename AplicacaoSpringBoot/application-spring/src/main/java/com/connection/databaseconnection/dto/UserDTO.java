@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserDTO {
 
-    private String email, nome, photo, senha, sobre ;
-    private Long id;
+    private String email, nome, photo, senha, sobre, local, title ;
+    private Integer id;
 
     public String getEmail() {
         return email;
@@ -41,11 +41,11 @@ public class UserDTO {
         this.senha = senha;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -55,6 +55,22 @@ public class UserDTO {
 
     public void setSobre(String sobre) {
         this.sobre = sobre;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
 

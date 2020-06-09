@@ -48,13 +48,30 @@ public class ConhecimentoService {
         return;
     }
 
-    public List<Conhecimento> recomendados(){
+    public List<Conhecimento> recomendadosDefault(){
 
         List<Conhecimento> result =
                 entityManager.createQuery(
-                        "select c from Conhecimento c order by c.id_conhecimento desc")
+                        "select c from Conhecimento c order by rand()")
                 .setMaxResults(4)
                 .getResultList();
+
+        if (result != null) {
+            return result;
+        }
+        else {
+            return null;
+        }
+    }
+
+    public List<Conhecimento> recomendadosByType(TipoConhecimento tipo){
+
+        List<Conhecimento> result =
+                entityManager.createQuery(
+                        "select c from Conhecimento c where c.tipo = :param order by rand()")
+                        .setParameter("param", tipo)
+                        .setMaxResults(4)
+                        .getResultList();
 
         if (result != null) {
             return result;
@@ -75,14 +92,14 @@ public class ConhecimentoService {
 
     }
 
-    public List<ConhecimentoUsuario> buscaConhecimentosPerfil(Long id) {
+    public List<ConhecimentoUsuario> buscaConhecimentosPerfil(Integer id) {
 
         List<ConhecimentoUsuario>  result = conhecimentoUsuarioRepository.findConhecimentoById(id);
 
         return result;
     }
 
-    public List<InteresseUsuario> buscarInteresses(Long id) {
+    public List<InteresseUsuario> buscarInteresses(Integer id) {
 
         List<InteresseUsuario>  result = interesseUsuarioRepository.findConhecimentoById(id);
 
@@ -100,12 +117,12 @@ public class ConhecimentoService {
         else return false;
     }
 
-    public boolean deleteInterestById(Long id) {
+    public boolean deleteInterestById(Integer id) {
 
-        Optional<InteresseUsuario> interesseUsuario = interesseUsuarioRepository.findById(id);
+        Optional<InteresseUsuario> interesseUsuario = interesseUsuarioRepository.findById(Long.valueOf(id));
 
         if (interesseUsuario.isPresent()) {
-            interesseUsuarioRepository.deleteById(id);
+            interesseUsuarioRepository.deleteById(Long.valueOf(id));
             return true;
         }
         else return false;

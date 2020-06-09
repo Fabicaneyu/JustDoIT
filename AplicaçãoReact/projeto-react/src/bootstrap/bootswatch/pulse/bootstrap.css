@@ -2428,6 +2428,10 @@ textarea.form-control {
   margin-bottom: 1rem;
 }
 
+.label-form{
+  margin-bottom: 18px;
+}
+
 .form-text {
   display: block;
   margin-top: 0.25rem;
@@ -11862,22 +11866,54 @@ padding-right: 0px;
 }
 .icon-value{
   font-size: 11px;
+  height: 35px;
+}
+.size-liked{
+  font-size: 12.5px;
+  color:#2aa7c9;
+  font-style: oblique;
+
+  cursor: pointer;
+  position: absolute;
+  left:29%;
+  top:20%;
 }
 
 .size-around{
-  margin: 15px;
-}
-.score-style{
   cursor: pointer;
+  position: absolute;
+  left:29%;
+  top:20%;
 }
 
+.score-style{
+  cursor: pointer;
+  position: absolute;
+  left:2%;
+  top:14%;
+}
+.score-style-light{
+  cursor: pointer;
+  position: absolute;
+  left:7%;
+  top:14%;
+}
 .icon-value.col-md-10{
   padding-left: 0px
 }
 
 .share-icon{
+  position: absolute;
   cursor: pointer;
-  margin-right: 8px;
+  top:16%;
+  left: 20%;
+}
+
+.icon-share{
+  position: absolute;
+  cursor: pointer;
+  left:3%;
+  top:18%;
 }
 
 
@@ -11989,6 +12025,8 @@ body{
   
 }
 
+
+
 .div-superior-busca {
 
   position: absolute;
@@ -12075,8 +12113,101 @@ body{
 }
 
 .frase-no-content {
+  margin-top: 5%;
   font-size: 20px;
   margin-left: 12%;
+}
+
+.filtro-busca{
+
+  height: 80px;
+  width: 380px;
+  position: absolute;
+  top: 9%;
+  left: 39%;
+
+}
+.filtro-busca-level{ 
+ margin-right:3%;
+ top:50%;
+}
+.filtro-busca-type{ 
+  margin-right:3%;
+  top:50%;
+ }
+
+.label-select-nivel{
+  position: absolute;
+  top: 20%;
+  margin-left: 2%;
+  font-style: inherit;
+  font-size: 14px;
+}
+
+.testzila{
+  
+  color:blue;
+
+}
+
+.react-box-one{
+  position: absolute;
+  bottom: 1%;
+  width:95px;
+  height: 33px;
+}
+
+.react-box-one:hover {
+
+  background-color: #eeeded;
+  border-radius: 3px;
+  font: bold;
+}
+
+
+.react-box-two{
+
+  position: absolute;
+  margin-left: 16%;;
+  width:70px;
+  bottom: 1%;
+  height: 33px;
+}
+
+.react-box-two:hover {
+
+  background-color: #eeeded;
+  border-radius: 3px;
+  font: bold;
+}
+.react-box-three{
+
+  position: absolute;
+  margin-left: 29%;
+  width:70px;
+  bottom: 1%;
+  height: 33px;
+}
+
+.react-box-three:hover {
+
+  background-color: #eeeded;
+  border-radius: 3px;
+  font: bold;
+}
+
+.interessante-counter {
+  color: #868e96;
+  position: absolute;
+  top:23%;
+  left:40.6%;
+}
+
+.recaptcha-set{
+
+  margin-top: 3%;
+  margin-left: 14%;
+
 }
 
 #learn{
@@ -12093,3 +12224,4 @@ body{
   font-weight: 400;
   border-radius: 4px;
 }
+

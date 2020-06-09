@@ -67,7 +67,7 @@ export default function Eventos() {
 
                         <tr  class="table-light">
                             <td>{evento.nome}</td>
-                            <td>{evento._local}</td>
+                            <td>{`${evento.logradouro} Nº ${evento.complemento}- ${evento.bairro} - ${evento.localidade} - ${evento.uf}`}</td>
                             <td>{evento._data}</td>
                             <td>{evento.horario}</td>
                             <td>
