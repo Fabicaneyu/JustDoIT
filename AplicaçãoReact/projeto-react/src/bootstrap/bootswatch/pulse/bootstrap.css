@@ -11704,7 +11704,7 @@ left: auto;
 .user-recomandation{
   float: right;
   position: absolute;
-  height: 400px;
+  height: 500px;
   width: 200px;
   left: 83.5%;
   background-color: #ffffff;
@@ -11786,7 +11786,7 @@ left: auto;
   
 }
 .standard-recomandation {
-  height: 83px;
+  height: 99px;
   padding: 8px 0px 8px 4px; 
 }
 
@@ -12077,4 +12077,19 @@ body{
 .frase-no-content {
   font-size: 20px;
   margin-left: 12%;
+}
+
+#learn{
+  width: 65%;
+}
+#event{
+  width: 35%;
+}
+.btn-choose {
+  border: solid 1px;
+  background-color: #2aa7c9;
+  color: white;
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 4px;
 }
