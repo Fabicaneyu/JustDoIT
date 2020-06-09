@@ -5,7 +5,7 @@ import './script.js'
 import api from '../../../services/api';
 import Navbar from '../../../components/navbar';
 import UserInfo from '../../../components/info-user-bar';
-import axios from 'axios';
+
 
 export default function CadastroEvento() {
     const [nome, setNome] = useState('');
@@ -36,12 +36,26 @@ export default function CadastroEvento() {
         };
 
         const response = await api.post('cadastrarEvento', env);
+        limparCampos();
         console.log(response);
         console.log(`Dados para cadastro ${env}`);
 
         alert("Cadastrado com sucesso");
 
     }
+    function limparCampos(){
+        setNome("");
+        setCep("");
+        setComplemento("");
+        setLogradouro("");
+        setBairro("");
+        setLocalidade("");
+        setUf("");
+        setData("");
+        setHorario("");
+        setDescricao("");
+    }
+
 
     async function buscaCep(e) {
         if (cep.length == 8) {
