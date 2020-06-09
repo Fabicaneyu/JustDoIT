@@ -38,6 +38,7 @@ export default function CadastroEvento() {
         const response = await api.post('cadastrarEvento', env);
         console.log(response);
         console.log(`Dados para cadastro ${env}`);
+        limparCampos();
 
         alert("Cadastrado com sucesso");
 
@@ -45,8 +46,7 @@ export default function CadastroEvento() {
 
     async function buscaCep(e) {
         if (cep.length == 8) {
-             await axios.get(`http://viacep.com.br/ws/${cep}/json/`, {})
-         //   await api.get(`cep/${cep}`, {})
+             await api.get(`cep/${cep}`, {})
                 .then(response => {
 
                     setLogradouro(response.data.logradouro);
@@ -60,6 +60,18 @@ export default function CadastroEvento() {
                     console.log(error)
                 });
         }
+    }
+    function limparCampos(){
+        setNome("");
+        setCep("");
+        setLogradouro("");
+        setComplemento("");
+        setBairro("");
+        setLocalidade("");
+        setUf("");
+        setData("");
+        setHorario("");
+        setDescricao("");
     }
 
     return (
