@@ -45,8 +45,7 @@ export default function CadastroEvento() {
 
     async function buscaCep(e) {
         if (cep.length == 8) {
-             await axios.get(`http://viacep.com.br/ws/${cep}/json/`, {})
-         //   await api.get(`cep/${cep}`, {})
+            await api.get(`cep/${cep}`, {})
                 .then(response => {
 
                     setLogradouro(response.data.logradouro);
