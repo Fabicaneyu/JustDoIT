@@ -1,6 +1,6 @@
 package com.connection.databaseconnection.evento;
 
-import com.connection.databaseconnection.evento.convidado.Convidado;
+import com.connection.databaseconnection.convidado.Convidado;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,12 +12,11 @@ import java.io.Serializable;
 import java.util.List;
 
 @Builder
-@Data //( @Data )Esta notação permite que eu não precise chamar os gets e sets pois já é chamado internamente por ela
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Evento implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -25,19 +24,26 @@ public class Evento implements Serializable {
     private long codigo;
 
     private String nome;
-
     @NotEmpty
-    private String _local;
-
+    private String cep;
+    @NotEmpty
+    private String logradouro;
+    @NotEmpty
+    private String bairro;
+    @NotEmpty
+    private String localidade;
+    @NotEmpty
+    private String uf;
+    @NotEmpty
+    private String complemento;
     @NotEmpty
     private String _data;
-
+    @NotEmpty
     private String horario;
-
+    @NotEmpty
     private String descricao;
 
    @OneToMany
-    private List<Convidado> convidado;
-
-
+    private List<Convidado> convidados;
 }
+

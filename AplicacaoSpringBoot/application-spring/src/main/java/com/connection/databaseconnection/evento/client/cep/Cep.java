@@ -1,4 +1,4 @@
-package com.connection.databaseconnection.evento.client.cep;
+package com.connection.databaseconnection.evento;
 
 public class Cep {
 
@@ -37,5 +37,11 @@ public class Cep {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+
+    @Override
+    public String toString() {
+        return logradouro+","+bairro+","+localidade+"- "+uf ;
     }
 }
