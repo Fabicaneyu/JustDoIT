@@ -32,6 +32,13 @@ public class Post {
 
     @Column( name = "_data")
     private String _data;
+
+    @Column( name = "is_img")
+    private boolean isImg;
+
+    @Column( name = "imagem")
+    private String imagem;
+
     public Usuario getUsuario() {
         return usuario;
     }

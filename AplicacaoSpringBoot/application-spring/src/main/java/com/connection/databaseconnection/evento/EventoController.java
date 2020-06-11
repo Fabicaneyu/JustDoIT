@@ -1,7 +1,8 @@
 package com.connection.databaseconnection.evento;
 
-import com.connection.databaseconnection.convidado.Convidado;
-import com.connection.databaseconnection.convidado.ConvidadoRepository;
+import com.connection.databaseconnection.evento.client.cep.ClientViaCep;
+import com.connection.databaseconnection.evento.convidado.Convidado;
+import com.connection.databaseconnection.evento.convidado.ConvidadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ public class EventoController {
     private ConvidadoRepository cr;
 
     @Autowired
-    private ClientViaCep clientViaCep;
+    private ClientViaCep viaCep;
 
     @PostMapping(path = "/cadastrarEvento")
     public ResponseEntity form(@RequestBody Evento evento) {
@@ -70,7 +71,7 @@ public class EventoController {
             if(convidado.getNomeConvidado() == null){
                 System.out.println("Nome do convidado vazio");
             }
-            if(convidado.getRg() == null){
+            if(convidado.getRg() == 0){
                 System.out.println("Rg do convidado vazio");
             }
             if(convidado.getEvento() == null){
@@ -101,7 +102,7 @@ public class EventoController {
     }
     @GetMapping("/cep/{cep}")
     public ResponseEntity consultarCep(@PathVariable String cep) {
-        Cep cepEncontrado = clientViaCep.getCep(cep);
+        com.connection.databaseconnection.evento.Cep cepEncontrado = viaCep.getCep(cep);
         try {
             if (cepEncontrado == null) {
                 System.out.println("cep vazio");

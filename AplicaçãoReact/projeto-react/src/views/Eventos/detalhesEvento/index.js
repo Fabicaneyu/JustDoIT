@@ -41,7 +41,7 @@ export default function DetalhesEvento() {
                             </tr>
                             <tr>
                                 <th scope="row">Data</th>
-                                <td>{eventoDeta._data}</td>
+                                <td>{eventoDeta.data}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Horario</th>

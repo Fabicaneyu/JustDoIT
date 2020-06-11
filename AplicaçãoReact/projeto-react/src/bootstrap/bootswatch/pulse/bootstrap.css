@@ -11708,7 +11708,7 @@ left: auto;
 .user-recomandation{
   float: right;
   position: absolute;
-  height: 500px;
+  height: 460px;
   width: 200px;
   left: 83.5%;
   background-color: #ffffff;
@@ -12223,5 +12223,20 @@ body{
   font-size: 13px;
   font-weight: 400;
   border-radius: 4px;
+}
+
+/* Esconde o input */
+.input {
+  display: none
+}
+
+/* Aparência que terá o seletor de arquivo */
+.label {
+  background-color: #2aa7c9;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px;
+  padding: 6px 20px
 }
 

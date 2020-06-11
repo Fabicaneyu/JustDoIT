@@ -33,9 +33,11 @@ public class PostsController {
 
         Usuario newPostUser = Usuario.builder().id(postDTO.getId_user()).build();
 
+
         Post post = Post.builder().conteudo(postDTO.getConteudo())._data(postDTO.get_data())
-                .usuario(newPostUser).build();
+                .usuario(newPostUser).isImg(postDTO.isImg()).imagem(postDTO.getImagem()).build();
         try{
+            System.out.println(post.isImg());
             Post postEnviado = controller.novoPost(post);
             return new ResponseEntity(postEnviado, HttpStatus.CREATED);
         }catch (ErroConexao e) {

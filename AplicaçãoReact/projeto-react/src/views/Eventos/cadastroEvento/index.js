@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import '../css-evento.css';
 import './script.js'
 import api from '../../../services/api';
@@ -15,7 +16,8 @@ export default function CadastroEvento() {
     const [bairro, setBairro] = useState('');
     const [localidade, setLocalidade] = useState('');
     const [uf, setUf] = useState('');
-    const [_data, setData] = useState('');
+    const [busca_content, setBusca] = useState('');
+    const [data, setData] = useState('');
     const [horario, setHorario] = useState('');
     const [descricao, setDescricao] = useState('');
 
@@ -30,14 +32,14 @@ export default function CadastroEvento() {
             bairro,
             localidade,
             uf,
-            _data,
+            data,
             horario,
             descricao,
         };
 
         const response = await api.post('cadastrarEvento', env);
         console.log(response);
-        console.log(`Dados para cadastro ${env}`);
+        console.log(`Dados para cadastro ${env.data}`);
         limparCampos();
 
         alert("Cadastrado com sucesso");
@@ -46,6 +48,7 @@ export default function CadastroEvento() {
 
     async function buscaCep(e) {
         if (cep.length == 8) {
+            console.log(cep)
              await api.get(`cep/${cep}`, {})
                 .then(response => {
 
@@ -74,9 +77,18 @@ export default function CadastroEvento() {
         setDescricao("");
     }
 
+
+    const history = useHistory();
+
+
+
     return (
 
-        <> <Navbar className="container" />
+        <> <Navbar                                  
+           className="container"
+           action={() => history.push(`/busca/${busca_content}`)}
+           value={busca_content}
+           change={e =>setBusca(e)}/>
             <div className="body">
 
                 <div className="menu-lateral"></div>
@@ -125,7 +137,7 @@ export default function CadastroEvento() {
                             <div className="form-row ">
                                 <div className="col-sm-5">
                                     <label className="label">Data</label>
-                                    <input name="data" type="date" className="form-control1 " value={_data} onChange={e => setData(e.target.value)} />
+                                    <input name="data" type="date" className="form-control1 " value={data} onChange={e => setData(e.target.value)} />
                                 </div>
 
                                 <div className="col-sm-5">

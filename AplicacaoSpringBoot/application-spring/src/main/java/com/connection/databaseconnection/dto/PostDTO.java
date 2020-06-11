@@ -19,6 +19,9 @@ public class PostDTO {
     private String photo;
     private String nome_user;
     private String _data;
+    private String imagem;
+    private boolean isImg;
+
 
 
     public Integer getId_user() {
@@ -66,5 +69,25 @@ public class PostDTO {
 
     public void setNome_user(String nome_user) {
         this.nome_user = nome_user;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
+    public boolean isImg() {
+        return isImg;
+    }
+
+    public void setIsImg(boolean isImg) {
+        this.isImg = isImg;
+    }
+
+    public void setImg(boolean img) {
+        isImg = img;
     }
 }

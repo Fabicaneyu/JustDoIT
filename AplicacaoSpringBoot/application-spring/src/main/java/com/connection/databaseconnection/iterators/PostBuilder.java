@@ -45,10 +45,13 @@ public class PostBuilder implements Iterator {
                 String conteudo = data[1].toString();
                 String nome = data[2].toString();
                 String date = data[3].toString();
-                String imagem = data[4].toString();
-                Integer id_user = (Integer) data[5];
+                Boolean isImg = (Boolean) data[4];
+                String imgConteudo = data[5].toString();
+                String imagem = data[6].toString();
+                Integer idUser = (Integer) data[7];
 
-                PostModel novo = new PostModel(id,id_user,this.reacao, this.all,nome, conteudo, imagem, date);
+                PostModel novo = new PostModel(id,idUser,this.reacao, this.all,nome, conteudo, imagem, date,
+                        imgConteudo,isImg);
                 return novo ;
 
             }

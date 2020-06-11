@@ -374,7 +374,6 @@ buscar = () => {
 
 
     this.props.history.push(`/busca/${this.state.busca_content}`)
-
            
    
    }

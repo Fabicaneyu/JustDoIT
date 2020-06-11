@@ -13,7 +13,7 @@ export default function CadastroConvidado() {
 function limparCampos(){
     setRg("");
     setNomeConvidado("");
-    setIsModaVisible(false);
+    // setIsModaVisible(false);
 }
     async function handleRegisterConvit(e) {
         e.preventDefault();

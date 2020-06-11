@@ -16,6 +16,7 @@ class Home extends React.Component {
         nome: '',
         idUser : '',
         photo : '',
+        image: '',
         conteudo : '',
         recomendados : [],
         busca_content: '',
@@ -229,7 +230,45 @@ class Home extends React.Component {
                                    <div className="text-field-size">
                                         <form id="One">
                                             <textarea onChange={e => this.setState({conteudo: e.target.value})} className="text-field field-left" placeholder="Algo que queira compartilhar ?" rows="5"cols="33"></textarea>
-                                            <textarea className="text-field" placeholder="Algum conteudo que queira compartilhar ?" rows="5"cols="33"></textarea>                          
+                                            <textarea className="text-field" placeholder="Algum conteudo que queira compartilhar ?" rows="5"cols="33">
+                                                        
+                                                </textarea>    
+
+                                                <label className="label" for='photo'>Selecionar imagem &#187;</label>
+                                                <input className="input" id='photo' type='file'
+                                                
+                                                
+                                                name="photo"
+                                                onChange={()=>{
+                                                   let fileReader = new FileReader();
+                                                   var fileToRead = document.querySelector('#photo').files[0];
+                                                   fileReader.addEventListener("loadend", ()=> {
+                                                       console.log(fileReader.result); 
+                                                       this.setState({ image: fileReader.result  })
+                                                       console.log(this.state.image)
+                                                   })
+                                                   fileReader.readAsDataURL(fileToRead);                                     
+                                               }}  
+                                             />  
+                                              
+                                                {/* <input className="input" id='selecao-arquivo' type='file'
+                                                
+                                                name="photo" className="form-control"
+                                                 onChange={()=>{
+                                                    let fileReader = new FileReader();
+                                                    var fileToRead = document.querySelector('#photo').files[0];
+                                                    fileReader.addEventListener("loadend", ()=> {
+                                                        console.log(fileReader.result); 
+                                                        this.setState({ image: fileReader.result  })
+                                                        console.log(this.state.image)
+                                                    })
+                                                    fileReader.readAsDataURL(fileToRead);                                     
+                                                }}  
+                                              />    */}
+                                         
+
+
+                                                                  
                                         </form>
                                     </div>
                                     <button onClick={this.postar} className="btn-sender">Enviar</button>
