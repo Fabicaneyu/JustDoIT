@@ -5,6 +5,7 @@ import Busca from '../Busca/busca'
 import PostField from './post-field'
 import Recomendation from '../../components/recomendation-field'
 import Waypoint from '../../components/way'
+import Imagem from '../../imagens/camera.svg'
 import Loading from '../../imagens/Spinner.gif'
 import Pencil from '../../imagens/pencil.svg'
 import File from '../../imagens/file.svg'
@@ -16,7 +17,8 @@ class Home extends React.Component {
         nome: '',
         idUser : '',
         photo : '',
-        image: '',
+        image: null,
+        is_image: 0,
         conteudo : '',
         recomendados : [],
         busca_content: '',
@@ -140,9 +142,7 @@ class Home extends React.Component {
                         console.log(error.response)
                     })                    
                 }
-            }
-                                
-        
+            }                                        
         }
 
 
@@ -174,10 +174,14 @@ class Home extends React.Component {
 
     }
 
+  
+
     postar = () => {
         axios.post('http://localhost:8080/post/new', {
             conteudo: this.state.conteudo,
-            id_user : this.state.idUser
+            id_user : this.state.idUser,
+            imagem: this.state.image,
+            isImg: this.state.is_image
         }).then( response => {
          this.setState({conteudo: ''})
          document.getElementById("One").reset();
@@ -234,7 +238,9 @@ class Home extends React.Component {
                                                         
                                                 </textarea>    
 
-                                                <label className="label" for='photo'>Selecionar imagem &#187;</label>
+                                                <label className="label" for='photo'>
+                                                    <img className="icon-image" src={Imagem}/>
+                                                </label>
                                                 <input className="input" id='photo' type='file'
                                                 
                                                 
@@ -244,27 +250,15 @@ class Home extends React.Component {
                                                    var fileToRead = document.querySelector('#photo').files[0];
                                                    fileReader.addEventListener("loadend", ()=> {
                                                        console.log(fileReader.result); 
-                                                       this.setState({ image: fileReader.result  })
+                                                       this.setState({ image: fileReader.result,
+                                                                        is_image : 1 })
                                                        console.log(this.state.image)
+                                                       console.log(this.state.is_image)
                                                    })
                                                    fileReader.readAsDataURL(fileToRead);                                     
                                                }}  
-                                             />  
-                                              
-                                                {/* <input className="input" id='selecao-arquivo' type='file'
-                                                
-                                                name="photo" className="form-control"
-                                                 onChange={()=>{
-                                                    let fileReader = new FileReader();
-                                                    var fileToRead = document.querySelector('#photo').files[0];
-                                                    fileReader.addEventListener("loadend", ()=> {
-                                                        console.log(fileReader.result); 
-                                                        this.setState({ image: fileReader.result  })
-                                                        console.log(this.state.image)
-                                                    })
-                                                    fileReader.readAsDataURL(fileToRead);                                     
-                                                }}  
-                                              />    */}
+                                             /> 
+                                             <span id='file-name'></span>                                             
                                          
 
 

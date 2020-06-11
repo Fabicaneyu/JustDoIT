@@ -12225,18 +12225,42 @@ body{
   border-radius: 4px;
 }
 
-/* Esconde o input */
 .input {
   display: none
 }
 
-/* Aparência que terá o seletor de arquivo */
 .label {
+  top: 0;
   background-color: #2aa7c9;
   border-radius: 5px;
   color: #fff;
+  height: 30px;
+  width: 40px;;
   cursor: pointer;
   margin: 10px;
-  padding: 6px 20px
+}
+
+.span-content{
+
+  position: absolute;
+  left: 10%;
+
+}
+
+.image-content {
+  max-height:500px;
+  max-width: 500px;
+  margin-left: 12%;
+  margin-top: 6%;
+}
+
+.icon-image {
+  position: relative;
+  left: 19%;
+  bottom: 18%;
+  height:25px;
+  width: 25px;
+
+  border-radius: 5px;
 }
 

@@ -2,13 +2,12 @@ package com.connection.databaseconnection.adapters;
 
 public class PostModel {
 
-    private Integer id, id_user, reacao, total;
+    private Integer id, id_user, reacao, total, isImg;
     private String nome, conteudo, imagem , data, img_conteudo;
-    boolean isImg;
 
 
     public PostModel(Integer id, Integer id_user, Integer reacao, Integer total, String nome,
-                     String conteudo, String imagem, String data, String img_conteudo, boolean isImg) {
+                     String conteudo, String imagem, String data, String img_conteudo, Integer isImg) {
         this.id = id;
         this.id_user = id_user;
         this.reacao = reacao;
@@ -93,11 +92,12 @@ public class PostModel {
         this.img_conteudo = img_conteudo;
     }
 
-    public boolean isImg() {
+
+    public Integer getIsImg() {
         return isImg;
     }
 
-    public void setImg(boolean img) {
-        isImg = img;
+    public void setIsImg(Integer isImg) {
+        this.isImg = isImg;
     }
 }

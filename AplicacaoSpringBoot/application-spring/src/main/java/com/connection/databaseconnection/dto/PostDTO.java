@@ -20,7 +20,7 @@ public class PostDTO {
     private String nome_user;
     private String _data;
     private String imagem;
-    private boolean isImg;
+    private Integer isImg;
 
 
 
@@ -79,15 +79,12 @@ public class PostDTO {
         this.imagem = imagem;
     }
 
-    public boolean isImg() {
+
+    public Integer getIsImg() {
         return isImg;
     }
 
-    public void setIsImg(boolean isImg) {
+    public void setIsImg(Integer isImg) {
         this.isImg = isImg;
-    }
-
-    public void setImg(boolean img) {
-        isImg = img;
     }
 }

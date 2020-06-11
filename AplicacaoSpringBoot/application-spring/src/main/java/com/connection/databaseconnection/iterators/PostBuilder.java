@@ -39,14 +39,20 @@ public class PostBuilder implements Iterator {
     public PostModel nextList() {
 
         if (listaDefault != null) {
+
+            String imgConteudo;
             for (int i = 0; i < listaDefault.size(); i++) {
                 Object[] data = listaDefault.get(i);
                 Integer id = (Integer) data[0];
                 String conteudo = data[1].toString();
                 String nome = data[2].toString();
                 String date = data[3].toString();
-                Boolean isImg = (Boolean) data[4];
-                String imgConteudo = data[5].toString();
+                Integer isImg = (Integer) data[4];
+                if(data[5] == null) {
+                    imgConteudo = "";
+                } else {
+                    imgConteudo = data[5].toString();
+                }
                 String imagem = data[6].toString();
                 Integer idUser = (Integer) data[7];
 

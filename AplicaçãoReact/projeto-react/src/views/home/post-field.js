@@ -8,22 +8,11 @@ import axios from 'axios'
 
 
 export default prop => {
-    
+  
 
-    const divs = prop.body.map( post => {
+    const corpo = prop.body.map( post => {
 
 
-        // function like(val) {
-           
-        //     if(liked) {
-        //         console.log('já curtido')
-        //         setLiked(false)
-        //     }else{
-        //         prop.action(val)
-        //         setLiked(true)
-        //     }
-        // }
-    
         return (
             <>
             
@@ -48,8 +37,11 @@ export default prop => {
                                         #Database</a>
                                 </div>
                             </div>
+
                             <div className="content-field">
-                                {post.conteudo}
+                                {post.isImg == 1 ? <> <span className="span-content">{post.conteudo}</span>
+                                <img className="image-content" src={post.img_conteudo}/> </> : <> <div>{post.conteudo}</div> </> }
+                                                                                              
                             </div>
                             <div className="row anulled">
                            
@@ -101,8 +93,7 @@ export default prop => {
     })
 
     return(
-        <div>{ divs }</div>
+        <div>{ corpo }</div>
     )
-
 
 }

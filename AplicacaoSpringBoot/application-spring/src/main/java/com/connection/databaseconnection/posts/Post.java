@@ -34,7 +34,7 @@ public class Post {
     private String _data;
 
     @Column( name = "is_img")
-    private boolean isImg;
+    private Integer isImg;
 
     @Column( name = "imagem")
     private String imagem;
