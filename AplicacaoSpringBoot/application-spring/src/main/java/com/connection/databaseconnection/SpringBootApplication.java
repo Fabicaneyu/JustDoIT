@@ -1,20 +1,23 @@
 package com.connection.databaseconnection;
 
+
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebMvc
+@EnableFeignClients
 @org.springframework.boot.autoconfigure.SpringBootApplication
 public class SpringBootApplication implements WebMvcConfigurer {
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowedMethods("GET" , "POST", "PUT", "PATCH", "DELETE", "OPTIONS");
+		registry.addMapping("/").allowedMethods("GET" , "POST", "PUT", "PATCH", "DELETE", "OPTIONS");
 	}
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/**").addResourceLocations("/*");
+		registry.addResourceHandler("/").addResourceLocations("/*");
 	}
 
 	public static void main(String[] args) {

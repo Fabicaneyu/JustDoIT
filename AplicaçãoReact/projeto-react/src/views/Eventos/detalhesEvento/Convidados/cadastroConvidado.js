@@ -10,10 +10,10 @@ export default function CadastroConvidado() {
     const [rg, setRg] = useState('');
     const id = localStorage.getItem("codigo");
     const [isModalVisible, setIsModalVisible] = useState(false);
-function limparCampo(){
-    setNomeConvidado("");
+function limparCampos(){
     setRg("");
-    setIsModalVisible(false);
+    setNomeConvidado("");
+  
 }
     async function handleRegisterConvit(e) {
         e.preventDefault();
@@ -24,8 +24,7 @@ function limparCampo(){
         };
 
         const response = await api.post(`/convidado/${id}`, env);
-        limparCampo();
-        console.log(response);
+        limparCampos();
         alert("Cadastrado com sucesso");
 
     }
