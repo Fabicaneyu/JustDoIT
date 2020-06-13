@@ -27,8 +27,8 @@ public class ConhecimentoController {
     @Autowired
     ConhecimentoService controller;
 
-    @Autowired
-    UserService userController;
+//    @Autowired
+//    UserService userController;
 
     @Autowired
     ConhecimentoBuilder conhecimentoBuilder;
@@ -41,62 +41,62 @@ public class ConhecimentoController {
 
     PilhaBusca<TipoConhecimento> buscas = new PilhaBusca<TipoConhecimento>(5);
 
-    @PostMapping("/adicionar/conhecimento")
-    public ResponseEntity novoConhecimento(@RequestBody ConhecimentoUsuario conhecimentoUsuario) {
-
-        try {
-            Optional<Conhecimento> resultKnow = controller.buscaConhecimentoPorId
-                    (conhecimentoUsuario.getConhecimento().getId_conhecimento());
-
-            Usuario resultUser = userController.buscaporId
-                    (conhecimentoUsuario.getUsuario().getId());
-
-            ConhecimentoUsuario novoConhecimento = ConhecimentoUsuario.builder()
-                    .descricao_user(conhecimentoUsuario.getDescricao_user())
-                    .nivel(conhecimentoUsuario.getNivel()).usuario(resultUser)
-                    .conhecimento(resultKnow.get()).build();
-
-           boolean salvo = controller.saveConhecimentoUsuario(novoConhecimento);
-
-           if (salvo) {
-               return ResponseEntity.ok(novoConhecimento);
-           }
-           else {
-               return ResponseEntity.status(404).build();
-           }
-
-        }catch (ErroConexao erro) {
-            return ResponseEntity.badRequest().body(erro.getMessage());
-        }
-    }
-
-    @PostMapping("/adicionar/interesse")
-    public ResponseEntity novoInteresse(@RequestBody InteresseUsuario interesseUsuario) {
-
-        try {
-            Optional<Conhecimento> resultKnow = controller.buscaConhecimentoPorId
-                    (interesseUsuario.getConhecimento().getId_conhecimento());
-
-            Usuario resultUser = userController.buscaporId
-                    (interesseUsuario.getUsuario().getId());
-
-            InteresseUsuario novoInteresse = InteresseUsuario.builder()
-                    .descricao_interesse(interesseUsuario.getDescricao_interesse())
-                    .conhecimento(resultKnow.get()).usuario(resultUser).build();
-
-            boolean salvo = controller.saveInteresseUsuario(novoInteresse);
-
-            if (salvo) {
-                return ResponseEntity.ok(novoInteresse);
-            }
-            else {
-                return ResponseEntity.status(404).build();
-            }
-
-        }catch (ErroConexao erro) {
-            return ResponseEntity.badRequest().body(erro.getMessage());
-        }
-    }
+//    @PostMapping("/adicionar/conhecimento")
+//    public ResponseEntity novoConhecimento(@RequestBody ConhecimentoUsuario conhecimentoUsuario) {
+//
+//        try {
+//            Optional<Conhecimento> resultKnow = controller.buscaConhecimentoPorId
+//                    (conhecimentoUsuario.getConhecimento().getId_conhecimento());
+//
+//            Usuario resultUser = userController.buscaporId
+//                    (conhecimentoUsuario.getUsuario().getId());
+//
+//            ConhecimentoUsuario novoConhecimento = ConhecimentoUsuario.builder()
+//                    .descricao_user(conhecimentoUsuario.getDescricao_user())
+//                    .nivel(conhecimentoUsuario.getNivel()).usuario(resultUser)
+//                    .conhecimento(resultKnow.get()).build();
+//
+//           boolean salvo = controller.saveConhecimentoUsuario(novoConhecimento);
+//
+//           if (salvo) {
+//               return ResponseEntity.ok(novoConhecimento);
+//           }
+//           else {
+//               return ResponseEntity.status(404).build();
+//           }
+//
+//        }catch (ErroConexao erro) {
+//            return ResponseEntity.badRequest().body(erro.getMessage());
+//        }
+//    }
+//
+//    @PostMapping("/adicionar/interesse")
+//    public ResponseEntity novoInteresse(@RequestBody InteresseUsuario interesseUsuario) {
+//
+//        try {
+//            Optional<Conhecimento> resultKnow = controller.buscaConhecimentoPorId
+//                    (interesseUsuario.getConhecimento().getId_conhecimento());
+//
+//            Usuario resultUser = userController.buscaporId
+//                    (interesseUsuario.getUsuario().getId());
+//
+//            InteresseUsuario novoInteresse = InteresseUsuario.builder()
+//                    .descricao_interesse(interesseUsuario.getDescricao_interesse())
+//                    .conhecimento(resultKnow.get()).usuario(resultUser).build();
+//
+//            boolean salvo = controller.saveInteresseUsuario(novoInteresse);
+//
+//            if (salvo) {
+//                return ResponseEntity.ok(novoInteresse);
+//            }
+//            else {
+//                return ResponseEntity.status(404).build();
+//            }
+//
+//        }catch (ErroConexao erro) {
+//            return ResponseEntity.badRequest().body(erro.getMessage());
+//        }
+//    }
 
     @GetMapping("/buscar/conhecimentos")
     public ResponseEntity buscarConhecimentos(@RequestParam(required = true) Integer id ) {
@@ -191,102 +191,102 @@ public class ConhecimentoController {
         }
     }
 
-    @GetMapping("/find")
-    public ResponseEntity findUsers(@RequestParam(required = false) String conhecimento,
-                                    @RequestParam(required = false) Integer level,
-                                    @RequestParam(required = false) TipoConhecimento tipo ) {
-        try {
-
-            if(tipo != null) {
-                if (level > 0) {
-
-                    Conhecimento consulta = Conhecimento.builder().tipo(tipo).build();
-
-                    List conhecimentos = userController.buscarPorTipoAndNivel(consulta.getTipo(), level);
-
-                    if (conhecimentos == null) {
-                        return new ResponseEntity("Infelizmente ainda não temos usuários que " +
-                                "possuem este nível de conhecimento .",HttpStatus.NOT_FOUND);
-                    } else {
-                        buscas.push(consulta.getTipo());
-                        return ResponseEntity.ok(conhecimentos);
-                    }
-
-                } else {
-                    Conhecimento consulta = Conhecimento.builder().tipo(tipo).build();
-
-
-                    List conhecimentos = userController.buscarPorTipo(consulta.getTipo());
-
-                    if (conhecimentos == null) {
-                        return new ResponseEntity("Infelizmente ainda não temos usuários que" +
-                                " possuem este tipo de conhecimento ."
-                                , HttpStatus.NOT_FOUND);
-                    } else {
-                        buscas.push(consulta.getTipo());
-                        return ResponseEntity.ok(conhecimentos);
-                    }
-                }
-            }
-            if (level > 0) {
-                if (conhecimento != null) {
-
-                    Conhecimento con = Conhecimento.builder().conhecimento(conhecimento).build();
-                    ConhecimentoUsuario consulta = ConhecimentoUsuario.builder()
-                            .conhecimento(con)
-                            .nivel(level).build();
-
-                    List<ConhecimentoUsuario> conhecimentos = userController.buscarPorLevelandConhecimento(consulta);
-
-
-                    if (conhecimentos == null) {
-                        return new ResponseEntity("Infelizmente ainda não temos usuários que" +
-                                "possuem este nível de conhecimento .",HttpStatus.NOT_FOUND);
-                    } else {
-
-                        buscas.push(conhecimentos.get(0).getConhecimento().getTipo());
-                        return ResponseEntity.ok(buscaBuilder.nextList(conhecimentos));
-                    }
-
-                }else {
-
-                    ConhecimentoUsuario consulta = ConhecimentoUsuario.builder().nivel(level).build();
-
-                    List<ConhecimentoUsuario> conhecimentos = userController.buscarPorLevel(consulta.getNivel());
-
-
-                    if (conhecimentos == null) {
-                        return new ResponseEntity("Infelizmente ainda não temos usuários que possuem este nível" +
-                                "de conhecimento ."
-                                , HttpStatus.NOT_FOUND);
-                    } else {
-                        buscas.push(conhecimentos.get(0).getConhecimento().getTipo());
-                        return ResponseEntity.ok(buscaBuilder.nextList(conhecimentos));
-                    }
-                }
-
-            }
-
-            Conhecimento consulta = Conhecimento.builder().conhecimento(conhecimento).build();
-
-            List<ConhecimentoUsuario> conhecimentos = userController.buscarConhecimentos(consulta.getConhecimento());
-
-
-            if (conhecimentos == null) {
-                return new ResponseEntity("Infelizmente ainda não temos usuários que possuem este conhecimento ."
-                        , HttpStatus.NOT_FOUND);
-            }
-            else{
-                buscas.push(conhecimentos.get(0).getConhecimento().getTipo());
-                return ResponseEntity.ok(buscaBuilder.nextList(conhecimentos));
-            }
-
-
-        } catch (ErroConexao e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-
-        }
-    }
+//    @GetMapping("/find")
+//    public ResponseEntity findUsers(@RequestParam(required = false) String conhecimento,
+//                                    @RequestParam(required = false) Integer level,
+//                                    @RequestParam(required = false) TipoConhecimento tipo ) {
+//        try {
+//
+//            if(tipo != null) {
+//                if (level > 0) {
+//
+//                    Conhecimento consulta = Conhecimento.builder().tipo(tipo).build();
+//
+//                    List conhecimentos = userController.buscarPorTipoAndNivel(consulta.getTipo(), level);
+//
+//                    if (conhecimentos == null) {
+//                        return new ResponseEntity("Infelizmente ainda não temos usuários que " +
+//                                "possuem este nível de conhecimento .",HttpStatus.NOT_FOUND);
+//                    } else {
+//                        buscas.push(consulta.getTipo());
+//                        return ResponseEntity.ok(conhecimentos);
+//                    }
+//
+//                } else {
+//                    Conhecimento consulta = Conhecimento.builder().tipo(tipo).build();
+//
+//
+//                    List conhecimentos = userController.buscarPorTipo(consulta.getTipo());
+//
+//                    if (conhecimentos == null) {
+//                        return new ResponseEntity("Infelizmente ainda não temos usuários que" +
+//                                " possuem este tipo de conhecimento ."
+//                                , HttpStatus.NOT_FOUND);
+//                    } else {
+//                        buscas.push(consulta.getTipo());
+//                        return ResponseEntity.ok(conhecimentos);
+//                    }
+//                }
+//            }
+//            if (level > 0) {
+//                if (conhecimento != null) {
+//
+//                    Conhecimento con = Conhecimento.builder().conhecimento(conhecimento).build();
+//                    ConhecimentoUsuario consulta = ConhecimentoUsuario.builder()
+//                            .conhecimento(con)
+//                            .nivel(level).build();
+//
+//                    List<ConhecimentoUsuario> conhecimentos = userController.buscarPorLevelandConhecimento(consulta);
+//
+//
+//                    if (conhecimentos == null) {
+//                        return new ResponseEntity("Infelizmente ainda não temos usuários que" +
+//                                "possuem este nível de conhecimento .",HttpStatus.NOT_FOUND);
+//                    } else {
+//
+//                        buscas.push(conhecimentos.get(0).getConhecimento().getTipo());
+//                        return ResponseEntity.ok(buscaBuilder.nextList(conhecimentos));
+//                    }
+//
+//                }else {
+//
+//                    ConhecimentoUsuario consulta = ConhecimentoUsuario.builder().nivel(level).build();
+//
+//                    List<ConhecimentoUsuario> conhecimentos = userController.buscarPorLevel(consulta.getNivel());
+//
+//
+//                    if (conhecimentos == null) {
+//                        return new ResponseEntity("Infelizmente ainda não temos usuários que possuem este nível" +
+//                                "de conhecimento ."
+//                                , HttpStatus.NOT_FOUND);
+//                    } else {
+//                        buscas.push(conhecimentos.get(0).getConhecimento().getTipo());
+//                        return ResponseEntity.ok(buscaBuilder.nextList(conhecimentos));
+//                    }
+//                }
+//
+//            }
+//
+//            Conhecimento consulta = Conhecimento.builder().conhecimento(conhecimento).build();
+//
+//            List<ConhecimentoUsuario> conhecimentos = userController.buscarConhecimentos(consulta.getConhecimento());
+//
+//
+//            if (conhecimentos == null) {
+//                return new ResponseEntity("Infelizmente ainda não temos usuários que possuem este conhecimento ."
+//                        , HttpStatus.NOT_FOUND);
+//            }
+//            else{
+//                buscas.push(conhecimentos.get(0).getConhecimento().getTipo());
+//                return ResponseEntity.ok(buscaBuilder.nextList(conhecimentos));
+//            }
+//
+//
+//        } catch (ErroConexao e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//
+//        }
+//    }
 
     @GetMapping("/types")
     public ResponseEntity buscaTipos() {
@@ -306,6 +306,9 @@ public class ConhecimentoController {
         try {
             List busca = controller.getListKnows(tipo);
 
+            if(busca.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
             return ResponseEntity.ok(busca);
         }catch (ErroConexao erro) {
             return ResponseEntity.badRequest().body(erro.getMessage());
