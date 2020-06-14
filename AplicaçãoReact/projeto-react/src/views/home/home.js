@@ -3,6 +3,7 @@ import Navbar from '../../components/navbar'
 import UserInfo from '../../components/info-user-bar'
 import Busca from '../Busca/busca'
 import PostField from './post-field'
+import Fechar from '../../imagens/fechar.svg'
 import Recomendation from '../../components/recomendation-field'
 import Waypoint from '../../components/way'
 import Imagem from '../../imagens/camera.svg'
@@ -10,6 +11,7 @@ import Loading from '../../imagens/Spinner.gif'
 import Pencil from '../../imagens/pencil.svg'
 import File from '../../imagens/file.svg'
 import axios from 'axios'
+
 
 class Home extends React.Component {
 
@@ -174,7 +176,19 @@ class Home extends React.Component {
 
     }
 
-  
+    loadUpload = () =>{
+        document.getElementById('svg-close').style.display = 'inline'
+        document.getElementById('label-upload').className = 'label-image-b'
+    }
+
+    cancelUpload = () => {
+        document.getElementById('svg-close').style.display = 'none'
+        document.getElementById('label-upload').className = 'label-image'
+        document.getElementById('photo').value = null
+        this.setState({is_image :0})
+        this.setState({image :''})
+    }
+    
 
     postar = () => {
         axios.post('http://localhost:8080/post/new', {
@@ -192,6 +206,7 @@ class Home extends React.Component {
         })
     }
 
+
     
     buscar = () => {
 
@@ -204,7 +219,7 @@ class Home extends React.Component {
 
 
     render() {
-
+        
 
         return(
             <>
@@ -238,10 +253,10 @@ class Home extends React.Component {
                                                         
                                                 </textarea>    
 
-                                                <label className="label" for='photo'>
+                                                <label id="label-upload" className="label-image" for='photo'>
                                                     <img className="icon-image" src={Imagem}/>
                                                 </label>
-                                                <input className="input" id='photo' type='file'
+                                                <input className="input-image" id='photo' type='file'
                                                 
                                                 
                                                 name="photo"
@@ -249,16 +264,19 @@ class Home extends React.Component {
                                                    let fileReader = new FileReader();
                                                    var fileToRead = document.querySelector('#photo').files[0];
                                                    fileReader.addEventListener("loadend", ()=> {
-                                                       console.log(fileReader.result); 
+                                                       
                                                        this.setState({ image: fileReader.result,
-                                                                        is_image : 1 })
-                                                       console.log(this.state.image)
-                                                       console.log(this.state.is_image)
+                                                                        is_image : 1 }) 
+                                                        this.loadUpload()       
+                                                        
                                                    })
                                                    fileReader.readAsDataURL(fileToRead);                                     
                                                }}  
                                              /> 
-                                             <span id='file-name'></span>                                             
+                                             <img className="close-upload" onClick={() =>this.cancelUpload()} id="svg-close" src={Fechar} />
+
+                                                                        
+                                                                                       
                                          
 
 

@@ -11869,20 +11869,59 @@ padding-right: 0px;
   height: 35px;
 }
 .size-liked{
-  font-size: 12.5px;
+  font-size: 16px;
   color:#2aa7c9;
   font-style: oblique;
-
   cursor: pointer;
   position: absolute;
-  left:29%;
+  left:23.5%;
+  top:20%;
+}
+
+.size-liked-light{
+  font-size: 16px;
+  color:#2aa7c9;
+  font-style: oblique;
+  cursor: pointer;
+  position: absolute;
+  left:21%;
+  top:20%;
+}
+
+.size-liked-rocket{
+  font-size: 16px;
+  color:#2aa7c9;
+  font-style: oblique;
+  cursor: pointer;
+  position: absolute;
+  left:27.4%;
   top:20%;
 }
 
 .size-around{
+  color: #696969 ;
   cursor: pointer;
   position: absolute;
-  left:29%;
+  left:23%;
+  font-size: 15px;
+  top:20%;
+}
+
+.size-around-rocket{
+  color: #696969 ;
+  cursor: pointer;
+  position: absolute;
+  left:27%;
+  font-size: 15px;
+  top:20%;
+}
+
+.size-around-light{
+  color: #696969 ;
+  cursor: pointer;
+  position: absolute;
+  left:22%;
+  font-size: 15px;
   top:20%;
 }
 
@@ -11892,11 +11931,20 @@ padding-right: 0px;
   left:2%;
   top:14%;
 }
+
+.score-style-rocket{
+  cursor: pointer;
+  position: absolute;
+  left:6%;
+  top:14%;
+}
+
+
 .score-style-light{
   cursor: pointer;
   position: absolute;
-  left:7%;
-  top:14%;
+  left:4%;
+  top:16%;
 }
 .icon-value.col-md-10{
   padding-left: 0px
@@ -12150,10 +12198,17 @@ body{
 
 }
 
+.tip-interessante{
+  position: relative;
+  top:80%;
+  left:2%;
+}
+
+
 .react-box-one{
   position: absolute;
   bottom: 1%;
-  width:95px;
+  width:120px;
   height: 33px;
 }
 
@@ -12164,12 +12219,11 @@ body{
   font: bold;
 }
 
-
 .react-box-two{
 
   position: absolute;
-  margin-left: 16%;;
-  width:70px;
+  margin-left: 18.5%;;
+  width:93px;
   bottom: 1%;
   height: 33px;
 }
@@ -12183,8 +12237,8 @@ body{
 .react-box-three{
 
   position: absolute;
-  margin-left: 29%;
-  width:70px;
+  margin-left: 33%;
+  width:96px;
   bottom: 1%;
   height: 33px;
 }
@@ -12196,11 +12250,12 @@ body{
   font: bold;
 }
 
-.interessante-counter {
+.counter {
   color: #868e96;
   position: absolute;
-  top:23%;
-  left:40.6%;
+  font-size: 14px;
+  top:25%;
+  left:47.9%;
 }
 
 .recaptcha-set{
@@ -12225,20 +12280,44 @@ body{
   border-radius: 4px;
 }
 
-.input {
+.input-image {
   display: none
 }
 
-.label {
-  top: 0;
+
+.label-image {
   background-color: #2aa7c9;
   border-radius: 5px;
   color: #fff;
   height: 30px;
-  width: 40px;;
+  width: 40px;
   cursor: pointer;
   margin: 10px;
 }
+
+.label-image-b {
+  background-color: #474a4b;
+  border-radius: 5px;
+  color: #fff;
+  height: 30px;
+  width: 40px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.label-image:hover {
+  background-color: #76b8ca;
+  border-radius: 5px;
+  color: #fff;
+  height: 30px;
+  width: 40px;
+}
+
+.input-image :hover {
+  background-color: #6110e2;
+}
+
+
 
 .span-content{
 
@@ -12260,7 +12339,28 @@ body{
   bottom: 18%;
   height:25px;
   width: 25px;
+  top: 5%;
 
   border-radius: 5px;
 }
+
+
+.rocket-asjust{
+  height: 20px;
+  width: 20px;
+}
+
+.close-upload{
+  display: none;
+  height: 14px;
+  cursor: pointer;
+  width: 14px;
+  left: 6.7%;
+  margin-top: 2.3%;
+  position: absolute;
+}
+
+
+
+
 

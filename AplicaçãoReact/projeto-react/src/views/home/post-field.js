@@ -1,10 +1,8 @@
 import React from 'react'
-import Inovador from '../../imagens/comece.svg'
+import Inovador from '../../imagens/rocket.svg'
 import Interessante from '../../imagens/conhecimento.svg'
 import Compartilhar from '../../imagens/compartilhar.svg'
 import Gratidao from '../../imagens/graticao.svg'
-import axios from 'axios'
-
 
 
 export default prop => {
@@ -46,21 +44,25 @@ export default prop => {
                             <div className="row anulled">
                            
                                 <div className="icon-value col-md-10">    
-                                <span id={post.id} className="interessante-counter">• {post.total}</span>                                
+                                <span id={post.id} className="counter">• {post.total}</span>  
+
+  
                                     <div className="react-box-one">
-                                        <span className={post.reacao == 1 ? 'size-liked':'size-around'} id={post.id+"interesting"}
+                                        <span className={post.reacao == 1 ? 'size-liked-light':'size-around-light'} id={post.id+"interesting"}
                                         onClick={e =>prop.action(post.id,"interesting",post.total)}>                                        
                                             
-                                            Interessante</span>
+                                            <b>Interessante</b></span>
                                             <span className="score-style-light">
                                                 <img src={Interessante} alt="interessante" />
                                             </span >
                                             
-                                     </div>                                    
+                                     </div>
+
+                                                                 
                                      <div className="react-box-two">                                                          
                                             <span className={post.reacao == 2 ? 'size-liked':'size-around'} id={post.id+"gratefull"}
                                             onClick={e =>prop.action(post.id,"gratefull",post.total)}>
-                                               Gratidão</span>
+                                               <b>Gratidão</b></span>
 
                                                <span className="score-style">
                                                     <img src={Gratidao} alt="gratidao" />
@@ -68,12 +70,12 @@ export default prop => {
                                       </div>   
                                   
                                      <div className="react-box-three">  
-                                        <span className={post.reacao == 3 ? 'size-liked':'size-around'} id={post.id+"inovated"}
+                                        <span className={post.reacao == 3 ? 'size-liked-rocket':'size-around-rocket'} id={post.id+"inovated"}
                                         onClick={e =>prop.action(post.id,"inovated",post.total)}>
-                                            Inovador</span>
+                                            <b>Inovador</b></span>
 
-                                            <span className="score-style">
-                                            <img src={Inovador} alt="inovador"/>
+                                            <span className="score-style-rocket">
+                                            <img src={Inovador} alt="inovador" className="rocket-asjust"/>
                                             </span>
                                      </div> 
                                 </div>

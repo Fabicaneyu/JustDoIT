@@ -51,19 +51,6 @@ public class UserController {
 
 
 
-        /*Esse end-point é resposavel pelo login, ele executa o
-        metodo "authentication" que verifica o email e a senha no banco*/
-
-//    @PostMapping("/login")
-//    public ResponseEntity login(@RequestBody UserDTO userDTO) {
-//        try {
-//            Usuario userAutenticado = controller.authentication(userDTO.getEmail(), userDTO.getSenha());
-//            currentUser = userAutenticado;
-//            return ResponseEntity.ok(userAutenticado);
-//        } catch (ErroAutenticacao e) {
-//            return ResponseEntity.badRequest().body(e.getMessage());
-//        }
-//    }
 
     @PostMapping("/recaptcha")
     public ResponseEntity recaptchaValidate(@RequestBody CaptchaDTO captchaDTO) throws Exception {
