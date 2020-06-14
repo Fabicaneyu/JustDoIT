@@ -1,4 +1,4 @@
-package com.connection.databaseconnection.evento;
+package com.connection.databaseconnection.evento.client.cep;
 
 public class Cep {
 

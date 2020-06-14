@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+//@Table(name = "evento", schema="bdGrupo93a")
 public class Evento implements Serializable {
     private static final long serialVersionUID = 1L;
 

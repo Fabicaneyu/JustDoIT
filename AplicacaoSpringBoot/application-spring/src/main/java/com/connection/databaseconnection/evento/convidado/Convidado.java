@@ -13,6 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+//@Table(name = "convidado", schema="bdGrupo93a")
 public class Convidado {
 
     @Id

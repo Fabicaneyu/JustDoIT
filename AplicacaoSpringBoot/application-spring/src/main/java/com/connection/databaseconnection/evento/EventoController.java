@@ -1,5 +1,6 @@
 package com.connection.databaseconnection.evento;
 
+import com.connection.databaseconnection.evento.client.cep.Cep;
 import com.connection.databaseconnection.evento.client.cep.ClientViaCep;
 import com.connection.databaseconnection.evento.convidado.Convidado;
 import com.connection.databaseconnection.evento.convidado.ConvidadoRepository;
@@ -102,7 +103,7 @@ public class EventoController {
     }
     @GetMapping("/cep/{cep}")
     public ResponseEntity consultarCep(@PathVariable String cep) {
-        com.connection.databaseconnection.evento.Cep cepEncontrado = viaCep.getCep(cep);
+        Cep cepEncontrado = viaCep.getCep(cep);
         try {
             if (cepEncontrado == null) {
                 System.out.println("cep vazio");
