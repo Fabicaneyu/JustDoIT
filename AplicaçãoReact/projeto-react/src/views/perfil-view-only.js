@@ -45,7 +45,7 @@ class PerfilViewOnly extends React.Component {
 
         const usuarioID = this.props.match.params.id        
 
-        axios.get(`http://localhost:8080/user/view/${usuarioID}`)
+        axios.get(`https://springbootappjdit.azurewebsites.net/user/view/${usuarioID}`)
             .then(response => {
                 const data = response.data       
                 const id = response.data.id                           
@@ -72,7 +72,7 @@ class PerfilViewOnly extends React.Component {
     loadConhecimentos = (value) => {
 
 
-        axios.get(`http://localhost:8080/conhecimentos/buscar/conhecimentos?id=${value}`)
+        axios.get(`https://springbootappjdit.azurewebsites.net/conhecimentos/buscar/conhecimentos?id=${value}`)
             .then(response => {
                 const data = response.data
 
@@ -87,7 +87,7 @@ class PerfilViewOnly extends React.Component {
     loadInteresses = (value) => {
         
 
-        axios.get(`http://localhost:8080/conhecimentos/buscar/interesses?id=${value}`)
+        axios.get(`https://springbootappjdit.azurewebsites.net/conhecimentos/buscar/interesses?id=${value}`)
             .then(response => {
                 const data = response.data
 
@@ -119,7 +119,7 @@ class PerfilViewOnly extends React.Component {
     }
 
     sair = () => {
-        axios.get('http://localhost:8080/logoff')
+        axios.get('https://springbootappjdit.azurewebsites.net/logoff')
             .then(response => {
                 this.props.history.push('/login')
             }).catch(erro => {

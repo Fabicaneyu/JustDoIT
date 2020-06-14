@@ -74,7 +74,7 @@ class Perfil extends React.Component {
         this.setState({ id_user: usuarioLogado.id })
         this.setState({ photo: usuarioLogado.photo })
 
-        axios.get(`http://localhost:8080/user/about?id=${usuarioLogado.id}`)
+        axios.get(`https://springbootappjdit.azurewebsites.net/user/about?id=${usuarioLogado.id}`)
             .then(response => {
                 const data = response.data
 
@@ -94,7 +94,7 @@ class Perfil extends React.Component {
     loadType = () => {
 
 
-        axios.get('http://localhost:8080/conhecimentos/types')
+        axios.get('https://springbootappjdit.azurewebsites.net/conhecimentos/types')
             .then(response => {
                 const data = response.data
 
@@ -116,7 +116,7 @@ class Perfil extends React.Component {
         const usuario = localStorage.getItem('usuario_atual')
         const usuarioLogado = JSON.parse(usuario)
 
-        axios.get(`http://localhost:8080/conhecimentos/buscar/conhecimentos?id=${usuarioLogado.id}`)
+        axios.get(`https://springbootappjdit.azurewebsites.net/conhecimentos/buscar/conhecimentos?id=${usuarioLogado.id}`)
             .then(response => {
                 const data = response.data
 
@@ -134,7 +134,7 @@ class Perfil extends React.Component {
         const usuario = localStorage.getItem('usuario_atual')
         const usuarioLogado = JSON.parse(usuario)
 
-        axios.get(`http://localhost:8080/conhecimentos/buscar/interesses?id=${usuarioLogado.id}`)
+        axios.get(`https://springbootappjdit.azurewebsites.net/conhecimentos/buscar/interesses?id=${usuarioLogado.id}`)
             .then(response => {
                 const data = response.data
 
@@ -185,7 +185,7 @@ class Perfil extends React.Component {
     }
 
     sair = () => {
-        axios.get('http://localhost:8080/logoff')
+        axios.get('https://springbootappjdit.azurewebsites.net/logoff')
             .then(response => {
                 this.props.history.push('/login')
             }).catch(erro => {
@@ -197,7 +197,7 @@ class Perfil extends React.Component {
     atualizar = () => {
 
 
-        axios.patch("http://localhost:8080/user/about", {
+        axios.patch("https://springbootappjdit.azurewebsites.net/user/about", {
             id: this.state.id_user,
             sobre: this.state.desc_atualize
         })
@@ -246,7 +246,7 @@ class Perfil extends React.Component {
 
     addConhecimento = () => {
 
-        axios.post('http://localhost:8080/conhecimentos/adicionar/conhecimento',
+        axios.post('https://springbootappjdit.azurewebsites.net/conhecimentos/adicionar/conhecimento',
         {
             descricao_user: this.state.desc_new_know,
             nivel: 1,
@@ -266,7 +266,7 @@ class Perfil extends React.Component {
 
         addInteresse = () => {
 
-            axios.post('http://localhost:8080/conhecimentos/adicionar/interesse',
+            axios.post('https://springbootappjdit.azurewebsites.net/conhecimentos/adicionar/interesse',
             {
                 descricao_interesse: this.state.desc_new_interest,
                 usuario: {
@@ -288,7 +288,7 @@ class Perfil extends React.Component {
     
      select = (value) =>{
 
-           axios.get(`http://localhost:8080/conhecimentos/knowledges/${value}`)
+           axios.get(`https://springbootappjdit.azurewebsites.net/conhecimentos/knowledges/${value}`)
                     .then(response => {
                         const data = response.data
         
@@ -347,7 +347,7 @@ class Perfil extends React.Component {
 
      deletarConhecimento = () => {
 
-    axios.delete(`http://localhost:8080/conhecimentos/remover/conhecimento/${this.state.to_delete}`)
+    axios.delete(`https://springbootappjdit.azurewebsites.net/conhecimentos/remover/conhecimento/${this.state.to_delete}`)
     .then(response => {
         console.log("Deletado com sucesso")
         window.location.reload();
@@ -360,7 +360,7 @@ class Perfil extends React.Component {
 }
 
     deletarInteresse = () => {
-        axios.delete(`http://localhost:8080/conhecimentos/remover/interesse/${this.state.to_delete}`)
+        axios.delete(`https://springbootappjdit.azurewebsites.net/conhecimentos/remover/interesse/${this.state.to_delete}`)
         .then(response => {
             console.log("Deletado com sucesso")
             window.location.reload();

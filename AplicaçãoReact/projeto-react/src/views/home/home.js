@@ -55,7 +55,7 @@ class Home extends React.Component {
 
     initial = () => {
 
-        axios.get('http://localhost:8080/post/load/initial')
+        axios.get('https://springbootappjdit.azurewebsites.net/post/load/initial')
         .then( response => {
             this.loadPage()
         }).catch( erro => {
@@ -65,7 +65,7 @@ class Home extends React.Component {
     }
 
     loadRecomendation = () => {
-        axios.get('http://localhost:8080/conhecimentos/recomendados')
+        axios.get('https://springbootappjdit.azurewebsites.net/conhecimentos/recomendados')
         .then( response => {
             const dados = response.data
             this.setState({recomendados: dados})
@@ -77,7 +77,7 @@ class Home extends React.Component {
 
     loadPage = () => {
 
-        axios.get('http://localhost:8080/post/load/feed')
+        axios.get('https://springbootappjdit.azurewebsites.net/post/load/feed')
         .then( response => {
             const dados = response.data
             if (!dados[0].id) {
@@ -125,7 +125,7 @@ class Home extends React.Component {
                     return console.log('já curtido')
                 }else{
 
-                    axios.post(`http://localhost:8080/reacoes/reagir`,
+                    axios.post(`https://springbootappjdit.azurewebsites.net/reacoes/reagir`,
                     {
                         id_user: this.state.idUser,
                         id_post: id_post,
@@ -149,7 +149,7 @@ class Home extends React.Component {
 
 
     sair = () => {
-        axios.get('http://localhost:8080/user/logoff')
+        axios.get('https://springbootappjdit.azurewebsites.net/user/logoff')
         .then( response => {
           this.props.history.push('/login')
         }).catch( erro => {
@@ -191,7 +191,7 @@ class Home extends React.Component {
     
 
     postar = () => {
-        axios.post('http://localhost:8080/post/new', {
+        axios.post('https://springbootappjdit.azurewebsites.net/post/new', {
             conteudo: this.state.conteudo,
             id_user : this.state.idUser,
             imagem: this.state.image,

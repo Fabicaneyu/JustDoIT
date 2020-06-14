@@ -59,7 +59,7 @@ class Login extends React.Component {
     verifyResponse = (response) => {
         if(response) {
             const data = response
-            axios.post('http://localhost:8080/user/recaptcha',
+            axios.post('https://springbootappjdit.azurewebsites.net/user/recaptcha',
             {
                 captcha: data  
 
