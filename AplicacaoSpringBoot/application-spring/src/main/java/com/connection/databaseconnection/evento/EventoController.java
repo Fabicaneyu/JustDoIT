@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import static org.springframework.http.ResponseEntity.ok;
 
 @Controller
-public class EventoController {
+public class EventoController {    
     @Autowired
     private EventoRepository er;
     @Autowired
@@ -71,8 +71,8 @@ public class EventoController {
             if(convidado.getNomeConvidado() == null){
                 System.out.println("Nome do convidado vazio");
             }
-            if(convidado.getRg() == 0){
-                System.out.println("Rg do convidado vazio");
+            if(convidado.getEmail() == null){
+                System.out.println("Email do convidado vazio");
             }
             if(convidado.getEvento() == null){
                 System.out.println("Evento não encontrado");
@@ -93,10 +93,10 @@ public class EventoController {
         return ok().build();
     }
 
-    @DeleteMapping(path = "/convidado/{rg}")
-    public ResponseEntity delete (@PathVariable String rg){
-        cr.findByRg(rg);
-        cr.deleteById(rg);
+    @DeleteMapping(path = "/convidado/{id}")
+    public ResponseEntity delete (@PathVariable String id){
+        cr.findById(id);
+        cr.deleteById(id);
         return ok().build();
 
     }
@@ -112,7 +112,4 @@ public class EventoController {
         }
         return ok(cepEncontrado);
     }
-
-
-
 }
