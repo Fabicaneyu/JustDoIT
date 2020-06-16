@@ -53,7 +53,7 @@ public class EventoController {
     }
 
     @GetMapping(path = "/convidado/{codigo}")
-    public ResponseEntity detalhesEvento ( @PathVariable("codigo") long codigo) {
+    public ResponseEntity detalhesEvento(@PathVariable("codigo") long codigo) {
         Evento evento = er.findByCodigo(codigo);
         Iterable<Convidado> convidados = cr.findByEvento(evento);
         if (convidados == null) {

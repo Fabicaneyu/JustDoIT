@@ -7,11 +7,11 @@ import {FiX } from 'react-icons/fi';
 export default function CadastroConvidado() {
 
     const [nomeConvidado, setNomeConvidado] = useState('');
-    const [rg, setRg] = useState('');
+    const [email, setEmail] = useState('');
     const id = localStorage.getItem("codigo");
     const [isModalVisible, setIsModalVisible] = useState(false);
 function limparCampos(){
-    setRg("");
+    setEmail("");
     setNomeConvidado("");
     // setIsModaVisible(false);
 }
@@ -20,7 +20,7 @@ function limparCampos(){
 
         const env = {
             nomeConvidado,
-            rg
+            email
         };
 
         const response = await api.post(`/convidado/${id}`, env);
@@ -46,8 +46,8 @@ function limparCampos(){
                                     <input name="nomeConvidado" type="text" className="form-control1" value={nomeConvidado} onChange={e => setNomeConvidado(e.target.value)} />
                                 </div>
                                 <div className="col-sm-4">
-                                    <label className="label" for="inputDefault">Rg</label>
-                                    <input name="rg" type="text" className="form-control1" placeholder="AA-00.000.000" value={rg} onChange={e => setRg(e.target.value)} />
+                                    <label className="label" for="inputDefault">Email</label>
+                                    <input name="Email" type="text" className="form-control1" placeholder="exemplo@email.com" value={email} onChange={e => setEmail(e.target.value)} />
                                 </div>
                             </div>
                             <div className="button-cad-conv"> <button className="botaoCadastro" type="submit">Adicionar</button></div>

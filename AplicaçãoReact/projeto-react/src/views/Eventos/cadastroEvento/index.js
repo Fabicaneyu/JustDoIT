@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import '../css-evento.css';
-import './script.js'
+
 import api from '../../../services/api';
 import Navbar from '../../../components/navbar';
 import UserInfo from '../../../components/info-user-bar';
-import axios from 'axios';
+
 
 export default function CadastroEvento() {
     const [nome, setNome] = useState('');
@@ -46,7 +46,7 @@ export default function CadastroEvento() {
 
     }
 
-    async function buscaCep(e) {
+    async function buscaCep() {
         if (cep.length == 8) {
             console.log(cep)
              await api.get(`cep/${cep}`, {})
@@ -90,8 +90,6 @@ export default function CadastroEvento() {
            value={busca_content}
            change={e =>setBusca(e)}/>
             <div className="body">
-
-                <div className="menu-lateral"></div>
                 <div className=" container">
                     <div className="box-body">
                         <form onSubmit={handleRegister} className="formContainer">

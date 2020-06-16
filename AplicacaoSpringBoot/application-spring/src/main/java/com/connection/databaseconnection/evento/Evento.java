@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,15 +18,33 @@ import java.util.List;
 public class Evento implements Serializable {
     private static final long serialVersionUID = 1L;
 
-@Service
-@Transactional
-public class ConvidadoServices {
 
-        @Autowired
-    private ConvidadoRepository repository;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long codigo;
 
-        public List<Convidado> listAll(){
-            return (List<Convidado>) repository.findAll(Sort.by("nomeConvidado").ascending());
-        }
+    private String nome;
+
+    private String cep;
+
+    private String logradouro;
+
+    private String bairro;
+
+    private String localidade;
+
+    private String uf;
+
+    private String complemento;
+
+    @Column(name = "_data")
+    private String dataEvento;
+
+    private String horario;
+
+    private String descricao;
+
+    @OneToMany
+    private List<Convidado> convidados;
+
 }
-

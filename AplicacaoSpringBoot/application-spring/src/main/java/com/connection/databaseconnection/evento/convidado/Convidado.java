@@ -19,7 +19,7 @@ public class Convidado {
     @Id
     @GeneratedValue
     @Column(name = "id",length = 4)
-    private String id;
+    private Long id;
     @Column( name = "nome_convidado",length = 45)
     private String nomeConvidado;
     @Column(length =  100)
@@ -27,6 +27,7 @@ public class Convidado {
     @ManyToOne
     @JoinColumn( name = "evento_codigo")
     private Evento evento;
+
 
 
 }

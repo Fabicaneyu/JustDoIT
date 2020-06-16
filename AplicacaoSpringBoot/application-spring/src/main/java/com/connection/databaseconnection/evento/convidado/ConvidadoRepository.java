@@ -9,4 +9,5 @@ public interface ConvidadoRepository extends CrudRepository<Convidado,String> {
 //conf para export arquivo
         Object findAll(Sort nomeConvidado);
         Iterable<Convidado> findByEvento(Evento evento);
+
 }

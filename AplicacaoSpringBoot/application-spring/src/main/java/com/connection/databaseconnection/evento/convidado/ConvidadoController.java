@@ -2,6 +2,7 @@ package com.connection.databaseconnection.evento.convidado;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.supercsv.io.CsvBeanWriter;
 import org.supercsv.io.ICsvBeanWriter;
@@ -14,7 +15,7 @@ import java.util.List;
 public class ConvidadoController {
     @Autowired
     ConvidadoServices service;
-
+    @CrossOrigin
     @GetMapping("/export")
     public void exportToCsv(HttpServletResponse response) throws IOException {
 
