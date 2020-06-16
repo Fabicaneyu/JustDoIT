@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "conhecimento", schema="teste2")
+@Table(name = "conhecimento", schema="teste3")
 public class Conhecimento {
 
     @Id
@@ -30,6 +30,7 @@ public class Conhecimento {
     @Enumerated(value = EnumType.STRING )
     private TipoConhecimento tipo;
 
+    @Lob
     @Column( name = "imagem")
     private String imagem;
 

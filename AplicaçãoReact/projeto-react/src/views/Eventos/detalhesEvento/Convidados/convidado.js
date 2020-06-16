@@ -11,11 +11,16 @@ export default function Convidado() {
     useEffect(() => {
         api.get(`/convidado/${id}`).then(response => {
             setConvidados(response.data);
-            console.log(convidados);
+           
 
 
         })
     });
+    function exportarArquivo(){
+        api.get(`/export`).then(response => {
+            console.log(response);
+                })
+        }
 
     return (
         <div>
@@ -24,19 +29,21 @@ export default function Convidado() {
             <div className="modal-cad">
                 <div className="container-modal">
                 <FiX className="close" onClick={() => setIsModalVisible(false)}/>
+                <button className="bot-export" onClick={exportarArquivo}>Visualizar lista</button>
+        
         <table className="container container-cad-conv" >
             <thead>
                 <tr>
                     <th>Nome Convidado</th>
-                    <th>RG</th>
+                    <th>Email</th>
                 </tr>
             </thead>
             {convidados.map(convidado => (
 
-                <tbody key={convidado.rg}>
+                <tbody key={convidado.id}>
                     <tr>
                         <td>{convidado.nomeConvidado}</td>
-                        <td>{convidado.rg}</td>
+                        <td>{convidado.email}</td>
                     </tr>
                 </tbody>
             ))}

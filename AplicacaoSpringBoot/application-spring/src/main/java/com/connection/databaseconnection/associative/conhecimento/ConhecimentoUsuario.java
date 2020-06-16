@@ -36,5 +36,4 @@ public class ConhecimentoUsuario {
     @JoinColumn( name = "fk_usuario")
     private Usuario usuario;
 
-
 }
