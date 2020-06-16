@@ -9,7 +9,7 @@ import PerfilViewOnly from '../views/perfil-view-only'
 import CadastrarEventos from '../views/Eventos/cadastroEvento';
 import ListarEventos from '../views/Eventos/listaEvento';
 import DetalhesEventos from '../views/Eventos/detalhesEvento';
-// import Chat from '../components/Chat' 
+import Chat from '../components/Chat' 
 function Rotas() {
 
     return(
@@ -17,7 +17,7 @@ function Rotas() {
             <Switch>
                     <Route path="/login" component={Login} />
                     <Route path="/cadastro" component={Cadastro} />
-                    {/* <Route path="/chat" component={Chat} /> */}
+                    <Route path="/chat" component={Chat} />
                     <Route path="/home" component={Home} />
                     <Route path="/busca/:conhecimento" component={Busca} />
                     <Route path="/perfil" component={Perfil} />

@@ -12,6 +12,7 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <title>JDIT</title>
 
@@ -22,3 +23,17 @@
   
   </body>
 </html>
+<script>
+  $(document).on("click", "#minim_chat_window", function (e) {
+        var $this = $(this);
+        if (!$this.hasClass("panel-collapsed")) {
+            $this.parents(".panel").find(".panel-body").slideUp();
+            $this.addClass("panel-collapsed");
+            $this.removeClass("glyphicon-minus").addClass("glyphicon-plus");
+        } else {
+            $this.parents(".panel").find(".panel-body").slideDown();
+            $this.removeClass("panel-collapsed");
+            $this.removeClass("glyphicon-plus").addClass("glyphicon-minus");
+        }
+    });
+</script>
