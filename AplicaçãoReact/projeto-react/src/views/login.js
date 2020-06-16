@@ -152,7 +152,7 @@ class Login extends React.Component {
                             <div className="recaptcha-set">
 
                                     <Recaptcha                                    
-                                    sitekey="6LfQs_sUAAAAAHbp43vdtXPTKe4zs9pO14PC9FBX"
+                                    sitekey="6LfnuKQZAAAAAPGQP7gWYQpXc7Nd7ImrotN3hrTE"
                                     render="explicit"
                                     onloadCallback={this.recaptchaLoaded}
                                     verifyCallback={this.verifyResponse}

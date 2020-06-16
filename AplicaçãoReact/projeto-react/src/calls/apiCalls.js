@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const httpBase = axios.create({
-    baseURL: 'http://localhost:8080'
+    baseURL: 'https://springbootappjdit.azurewebsites.net'
 })
 
 class ApiCalls {
