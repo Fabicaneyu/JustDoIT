@@ -20,7 +20,11 @@ io.on("connection", (socket) => {
   });
 });
 
+<<<<<<< HEAD
 server.listen(SERVER_PORT, () => {
+=======
+server.listen(SERVER_PORT, SERVER_HOST, () => {
+>>>>>>> a8d3cddd40b00c8543bbd98383fb7f978b1dbb2c
   console.log(
     `[HTTP] Listen => Server is running at http://${SERVER_HOST}:${SERVER_PORT}`
   );
