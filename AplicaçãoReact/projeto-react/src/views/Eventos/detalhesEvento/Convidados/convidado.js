@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import {FiX } from 'react-icons/fi';
 import api from '../../../../services/api';
 import '../../css-evento.css';
+import Downlaod from '../../../../components/download-teste'
+
 
 export default function Convidado() {
     const id = localStorage.getItem("codigo");
@@ -16,11 +18,18 @@ export default function Convidado() {
 
         })
     });
-    function exportarArquivo(){
-        api.get(`/export`).then(response => {
-            console.log(response);
-                })
-        }
+    // function exportarArquivo(){
+    //     api.get(`/export`).then(response => {
+
+    //             const arquivo = response.data;
+    //             document.getElementById('span').innerHTML = arquivo
+    //             return (
+    //             <a>{arquivo}</a>
+    //             )
+    //             })
+    //     }
+
+
 
     return (
         <div>
@@ -29,7 +38,8 @@ export default function Convidado() {
             <div className="modal-cad">
                 <div className="container-modal">
                 <FiX className="close" onClick={() => setIsModalVisible(false)}/>
-                <button className="bot-export" onClick={exportarArquivo}>Visualizar lista</button>
+                <Downlaod/>
+                <span id="span"></span>
         
         <table className="container container-cad-conv" >
             <thead>
