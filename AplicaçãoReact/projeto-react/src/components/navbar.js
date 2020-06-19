@@ -6,6 +6,7 @@ import Home from '../imagens/home.svg'
 import Evento from '../imagens/evento.svg'
 import Brain from '../imagens/brain.svg'
 import Exit from '../imagens/sair.svg'
+import Question from '../imagens/question.png'
 
 function Navbar(prop) {
 
@@ -13,7 +14,7 @@ function Navbar(prop) {
 
     <div className="navbar navbar-expand-lg navbar-light bg-header" >
           <div className="logo-size">
-            <img onClick={prop.sendTo} className="img-size-logo" src={Logo} alt="logo"/>
+            <img onClick={prop.sendTo} className="img-size-logo" src={Logo} alt="logo da empresa JustDoIT com 3 peças de quebra cabeça, azuis, encaixadas ecom o desenho de ligações de tecnologia"/>
                 </div>
 
       <div className="header container-fluid">
@@ -42,6 +43,8 @@ function Navbar(prop) {
                   <NavbarItem spam="eventos-navbar-label" action={prop.executeEventos} href="#/cadastrarEvento" label="Eventos" image={Evento} classN="svg-item-event"/>
                   </div>
                 </div>
+
+       
 
                 <div className="col-md-3 menu" align="right">
                   <div className="icon-size">
