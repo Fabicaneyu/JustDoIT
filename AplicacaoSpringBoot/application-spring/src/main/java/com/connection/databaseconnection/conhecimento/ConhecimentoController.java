@@ -148,7 +148,7 @@ public class ConhecimentoController {
     }
 
     @DeleteMapping("/remover/interesse/{id}")
-    public ResponseEntity removerInteresseorId(@PathVariable("id") Integer id) {
+    public ResponseEntity removerInteressePorId(@PathVariable("id") Integer id) {
 
         try{
             boolean delete = controller.deleteInterestById(id);
