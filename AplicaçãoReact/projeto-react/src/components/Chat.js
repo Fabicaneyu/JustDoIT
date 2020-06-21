@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import uuid from "uuid/dist/v4";
-import "../client/index.css";
 const myId = uuid();
 const socket = io("http://localhost:8000");
 socket.on("connect", () =>
   console.log("[IO] Connect => A new connection has been established")
 );
 
-const Chat = () => {
+const Chat = (props) => {
   const [message, updateMessage] = useState("");
+  const [photo, updatePhoto] = useState("");
+  const [photos, updatePhotos] = useState([]);
   const [messages, updateMessages] = useState([]);
-
+let photoM = props.sendPhotoToChat;
   useEffect(() => {
-    const handleNewMessage = (newMessage) =>
+    const handleNewMessage = (newMessage, photoM) =>
       updateMessages([...messages, newMessage]);
+      updatePhotos([...photos, photoM]);
+
     socket.on("chat.message", handleNewMessage);
     return () => socket.off("chat.message", handleNewMessage);
-  }, [messages]);
+  }, [messages],[photos]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -25,31 +28,34 @@ const Chat = () => {
       socket.emit("chat.message", {
         id: myId,
         message,
+        photoM
       });
       updateMessage("");
     }
   };
-  
+
   const handleInputChange = (event) => updateMessage(event.target.value);
-  
+
   return (
     <main className="chat">
       <div className="window-chat">
         <div className="container">
-          <div id="chat_window_1" style={{ "marginLeft": "10px" }}>
+          <div id="chat_window_1" style={{ marginLeft: "10px" }}>
             <div className="col-xs-12 col-md-12">
               <div className="panel panel-default" style={{ width: "500px" }}>
                 <div className="panel-heading top-bar">
                   <div className="row">
                     <div className="col-md-8 col-xs-8">
                       <h6 className="panel-title">
-                        <span className="glyphicon glyphicon-comment"></span>
-                        Chat - Miguel
+                        <span className="glyphicon glyphicon-comment">
+                        Sala Bate-Papo
+                        </span>
                       </h6>
                     </div>
                     <div
                       className="col-md-4 col-xs-4"
-                      style={{ "textAlign": "right" }}
+                      style={{ textAlign: "right" }}
+                      
                     >
                       <a>
                         <span
@@ -72,41 +78,42 @@ const Chat = () => {
                 <div className="panel-full">
                   <div
                     className="panel-body msg_container_base"
-                    id="historico_mensagens"
+                    id="historico_mensagens" style={{display:"none"}}
                   >
                     {messages.map((m, index) => (
-                      <div key={index*(index+index*10000)}>
+                      <div key={index * (index + index * 10000)}>
                         {m.id === myId ? (
-                          <div className="row msg_container base_sent" key={index}>
-                            <div className="col-xs-10 col-md-10">
+                          <div
+                            className="row msg_container base_sent"
+                            key={index}
+                          >
+                            <div className="offset-md-1 col-xs-9 col-md-9">
                               <div className="messages msg_sent">
                                 <p>{m.message} </p>
-                                <time dateTime="2009-11-13T20:00">
-                                  Timothy • 51 min
-                                </time>
                               </div>
                             </div>
                             <div className="col-md-2 col-xs-2 avatar">
                               <img
-                                src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg"
+                                src={m.photoM}
                                 className="img-responsive"
                               />
                             </div>
                           </div>
                         ) : (
-                          <div className="row msg_container base_receive" key={index}>
+                          <div
+                            className="row msg_container base_receive"
+                            key={index}
+                          >
                             <div className="col-md-2 col-xs-2 avatar">
                               <img
-                                src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg"
+                                src={m.photoM}
                                 className="img-responsive"
                               />
                             </div>
-                            <div className="col-xs-10 col-md-10">
+                            <div className="col-xs-9 col-md-9 ">
                               <div className="messages msg_receive">
                                 <p>{m.message}</p>
-                                <time dateTime="2009-11-13T20:00">
-                                  Timothy • 51 min
-                                </time>
+                                
                               </div>
                             </div>
                           </div>
@@ -115,30 +122,35 @@ const Chat = () => {
                     ))}
                   </div>
                   <div className="panel-footer row nullRow">
-                    <form className="col-md-12 nullMarginPadding"  onSubmit={handleFormSubmit}>
+                    <form
+                      className="col-md-12 nullMarginPadding"
+                      onSubmit={handleFormSubmit}
+                    >
                       <div className="row nullRow">
-                          <div className="col-md-8 nullMarginPadding">
-                            <input
-                              onChange={handleInputChange}
-                              id="texto_mensagem"
-                              name="texto_mensagem"
-                              type="text"
-                              className="form-control input-sm chat_input"
-                              type="text"
-                              value={message}
-                              placeholder="Write your message here..."
-                            ></input>
-                          </div>
-                          <div className="col-md-4 nullMarginPadding">
-                            <button
-                              style={{ height: "100%", width: "100%" }}
-                              type="submit"
-                              className="btn btn-primary btn-sm"
-                              id="btn-chat"
-                              onClick={handleFormSubmit}
-                            >
-                              Send
-                            </button>
+                        <div className="col-md-8 nullMarginPadding">
+                          <input
+                            onChange={handleInputChange}
+                            id="texto_mensagem"
+                            name="texto_mensagem"
+                            type="text"
+                            className="form-control input-sm chat_input conversar"
+                            
+                            value={message}
+                            placeholder="Escreva aqui a sua mensagem"
+                          ></input>
+                        </div>
+                        <div className="col-md-4 nullMarginPadding">
+                          <button
+                            style={{ height: "100%", width: "100%"}}
+                            type="submit"
+                            className="btn-m btn-p btn-sm"
+                            id="btn-chat"
+                            onClick={handleFormSubmit,function(){
+                              document.querySelector("#historico_mensagens").style.display = "block"
+                            }}
+                          >
+                          <span style={{fontSize:"25px"}}>  > </span>
+                          </button>
                         </div>
                       </div>
                     </form>
