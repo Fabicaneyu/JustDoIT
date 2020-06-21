@@ -12,7 +12,7 @@ export default function CadastroConvidado() {
     const [nomeConvidado, setNomeConvidado] = useState('');
     const [email, setEmail] = useState('');
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [idUsuarioLogado, setIdUsuarioLogado] = useState('');
+    const [idUsuarioLogado, setIdUsuarioLogado] = useState(usuarioLogado.id);
 
     function limparCampos() {
         setEmail("");
@@ -26,12 +26,18 @@ export default function CadastroConvidado() {
             nomeConvidado,
             email
         };
-        setIdUsuarioLogado(usuarioLogado.id);
-        console.log(idUsuarioLogado);
-       /// const response = await api.post(`/convidado/${id}`, idUsuarioLogado);
-       // limparCampos();
-    
+       
+        
+       console.log(idUsuarioLogado);
+       const response = await api.post(`/convidado/${id}/${idUsuarioLogado}`,)
+       .then( response => {
         alert("Cadastrado com sucesso");
+       }).catch( error => {
+        alert("Você é o administrador deste Evento");
+       })
+       limparCampos();
+    
+        
     }
     return (
         <div className="container-cad-conv">
