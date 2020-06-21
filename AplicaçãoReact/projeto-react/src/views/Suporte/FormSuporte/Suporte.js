@@ -50,7 +50,7 @@ export default class Suporte extends React.Component {
 
 
                                             <div className="form-group mt-6">
-                                                <label htmlFor="name">Nome:</label>
+                                                <label htmlFor="name">Nome Completo:</label>
                                                 <input type="text" name="Nome Completo" id="name" className="form-control"
                                                     title="Preencha com seu nome completo" tabIndex="1"
                                                     required
@@ -70,7 +70,7 @@ export default class Suporte extends React.Component {
                                             <div className="form-group mt-6">
                                                 <label htmlFor="subject">Assunto:</label>
 
-                                                <select name="Assunto" id="subject" title="Escolha uma opção, dentre 4 opções disponiveis" tabIndex="3"
+                                                <select className="appearance-select" name="Assunto" id="subject" title="Escolha uma opção, dentre 4 opções disponiveis" tabIndex="3"
                                                     required
                                                     errorMessage="Campo obrigatório">
 
