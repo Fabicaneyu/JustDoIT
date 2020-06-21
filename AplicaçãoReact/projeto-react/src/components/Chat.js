@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import uuid from "uuid/dist/v4";
-import "../client/index.css";
 const myId = uuid();
 const socket = io("http://localhost:8000");
 socket.on("connect", () =>
