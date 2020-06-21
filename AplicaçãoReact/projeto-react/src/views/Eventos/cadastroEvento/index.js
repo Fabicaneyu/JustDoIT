@@ -20,7 +20,10 @@ export default function CadastroEvento() {
     const [data, setData] = useState('');
     const [horario, setHorario] = useState('');
     const [descricao, setDescricao] = useState('');
-
+    const [idUsuarioLogado, setIdUsuarioLogado] = useState('');
+    const usuario = localStorage.getItem('usuario_atual');
+    const usuarioLogado = JSON.parse(usuario);
+   
     async function handleRegister(e) {
         e.preventDefault();
 
@@ -36,8 +39,10 @@ export default function CadastroEvento() {
             horario,
             descricao,
         };
+        setIdUsuarioLogado(usuarioLogado.id);
 
-        const response = await api.post('cadastrarEvento', env);
+
+        const response = await api.post('cadastrarEvento', env, idUsuarioLogado);
         console.log(response);
         console.log(`Dados para cadastro ${env.data}`);
         limparCampos();
@@ -49,7 +54,7 @@ export default function CadastroEvento() {
     async function buscaCep() {
         if (cep.length == 8) {
             console.log(cep)
-             await api.get(`cep/${cep}`, {})
+            await api.get(`cep/${cep}`, {})
                 .then(response => {
 
                     setLogradouro(response.data.logradouro);
@@ -64,7 +69,7 @@ export default function CadastroEvento() {
                 });
         }
     }
-    function limparCampos(){
+    function limparCampos() {
         setNome("");
         setCep("");
         setLogradouro("");
@@ -84,11 +89,11 @@ export default function CadastroEvento() {
 
     return (
 
-        <> <Navbar                                  
-           className="container"
-           action={() => history.push(`/busca/${busca_content}`)}
-           value={busca_content}
-           change={e =>setBusca(e)}/>
+        <> <Navbar
+            className="container"
+            action={() => history.push(`/busca/${busca_content}`)}
+            value={busca_content}
+            change={e => setBusca(e)} />
             <div className="body">
                 <div className=" container">
                     <div className="box-body">

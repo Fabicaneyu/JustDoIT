@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.websocket.server.PathParam;
+
 import static org.springframework.http.ResponseEntity.ok;
 
 @Controller
@@ -20,19 +23,17 @@ public class EventoController {
     private ClientViaCep viaCep;
 
     @PostMapping(path = "/cadastrarEvento")
-    public ResponseEntity form(@RequestBody Evento evento) {
-      try {
-          if(evento == null){
-              System.out.println("Cadastro vazio");
-
-          }
-      }catch (Exception e){
-          e.printStackTrace();
-      }
-
+    public ResponseEntity form(@RequestBody Evento evento, @PathParam("idUsuario") Long idUsuario) {
+        try {
+            if (evento == null) {
+                System.out.println("Cadastro vazio");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        evento.setAdm(idUsuario);
         er.save(evento);
         return ok(evento);
-
     }
 
     @GetMapping(path = "/eventos")
@@ -62,39 +63,75 @@ public class EventoController {
             return ok(convidados);
         }
     }
-    @PostMapping(path = "/convidado/{codigo}")
-    public ResponseEntity cadastroConvidado( @RequestBody Convidado convidado, @PathVariable("codigo") long codigo) {
-        Evento evento = er.findByCodigo(codigo);
-        convidado.setEvento(evento);
+    //
+//    @PostMapping(path = "/convidado/{codigo}")
+//    public ResponseEntity cadastroConvidado(@RequestBody Convidado convidado, @PathVariable("codigo") long codigo, @PathParam("idUsuario") Long idUsuario) {
+//        Evento evento = er.findByCodigo(codigo);
+//
+//        if (idUsuario == evento.getAdm()) {
+//            return ResponseEntity.status(403).build();
+//        } else {
+//            convidado.setEvento(evento);
+//        }
+//        try {
+//            if (convidado.getNomeConvidado() == null) {
+//                System.out.println("Nome do convidado vazio");
+//            }
+//            if (convidado.getEmail() == null) {
+//                System.out.println("Email do convidado vazio");
+//            }
+//            if (convidado.getEvento() == null) {
+//                System.out.println("Evento não encontrado");
+//            }
+//            cr.save(convidado);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return ResponseEntity.ok(convidado);
+//    }
 
-        try {
-            if(convidado.getNomeConvidado() == null){
-                System.out.println("Nome do convidado vazio");
-            }
-            if(convidado.getEmail() == null){
-                System.out.println("Email do convidado vazio");
-            }
-            if(convidado.getEvento() == null){
-                System.out.println("Evento não encontrado");
-            }
-            cr.save(convidado);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+    @PostMapping(path = "/convidado/{codigo}")
+    public ResponseEntity cadConvidado(@PathVariable("codigo") long codigo, @PathParam("idUsuario") Integer idUsuario) {
+        Evento evento = er.findByCodigo(codigo);
+        Convidado convidado = new Convidado();
+        System.out.println(idUsuario);
+        System.out.println(codigo);
+        System.out.println(evento);
+
+
+//        Usuario usuario =  us.buscaporId(idUsuario);
+//
+//        long l = (long) usuario.getId();
+//
+//        if (l == evento.getAdm()) {
+//            return ResponseEntity.status(403).build();
+//        }else {
+//
+//            convidado.setNomeConvidado(usuario.getNome());
+//            convidado.setEmail(usuario.getEmail());
+//            convidado.setEvento(evento);
+//            cr.save(convidado);
         return ResponseEntity.ok(convidado);
+        // }
     }
 
-    @DeleteMapping(path="/evento/{codigo}")
-    public ResponseEntity deletarEvento ( @PathVariable("codigo") long codigo){
+
+    @DeleteMapping(path = "/evento/{codigo}")
+    public ResponseEntity deletarEvento(@PathVariable("codigo") long codigo, @PathParam("idUsuario") Long idUsuario) {
         Evento evento = er.findByCodigo(codigo);
-        Iterable<Convidado> convidados = cr.findByEvento(evento);
-        cr.deleteAll(convidados);
-        er.delete(evento);
+        if (idUsuario == evento.getAdm()) {
+            return ResponseEntity.status(403).build();
+        } else {
+            Iterable<Convidado> convidados = cr.findByEvento(evento);
+            cr.deleteAll(convidados);
+            er.delete(evento);
+        }
         return ok().build();
     }
 
     @DeleteMapping(path = "/convidado/{id}")
-    public ResponseEntity delete (@PathVariable String id){
+    public ResponseEntity delete(@PathVariable String id, @PathParam("idUsuario") Long idUsuario) {
         cr.findById(id);
         cr.deleteById(id);
         return ok().build();

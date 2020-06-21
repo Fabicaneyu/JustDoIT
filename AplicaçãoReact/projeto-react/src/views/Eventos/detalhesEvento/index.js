@@ -11,6 +11,8 @@ export default function DetalhesEvento() {
 
     const [eventoDeta, setEventoDet] = useState([]);
     const id = localStorage.getItem("codigo");
+    const usuario = localStorage.getItem('usuario_atual');
+        const usuarioLogado = JSON.parse(usuario);
 
     useEffect(() => {
         api.get(`/eventos/${id}`).then(response => {
