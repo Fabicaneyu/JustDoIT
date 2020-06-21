@@ -674,6 +674,14 @@ pre code {
   margin-left: -15px;
 }
 
+.row-new{
+  height: 60px;
+  width: 320px;
+  top: 0;
+  position: absolute;
+  left: 70%;
+}
+
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
@@ -10967,8 +10975,9 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
  position : absolute;
  height: 25px;
- left: 30%;
+ left: 20%;
  width: 50px;
+ top: 20%;
  filter:grayscale(100%); 
 
 }
@@ -10981,19 +10990,32 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
 .svg-item-brain {
 
-  position : relative;
-  right: 4%;
+  position : absolute;
+  left: 100%;
+  right: 30%;
   height: 26px;
   width: 50px;
+  top: -80%;
  
  }
 
  .svg-item-event {
 
-  position : relative;
-  margin-left: 10%;
+  position : absolute;
+  left: 195%;
+  top: -175%;
   height: 25px;
   width: 47px;
+
+ }
+
+ .svg-item-help{
+  position : absolute;
+  right:  50%;
+  height: 25px;
+  width: 47px;
+  left: 285%;
+  top: -278%;
 
  }
  
@@ -11003,6 +11025,8 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   margin-right: 6%;
   height: 25px;
   width: 47px;
+  left: 882%;
+  top: -375%;
  
  
  }
@@ -11322,29 +11346,37 @@ border-bottom: solid 1px #afafaf;
 
 .perfil-navbar-label{
   position: absolute;
-  top: 73%;
-  left: 57%;
+  top: -5%;
+  left:115%;
   color:white
 }
 
 .eventos-navbar-label{
   position: absolute;
-  top: 70%;
-  left: 51%;
+  top: -105%;
+  left: 195%;
   color:white
+}
+
+.ajuda-navbar-label{
+  position: absolute;
+  top: -205%;
+  left: 293%;
+  color:white
+
 }
 
 .sair-navbar-label{
   position: absolute;
-  top: 70%;
-  left: 55%;
+  top: -300%;
+  left: 385%;
   color:white
 }
 
 .home-navbar-label{
   position: absolute;
-  top: 73%;
-  left: 40%;
+  top: 95%;
+  left: 30%;
   color:white
 }
 

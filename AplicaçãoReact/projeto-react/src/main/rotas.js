@@ -9,7 +9,9 @@ import PerfilViewOnly from '../views/perfil-view-only'
 import CadastrarEventos from '../views/Eventos/cadastroEvento';
 import ListarEventos from '../views/Eventos/listaEvento';
 import DetalhesEventos from '../views/Eventos/detalhesEvento';
+import Suporte from '../views/Suporte/FormSuporte/Suporte';
 import Chat from '../components/Chat' 
+
 function Rotas() {
 
     return(
@@ -24,7 +26,8 @@ function Rotas() {
                     <Route path="/view/:id" component={PerfilViewOnly} />
                     <Route path="/cadastrarEvento" component={CadastrarEventos} />
                     <Route path="/listarEvento" component={ListarEventos} />
-                    <Route path="/detalhesEvento" component={DetalhesEventos} />                    
+                    <Route path="/detalhesEvento" component={DetalhesEventos} />
+                    <Route path="/suporte" component={Suporte} />                     
             </Switch>
         </HashRouter>
     )
