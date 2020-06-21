@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../components/navbar'
-import Busca from './home/busca'
+import Busca from './Busca/busca'
 import Conhecimentos from '../components/conhecimentos-field-view'
 import Interesses from '../components/interesses-field-view'
 import axios from 'axios'
@@ -31,9 +31,14 @@ class PerfilViewOnly extends React.Component {
 
 
         this.load();       
-        this.reset();          
+        this.reset();
+        this.scrollTop();
 
     }
+
+    scrollTop = () => {
+        window.scrollTo(0, 0);
+    };
 
 
     load = () => {

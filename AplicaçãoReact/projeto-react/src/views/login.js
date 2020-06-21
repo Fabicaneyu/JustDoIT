@@ -1,9 +1,11 @@
 import React from 'react'
 import Card from '../components/card-login.js'
 import Logo from '../imagens/logo.png'
+import Recaptcha from 'react-recaptcha'
 import Formgroup from '../components/form-group'
 import UsuarioCalls from '../calls/userCalls'
 import {InputText} from 'primereact/inputtext';
+import axios from 'axios'
 
 class Login extends React.Component {
 
@@ -11,7 +13,8 @@ class Login extends React.Component {
 
         email: '',
         senha: '',
-        mensagemErro: null
+        mensagemErro: null,
+        validated: false
 
     }
 
@@ -22,15 +25,23 @@ class Login extends React.Component {
 
     entrar = () => {
 
-        this.call.autenticar({
-            email: this.state.email,
-            senha: this.state.senha
-        }).then(response => {
-            localStorage.setItem('usuario_atual', JSON.stringify(response.data))
-            this.props.history.push('/home')
-        }).catch(erro => {
-            this.setState({ mensagemErro: erro.response.data })
-        })
+        if(this.state.validated){
+            
+            this.setState({ mensagemErro: null })
+
+            this.call.autenticar({
+                email: this.state.email,
+                senha: this.state.senha
+            }).then(response => {
+                localStorage.setItem('usuario_atual', JSON.stringify(response.data))
+                this.props.history.push('/home')
+            }).catch(erro => {
+                this.setState({ mensagemErro: erro.response.data })
+            })
+        }
+        else{
+            this.setState({ mensagemErro: "Por favor, comprove que você é humano" })
+        }
     }
 
 
@@ -39,6 +50,28 @@ class Login extends React.Component {
 
         this.props.history.push('/cadastro')
 
+    }
+
+    recaptchaLoaded = () => {
+        console.log('up')
+    }
+
+    verifyResponse = (response) => {
+        if(response) {
+            const data = response
+            axios.post('http://localhost:8080/user/recaptcha',
+            {
+                captcha: data  
+
+            }).then(response => {
+                this.setState({validated: true})
+            }).catch(error =>{
+                console.log(error.response.data)
+            })
+            
+        } else{
+            console.log('no are')
+        }
     }
 
 
@@ -97,13 +130,16 @@ class Login extends React.Component {
                                                                             onChange={(e) => this.setState({senha: e.target.value})} />
                                                                             <label htmlFor="in">Digite sua senha</label>
                                                                     </span> 
+                                                                   
 
                                                 </Formgroup>
+                                                                    
 
                                                 <button onClick={this.entrar} className="btn-success-entrar">Entrar</button>
                                                 <div className="divfrasecadastro" > <h2 className="frasecadastro"> Ou crie uma conta gratuitamente <b onClick={this.toCadastro} className="bold-cadastro">aqui</b> </h2></div>
 
                                             </fieldset>
+
 
                                         </div>
 
@@ -113,7 +149,18 @@ class Login extends React.Component {
 
                             </Card>
 
-                        
+                            <div className="recaptcha-set">
+
+                                    <Recaptcha                                    
+                                    sitekey="6LfQs_sUAAAAAHbp43vdtXPTKe4zs9pO14PC9FBX"
+                                    render="explicit"
+                                    onloadCallback={this.recaptchaLoaded}
+                                    verifyCallback={this.verifyResponse}
+                                    />
+
+                              </div>
+                                                              
+
                     </div>
                 </div>
 

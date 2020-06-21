@@ -22,39 +22,49 @@ export default function DetalhesEvento() {
         <>
             <Navbar className="container" />
             <div className="body">
-                <div className="menu-lateral"></div>
+                
                 <div className=" form-detalhe-event ">
-                <Link className="botaoVoltar" to="/listarEvento"><FiCornerDownLeft /></Link>
-                <h3 className="text-h1">Detalhes do evento</h3>
-              
+                
+                    <Link className="botaoVoltar" to="/listarEvento"><FiCornerDownLeft /></Link>
+                    <h3 className="text-h1">Detalhes do evento</h3>
+
                     <table className=" table ">
 
                         <tbody key={eventoDeta.codigo}>
-                            <tr ><th scope="row " >Nome</th>
-                                <td className="col-sm-7">{eventoDeta.nome}</td></tr>
+                            <tr >
+                                <th scope="row " >Nome</th>
+                                <td className="col-sm-7">{eventoDeta.nome}</td>
+                            </tr>
 
-                            <tr> <th scope="row">Local</th>
-                                <td>{eventoDeta._local}</td></tr>
-                            <tr> <th scope="row">Data</th>
-                                <td>{eventoDeta._data}</td></tr>
-                            <tr><th scope="row">Horario</th>
-                                <td>{eventoDeta.horario}</td></tr>
-                            <tr><th scope="row">Descrição</th>
-                                <td>
-                                {eventoDeta.descricao}</td></tr>
+                            <tr>
+                                <th scope="row">Local</th>
+                                <td>{`${eventoDeta.logradouro} Nº ${eventoDeta.complemento} - ${eventoDeta.bairro} - ${eventoDeta.localidade} - ${eventoDeta.uf}`}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Data</th>
+                                <td>{eventoDeta.data}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Horario</th>
+                                <td>{eventoDeta.horario}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Descrição</th>
+                                <td>{eventoDeta.descricao}</td>
+                            </tr>
                         </tbody>
                     </table>
-                 
-                        
 
 
-                       </div>
-                        <div className="modal-position">
-                        <CadastroConvidado/>
-                        <Convidado />
-                        </div >
-                        </div>
-            
+
+
+                </div>
+                <div className="modal-position">
+                    <CadastroConvidado />
+                    <Convidado />
+                </div >
+            </div>
+
 
         </>
     );

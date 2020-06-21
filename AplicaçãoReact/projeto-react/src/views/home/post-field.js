@@ -1,16 +1,16 @@
 import React from 'react'
-import Inovador from '../../imagens/comece.svg'
+import Inovador from '../../imagens/rocket.svg'
 import Interessante from '../../imagens/conhecimento.svg'
 import Compartilhar from '../../imagens/compartilhar.svg'
-import Graticao from '../../imagens/graticao.svg'
-
+import Gratidao from '../../imagens/graticao.svg'
 
 
 export default prop => {
+  
+
+    const corpo = prop.body.map( post => {
 
 
-    const divs = prop.body.map( post => {
-    
         return (
             <>
             
@@ -35,40 +35,57 @@ export default prop => {
                                         #Database</a>
                                 </div>
                             </div>
+
                             <div className="content-field">
-                                {post.conteudo}
+                                {post.isImg == 1 ? <> <span className="span-content">{post.conteudo}</span>
+                                <img className="image-content" src={post.img_conteudo}/> </> : <> <div>{post.conteudo}</div> </> }
+                                                                                              
                             </div>
                             <div className="row anulled">
-                                <div className="icon-value col-md-10">
-                                    <span className="size-around">
-                                        <span className="score-style">
-                                            <img src={Interessante} alt="interessante" />
-                                        </span>
-                                    
-                                        Interessante</span>
-                                      
-                            
-                                    
-                                    <span className="size-around">
-                                        <span className="score-style">
-                                            <img src={Graticao} alt="graticao" />
-                                        </span>Gratidão</span>
-                                  
-                                  
-                                  
-                                        <span className="size-around">
-                                            <span className="score-style">
-                                            <img src={Inovador} alt="inovador"/>
-                                            </span>Inovador</span>
-                                    
-                                </div>
-                                <div className="icon-value  col-md-2">
-                                    <span className="share-icon">
-                                        <img src={Compartilhar} alt="share" />
-                                    </span>
-                                    compartilhar
-                                </div>
+                           
+                                <div className="icon-value col-md-10">    
+                                <span id={post.id} className="counter">• {post.total}</span>  
 
+  
+                                    <div className="react-box-one">
+                                        <span className={post.reacao == 1 ? 'size-liked-light':'size-around-light'} id={post.id+"interesting"}
+                                        onClick={e =>prop.action(post.id,"interesting",post.total)}>                                        
+                                            
+                                            <b>Interessante</b></span>
+                                            <span className="score-style-light">
+                                                <img src={Interessante} alt="interessante" />
+                                            </span >
+                                            
+                                     </div>
+
+                                                                 
+                                     <div className="react-box-two">                                                          
+                                            <span className={post.reacao == 2 ? 'size-liked':'size-around'} id={post.id+"gratefull"}
+                                            onClick={e =>prop.action(post.id,"gratefull",post.total)}>
+                                               <b>Gratidão</b></span>
+
+                                               <span className="score-style">
+                                                    <img src={Gratidao} alt="gratidao" />
+                                                </span>
+                                      </div>   
+                                  
+                                     <div className="react-box-three">  
+                                        <span className={post.reacao == 3 ? 'size-liked-rocket':'size-around-rocket'} id={post.id+"inovated"}
+                                        onClick={e =>prop.action(post.id,"inovated",post.total)}>
+                                            <b>Inovador</b></span>
+
+                                            <span className="score-style-rocket">
+                                            <img src={Inovador} alt="inovador" className="rocket-asjust"/>
+                                            </span>
+                                     </div> 
+                                </div>
+                           
+                                <div className="icon-value  col-md-2">
+                                    <div className="share-icon">                                        
+                                        compartilhar
+                                    </div>  
+                                    <img className="icon-share" src={Compartilhar} alt="share" />                                 
+                                </div>                                
                             </div>
                             
                         </div>
@@ -78,8 +95,7 @@ export default prop => {
     })
 
     return(
-        <div>{ divs }</div>
+        <div>{ corpo }</div>
     )
-
 
 }

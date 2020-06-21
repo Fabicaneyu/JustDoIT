@@ -4,6 +4,7 @@ import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUs
 import com.connection.databaseconnection.associative.conhecimento.ConhecimentoUsuarioRepository;
 import com.connection.databaseconnection.conhecimento.Conhecimento;
 import com.connection.databaseconnection.conhecimento.ConhecimentoRepository;
+import com.connection.databaseconnection.conhecimento.types.TipoConhecimento;
 import com.connection.databaseconnection.dto.BuscaDTO;
 import com.connection.databaseconnection.dto.UsuarioViewDTO;
 import com.connection.databaseconnection.exception.ErroAutenticacao;
@@ -11,10 +12,11 @@ import com.connection.databaseconnection.exception.RegraException;
 import com.connection.databaseconnection.exception.UserNotFoundException;
 
 import com.connection.databaseconnection.iterators.BuscaBuilder;
+import com.connection.databaseconnection.security.access.UserBaseAcess;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.http.ResponseEntity;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -40,12 +42,19 @@ public class UserService {
     @Autowired
     private EntityManager entityManager;
 
+    @Autowired
+    private PasswordEncoder encoder;
+
+    @Autowired
+    private UserBaseAcess userBaseAcess;
+
+
     public UserService(UserRepository repository) {
         super();
         this.repository = repository;
     }
 
-    public Usuario buscaporId(Long id) {
+    public Usuario buscaporId(Integer id) {
 
         Optional<Usuario> result = this.repository.findById(id);
 
@@ -58,22 +67,12 @@ public class UserService {
 
     }
 
-    public Optional<Usuario> buscaporIdOptional(Long id) {
-
-        Optional<Usuario> result = this.repository.findById(id);
-
-        if(result.isPresent()) {
-            return result;
-        }
-        else {
-            return null;
-        }
-
-    }
 
     @Transactional
     public Usuario saveUser(Usuario user) {
+
         verifyNewEmail(user.getEmail());
+
         repository.save(user);
         return user;
     }
@@ -91,17 +90,19 @@ public class UserService {
 
     public Usuario authentication(String email, String senha) {
 
-        Usuario user = repository.findByEmail(email);
-
-        if (user == null) {
+        UserDetails userDetails = userBaseAcess.loadUserByUsername(email);
+        
+        if (userDetails == null) {
             throw new ErroAutenticacao("Usuário não encontrado");
         }
 
-        if (!user.getSenha().equals(senha)) {
-            throw new ErroAutenticacao("Senha inválida");
+        boolean senhasBatem = encoder.matches( senha, userDetails.getPassword() );
+
+        if (senhasBatem) {
+            return repository.findByEmail(email);
         }
 
-        return user;
+        throw new ErroAutenticacao("Senha inválida");
 
     }
 
@@ -116,7 +117,7 @@ public class UserService {
 
     }
 
-    public List<BuscaDTO> buscarConhecimentos(String conhecimento) {
+    public List buscarConhecimentos(String conhecimento) {
 
         List<Conhecimento> busca = conhecimentoRepository.findByKnow(conhecimento);
 
@@ -130,11 +131,40 @@ public class UserService {
                     .findByIdKnowId(busca.get(0).getId_conhecimento());
         }
 
-        return buscaBuilder.nextList(novaBusca);
+        if(novaBusca.isEmpty()) {
+            return null;
+        }
+        else{
+            return novaBusca;
+        }
+
+    }
+
+    public List<BuscaDTO> buscarPorTipo(TipoConhecimento tipo) {
+
+        List<Conhecimento> busca = conhecimentoRepository.findByTipo(tipo);
+
+        List<ConhecimentoUsuario> novaBusca;
+
+        if(busca.isEmpty()) {
+            return null;
+        }
+        else {
+            novaBusca = conhecimentoUsuarioRepository
+                    .findByIdKnowId(busca.get(0).getId_conhecimento());
+        }
+
+        if(novaBusca.isEmpty()) {
+            return null;
+        }
+        else{
+            return buscaBuilder.nextList(novaBusca);
+        }
+
     }
 
 
-    public UsuarioViewDTO buscaViewporId(long id) {
+    public UsuarioViewDTO buscaViewporId(Integer id) {
 
         Optional<Usuario> result = this.repository.findById(id);
         UsuarioViewDTO view ;
@@ -148,6 +178,50 @@ public class UserService {
         }
         else {
             return null;
+        }
+
+    }
+
+    public List buscarPorLevel(int nivel) {
+
+        List<ConhecimentoUsuario> busca = conhecimentoUsuarioRepository.findByLevel(nivel);
+
+        if(busca.isEmpty()) {
+            return null;
+        }
+        else {
+            return busca;
+        }
+
+    }
+
+    public List buscarPorLevelandConhecimento(ConhecimentoUsuario consulta) {
+
+        List<ConhecimentoUsuario> busca = conhecimentoUsuarioRepository.findByConhecimentoandLevel
+                (consulta.getNivel(), consulta.getConhecimento().getConhecimento());
+
+        if(busca.isEmpty()) {
+            return null;
+        }
+        else {
+            return busca;
+        }
+
+    }
+
+    public List buscarPorTipoAndNivel(TipoConhecimento type, int level) {
+
+
+        List<ConhecimentoUsuario> busca;
+
+        busca = conhecimentoUsuarioRepository
+                    .findByLevelandType(level, type);
+
+        if(busca.isEmpty()) {
+            return null;
+        }
+        else{
+            return buscaBuilder.nextList(busca);
         }
 
     }

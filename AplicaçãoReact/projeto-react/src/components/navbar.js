@@ -1,6 +1,6 @@
 import React from 'react'
 import NavbarItem from './navbar-Item'
-import Busca from './field-busca'
+import Busca from '../views/Busca/field-busca'
 import Logo from '../imagens/logo.png'
 import Home from '../imagens/home.svg'
 import Evento from '../imagens/evento.svg'

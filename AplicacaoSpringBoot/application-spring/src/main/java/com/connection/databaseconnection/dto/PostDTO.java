@@ -14,18 +14,21 @@ import java.time.format.DateTimeFormatter;
 @AllArgsConstructor
 public class PostDTO {
 
-    private Long id_user;
+    private Integer id_user;
     private String conteudo;
     private String photo;
     private String nome_user;
     private String _data;
+    private String imagem;
+    private Integer isImg;
 
 
-    public Long getId_user() {
+
+    public Integer getId_user() {
         return id_user;
     }
 
-    public void setId_user(Long id_user) {
+    public void setId_user(Integer id_user) {
         this.id_user = id_user;
     }
 
@@ -66,5 +69,22 @@ public class PostDTO {
 
     public void setNome_user(String nome_user) {
         this.nome_user = nome_user;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
+
+    public Integer getIsImg() {
+        return isImg;
+    }
+
+    public void setIsImg(Integer isImg) {
+        this.isImg = isImg;
     }
 }
