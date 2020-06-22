@@ -2,27 +2,25 @@ import React, { useEffect, useState } from 'react';
 import {FiX } from 'react-icons/fi';
 import api from '../../../../services/api';
 import '../../css-evento.css';
-
+import Exportar from '../../../../components/download-teste';
 export default function Convidado() {
     const id = localStorage.getItem("codigo");
-    
+    const admEvento = localStorage.getItem("admEvento");
+    const usuario = localStorage.getItem('usuario_atual');
+    const usuarioLogado = JSON.parse(usuario);
+
     const [convidados, setConvidados] = useState([]);
     const [isModalVisible, setIsModalVisible] = useState(false);
-
+    const [idUsuario, setIdUsuario] = useState(usuarioLogado.id);
+    
     useEffect(() => {
         api.get(`/convidado/${id}`).then(response => {
             setConvidados(response.data);
-           
-
+          
 
         })
     });
-    function exportarArquivo(){
-        api.get(`/export`).then(response => {
-            console.log(response);
-                })
-        }
-
+  
     return (
         <div>
         <button className="button-modal-list" onClick={() => setIsModalVisible(true)}>Visualizar lista</button>
@@ -30,7 +28,7 @@ export default function Convidado() {
             <div className="modal-cad">
                 <div className="container-modal">
                 <FiX className="close" onClick={() => setIsModalVisible(false)}/>
-                <button className="bot-export" onClick={exportarArquivo}>exportar </button>
+             <Exportar/>
         
         <table className="container container-cad-conv" >
             <thead>

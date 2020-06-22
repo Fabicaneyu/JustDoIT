@@ -48,7 +48,7 @@ function download() {
 
 
     return (
-        <button onClick={() => getImage()}>Baixar Lista</button>
+        <button className="botaoExportar" onClick={() => getImage()}>Baixar Lista</button>
     );
 }
 

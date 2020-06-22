@@ -8,18 +8,20 @@ import Convidado from './Convidados/convidado';
 import CadastroConvidado from './Convidados/cadastroConvidado';
 
 export default function DetalhesEvento() {
-
-    const [eventoDeta, setEventoDet] = useState([]);
     const id = localStorage.getItem("codigo");
     const usuario = localStorage.getItem('usuario_atual');
-        const usuarioLogado = JSON.parse(usuario);
+    const usuarioLogado = JSON.parse(usuario);
 
+    const [eventoDeta, setEventoDet] = useState([]);
+    const [idUsuarioLogado, setIdUsuarioLogado] = useState(usuarioLogado);
+    
     useEffect(() => {
         api.get(`/eventos/${id}`).then(response => {
             setEventoDet(response.data);
-
+          
         })
     });
+  
     return (
         <>
             <Navbar className="container" />
@@ -62,8 +64,8 @@ export default function DetalhesEvento() {
 
                 </div>
                 <div className="modal-position">
-                    <CadastroConvidado />
-                    <Convidado />
+               <CadastroConvidado />
+               <Convidado />
                 </div >
             </div>
 
