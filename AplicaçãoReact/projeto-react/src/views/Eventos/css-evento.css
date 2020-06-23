@@ -85,18 +85,20 @@ font-weight: bold;
     margin-left: 19%;
     box-shadow: inset 0 0 1.5px rgba(20, 20, 20, 0.685);
     padding-bottom: 50px;
+    font-size: 14px;
 
 }
 
 .box-body-list{
   
     background-color: #fff;
-    width: 700px;
-    height: 100%;
+    width: 100%;
+    font-size: 14px;
+
     position: relative;
     float: left;
     padding: 0;
-    margin-left: 23%;
+    
     box-shadow: inset 0 0 1.5px rgba(20, 20, 20, 0.685);
     padding-bottom: 50px;
 }
@@ -144,18 +146,32 @@ color:black;
     right: 1%;
     top:0px;
 }
+.botaoExportar{
+    border: solid rgba(0, 0, 0, 0.137) 1px;
+
+border-radius: 6px;
+text-align: center;
+width: 100px;
+height: 30px;
+background-color: rgba(0, 0, 0, 0); 
+
+color:black;
+  font-size: 14px;
+}
 .text-h1{
     margin-top: 10px;
     text-align: center;
 }
 .container-cad-conv{
     margin-top: 30px; 
+    font-size: 14px;
     
   }
   .button-cad-conv{
       
 margin-top: 20px;
       margin-left: 25%;
+      font-size: 14px;
   }
 
 
@@ -195,12 +211,14 @@ margin-top: 20px;
     
   }
   .form-detalhe-event{
-    width: 650px;
+
     height: 400px;
     position : relative;
     float: left;
     margin-left: 20%;
+    margin-right: 20%;
     background-color: #fff;
+    font-size: 14px;
    
 
   }
@@ -213,7 +231,7 @@ margin-top: 20px;
   }
   .list-convidado{
       position: relative;
-      width: 600px;
+      
       float: left;
       margin-left: 170px;
       padding-left: 10px;
@@ -234,15 +252,15 @@ margin-top: 20px;
       align-items: center;
   }
 .container-modal{
-
+width: 500px;
     border-radius: 10px;
     margin: 0 auto;
     background-color: white;
     color:black;
-    width: 40%;
-    height: 40%;
+    
     padding-left: 35px;
     padding-top: 35px;
+    padding-bottom: 35px;
 }
 .close{
   
@@ -263,7 +281,8 @@ margin-top: 20px;
         text-decoration:none;
         border:none;
         position:relative;
-        float: left;     
+        float: left;  
+        font-size: 14px;  
 }
 .bot-export{
     border: solid rgba(0, 0, 0, 0.137) 1px;
@@ -294,7 +313,7 @@ margin-top: 20px;
   
     width: 100%;
     float: left;
-    margin-left: 350px;
+    margin-left: 450px;
     margin-top: -120px;
 
 

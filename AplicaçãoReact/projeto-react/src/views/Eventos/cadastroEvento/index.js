@@ -9,6 +9,9 @@ import UserInfo from '../../../components/info-user-bar';
 
 
 export default function CadastroEvento() {
+    const usuario = localStorage.getItem('usuario_atual');
+    const usuarioLogado = JSON.parse(usuario);
+
     const [nome, setNome] = useState('');
     const [cep, setCep] = useState('');
     const [logradouro, setLogradouro] = useState('');
@@ -17,10 +20,12 @@ export default function CadastroEvento() {
     const [localidade, setLocalidade] = useState('');
     const [uf, setUf] = useState('');
     const [busca_content, setBusca] = useState('');
-    const [data, setData] = useState('');
+    const [dataEvento, setDataEvento] = useState('');
     const [horario, setHorario] = useState('');
     const [descricao, setDescricao] = useState('');
-
+    const [idUsuarioLogado, setIdUsuarioLogado] = useState(usuarioLogado.id);
+   
+   
     async function handleRegister(e) {
         e.preventDefault();
 
@@ -32,24 +37,25 @@ export default function CadastroEvento() {
             bairro,
             localidade,
             uf,
-            data,
+            dataEvento,
             horario,
             descricao,
         };
-
-        const response = await api.post('cadastrarEvento', env);
-        console.log(response);
-        console.log(`Dados para cadastro ${env.data}`);
+        const response = await api.post(`cadastrarEvento/${idUsuarioLogado}`, env)
+        .then( response => {
+            alert("Cadastrado com sucesso");
+           }).catch( error => {
+            alert("Erro ao cadastrar Evento");
+           });
         limparCampos();
 
-        alert("Cadastrado com sucesso");
 
     }
 
     async function buscaCep() {
         if (cep.length == 8) {
             console.log(cep)
-             await api.get(`cep/${cep}`, {})
+            await api.get(`cep/${cep}`, {})
                 .then(response => {
 
                     setLogradouro(response.data.logradouro);
@@ -64,7 +70,7 @@ export default function CadastroEvento() {
                 });
         }
     }
-    function limparCampos(){
+    function limparCampos() {
         setNome("");
         setCep("");
         setLogradouro("");
@@ -72,7 +78,7 @@ export default function CadastroEvento() {
         setBairro("");
         setLocalidade("");
         setUf("");
-        setData("");
+        setDataEvento("");
         setHorario("");
         setDescricao("");
     }
@@ -84,11 +90,11 @@ export default function CadastroEvento() {
 
     return (
 
-        <> <Navbar                                  
-           className="container"
-           action={() => history.push(`/busca/${busca_content}`)}
-           value={busca_content}
-           change={e =>setBusca(e)}/>
+        <> <Navbar
+            className="container"
+            action={() => history.push(`/busca/${busca_content}`)}
+            value={busca_content}
+            change={e => setBusca(e)} />
             <div className="body">
                 <div className=" container">
                     <div className="box-body">
@@ -135,7 +141,7 @@ export default function CadastroEvento() {
                             <div className="form-row ">
                                 <div className="col-sm-5">
                                     <label className="label">Data</label>
-                                    <input name="data" type="date" className="form-control1 " value={data} onChange={e => setData(e.target.value)} />
+                                    <input name="dataEvento" type="date" className="form-control1 " value={dataEvento} onChange={e => setDataEvento(e.target.value)} />
                                 </div>
 
                                 <div className="col-sm-5">

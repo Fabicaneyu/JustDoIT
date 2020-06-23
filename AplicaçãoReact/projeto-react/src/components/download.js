@@ -10,7 +10,7 @@ function download() {
 
     //Configuração padrão para o axios
     const config = {
-        url: 'http://localhost:8080/export',
+        url: 'https://springbootappjdit.azurewebsites.net/export',
         method: 'GET',
         responseType: 'blob'
     };
@@ -48,7 +48,7 @@ function download() {
 
 
     return (
-        <button onClick={() => getImage()}>Baixar Lista</button>
+        <button className="botaoExportar" onClick={() => getImage()}>Baixar Lista</button>
     );
 }
 

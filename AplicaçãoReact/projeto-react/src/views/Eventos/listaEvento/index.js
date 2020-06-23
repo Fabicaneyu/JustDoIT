@@ -9,6 +9,11 @@ import '../css-evento.css';
 
 export default function Eventos() {
     const [eventos, setEventos] = useState([]);
+    const id = localStorage.getItem("codigo");
+    const usuario = localStorage.getItem('usuario_atual');
+    const usuarioLogado = JSON.parse(usuario);
+    const [idUsuarioLogado, setIdUsuarioLogado] = useState(usuarioLogado.id);
+
 
     useEffect(() => {
         api.get('/eventos').then(response => {
@@ -19,12 +24,13 @@ export default function Eventos() {
 
 
     async function deletarEvento(id) {
-        try {
-            await api.delete(`/evento/${id}`);
-        } catch{
-            alert('Erro ao deletar evento, tente novamente.');
+         const response = await api.delete(`/evento/${id}/${idUsuarioLogado}`)
+         .then( response => {
+            alert("Evento deletado com sucesso");
+           }).catch( error => {
+            alert("Você não pode deletar esse evento por não ser o administrador");
+           });
         }
-    }
 
     async function detalhesEvento(codigo) {
         try {
@@ -66,7 +72,7 @@ export default function Eventos() {
                                     <tr className="table-light">
                                         <td>{evento.nome}</td>
                                         <td>{`${evento.logradouro} Nº ${evento.complemento}- ${evento.bairro} - ${evento.localidade} - ${evento.uf}`}</td>
-                                        <td>{evento.data}</td>
+                                        <td>{evento.dataEvento}</td>
                                         <td>{evento.horario}</td>
                                         <td>
                                             <button className="btDelete" onClick={() => deletarEvento(evento.codigo)} type="onsubmit" > <FiTrash2 /></button>

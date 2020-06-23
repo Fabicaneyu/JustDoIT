@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt">
   <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="utf-8" />
     <link  rel="icon" href="logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,5 +22,19 @@
     <div id="root"></div>
 
   <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+  <script>
+    $(document).on("click", "#minim_chat_window", function (e) {
+          var $this = $(this);
+          if (!$this.hasClass("panel-collapsed")) {
+              $this.parents(".panel").find(".panel-body").slideUp();
+              $this.addClass("panel-collapsed");
+              $this.removeClass("glyphicon-minus").addClass("glyphicon-plus");
+          } else {
+              $this.parents(".panel").find(".panel-body").slideDown();
+              $this.removeClass("panel-collapsed");
+              $this.removeClass("glyphicon-plus").addClass("glyphicon-minus");
+          }
+      });
+  </script>
   </body>
 </html>

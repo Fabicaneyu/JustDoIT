@@ -4,6 +4,7 @@ import Cancelar from '../imagens/cancelar.svg'
 import Editar from '../imagens/editar.svg'
 import Add from '../imagens/add.svg'
 import Busca from './Busca/busca'
+import Chat from '../components/Chat'
 import DOMPurify from 'dompurify';
 import {Dialog} from 'primereact/dialog';
 import {Button} from 'primereact/button';
@@ -173,6 +174,9 @@ class Perfil extends React.Component {
 
         document.getElementById('div-about-conhecimento').style.display = 'inline';        
         document.getElementById('div-blur').style.filter = 'blur(4px)';
+        document.getElementById('chat-component').style.display = 'none' 
+
+       
 
     }
 
@@ -215,7 +219,7 @@ class Perfil extends React.Component {
 
     cancelar = () => {
         document.getElementById('div-about').style.display = 'none';
-        document.getElementById('div-blur').style.filter = 'blur(0px)';
+        document.getElementById('div-blur').style.filter = 'blur(0px)';        
         this.setState({ desc_atualize: '' });
     }
 
@@ -228,12 +232,14 @@ class Perfil extends React.Component {
     cancelarConhecimento = () => {
         document.getElementById('div-about-conhecimento').style.display = 'none';
         document.getElementById('div-blur').style.filter = 'blur(0px)';
+        document.getElementById('chat-component').style.display = 'inline-block' 
         this.setState({ desc_atualize: '' });
     }
 
     editarInteresse = () => {
 
         document.getElementById('div-about-interesse').style.display = 'inline';
+        document.getElementById('chat-component').style.display = 'none' 
         document.getElementById('div-blur').style.filter = 'blur(4px)';
 
     }
@@ -241,6 +247,7 @@ class Perfil extends React.Component {
     cancelarInteresse = () => {
         document.getElementById('div-about-interesse').style.display = 'none';
         document.getElementById('div-blur').style.filter = 'blur(0px)';
+        document.getElementById('chat-component').style.display = 'inline-block' 
         this.setState({ desc_atualize: '' });
     }
 
@@ -514,8 +521,14 @@ buscar = () => {
                         <button onClick={this.addInteresse} className="btn-sender-about">Enviar</button>
                     </div>
 
+                                      
+
                 </div>
 
+                <div id="chat-component">
+                <Chat sendPhotoToChat={this.state.photo} />  
+                </div>
+                
              </>
            
         )

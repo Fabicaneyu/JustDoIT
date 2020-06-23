@@ -1,9 +1,11 @@
 import React from 'react'
 import Navbar from '../components/navbar'
+import Chat from '../components/Chat'
 import Busca from './Busca/busca'
 import Conhecimentos from '../components/conhecimentos-field-view'
 import Interesses from '../components/interesses-field-view'
 import axios from 'axios'
+
 
 
 
@@ -14,6 +16,9 @@ class PerfilViewOnly extends React.Component {
         
         id_user: '',
         photo: '',
+        id_user_atual:'',
+        nome_user_atual: '',
+        photo_user_atual: '',
         busca_content: '',
         description: '',
         know_request: [],
@@ -42,6 +47,18 @@ class PerfilViewOnly extends React.Component {
 
 
     load = () => {
+
+
+        const usuario = localStorage.getItem('usuario_atual')
+        const usuarioLogado = JSON.parse(usuario)
+
+        this.setState({ nome_user_atual: usuarioLogado.nome })
+        this.setState({ id_user_atual: usuarioLogado.id })
+        this.setState({ photo_user_atual: usuarioLogado.photo })
+
+        const img = usuarioLogado.photo
+
+        console.log(img)
 
         const usuarioID = this.props.match.params.id        
 
@@ -192,7 +209,7 @@ buscar = () => {
                 </div>
 
                                 
-
+                <Chat sendPhotoToChat={this.state.photo_user_atual} />
              </>
            
         )

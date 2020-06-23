@@ -4,6 +4,7 @@ import Logo from '../imagens/logo.png'
 import Recaptcha from 'react-recaptcha'
 import Formgroup from '../components/form-group'
 import UsuarioCalls from '../calls/userCalls'
+import {Growl} from 'primereact/growl';
 import {InputText} from 'primereact/inputtext';
 import axios from 'axios'
 
@@ -13,7 +14,7 @@ class Login extends React.Component {
 
         email: '',
         senha: '',
-        mensagemErro: null,
+        messages: '',
         validated: false
 
     }
@@ -21,6 +22,7 @@ class Login extends React.Component {
     constructor() {
         super();
         this.call = new UsuarioCalls();
+        this.showError = this.showError.bind(this);
     }
 
     entrar = () => {
@@ -35,13 +37,19 @@ class Login extends React.Component {
             }).then(response => {
                 localStorage.setItem('usuario_atual', JSON.stringify(response.data))
                 this.props.history.push('/home')
+                console.log(response.data)
             }).catch(erro => {
-                this.setState({ mensagemErro: erro.response.data })
+                const mensagemErro = erro.response.data
+                this.showError(mensagemErro)                               
             })
         }
         else{
-            this.setState({ mensagemErro: "Por favor, comprove que você é humano" })
+            this.showError('Comprove que você é humano')           
         }
+    }
+
+    showError = (value) => {
+        this.growl.show({severity: 'error', summary: 'Ops', detail: value}) 
     }
 
 
@@ -75,6 +83,9 @@ class Login extends React.Component {
     }
 
 
+    
+
+
     //  logar = () => {
     //        console.log('Email: ' , this.state.email)
     //        console.log('Senha' , this.state.senha)
@@ -87,9 +98,11 @@ class Login extends React.Component {
 
             <div className="box-logo-login">
                 <img src={Logo} className="logo-login" alt="login" />
-            </div>
-
+            </div>            
+            
             <div className="container-login">
+
+            <Growl ref={(el) => this.growl = el} />     
 
                 <div className="col-md-12" >
 
@@ -98,7 +111,7 @@ class Login extends React.Component {
                             <Card title="Login">
 
                                 <div className="row">
-                                    <span>{this.state.mensagemErro}</span>
+                                
                                 </div>
 
                                 <div className="row">
@@ -134,7 +147,7 @@ class Login extends React.Component {
 
                                                 </Formgroup>
                                                                     
-
+                                               
                                                 <button onClick={this.entrar} className="btn-success-entrar">Entrar</button>
                                                 <div className="divfrasecadastro" > <h2 className="frasecadastro"> Ou crie uma conta gratuitamente <b onClick={this.toCadastro} className="bold-cadastro">aqui</b> </h2></div>
 
@@ -173,7 +186,8 @@ class Login extends React.Component {
 
 
 
-
 }
+
+
 
 export default Login
