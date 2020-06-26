@@ -6,7 +6,7 @@
 
 ## Desenvolvedores :octocat:
 
-[<img src="https://media-exp1.licdn.com/dms/image/C5603AQGl0X-eNoaO7Q/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=0H_CWbx3H57a9HCDwY4We6D6euQuEv0ERqW0psO-MzI" width=115 > <br> <sub> Amanda Nunes </sub>](https://github.com/amand4nunes) | [<img src="https://media-exp1.licdn.com/dms/image/C4E03AQHB56Xvo0OGzA/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=U-gvM2UMGYpo3OYMUh4WaFPx5snH5iMQv_BqWIjskEM" width=115 > <br> <sub> Cassio Jr </sub>](https://github.com/Cassio-2012) | [<img src="https://media-exp1.licdn.com/dms/image/C4D03AQEXNajc2j6b8g/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=l6w33Ak1oTBRKLNsruJlM3sDz1EwY2ojc7kPNYG-Gzk" width=115 > <br> <sub> Ester Paixão </sub>](https://www.linkedin.com/in/ester-paix%C3%A3o-3816511a3/) | [<img src="https://avatars3.githubusercontent.com/u/41839566?s=460&u=c7a25328129257bf9e790fe4bd94346091f1eebe&v=4" width=115 > <br> <sub> Fabí Canedo </sub>](https://github.com/Fabicaneyu) | [<img src="https://media-exp1.licdn.com/dms/image/C4E03AQEnmas1LbtbBg/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=nfqi4iTJq64wwfXTMkdcA-ckdVK-gE7wCG8kkNIK5xA" width=115 > <br> <sub> Messias de Carvalho </sub>](https://github.com/messiassss/Messias) |[<img src="https://media-exp1.licdn.com/dms/image/C4D03AQEgB71INc3dtA/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=9BHIohB_-E6cuOa7vXCMR7-cazQCsowopouo9bMrvQc" width=115 > <br> <sub> Victor Silva </sub>](https://github.com/vsilva2019) |
+[<img src="https://media-exp1.licdn.com/dms/image/C5603AQGl0X-eNoaO7Q/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=0H_CWbx3H57a9HCDwY4We6D6euQuEv0ERqW0psO-MzI" width=115 > <br> <sub> Amanda Nunes </sub>](https://github.com/amand4nunes) | [<img src="https://media-exp1.licdn.com/dms/image/C4D03AQHraaSrv_I7mg/profile-displayphoto-shrink_800_800/0?e=1598486400&v=beta&t=wdi_xtG7BuBY7XY35fCaOF3jRwm-mBjX41j0iknTd8s" width=115 > <br> <sub> Cassio Jr </sub>](https://github.com/Cassio-2012) | [<img src="https://media-exp1.licdn.com/dms/image/C4D03AQEXNajc2j6b8g/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=l6w33Ak1oTBRKLNsruJlM3sDz1EwY2ojc7kPNYG-Gzk" width=115 > <br> <sub> Ester Paixão </sub>](https://www.linkedin.com/in/ester-paix%C3%A3o-3816511a3/) | [<img src="https://avatars3.githubusercontent.com/u/41839566?s=460&u=c7a25328129257bf9e790fe4bd94346091f1eebe&v=4" width=115 > <br> <sub> Fabí Canedo </sub>](https://github.com/Fabicaneyu) | [<img src="https://media-exp1.licdn.com/dms/image/C4E03AQEnmas1LbtbBg/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=nfqi4iTJq64wwfXTMkdcA-ckdVK-gE7wCG8kkNIK5xA" width=115 > <br> <sub> Messias de Carvalho </sub>](https://github.com/messiassss/Messias) |[<img src="https://media-exp1.licdn.com/dms/image/C4D03AQEgB71INc3dtA/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=9BHIohB_-E6cuOa7vXCMR7-cazQCsowopouo9bMrvQc" width=115 > <br> <sub> Victor Silva </sub>](https://github.com/vsilva2019) |
 | :---: | :---: | :---: | :---: | :---: | :---: 
 
 
@@ -49,7 +49,8 @@ ambos aprenderão. </p>
 
 ## Deploy da Aplicação com Azure Apps: :dash:
 
-> Em breve
+> https://green-sea-0000ae210.azurestaticapps.net/#/
+
 
 ## Linguagens, dependencias e libs utilizadas :books:
 
