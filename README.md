@@ -10,7 +10,7 @@
 | :---: | :---: | :---: | :---: | :---: | :---: 
 
 
-> Status do Projeto: Em desenvolvimento :warning:
+> Status do Projeto: Finalizado :heavy_check_mark:
 
 ### Tópicos 
 
